@@ -940,6 +940,13 @@ img {
   border: 1px solid rgba(0, 255, 135, 0.25);
 }
 
+.tag-shader {
+  background: linear-gradient(135deg, rgba(0, 255, 135, 0.14), rgba(0, 229, 255, 0.12));
+  color: var(--neon-green);
+  border: 1px solid rgba(0, 255, 135, 0.35);
+  box-shadow: 0 0 10px rgba(0, 255, 135, 0.1);
+}
+
 /* ==========================================================================
    Social Media & Community Section
    ========================================================================== */
@@ -1122,6 +1129,412 @@ img {
   width: 20px;
   text-align: center;
   flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Project Shader: DERIVATIVE Edit by Gyzenn Showcase
+   ========================================================================== */
+.derivative-card {
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  border: 1px solid rgba(0, 255, 135, 0.24);
+  background: linear-gradient(145deg, rgba(14, 20, 32, 0.94) 0%, rgba(8, 12, 20, 0.9) 100%);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 255, 135, 0.06);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.derivative-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-cyan), transparent);
+  pointer-events: none;
+}
+
+.derivative-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 135, 0.45);
+  box-shadow: var(--shadow-lg), 0 0 35px rgba(0, 255, 135, 0.12), 0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+.derivative-badges-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.derivative-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+/* Left Column: Preview, Tip & Credit */
+.derivative-preview-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.derivative-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.derivative-preview-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.derivative-preview-label i {
+  color: var(--neon-cyan);
+}
+
+.derivative-preview-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #080d16;
+  border: 1px solid rgba(0, 255, 135, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.derivative-card:hover .derivative-preview-wrapper {
+  border-color: var(--neon-green);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 255, 135, 0.22);
+}
+
+.derivative-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.derivative-card:hover .derivative-preview-image {
+  transform: scale(1.02);
+}
+
+.derivative-preview-image.img-failed {
+  display: none;
+}
+
+.derivative-preview-image.img-failed + .derivative-img-fallback {
+  display: flex;
+}
+
+.derivative-img-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #090d16, #111a2c);
+  color: var(--neon-green);
+  font-size: 2.2rem;
+}
+
+.derivative-img-fallback span {
+  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.derivative-preview-filename {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+
+/* Performance Tip Box */
+.derivative-tip {
+  background: rgba(6, 10, 18, 0.65);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-left: 3px solid #fbbf24;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.derivative-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.derivative-tip-header i {
+  font-size: 0.8rem;
+}
+
+.derivative-tip p {
+  font-size: 0.82rem;
+  color: var(--text-highlight);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Credit Box */
+.derivative-credit {
+  background: rgba(8, 14, 24, 0.55);
+  border: 1px solid rgba(0, 255, 135, 0.15);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.derivative-credit-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.derivative-credit-author {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  letter-spacing: 0.02em;
+}
+
+.derivative-credit-subtext {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+/* Right Column: Information, Features, Usage Tags & Download */
+.derivative-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.derivative-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.derivative-title {
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.derivative-brand {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.derivative-desc {
+  font-size: 0.92rem;
+  color: var(--text-highlight);
+  line-height: 1.55;
+}
+
+.derivative-features-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.derivative-section-heading {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.derivative-section-heading i {
+  color: var(--neon-cyan);
+  font-size: 0.85rem;
+}
+
+.derivative-feature-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+
+.derivative-feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  background: rgba(6, 9, 15, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+}
+
+.derivative-feature-list li i {
+  color: var(--neon-green);
+  margin-top: 0.18rem;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.derivative-feature-list li strong {
+  color: #fff;
+  display: block;
+  font-size: 0.86rem;
+  margin-bottom: 0.1rem;
+}
+
+.derivative-feature-list li p {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Cocok Untuk Tags */
+.derivative-usage-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.derivative-usage-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.derivative-usage-label i {
+  color: var(--neon-green);
+  font-size: 0.75rem;
+}
+
+.derivative-usage-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.usage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-highlight);
+  transition: var(--transition-fast);
+}
+
+.usage-tag i {
+  color: var(--neon-cyan);
+  font-size: 0.75rem;
+}
+
+.usage-tag:hover {
+  background: rgba(0, 229, 255, 0.14);
+  border-color: var(--neon-cyan);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Download Section */
+.derivative-download {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.derivative-download-heading {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.derivative-download-heading i {
+  color: var(--neon-green);
+  font-size: 0.75rem;
+}
+
+.derivative-download .btn-google-drive {
+  width: 100%;
+}
+
+/* Modpacks Grid Heading / Separator */
+.modpacks-grid-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 2.25rem 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.modpacks-grid-heading i {
+  color: var(--neon-cyan);
 }
 
 /* ==========================================================================
@@ -1972,6 +2385,10 @@ img {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .derivative-feature-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .server-actions-group {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2000,6 +2417,16 @@ img {
 
   .cards-grid.social-grid .group-card {
     grid-column: span 2;
+  }
+
+  .derivative-card {
+    padding: 2.25rem 1.85rem;
+  }
+
+  .derivative-grid {
+    grid-template-columns: 46% 54%;
+    gap: 2rem;
+    align-items: start;
   }
 
   .cards-grid.modpacks-grid {
@@ -2045,6 +2472,11 @@ img {
 
   .cards-grid.social-grid .group-card {
     grid-column: span 1;
+  }
+
+  .derivative-grid {
+    grid-template-columns: 44% 56%;
+    gap: 2.25rem;
   }
 
   .hero-section {
