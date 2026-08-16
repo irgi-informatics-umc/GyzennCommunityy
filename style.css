@@ -753,6 +753,20 @@ img {
   box-shadow: 0 4px 16px rgba(0, 112, 243, 0.35);
 }
 
+.btn-google-drive {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-google-drive:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+  color: #ffffff;
+}
+
 /* Discord Specific Buttons */
 .btn-discord {
   background: linear-gradient(135deg, var(--brand-discord), #434eb8);
@@ -918,6 +932,12 @@ img {
   background: rgba(0, 112, 243, 0.12);
   color: #38bdf8;
   border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.tag-pvp {
+  background: rgba(0, 255, 135, 0.08);
+  color: var(--neon-green);
+  border: 1px solid rgba(0, 255, 135, 0.25);
 }
 
 /* ==========================================================================
@@ -1251,6 +1271,118 @@ img {
 .modpack-vulkan-card:hover {
   border-color: rgba(56, 189, 248, 0.45);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 112, 243, 0.14);
+}
+
+/* Xshadow's PvP Modpack Custom Styling & Identity */
+.xshadow-header-group {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.xshadow-special-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  background: rgba(0, 255, 135, 0.08);
+  border: 1px solid rgba(0, 255, 135, 0.28);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.xshadow-special-badge i {
+  color: var(--neon-green);
+  font-size: 0.72rem;
+}
+
+.xshadow-pvp-card {
+  border-color: rgba(0, 255, 135, 0.16);
+}
+
+.xshadow-pvp-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 255, 135, 0.14);
+}
+
+/* Uku's PvP Modpack Custom Styling & Identity */
+.uku-pvp-header {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.uku-pvp-special-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  background: rgba(0, 255, 135, 0.08);
+  border: 1px solid rgba(0, 255, 135, 0.28);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.uku-pvp-special-badge i {
+  color: var(--neon-green);
+  font-size: 0.72rem;
+}
+
+.uku-pvp-card {
+  border-color: rgba(16, 185, 129, 0.18);
+}
+
+.uku-pvp-card:hover {
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(16, 185, 129, 0.14);
+}
+
+/* Download Mirrors Container & Single Group Layout */
+.download-mirrors,
+.download-single-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.download-mirrors-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.download-mirrors-label i {
+  color: var(--neon-cyan);
+  font-size: 0.75rem;
+}
+
+.download-mirror-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .download-mirror-buttons {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================
@@ -1929,10 +2061,4 @@ img {
   }
 }
 
-/* Tablet Span Optimization for Modpack Cards */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .cards-grid.modpacks-grid > .modpack-card:last-child {
-    grid-column: span 2;
-  }
-}
 
