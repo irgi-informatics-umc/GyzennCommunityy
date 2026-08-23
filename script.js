@@ -266,4 +266,149 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // --- Modpack Gyzenn Data Structure & Dynamic Renderer ---
+  const gyzennModpacks = [
+    {
+      id: "fpsboost-v3",
+      name: "Modpack FpsBoost V3",
+      category: "FPS BOOST",
+      minecraft: "1.21",
+      fabric: "0.19.2",
+      badges: [],
+      note: null,
+      isNew: false,
+      isRecommended: false,
+      downloadUrl: "https://drive.google.com/file/d/1Bt49_fwH8VNpVIM2bNAQ9-yl1GBQzwAU/view?usp=sharing"
+    },
+    {
+      id: "fpsboost-v4",
+      name: "Modpack FpsBoost V4",
+      category: "FPS BOOST",
+      minecraft: "1.21.11",
+      fabric: "0.19.3",
+      badges: ["Resourcepack Included"],
+      note: null,
+      isNew: false,
+      isRecommended: false,
+      downloadUrl: "https://drive.google.com/file/d/12loZ_FYc41HiogJwDwZXi0bggaXWgDtY/view?usp=sharing"
+    },
+    {
+      id: "fpsboost-v5",
+      name: "Modpack FpsBoost V5",
+      category: "FPS BOOST",
+      minecraft: "1.21.11",
+      fabric: "0.19.3",
+      badges: ["Resourcepack Included"],
+      note: "Ada mod Flashback. Kalau tidak suka, mod tersebut bisa dihapus.",
+      isNew: false,
+      isRecommended: false,
+      downloadUrl: "https://drive.google.com/file/d/1fFOHr8H7mli-qDYFDZWs9zbjxPNMCqUS/view?usp=sharing"
+    },
+    {
+      id: "fpsboost-v6",
+      name: "Modpack FpsBoost V6",
+      category: "FPS BOOST",
+      minecraft: "26.2",
+      fabric: "0.19.3",
+      badges: ["Resourcepack Included"],
+      note: null,
+      isNew: true,
+      isRecommended: true,
+      downloadUrl: "https://drive.google.com/file/d/1Bw3AgXkeX0qKYb191QuudxwoHvgP3FIP/view?usp=sharing"
+    },
+    {
+      id: "survival-v1",
+      name: "Modpack Survival V1",
+      category: "SURVIVAL",
+      minecraft: "26.2",
+      fabric: "0.19.3",
+      badges: ["130 Mods", "Resourcepack Included", "Shaders Included"],
+      note: null,
+      isNew: true,
+      isRecommended: false,
+      downloadUrl: "https://drive.google.com/file/d/1wlTff3EIipv1DAqdwfEt75UyLQABuC4f/view?usp=sharing"
+    }
+  ];
+
+  function renderGyzennModpacks() {
+    const container = document.getElementById('gyzennModpacksGrid');
+    if (!container) return;
+
+    const cardsHtml = gyzennModpacks.map(modpack => {
+      let badgeBannerHtml = '';
+
+      if (modpack.isNew) {
+        badgeBannerHtml += `<span class="tag-badge tag-new-status"><i class="fa-solid fa-fire"></i> NEW</span> `;
+      }
+      if (modpack.isRecommended) {
+        badgeBannerHtml += `<span class="tag-badge tag-recommended-status"><i class="fa-solid fa-star"></i> Recommended</span> `;
+      }
+
+      if (modpack.category === 'FPS BOOST') {
+        badgeBannerHtml += `<span class="tag-badge tag-fps-category"><i class="fa-solid fa-bolt"></i> FPS BOOST</span> `;
+      } else if (modpack.category === 'SURVIVAL') {
+        badgeBannerHtml += `<span class="tag-badge tag-survival-category"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
+      }
+
+      badgeBannerHtml += `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft ${modpack.minecraft}</span> `;
+      badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric ${modpack.fabric}</span> `;
+
+      modpack.badges.forEach(b => {
+        let icon = 'fa-solid fa-box-archive';
+        if (b.includes('Mods')) icon = 'fa-solid fa-cubes';
+        if (b.includes('Shaders')) icon = 'fa-solid fa-wand-magic-sparkles';
+        badgeBannerHtml += `<span class="tag-badge tag-extra-bonus"><i class="${icon}"></i> ${b}</span> `;
+      });
+
+      const noteHtml = modpack.note ? `
+        <div class="modpack-note-box">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>${modpack.note}</span>
+        </div>` : '';
+
+      return `
+        <div class="glass-card gyzenn-modpack-card">
+          <div class="card-content">
+            <div class="modpack-badge-banner">
+              ${badgeBannerHtml}
+            </div>
+            <h3 class="modpack-title">${modpack.name}</h3>
+            ${noteHtml}
+          </div>
+          <div class="card-action">
+            <a href="${modpack.downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
+              <i class="fa-brands fa-google-drive"></i>
+              <span>Download Modpack</span>
+              <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = cardsHtml;
+  }
+
+  // Initial call to ensure cards match JS data
+  renderGyzennModpacks();
+
+  // --- Interactive Gaming Mode Toggle ---
+  const btnGamingModeToggle = document.getElementById('btnGamingModeToggle');
+  const modpackGyzennSection = document.getElementById('modpack-gyzenn');
+
+  if (btnGamingModeToggle && modpackGyzennSection) {
+    btnGamingModeToggle.addEventListener('click', () => {
+      const isGamingMode = modpackGyzennSection.classList.toggle('gaming-mode');
+      btnGamingModeToggle.classList.toggle('active', isGamingMode);
+      
+      const statusEl = btnGamingModeToggle.querySelector('.mode-status');
+      if (statusEl) {
+        statusEl.textContent = isGamingMode ? 'ON' : 'OFF';
+      }
+
+      showToast(`Gaming Mode: ${isGamingMode ? 'ON (Efek Glow & Animated Border)' : 'OFF (Clean Mode)'}`);
+    });
+  }
 });
+
