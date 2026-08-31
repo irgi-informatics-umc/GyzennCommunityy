@@ -1,39 +1,206 @@
 /**
- * Gyzenn Community - Interactive Scripts
- * Handles mobile drawer, fast & subtle stat counters, reduced motion support,
- * scrollspy, and copy server IP functionality for KitaSMP.
+ * Gyzenn Community - 90s Retro Interactive Engine (Final Pass)
+ * Centralized retro particle system, hero motion timeline & polaroid cursor tilt,
+ * scrollspy navigation fix (#modpacks & #modpack-gyzenn), Zalith progress bar,
+ * copy IP pixel particle burst, dynamic modpack renderer, and gaming mode toggle.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Accessibility Check for Reduced Motion ---
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // --- Header Scroll State & Back to Top Button ---
+  // --------------------------------------------------------------------------
+  // 1. Centralized Retro Particle System Engine (Single rAF Loop)
+  // --------------------------------------------------------------------------
+  class RetroParticleEngine {
+    constructor() {
+      this.canvas = document.getElementById('retroParticleCanvas');
+      if (!this.canvas) return;
+      this.ctx = this.canvas.getContext('2d');
+      this.particles = [];
+      this.mouseX = -9999;
+      this.mouseY = -9999;
+
+      this.isMobile = window.innerWidth <= 768;
+      this.particleCount = this.isMobile ? 10 : (window.innerWidth <= 1024 ? 20 : 32);
+
+      this.palette = ['#FF2A85', '#FFD600', '#2563EB', '#A3E635', '#FF5722', '#7C3AED'];
+      this.types = ['square', 'dot', 'plus', 'star'];
+
+      this.init();
+    }
+
+    init() {
+      this.resize();
+      window.addEventListener('resize', () => this.resize(), { passive: true });
+
+      if (!this.isMobile) {
+        window.addEventListener('mousemove', (e) => {
+          this.mouseX = e.clientX;
+          this.mouseY = e.clientY;
+        }, { passive: true });
+      }
+
+      this.createParticles();
+
+      if (!prefersReducedMotion) {
+        requestAnimationFrame(() => this.loop());
+      }
+    }
+
+    resize() {
+      this.width = this.canvas.width = window.innerWidth;
+      this.height = this.canvas.height = window.innerHeight;
+      this.isMobile = window.innerWidth <= 768;
+    }
+
+    createParticles() {
+      this.particles = [];
+      for (let i = 0; i < this.particleCount; i++) {
+        this.particles.push({
+          x: Math.random() * this.width,
+          y: Math.random() * this.height,
+          size: Math.random() * 4 + 3,
+          color: this.palette[Math.floor(Math.random() * this.palette.length)],
+          type: this.types[Math.floor(Math.random() * this.types.length)],
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          rotation: Math.random() * Math.PI * 2,
+          vRot: (Math.random() - 0.5) * 0.02,
+          opacity: Math.random() * 0.45 + 0.25
+        });
+      }
+    }
+
+    loop() {
+      this.ctx.clearRect(0, 0, this.width, this.height);
+
+      this.particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.vRot;
+
+        // Wrap edges
+        if (p.x < 0) p.x = this.width;
+        if (p.x > this.width) p.x = 0;
+        if (p.y < 0) p.y = this.height;
+        if (p.y > this.height) p.y = 0;
+
+        // Subtle Mouse Proximity Avoidance Drift (Desktop only)
+        if (!this.isMobile && this.mouseX > 0) {
+          const dx = p.x - this.mouseX;
+          const dy = p.y - this.mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            const angle = Math.atan2(dy, dx);
+            p.x += Math.cos(angle) * 1.5;
+            p.y += Math.sin(angle) * 1.5;
+          }
+        }
+
+        // Draw particle
+        this.ctx.save();
+        this.ctx.translate(p.x, p.y);
+        this.ctx.rotate(p.rotation);
+        this.ctx.globalAlpha = p.opacity;
+        this.ctx.fillStyle = p.color;
+
+        if (p.type === 'square') {
+          this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        } else if (p.type === 'dot') {
+          this.ctx.beginPath();
+          this.ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+          this.ctx.fill();
+        } else if (p.type === 'plus') {
+          this.ctx.fillRect(-p.size / 2, -1, p.size, 2);
+          this.ctx.fillRect(-1, -p.size / 2, 2, p.size);
+        } else if (p.type === 'star') {
+          this.ctx.font = `${Math.floor(p.size * 2)}px VT323`;
+          this.ctx.fillText('★', -p.size / 2, p.size / 2);
+        }
+
+        this.ctx.restore();
+      });
+
+      requestAnimationFrame(() => this.loop());
+    }
+  }
+
+  // Initialize Particle Engine
+  new RetroParticleEngine();
+
+  // --------------------------------------------------------------------------
+  // 2. GSAP Entrance Motion Timeline & Hero Polaroid Cursor Tilt
+  // --------------------------------------------------------------------------
+  if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroTimeline = gsap.timeline();
+
+    heroTimeline
+      .from('.status-badge', { duration: 0.5, y: -20, opacity: 0, ease: 'back.out(1.7)' })
+      .from('.word-gyzenn', { duration: 0.6, x: -50, opacity: 0, ease: 'back.out(1.4)' }, '-=0.2')
+      .from('.word-community', { duration: 0.6, x: 50, opacity: 0, ease: 'back.out(1.4)' }, '-=0.4')
+      .from('.sticker-tag', { duration: 0.4, scale: 0, opacity: 0, stagger: 0.1, ease: 'back.out(2)' }, '-=0.3')
+      .from('#heroPolaroid', { duration: 0.7, y: 30, rotation: -8, opacity: 0, ease: 'power2.out' }, '-=0.2')
+      .from('.device-spec-pill', { duration: 0.4, y: 20, opacity: 0 }, '-=0.3')
+      .from('.hero-cta-group .btn', { duration: 0.4, y: 20, opacity: 0, stagger: 0.1, ease: 'back.out(1.5)' }, '-=0.2');
+
+    // Desktop Polaroid Cursor Tilt (max ±4deg)
+    const heroPolaroid = document.getElementById('heroPolaroid');
+    if (heroPolaroid && window.innerWidth > 768) {
+      window.addEventListener('mousemove', (e) => {
+        const { innerWidth, innerHeight } = window;
+        const rotateY = ((e.clientX / innerWidth) - 0.5) * 8;
+        const rotateX = -((e.clientY / innerHeight) - 0.5) * 8;
+        gsap.to(heroPolaroid, {
+          rotationY: rotateY,
+          rotationX: rotateX,
+          duration: 0.4,
+          ease: 'power1.out'
+        });
+      }, { passive: true });
+    }
+
+    // Section Titles Reveal Animations
+    gsap.utils.toArray('.section-title').forEach((title) => {
+      gsap.from(title, {
+        scrollTrigger: { trigger: title, start: 'top 85%' },
+        duration: 0.6,
+        y: 25,
+        opacity: 0,
+        ease: 'power2.out'
+      });
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 3. Header Scroll State & Back to Top Button
+  // --------------------------------------------------------------------------
   const header = document.getElementById('siteHeader');
   const backToTopBtn = document.getElementById('backToTopBtn');
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
 
-    // Header border/bg on scroll
-    if (scrollY > 25) {
+    if (scrollY > 20) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
 
-    // Back to top visibility
-    if (scrollY > 320) {
+    if (scrollY > 300) {
       backToTopBtn?.classList.add('visible');
     } else {
       backToTopBtn?.classList.remove('visible');
     }
 
-    // Update active navigation indicator
     updateActiveNavOnScroll();
   }, { passive: true });
 
-  // --- Mobile Drawer Navigation ---
+  // --------------------------------------------------------------------------
+  // 4. Mobile Drawer Navigation
+  // --------------------------------------------------------------------------
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
@@ -65,14 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   mobileNavBackdrop?.addEventListener('click', closeMobileMenu);
+  mobileNavLinks.forEach((link) => link.addEventListener('click', closeMobileMenu));
 
-  mobileNavLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      closeMobileMenu();
-    });
-  });
-
-  // --- Back to Top Click Action ---
+  // Back to Top Action
   backToTopBtn?.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
@@ -80,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Toast Notification Helper ---
+  // Toast Notification Helper
   const toast = document.getElementById('toastNotification');
   const toastMsg = document.getElementById('toastMessage');
   let toastTimer = null;
@@ -96,10 +258,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2800);
   }
 
-  // --- Copy IP Server KitaSMP Feature ---
+  // --------------------------------------------------------------------------
+  // 5. Copy IP Server KitaSMP Feature & Exploding Pixel Particles
+  // --------------------------------------------------------------------------
   const btnCopyIp = document.getElementById('btnCopyIp');
   const copyIpBtnText = document.getElementById('copyIpBtnText');
   let copyResetTimeout = null;
+
+  function spawnCopyIpParticles(button) {
+    if (prefersReducedMotion) return;
+    const rect = button.getBoundingClientRect();
+    const particleCount = 8;
+    const colors = ['#FF2A85', '#FFD600', '#A3E635', '#2563EB'];
+
+    for (let i = 0; i < particleCount; i++) {
+      const p = document.createElement('div');
+      p.className = 'ip-particle';
+      p.textContent = 'IP!';
+      p.style.backgroundColor = colors[i % colors.length];
+      p.style.left = `${rect.left + rect.width / 2}px`;
+      p.style.top = `${rect.top + rect.height / 2}px`;
+
+      document.body.appendChild(p);
+
+      const angle = (i / particleCount) * Math.PI * 2;
+      const dist = Math.random() * 50 + 30;
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist - 15;
+
+      requestAnimationFrame(() => {
+        p.style.transform = `translate(${tx}px, ${ty}px) scale(0.7)`;
+        p.style.opacity = '0';
+      });
+
+      setTimeout(() => {
+        p.remove();
+      }, 600);
+    }
+  }
 
   function fallbackCopyText(text, successCallback) {
     try {
@@ -125,26 +321,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const serverIp = 'play.kitasmp.com';
 
       function handleCopySuccess() {
-        if (copyIpBtnText) {
-          copyIpBtnText.textContent = 'IP Disalin!';
-        }
+        if (copyIpBtnText) copyIpBtnText.textContent = 'IP DISALIN!';
         btnCopyIp.classList.add('copied');
         const icon = btnCopyIp.querySelector('i');
-        if (icon) {
-          icon.className = 'fa-solid fa-check';
-        }
+        if (icon) icon.className = 'fa-solid fa-check';
 
+        spawnCopyIpParticles(btnCopyIp);
         showToast('✓ IP play.kitasmp.com berhasil disalin!');
 
         if (copyResetTimeout) clearTimeout(copyResetTimeout);
         copyResetTimeout = setTimeout(() => {
-          if (copyIpBtnText) {
-            copyIpBtnText.textContent = 'Copy IP';
-          }
+          if (copyIpBtnText) copyIpBtnText.textContent = 'COPY IP SERVER';
           btnCopyIp.classList.remove('copied');
-          if (icon) {
-            icon.className = 'fa-solid fa-copy';
-          }
+          if (icon) icon.className = 'fa-solid fa-copy';
         }, 2500);
       }
 
@@ -158,7 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Fast & Subtle Animated Numbers Counter ---
+  // --------------------------------------------------------------------------
+  // 6. Fast & Subtle Animated Numbers Counter
+  // --------------------------------------------------------------------------
   const counters = document.querySelectorAll('.counter-animate');
   let counterAnimated = false;
 
@@ -181,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const duration = 800; // Fast 800ms
+    const duration = 800;
     const startTime = performance.now();
 
     counters.forEach((counter) => {
@@ -216,7 +407,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Observe community section for triggering stat counter
   const communitySection = document.getElementById('community');
   if (communitySection && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -234,13 +424,15 @@ document.addEventListener('DOMContentLoaded', () => {
     animateCounters();
   }
 
-  // --- Scrollspy for Highlighting Active Nav Link ---
+  // --------------------------------------------------------------------------
+  // 7. Scrollspy Fix (#modpacks & #modpack-gyzenn Grouping)
+  // --------------------------------------------------------------------------
   const sections = document.querySelectorAll('section[id]');
   const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
   const desktopNavLinks = document.querySelectorAll('.nav-menu .nav-link');
 
   function updateActiveNavOnScroll() {
-    const scrollPosition = window.scrollY + 100;
+    const scrollPosition = window.scrollY + 130;
 
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -248,8 +440,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionId = section.getAttribute('id');
 
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+
+        // Determine matching nav target (Treating #modpacks and #modpack-gyzenn as MODPACKS group)
+        const isModpackGroup = (sectionId === 'modpacks' || sectionId === 'modpack-gyzenn');
+
         desktopNavLinks.forEach((link) => {
-          if (link.getAttribute('href') === `#${sectionId}`) {
+          const href = link.getAttribute('href');
+          if ((isModpackGroup && href === '#modpacks') || href === `#${sectionId}`) {
             link.classList.add('active');
           } else {
             link.classList.remove('active');
@@ -257,7 +454,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         bottomNavItems.forEach((item) => {
-          if (item.getAttribute('href') === `#${sectionId}`) {
+          const href = item.getAttribute('href');
+          if ((isModpackGroup && href === '#modpacks') || href === `#${sectionId}`) {
             item.classList.add('active');
           } else {
             item.classList.remove('active');
@@ -267,7 +465,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Modpack Gyzenn Data Structure & Dynamic Renderer ---
+  // --------------------------------------------------------------------------
+  // 8. Zalith Installer Progress Bar Viewport Animation
+  // --------------------------------------------------------------------------
+  const zalithSection = document.getElementById('zalith');
+  const zalithProgressFill = document.getElementById('zalithProgressFill');
+  let zalithAnimated = false;
+
+  if (zalithSection && zalithProgressFill && 'IntersectionObserver' in window) {
+    const zalithObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !zalithAnimated) {
+          zalithAnimated = true;
+          zalithProgressFill.style.width = '100%';
+          zalithObserver.unobserve(zalithSection);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    zalithObserver.observe(zalithSection);
+  } else if (zalithProgressFill) {
+    zalithProgressFill.style.width = '100%';
+  }
+
+  // --------------------------------------------------------------------------
+  // 9. Modpack Gyzenn Data Structure & Dynamic Renderer
+  // --------------------------------------------------------------------------
   const gyzennModpacks = [
     {
       id: "fpsboost-v3",
@@ -335,52 +558,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('gyzennModpacksGrid');
     if (!container) return;
 
-    const cardsHtml = gyzennModpacks.map(modpack => {
+    const cardsHtml = gyzennModpacks.map((modpack, index) => {
       let badgeBannerHtml = '';
 
       if (modpack.isNew) {
-        badgeBannerHtml += `<span class="tag-badge tag-new-status"><i class="fa-solid fa-fire"></i> NEW</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-release"><i class="fa-solid fa-fire"></i> NEW</span> `;
       }
       if (modpack.isRecommended) {
-        badgeBannerHtml += `<span class="tag-badge tag-recommended-status"><i class="fa-solid fa-star"></i> Recommended</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-star"></i> RECOMMENDED</span> `;
       }
 
       if (modpack.category === 'FPS BOOST') {
-        badgeBannerHtml += `<span class="tag-badge tag-fps-category"><i class="fa-solid fa-bolt"></i> FPS BOOST</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-shader"><i class="fa-solid fa-bolt"></i> FPS BOOST</span> `;
       } else if (modpack.category === 'SURVIVAL') {
-        badgeBannerHtml += `<span class="tag-badge tag-survival-category"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
       }
 
-      badgeBannerHtml += `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft ${modpack.minecraft}</span> `;
-      badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric ${modpack.fabric}</span> `;
+      badgeBannerHtml += `<span class="tag-badge tag-mc-version">MC ${modpack.minecraft}</span> `;
+      badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric ${modpack.fabric}</span> `;
 
       modpack.badges.forEach(b => {
-        let icon = 'fa-solid fa-box-archive';
-        if (b.includes('Mods')) icon = 'fa-solid fa-cubes';
-        if (b.includes('Shaders')) icon = 'fa-solid fa-wand-magic-sparkles';
-        badgeBannerHtml += `<span class="tag-badge tag-extra-bonus"><i class="${icon}"></i> ${b}</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-release">${b}</span> `;
       });
 
       const noteHtml = modpack.note ? `
-        <div class="modpack-note-box">
+        <div class="derivative-tip-box" style="margin-top: 0.5rem; font-size: 0.88rem;">
           <i class="fa-solid fa-circle-info"></i>
           <span>${modpack.note}</span>
         </div>` : '';
 
+      const stripTheme = (index % 2 === 0) ? 'strip-yellow' : 'strip-orange';
+
       return `
-        <div class="glass-card gyzenn-modpack-card">
-          <div class="card-content">
-            <div class="modpack-badge-banner">
+        <div class="modpack-editorial-strip ${stripTheme}" data-index="${index}" data-category="${modpack.category}">
+          <div>
+            <span class="version-stamp">MC ${modpack.minecraft}</span>
+            <div style="margin-top: 0.4rem;">
               ${badgeBannerHtml}
             </div>
-            <h3 class="modpack-title">${modpack.name}</h3>
+          </div>
+          <div>
+            <h3>${modpack.name}</h3>
             ${noteHtml}
           </div>
-          <div class="card-action">
-            <a href="${modpack.downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
-              <i class="fa-brands fa-google-drive"></i>
-              <span>Download Modpack</span>
-              <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
+          <div>
+            <a href="${modpack.downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle" style="width: 100%;">
+              <i class="fa-brands fa-google-drive"></i> DOWNLOAD MODPACK
             </a>
           </div>
         </div>
@@ -390,10 +613,11 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = cardsHtml;
   }
 
-  // Initial call to ensure cards match JS data
   renderGyzennModpacks();
 
-  // --- Interactive Gaming Mode Toggle ---
+  // --------------------------------------------------------------------------
+  // 10. Interactive Gaming Mode Toggle
+  // --------------------------------------------------------------------------
   const btnGamingModeToggle = document.getElementById('btnGamingModeToggle');
   const modpackGyzennSection = document.getElementById('modpack-gyzenn');
 
@@ -407,8 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusEl.textContent = isGamingMode ? 'ON' : 'OFF';
       }
 
-      showToast(`Gaming Mode: ${isGamingMode ? 'ON (Efek Glow & Animated Border)' : 'OFF (Clean Mode)'}`);
+      showToast(`Gaming Mode: ${isGamingMode ? 'ON (Bold Shadow Glow)' : 'OFF (Standard Mode)'}`);
     });
   }
 });
-

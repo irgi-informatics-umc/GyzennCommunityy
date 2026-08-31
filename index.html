@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Gyzenn Community - Creator Minecraft, Modpacks & Zalith Launcher</title>
+  <title>Gyzenn Community - 90s Retro Minecraft Creator, Modpacks & Zalith Launcher</title>
 
   <!-- SEO & Meta Tags -->
   <meta name="description"
@@ -12,22 +12,33 @@
   <meta name="keywords"
     content="Gyzenn Community, DERIVATIVE Edit by Gyzenn, Minecraft Shader, Gyzenn Shader, Minecraft 1.21 Shader, Minecraft Java Shader, Minecraft Shader Indonesia, Minecraft Creator, Modpack Sodium, Modpack FpsBoost, Modpack CPvP, Modpack Vulkan V1, Modpack Vulkan V2, Xshadow's PvP, Uku's PvP, Minecraft PvP, Minecraft 26.1.2 PvP, Minecraft 1.21.11, Fabric 0.19.3, Zalith Launcher 1.4.1.4, Resource Packs, KitaSMP, Discord Gyzenn">
   <meta name="author" content="Gyzenn / giovmare">
-  <meta name="theme-color" content="#080b11">
+  <meta name="theme-color" content="#FFD600">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Gyzenn Community - Creator Minecraft, Shaders & Modpacks">
+  <meta property="og:title" content="Gyzenn Community - 90s Retro Minecraft Hub">
   <meta property="og:description"
     content="Temukan DERIVATIVE Shader Edit by Gyzenn (1.21+), modpack fresh, resource pack pilihan, server KitaSMP, dan download Zalith Launcher terbaru untuk gameplay Minecraft terbaik.">
 
   <!-- Favicon / Brand Icon -->
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23080b11'/><path d='M25 30 L50 15 L75 30 L75 70 L50 85 L25 70 Z' fill='none' stroke='%2300ff87' stroke-width='8'/><circle cx='50' cy='50' r='12' fill='%2300e5ff'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%23FFD600' stroke='%23000' stroke-width='8'/><path d='M25 30 L50 15 L75 30 L75 70 L50 85 L25 70 Z' fill='%23FF2A85' stroke='%23000' stroke-width='6'/><circle cx='50' cy='50' r='12' fill='%231E3A8A' stroke='%23000' stroke-width='4'/></svg>">
+
+  <!-- Google Fonts: Dela Gothic One, Space Grotesk, VT323, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Space+Grotesk:wght@500;700&family=VT323&display=swap"
+    rel="stylesheet">
 
   <!-- FontAwesome Icons CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- GSAP & ScrollTrigger CDN for Motion & Parallax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -35,23 +46,54 @@
 
 <body>
 
-  <!-- Floating Ambient Glowing Orbs -->
-  <div class="bg-glow-orb orb-1" aria-hidden="true"></div>
-  <div class="bg-glow-orb orb-2" aria-hidden="true"></div>
+  <!-- Centralized Lightweight Retro Canvas Particle Engine -->
+  <canvas id="retroParticleCanvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Memphis Decorative Shapes in Background -->
+  <div class="memphis-bg-decorations" aria-hidden="true">
+    <div class="memphis-shape shape-circle-blue"></div>
+    <div class="memphis-shape shape-donut-yellow"></div>
+    <div class="memphis-shape shape-triangle-pink"></div>
+    <div class="memphis-shape shape-squiggle-green">
+      <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 Q 12.5,0 25,10 T 50,10 T 75,10 T 100,10" fill="none" stroke="#A3E635" stroke-width="6"
+          stroke-linecap="round" />
+      </svg>
+    </div>
+    <div class="memphis-shape shape-cross-red">+</div>
+    <div class="memphis-shape shape-star-purple">★</div>
+    <div class="memphis-shape shape-zigzag-orange"></div>
+  </div>
+
+  <!-- Top Retro Marquee Announcement Bar -->
+  <div class="retro-ticker-bar" aria-label="Pengumuman Komunitas">
+    <div class="ticker-content">
+      <span><i class="fa-solid fa-star"></i> WELCOME TO GYZENN COMMUNITY</span>
+      <span><i class="fa-solid fa-cube"></i> MINECRAFT CREATOR & MODPACK HUB</span>
+      <span><i class="fa-solid fa-wand-magic-sparkles"></i> DERIVATIVE SHADER 1.21+</span>
+      <span><i class="fa-solid fa-rocket"></i> ZALITH LAUNCHER 1.4.1.4 RELEASED</span>
+      <span><i class="fa-solid fa-server"></i> SERVER KITASMP: PLAY.KITASMP.COM</span>
+      <span><i class="fa-solid fa-star"></i> WELCOME TO GYZENN COMMUNITY</span>
+      <span><i class="fa-solid fa-cube"></i> MINECRAFT CREATOR & MODPACK HUB</span>
+      <span><i class="fa-solid fa-wand-magic-sparkles"></i> DERIVATIVE SHADER 1.21+</span>
+      <span><i class="fa-solid fa-rocket"></i> ZALITH LAUNCHER 1.4.1.4 RELEASED</span>
+      <span><i class="fa-solid fa-server"></i> SERVER KITASMP: PLAY.KITASMP.COM</span>
+    </div>
+  </div>
 
   <!-- ==========================================================================
-       Header & Navigation
+       Header & Navigation (Retro Website Masthead)
        ========================================================================== -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-container">
-      <!-- Brand Logo -->
+      <!-- Brand Logo Masthead -->
       <a href="#hero" class="brand-logo" aria-label="Gyzenn Community Home">
         <div class="brand-icon-box">
           <i class="fa-solid fa-cube"></i>
         </div>
         <div class="brand-text">
-          <span class="brand-title">Gyzenn</span>
-          <span class="brand-tag">Community</span>
+          <span class="brand-title">GYZENN</span>
+          <span class="brand-tag">COMMUNITY</span>
         </div>
       </a>
 
@@ -72,10 +114,10 @@
         <a href="https://linktr.ee/Gyzenn_" target="_blank" rel="noopener noreferrer" class="btn-header-cta"
           title="Buka Linktree Resmi">
           <i class="fa-solid fa-tree"></i>
-          <span>Linktree</span>
+          <span>LINKTREE</span>
         </a>
 
-        <!-- Mobile Hamburger Button -->
+        <!-- Mobile Hamburger Retro Control Button -->
         <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
           <span></span>
           <span></span>
@@ -85,55 +127,55 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu Overlay -->
+  <!-- Mobile Drawer Retro Menu Poster -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
     <div>
-      <div class="brand-logo" style="margin-bottom: 1.75rem;">
+      <div class="brand-logo" style="margin-bottom: 1.5rem;">
         <div class="brand-icon-box">
           <i class="fa-solid fa-cube"></i>
         </div>
         <div class="brand-text">
-          <span class="brand-title">Gyzenn</span>
-          <span class="brand-tag">Official Community</span>
+          <span class="brand-title">GYZENN</span>
+          <span class="brand-tag">RETRO MENU POSTER</span>
         </div>
       </div>
 
       <ul class="mobile-menu-links">
         <li>
           <a href="#hero" class="mobile-nav-link active">
-            <i class="fa-solid fa-house"></i>
-            <span>Beranda</span>
+            <span class="nav-num">01</span>
+            <span>BERANDA</span>
           </a>
         </li>
         <li>
-          <a href="#community" class="mobile-nav-link">
-            <i class="fa-solid fa-users"></i>
-            <span>Komunitas & Socials</span>
+          <a href="#community" class="mobile-nav-link link-pink">
+            <span class="nav-num">02</span>
+            <span>KOMUNITAS</span>
           </a>
         </li>
         <li>
-          <a href="#discord" class="mobile-nav-link">
-            <i class="fa-brands fa-discord"></i>
-            <span>Discord Community</span>
+          <a href="#discord" class="mobile-nav-link link-indigo">
+            <span class="nav-num">03</span>
+            <span>DISCORD</span>
           </a>
         </li>
         <li>
-          <a href="#modpacks" class="mobile-nav-link">
-            <i class="fa-solid fa-box-open"></i>
-            <span>Modpack Releases</span>
+          <a href="#modpacks" class="mobile-nav-link link-yellow">
+            <span class="nav-num">04</span>
+            <span>MODPACKS</span>
           </a>
         </li>
         <li>
-          <a href="#zalith" class="mobile-nav-link">
-            <i class="fa-solid fa-rocket"></i>
-            <span>Zalith Launcher</span>
+          <a href="#zalith" class="mobile-nav-link link-blue">
+            <span class="nav-num">05</span>
+            <span>ZALITH LAUNCHER</span>
           </a>
         </li>
         <li>
-          <a href="#server" class="mobile-nav-link">
-            <i class="fa-solid fa-server"></i>
-            <span>Server KitaSMP</span>
+          <a href="#server" class="mobile-nav-link link-orange">
+            <span class="nav-num">06</span>
+            <span>SERVER KITASMP</span>
           </a>
         </li>
       </ul>
@@ -142,180 +184,190 @@
     <div class="mobile-nav-footer">
       <a href="https://linktr.ee/Gyzenn_" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
         style="width: 100%;">
-        <i class="fa-solid fa-tree"></i> Linktree
+        <i class="fa-solid fa-tree"></i> LINKTREE GYZENN
       </a>
-      <p style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
-        Device: Acer Nitro V15 RTX 4050
+      <p class="retro-pixel-text" style="font-size: 0.8rem; text-align: center; margin-top: 0.75rem;">
+        DEVICE: ACER NITRO V15 RTX 4050
       </p>
     </div>
   </nav>
 
   <main>
     <!-- ==========================================================================
-         1. Hero Section
+         1. Hero Section (Mobile Vertical Poster / Desktop Asymmetrical Spread)
          ========================================================================== -->
     <section class="hero-section" id="hero">
-      <div class="container">
-        <div class="hero-content">
+      <div class="container hero-container">
 
-          <!-- Live Active Status Indicator -->
+        <div class="hero-poster-layout">
+
+          <!-- Live Status Indicator -->
           <div class="status-badge">
             <span class="pulse-dot"></span>
-            <span>Minecraft Creator & Community</span>
+            <span class="retro-pixel-text">ONLINE • MINECRAFT CREATOR & COMMUNITY HUB</span>
           </div>
 
-          <!-- Dual Creator Avatars (wa.jpg & TikTok.jpeg) -->
-          <div class="avatars-wrapper">
-            <!-- WhatsApp Avatar Profile -->
-            <div class="avatar-card" title="WhatsApp Channel Profile">
-              <div class="avatar-ring wa-ring">
-                <img src="wa.jpg" alt="WhatsApp Profile" class="avatar-img" onerror="this.classList.add('img-failed');">
-                <div class="avatar-fallback" aria-hidden="true">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div class="avatar-badge-icon wa-badge">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-              </div>
-              <span class="avatar-label">WhatsApp</span>
-            </div>
-
-            <!-- TikTok Avatar Profile -->
-            <div class="avatar-card" title="TikTok Creator Profile">
-              <div class="avatar-ring tiktok-ring">
-                <img src="TikTok.jpeg" alt="TikTok Profile" class="avatar-img"
-                  onerror="this.classList.add('img-failed');">
-                <div class="avatar-fallback" aria-hidden="true">
-                  <i class="fa-brands fa-tiktok"></i>
-                </div>
-                <div class="avatar-badge-icon tiktok-badge">
-                  <i class="fa-brands fa-tiktok"></i>
-                </div>
-              </div>
-              <span class="avatar-label">TikTok</span>
-            </div>
-          </div>
-
-          <!-- Hero Main Title -->
+          <!-- Massive Editorial Title -->
           <h1 class="hero-title">
-            <span class="gradient-text-green">Gyzenn</span> Community
+            <span class="hero-word word-gyzenn">GYZENN</span>
+            <span class="hero-word word-community">COMMUNITY</span>
           </h1>
 
-          <!-- Subtitle -->
-          <p class="hero-subtitle">
-            Creator Minecraft <span class="dot-separator">•</span> Modpack Pilihan
-          </p>
-
-          <!-- Creator Device Specification Pill -->
-          <div class="device-spec-pill" title="Hardware Specs">
-            <i class="fa-solid fa-laptop-code"></i>
-            <span>Device: <strong>Acer Nitro V15</strong></span>
-            <span class="gpu-badge">RTX 4050</span>
+          <div class="hero-tag-strip">
+            <span class="sticker-tag"><i class="fa-solid fa-cube"></i> MINECRAFT CREATOR</span>
+            <span class="sticker-tag tag-pink"><i class="fa-solid fa-wand-magic-sparkles"></i> SHADERS</span>
+            <span class="sticker-tag tag-yellow"><i class="fa-solid fa-box-open"></i> MODPACKS</span>
+            <span class="sticker-tag tag-green"><i class="fa-solid fa-fire"></i> 90s RETRO HUB</span>
           </div>
 
-          <!-- Hero Call-To-Action Buttons -->
-          <div class="hero-cta-group">
-            <a href="https://linktr.ee/Gyzenn_" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
-              id="btnHeroLinktree">
-              <i class="fa-solid fa-tree"></i>
-              <span>Linktree Gua</span>
-            </a>
-            <a href="#modpacks" class="btn btn-secondary" id="btnHeroModpacks">
-              <i class="fa-solid fa-download"></i>
-              <span>Explore Modpack</span>
-            </a>
+          <!-- Dual Creator Photo Polaroid Collage -->
+          <div class="hero-visual-center">
+            <div class="retro-polaroid-frame" id="heroPolaroid">
+              <div class="polaroid-header">
+                <span class="polaroid-dots">● ● ●</span>
+                <span class="polaroid-title">GYZENN CREATOR PROFILE</span>
+              </div>
+
+              <div class="avatars-wrapper">
+                <!-- WhatsApp Avatar Card -->
+                <div class="avatar-card avatar-wa-card" title="WhatsApp Channel Profile">
+                  <div class="avatar-ring wa-ring">
+                    <img src="wa.jpg" alt="WhatsApp Profile" class="avatar-img"
+                      onerror="this.classList.add('img-failed');">
+                    <div class="avatar-fallback" aria-hidden="true">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                  </div>
+                  <span class="avatar-label"><i class="fa-brands fa-whatsapp"></i> WHATSAPP</span>
+                </div>
+
+                <!-- TikTok Avatar Card -->
+                <div class="avatar-card avatar-tiktok-card" title="TikTok Creator Profile">
+                  <div class="avatar-ring tiktok-ring">
+                    <img src="TikTok.jpeg" alt="TikTok Profile" class="avatar-img"
+                      onerror="this.classList.add('img-failed');">
+                    <div class="avatar-fallback" aria-hidden="true">
+                      <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                  </div>
+                  <span class="avatar-label"><i class="fa-brands fa-tiktok"></i> TIKTOK</span>
+                </div>
+              </div>
+
+              <div class="polaroid-caption">
+                <span class="retro-handwriting">@giovmare • Official Gyzenn Hub</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Actions & Hardware Spec Badge -->
+          <div class="hero-action-bottom">
+            <div class="device-spec-pill" title="Hardware Specs">
+              <i class="fa-solid fa-laptop-code"></i>
+              <span>TESTED DEVICE: <strong>ACER NITRO V15</strong></span>
+              <span class="gpu-badge">RTX 4050</span>
+            </div>
+
+            <!-- Tactile 3D Physical Push Buttons -->
+            <div class="hero-cta-group">
+              <a href="https://linktr.ee/Gyzenn_" target="_blank" rel="noopener noreferrer"
+                class="btn btn-primary btn-hero-main" id="btnHeroLinktree">
+                <i class="fa-solid fa-tree"></i>
+                <span>LINKTREE GUA</span>
+              </a>
+              <a href="#modpacks" class="btn btn-secondary btn-hero-sub" id="btnHeroModpacks">
+                <i class="fa-solid fa-download"></i>
+                <span>EXPLORE MODPACK</span>
+              </a>
+            </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
+    <!-- Decorative Strip: Retro Checkerboard Ribbon -->
+    <div class="retro-ribbon-divider" aria-hidden="true"></div>
+
     <!-- ==========================================================================
-         2. Social Media & Community Section
+         2. Social Media & Community Section ("Retro Social Wall" - Dense Composition)
          ========================================================================== -->
-    <section class="section" id="community">
+    <section class="section section-community" id="community">
       <div class="container">
 
-        <div class="section-header">
-          <span class="section-tag">
-            <i class="fa-solid fa-circle-nodes"></i> Hub Komunitas
+        <div class="section-header dense-header">
+          <span class="section-tag tag-retro-pink">
+            <i class="fa-solid fa-circle-nodes"></i> RETRO SOCIAL WALL
           </span>
-          <h2 class="section-title">Media Sosial & Komunitas</h2>
+          <h2 class="section-title">MEDIA SOSIAL & KOMUNITAS</h2>
           <p class="section-desc">
             Tetap terhubung bersama Gyzenn Community untuk info update modpack terbaru, tutorial konfigurasi, dan mabar
             seru bareng member lainnya.
           </p>
         </div>
 
-        <div class="cards-grid social-grid">
+        <div class="social-wall-layout">
 
-          <!-- Card 1: TikTok Profile -->
-          <div class="glass-card social-card">
-            <div class="card-top-header">
-              <div class="card-brand-meta">
-                <div class="card-brand-icon icon-tiktok">
-                  <i class="fa-brands fa-tiktok"></i>
-                </div>
-                <div class="card-title-group">
-                  <h3>TikTok</h3>
-                  <p class="card-subtitle">@giovmare</p>
-                </div>
+          <!-- Block 1: TikTok High-Score Arcade Billboard (Angle -1.5deg) -->
+          <div class="social-block block-tiktok">
+            <div class="block-seal">TIKTOK CREATOR</div>
+            <div class="block-head">
+              <div class="block-icon icon-tiktok"><i class="fa-brands fa-tiktok"></i></div>
+              <div>
+                <h3 class="block-title">TIKTOK HIGH-SCORE</h3>
+                <p class="block-subtitle">@giovmare</p>
               </div>
-              <span class="tag-badge tag-release">Creator</span>
             </div>
 
-            <!-- TikTok Stats Row -->
-            <div class="tiktok-stats-row">
-              <div class="stat-item">
-                <span class="stat-value counter-animate" data-target="90">90</span>
-                <span class="stat-label">Mengikuti</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value counter-animate" data-target="1481">1.481</span>
-                <span class="stat-label">Pengikut</span>
-              </div>
-              <div class="stat-item">
+            <div class="tiktok-score-display">
+              <div class="score-main">
                 <span class="stat-value counter-animate" data-target="32.7" data-suffix="K">32.7K</span>
-                <span class="stat-label">Suka</span>
+                <span class="score-label">TOTAL SUKA</span>
+              </div>
+              <div class="score-sub">
+                <div>
+                  <span class="stat-value counter-animate" data-target="1500">1.500</span>
+                  <span class="score-label">PENGIKUT</span>
+                </div>
+                <div>
+                  <span class="stat-value counter-animate" data-target="90">90</span>
+                  <span class="score-label">MENGIKUTI</span>
+                </div>
               </div>
             </div>
 
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
-              Konten video showcase shader Minecraft, review modpack FPS boost, dan gameplay seru setiap minggu!
+            <p class="block-body">
+              Showcase shader Minecraft, review modpack FPS boost, dan gameplay seru setiap minggu!
             </p>
 
             <a href="https://www.tiktok.com/@giovmare" target="_blank" rel="noopener noreferrer"
-              class="btn btn-secondary" style="width: 100%;">
+              class="btn btn-tiktok-solid" style="width: 100%;">
               <i class="fa-brands fa-tiktok"></i>
-              <span>Kunjungi TikTok Gua</span>
+              <span>follow my tiktok</span>
             </a>
           </div>
 
-          <!-- Card 2: WhatsApp Channel -->
-          <div class="glass-card social-card">
-            <div class="card-top-header">
-              <div class="card-brand-meta">
-                <div class="card-brand-icon icon-wa">
-                  <i class="fa-solid fa-bullhorn"></i>
-                </div>
-                <div class="card-title-group">
-                  <h3>Saluran WhatsApp</h3>
-                  <p class="card-subtitle">Gyzenn | Community</p>
-                </div>
-              </div>
-              <span class="tag-badge tag-mc-version">Official</span>
-            </div>
-
-            <!-- WhatsApp Channel Followers -->
-            <div class="wa-channel-stat-box">
-              <div class="wa-follower-num counter-animate" data-target="362">362</div>
+          <!-- Block 2: WhatsApp Channel Newspaper Callout Banner (Angle +1.5deg) -->
+          <div class="social-block block-wa-channel">
+            <div class="block-seal seal-green">OFFICIAL CHANNEL</div>
+            <div class="block-head">
+              <div class="block-icon icon-wa"><i class="fa-solid fa-bullhorn"></i></div>
               <div>
-                <div class="wa-follower-label">Pengikut Aktif</div>
-                <div style="font-size: 0.74rem; color: var(--text-muted);">Update langsung tanpa spam</div>
+                <h3 class="block-title">SALURAN WHATSAPP</h3>
+                <p class="block-subtitle">Gyzenn | Community</p>
               </div>
             </div>
 
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            <div class="wa-channel-stat-banner">
+              <div class="wa-follower-num counter-animate" data-target="414"></div>
+              <div>
+                <div class="wa-follower-label">PENGIKUT AKTIF</div>
+                <div class="retro-pixel-text" style="font-size: 0.85rem;">UPDATE LANGSUNG TANPA SPAM</div>
+              </div>
+            </div>
+
+            <p class="block-body">
               Dapatkan tautan modpack fresh, resource pack rekomendasi, dan pengumuman tercepat langsung di WhatsApp
               Anda.
             </p>
@@ -323,41 +375,36 @@
             <a href="https://whatsapp.com/channel/0029VbBhyH347Xe8WNtwwL2j" target="_blank" rel="noopener noreferrer"
               class="btn btn-wa-solid" style="width: 100%;">
               <i class="fa-brands fa-whatsapp"></i>
-              <span>Ikuti Saluran Gyzenn</span>
+              <span>Ikuti saluran whatsapp</span>
             </a>
           </div>
 
-          <!-- Card 3: WhatsApp Groups (Discussion & Mabar) -->
-          <div class="glass-card social-card group-card">
-            <div class="card-top-header">
-              <div class="card-brand-meta">
-                <div class="card-brand-icon icon-group">
-                  <i class="fa-solid fa-comments"></i>
-                </div>
-                <div class="card-title-group">
-                  <h3>Group WhatsApp</h3>
-                  <p class="card-subtitle">Diskusi & Mabar Minecraft</p>
-                </div>
+          <!-- Block 3: WhatsApp Groups Speech-Bubble Chat Wall (Angle -1deg) -->
+          <div class="social-block block-wa-group">
+            <div class="block-seal seal-orange">COMMUNITY CHAT</div>
+            <div class="block-head">
+              <div class="block-icon icon-group"><i class="fa-solid fa-comments"></i></div>
+              <div>
+                <h3 class="block-title">GROUP WHATSAPP</h3>
+                <p class="block-subtitle">Diskusi & Mabar Minecraft</p>
               </div>
-              <span class="tag-badge tag-fabric">2 Groups</span>
             </div>
 
-            <p class="group-chat-desc">
+            <p class="block-body">
               Gabung ke komunitas obrolan kami! Tempat sharing seputar modifikasi Minecraft, tanya jawab error launcher,
               dan mabar bareng teman-teman baru.
             </p>
 
-            <!-- 2 Group Action Buttons -->
             <div class="group-actions-grid">
               <a href="https://chat.whatsapp.com/Kyn5WvX7DlPEdUuld7K9iJ" target="_blank" rel="noopener noreferrer"
-                class="btn btn-wa-solid" style="font-size: 0.86rem;">
+                class="btn btn-group-solid">
                 <i class="fa-solid fa-user-group"></i>
-                <span>Gabung Group Chat 1</span>
+                <span>GABUNG CHAT 1</span>
               </a>
               <a href="https://chat.whatsapp.com/EozIWLmesrjKsudbqSa3NK?mode=gi_t" target="_blank"
-                rel="noopener noreferrer" class="btn btn-wa-solid" style="font-size: 0.86rem;">
+                rel="noopener noreferrer" class="btn btn-group-solid">
                 <i class="fa-solid fa-user-group"></i>
-                <span>Gabung Group Chat 2</span>
+                <span>GABUNG CHAT 2</span>
               </a>
             </div>
           </div>
@@ -368,63 +415,56 @@
     </section>
 
     <!-- ==========================================================================
-         FITUR BARU 1: Discord Community Section
+         3. Discord Community Section (Retro Promotional Campaign Poster)
          ========================================================================== -->
-    <section class="section" id="discord">
+    <section class="section section-discord" id="discord">
       <div class="container">
 
-        <div class="section-header">
-          <span class="section-tag tag-discord-header">
-            <i class="fa-brands fa-discord"></i> Discord Community
-          </span>
-          <h2 class="section-title">Discord Community</h2>
-          <p class="section-desc">
-            Bergabunglah dengan server Discord resmi Gyzenn Community untuk berkomunikasi secara interaktif, mabar di
-            voice channel, dan bertukar informasi seputar Minecraft.
-          </p>
-        </div>
+        <div class="retro-poster-box discord-poster">
+          <div class="poster-decor-star decor-star-1">★</div>
+          <div class="poster-decor-star decor-star-2">★</div>
 
-        <div class="glass-card discord-main-card">
-          <div class="card-top-header">
-            <div class="card-brand-meta">
-              <div class="card-brand-icon icon-discord-card">
-                <i class="fa-brands fa-discord"></i>
-              </div>
-              <div class="card-title-group">
-                <h3>Gabung Discord Gyzenn</h3>
-                <p class="card-subtitle">Official Community Server</p>
-              </div>
+          <div class="discord-header-flex">
+            <div>
+              <span class="tag-badge tag-discord-badge">
+                <i class="fa-brands fa-discord"></i> DISCORD COMMUNITY
+              </span>
+              <h2 class="poster-main-title">JOIN DISCORD GYZENN</h2>
+              <p class="poster-subtitle">OFFICIAL MINECRAFT HUB & VOICE CHANNELS</p>
             </div>
-            <span class="tag-badge tag-discord-badge">COMMUNITY</span>
+
+            <div class="discord-badge-icon-box">
+              <i class="fa-brands fa-discord"></i>
+            </div>
           </div>
 
-          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.55;">
+          <p class="poster-text">
             Tempat ngobrol, mabar, berbagi Minecraft setup, mod, shader, resource pack, dan update terbaru dari Gyzenn
-            Community.
+            Community secara interaktif 24/7!
           </p>
 
           <!-- Mini Feature Chips -->
           <div class="discord-features-grid">
-            <div class="discord-mini-feature">
+            <div class="discord-mini-chip">
               <i class="fa-solid fa-gamepad"></i>
-              <span>Minecraft Community</span>
+              <span>MINECRAFT COMMUNITY</span>
             </div>
-            <div class="discord-mini-feature">
+            <div class="discord-mini-chip">
               <i class="fa-solid fa-headset"></i>
-              <span>Mabar & Nongkrong</span>
+              <span>MABAR & NONGKRONG</span>
             </div>
-            <div class="discord-mini-feature">
+            <div class="discord-mini-chip">
               <i class="fa-solid fa-bullhorn"></i>
-              <span>Update & Announcement</span>
+              <span>UPDATE & ANNOUNCEMENT</span>
             </div>
           </div>
 
           <!-- Main Discord CTA -->
-          <div>
-            <a href="https://discord.gg/AVCE3cv7J" target="_blank" rel="noopener noreferrer" class="btn btn-discord"
-              style="width: 100%;">
+          <div style="margin-top: 1.5rem;">
+            <a href="https://discord.gg/AVCE3cv7J" target="_blank" rel="noopener noreferrer"
+              class="btn btn-discord-main" style="width: 100%;">
               <i class="fa-brands fa-discord"></i>
-              <span>Gabung Discord</span>
+              <span>GABUNG DISCORD GYZENN NOW</span>
             </a>
           </div>
         </div>
@@ -433,16 +473,16 @@
     </section>
 
     <!-- ==========================================================================
-         4. Modpack Releases Section
+         4. Modpack Releases & DERIVATIVE Shader Section (Retro Game Catalog)
          ========================================================================== -->
-    <section class="section" id="modpacks">
+    <section class="section section-modpacks" id="modpacks">
       <div class="container">
 
         <div class="section-header">
-          <span class="section-tag">
-            <i class="fa-solid fa-cubes-stacked"></i> Bahan Modpack & Shader Fresh
+          <span class="section-tag tag-retro-yellow">
+            <i class="fa-solid fa-cubes-stacked"></i> CATALOG MODPACK & SHADER
           </span>
-          <h2 class="section-title">Koleksi Shader & Modpack Pilihan</h2>
+          <h2 class="section-title">SHADERS & MODPACK PILIHAN</h2>
           <p class="section-desc">
             Shader dan modpack yang telah dioptimasi dan diuji performanya oleh Gyzenn Community untuk visual sinematik,
             stabilitas FPS, dan pengalaman bermain terbaik.
@@ -450,559 +490,236 @@
         </div>
 
         <!-- ==========================================================================
-             PROJECT SHADER: DERIVATIVE Edit by Gyzenn
+             PROJECT SHADER: DERIVATIVE Edit by Gyzenn (Software Poster Format)
              ========================================================================== -->
-        <div class="glass-card derivative-card" id="derivative-shader">
-          <div class="derivative-badges-banner">
-            <span class="tag-badge tag-shader">
-              <i class="fa-solid fa-wand-magic-sparkles"></i> Shaders
-            </span>
-            <span class="tag-badge tag-mc-version">
-              <i class="fa-solid fa-cube"></i> Minecraft Java
-            </span>
-            <span class="tag-badge tag-fabric">
-              <i class="fa-solid fa-gamepad"></i> 1.21+
-            </span>
-            <span class="tag-badge tag-release">
-              <i class="fa-solid fa-bolt"></i> Latest Release
-            </span>
+        <div class="retro-window-card derivative-card" id="derivative-shader">
+          <div class="window-header">
+            <div class="window-buttons">
+              <span class="btn-win btn-win-close"></span>
+              <span class="btn-win btn-win-min"></span>
+              <span class="btn-win btn-win-max"></span>
+            </div>
+            <div class="window-title-text">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> DERIVATIVE_SHADER
+            </div>
           </div>
 
-          <div class="derivative-grid">
-            <!-- Left Column: Visual Preview, Tip & Credit -->
-            <div class="derivative-preview-col">
-              <div class="derivative-preview">
-                <div class="derivative-preview-label">
-                  <i class="fa-solid fa-camera"></i>
-                  <span>PREVIEW SHADER</span>
-                </div>
-                <div class="derivative-preview-wrapper">
-                  <img src="preview.png" alt="DERIVATIVE Edit by Gyzenn Minecraft Shader Preview"
-                    class="derivative-preview-image" loading="lazy" onerror="this.classList.add('img-failed');">
-                  <div class="derivative-img-fallback" aria-hidden="true">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>DERIVATIVE Preview</span>
-                  </div>
-                </div>
-                <div class="derivative-preview-filename">Lag dikit? ga ngaruh ah wkwk</div>
-              </div>
+          <div class="window-body">
 
-              <!-- Performance Tip -->
-              <div class="derivative-tip">
-                <div class="derivative-tip-header">
-                  <i class="fa-solid fa-lightbulb"></i>
-                  <span>Performance Tip</span>
-                </div>
-                <p>Untuk hasil terbaik, gunakan render distance 12+ chunk dan sesuaikan quality dengan kemampuan
-                  perangkatmu.</p>
-              </div>
+            <!-- Top Poster Title & 2x2 Badge Wrap -->
+            <div class="derivative-poster-head">
+              <h3 class="derivative-title">
+                <span class="d-title-top">DERIVATIVE</span>
+                <span class="d-title-sub">SHADER <span class="exe-tag">.zip</span></span>
+              </h3>
+              <p class="derivative-brand">EDIT BY GYZENN • MINECRAFT JAVA</p>
 
-              <!-- Project Credit -->
-              <div class="derivative-credit">
-                <div class="derivative-credit-label">Edit & Optimized By</div>
-                <div class="derivative-credit-author">GYZENN</div>
-                <div class="derivative-credit-subtext">Minecraft Creator Indonesia</div>
+              <div class="derivative-badges-banner">
+                <span class="tag-badge tag-shader"><i class="fa-solid fa-wand-magic-sparkles"></i> SHADERS</span>
+                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-cube"></i> JAVA EDITION</span>
+                <span class="tag-badge tag-fabric"><i class="fa-solid fa-gamepad"></i> 1.21+</span>
+                <span class="tag-badge tag-release"><i class="fa-solid fa-bolt"></i> LATEST RELEASE</span>
               </div>
             </div>
 
-            <!-- Right Column: Shader Information & Actions -->
-            <div class="derivative-info-col">
-              <div class="derivative-header">
-                <h3 class="derivative-title">DERIVATIVE</h3>
-                <div class="derivative-brand">EDIT BY GYZENN</div>
+            <!-- Primary Visual Hero Screenshot Preview Frame -->
+            <div class="derivative-preview-frame">
+              <div class="preview-tag-head"><i class="fa-solid fa-camera"></i> PREVIEW / SHADER SCREENSHOT</div>
+              <img src="preview.png" alt="DERIVATIVE Edit by Gyzenn Minecraft Shader Preview"
+                class="derivative-preview-image" loading="lazy" onerror="this.classList.add('img-failed');">
+              <div class="derivative-img-fallback" aria-hidden="true">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>DERIVATIVE Preview</span>
               </div>
+              <div class="preview-caption">"Lag dikit? ga ngaruh ah wkwk"</div>
+            </div>
 
+            <!-- Software Specification Sheet & Details -->
+            <div class="derivative-info-poster">
               <p class="derivative-desc">
                 Shader derivative dengan sentuhan personal Gyzenn untuk menghadirkan visual Minecraft yang lebih hidup,
                 cinematic, dan immersive.
               </p>
 
-              <!-- Fitur Utama -->
-              <div class="derivative-features-section">
-                <h4 class="derivative-section-heading">
-                  <i class="fa-solid fa-wand-magic-sparkles"></i> Fitur Utama:
-                </h4>
+              <div class="derivative-spec-sheet">
+                <div class="spec-sheet-head"><i class="fa-solid fa-microchip"></i> SOFTWARE SPECIFICATIONS</div>
                 <ul class="derivative-feature-list">
-                  <li>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>
-                      <strong>Pencahayaan Realistis</strong>
-                      <p>Efek cahaya matahari, langit, dan ambient dibuat lebih natural.</p>
-                    </div>
+                  <li><i class="fa-solid fa-square-check"></i>
+                    <div><strong>Pencahayaan Realistis</strong> - Cahaya matahari, langit & ambient natural.</div>
                   </li>
-                  <li>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>
-                      <strong>Warna & Kontras Seimbang</strong>
-                      <p>Warna dibuat lebih hidup dengan tetap menjaga kenyamanan visual.</p>
-                    </div>
+                  <li><i class="fa-solid fa-square-check"></i>
+                    <div><strong>Warna & Kontras Seimbang</strong> - Kontras hidup & nyaman di mata.</div>
                   </li>
-                  <li>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>
-                      <strong>Bayangan Halus</strong>
-                      <p>Shadow memiliki transisi yang lebih lembut dan detail.</p>
-                    </div>
+                  <li><i class="fa-solid fa-square-check"></i>
+                    <div><strong>Bayangan Halus</strong> - Transisi shadow lembut & detail.</div>
                   </li>
-                  <li>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>
-                      <strong>Air Jernih & Reflektif</strong>
-                      <p>Air memiliki tampilan yang lebih jernih dengan efek refleksi.</p>
-                    </div>
+                  <li><i class="fa-solid fa-square-check"></i>
+                    <div><strong>Air Jernih & Reflektif</strong> - Efek refleksi air jernih.</div>
                   </li>
-                  <li>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>
-                      <strong>Daun & Vegetasi Lebih Hidup</strong>
-                      <p>Vegetasi dibuat terlihat lebih natural dan hidup.</p>
-                    </div>
+                  <li><i class="fa-solid fa-square-check"></i>
+                    <div><strong>Daun & Vegetasi Hidup</strong> - Animasi vegetasi natural.</div>
                   </li>
-                  <li>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>
-                      <strong>Performa Optimal</strong>
-                      <p>Dirancang agar tetap nyaman digunakan dengan konfigurasi yang sesuai.</p>
-                    </div>
+                  <li><i class="fa-solid fa-square-check"></i>
+                    <div><strong>Performa Optimal</strong> - FPS stabil untuk survival/PvP.</div>
                   </li>
                 </ul>
               </div>
 
-              <!-- Cocok Untuk Tags -->
-              <div class="derivative-usage-section">
-                <div class="derivative-usage-label">
-                  <i class="fa-solid fa-tags"></i> COCOK UNTUK:
-                </div>
-                <div class="derivative-usage-tags">
-                  <span class="usage-tag"><i class="fa-solid fa-cube"></i> Survival</span>
-                  <span class="usage-tag"><i class="fa-solid fa-map"></i> Exploration</span>
-                  <span class="usage-tag"><i class="fa-solid fa-hammer"></i> Building</span>
-                  <span class="usage-tag"><i class="fa-solid fa-camera"></i> Photography</span>
-                  <span class="usage-tag"><i class="fa-solid fa-film"></i> Cinematic</span>
-                </div>
+              <!-- Performance Tip Box -->
+              <div class="derivative-tip-box">
+                <div class="tip-header"><i class="fa-solid fa-lightbulb"></i> PERFORMANCE TIP</div>
+                <p>Gunakan render distance 12+ chunk & sesuaikan quality dengan perangkatmu.</p>
               </div>
 
-              <!-- Download Section -->
-              <div class="derivative-download">
-                <div class="derivative-download-heading">
-                  <i class="fa-solid fa-download"></i>
-                  <span>DOWNLOAD SHADER</span>
-                </div>
+              <!-- Creator Credit -->
+              <div class="derivative-credit-box">
+                <div class="credit-label">EDIT & OPTIMIZED BY</div>
+                <div class="credit-author">GYZENN</div>
+                <div class="credit-subtext">MINECRAFT CREATOR INDONESIA</div>
+              </div>
+
+              <!-- Primary Download CTA -->
+              <div class="derivative-download-wrapper">
                 <a href="https://drive.google.com/file/d/1kx9oJUaYZfJgsRZw8qFyiMF2iOgYqw7L/view?usp=drive_link"
-                  target="_blank" rel="noopener noreferrer" class="btn btn-google-drive">
+                  target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-large">
                   <i class="fa-brands fa-google-drive"></i>
-                  <span>Download via Google Drive</span>
+                  <span>DOWNLOAD DERIVATIVE SHADER</span>
                 </a>
               </div>
             </div>
+
           </div>
         </div>
 
-        <!-- Section Subtitle / Divider for Modpacks -->
+        <!-- Section Heading for General Modpacks -->
         <div class="modpacks-grid-heading">
-          <i class="fa-solid fa-cubes"></i>
-          <span>Modpack Pilihan Gyzenn</span>
+          <span class="heading-badge">MODPACK RELEASES</span>
+          <h3>MODPACK PILIHAN GYZENN</h3>
         </div>
 
-        <div class="cards-grid modpacks-grid">
+        <!-- Alternating Editorial Modpacks Showcase (Anti Card Monotony) -->
+        <div class="editorial-modpacks-showcase">
 
-          <!-- Modpack 1: Modpack Sodium -->
-          <div class="glass-card modpack-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 1.21.11
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-bolt"></i> Sodium Engine
-                </span>
-              </div>
-
-              <h3 class="modpack-title">Modpack Sodium</h3>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span>Engine grafis Sodium terbaru untuk render chunk super cepat.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span>Mendukung Iris Shaders untuk tampilan visual spektakuler.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span>Optimasi memori & memory leak fix untuk gameplay maraton.</span>
-                </li>
+          <!-- Modpack 1: Sodium (Yellow Full-Width Badge Banner) -->
+          <div class="modpack-editorial-strip strip-yellow">
+            <div class="strip-header">
+              <span class="version-stamp">MC 1.21.11</span>
+              <span class="tag-badge tag-fabric">Fabric 0.19.3</span>
+              <span class="tag-badge tag-release">Sodium Engine</span>
+            </div>
+            <div class="strip-body">
+              <h3>MODPACK SODIUM</h3>
+              <ul class="modpack-bullet-list">
+                <li><i class="fa-solid fa-check"></i> Engine grafis Sodium terbaru untuk render chunk super cepat.</li>
+                <li><i class="fa-solid fa-check"></i> Mendukung Iris Shaders untuk visual spektakuler.</li>
+                <li><i class="fa-solid fa-check"></i> Optimasi memori & memory leak fix untuk gameplay maraton.</li>
               </ul>
             </div>
-
-            <div>
+            <div class="strip-action">
               <a href="https://www.mediafire.com/file/am4qur5fv3laejv/Modpack_Sodium_Gyzenn.zip/file" target="_blank"
-                rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%;">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download via MediaFire (.zip)</span>
+                rel="noopener noreferrer" class="btn btn-mediafire">
+                <i class="fa-solid fa-cloud-arrow-down"></i> DOWNLOAD MEDIAFIRE (.ZIP)
               </a>
             </div>
           </div>
 
-          <!-- Modpack 2: Modpack FpsBoost V1 -->
-          <div class="glass-card modpack-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 1.21.1
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-gauge-high"></i> Max FPS
-                </span>
-              </div>
-
-              <h3 class="modpack-title">Modpack FpsBoost V1</h3>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span>Dirancang khusus untuk low end & spesifikasi kentang.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span>Entity Culling & Math optimizers untuk memangkas stuttering dan frame drop.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span>Pengurangan beban RAM signifikan, bermain lancar 60+ FPS stabil.</span>
-                </li>
+          <!-- Modpack 2: FpsBoost V1 (Orange Software Box Layout) -->
+          <div class="modpack-editorial-strip strip-orange">
+            <div class="strip-header">
+              <span class="version-stamp">MC 1.21.1</span>
+              <span class="tag-badge tag-fabric">Fabric 0.19.3</span>
+              <span class="tag-badge tag-release">MAX FPS</span>
+            </div>
+            <div class="strip-body">
+              <h3>MODPACK FPSBOOST V1</h3>
+              <ul class="modpack-bullet-list">
+                <li><i class="fa-solid fa-check"></i> Dirancang khusus untuk low end & spesifikasi kentang.</li>
+                <li><i class="fa-solid fa-check"></i> Entity Culling & Math optimizers memangkas stuttering.</li>
+                <li><i class="fa-solid fa-check"></i> Pengurangan beban RAM signifikan, 60+ FPS stabil.</li>
               </ul>
             </div>
-
-            <div>
+            <div class="strip-action">
               <a href="https://www.mediafire.com/file/q4ys3egj1l371ef/Modpack_FpsBoostV1_Gyzenn.zip/file"
-                target="_blank" rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%;">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download via MediaFire (.zip)</span>
+                target="_blank" rel="noopener noreferrer" class="btn btn-mediafire">
+                <i class="fa-solid fa-cloud-arrow-down"></i> DOWNLOAD MEDIAFIRE (.ZIP)
               </a>
             </div>
           </div>
 
-          <!-- Modpack 3: Modpack CPvP V1.0.2 -->
-          <div class="glass-card modpack-card modpack-cpvp-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 1.21.11
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-cpvp">
-                  <i class="fa-solid fa-crosshairs"></i> CPvP
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-bolt"></i> Latest Release
-                </span>
-              </div>
-
-              <div class="cpvp-header-group">
-                <div class="cpvp-special-badge">
-                  <i class="fa-solid fa-crosshairs"></i>
-                  <span>COMPETITIVE PvP</span>
-                </div>
-                <h3 class="modpack-title">Modpack CPvP V1.0.2</h3>
-                <p class="modpack-subtitle">Competitive Crystal PvP Setup</p>
-              </div>
-
-              <p class="modpack-desc">
-                Modpack khusus Competitive PvP yang dirancang untuk pengalaman Crystal PvP yang responsif, ringan, dan
-                nyaman digunakan untuk pertarungan intensif.
-              </p>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Optimized untuk Competitive PvP:</strong> Fokus pada gameplay PvP yang membutuhkan
-                    respons cepat dan visual yang jelas.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Crystal PvP Ready:</strong> Cocok untuk gameplay Crystal PvP dan mekanik combat
-                    intensif.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Lightweight Modpack:</strong> Dirancang agar tetap ringan dan tidak membebani sistem
-                    secara berlebihan.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Loader:</strong> Menggunakan Fabric Loader 0.19.3 sebagai mod loader.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Minecraft:</strong> Dibangun untuk Minecraft Java Edition 1.21.11.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Clean Combat Experience:</strong> Tampilan dan pengalaman bermain dibuat tetap bersih
-                    sehingga elemen penting saat PvP mudah terlihat.</span>
-                </li>
+          <!-- Modpack 3: CPvP V1.0.2 (Cyber Pink Arena Banner) -->
+          <div class="modpack-editorial-strip strip-pink">
+            <div class="strip-header">
+              <span class="version-stamp">MC 1.21.11</span>
+              <span class="tag-badge tag-fabric">Fabric 0.19.3</span>
+              <span class="cpvp-special-badge"><i class="fa-solid fa-crosshairs"></i> COMPETITIVE PvP</span>
+            </div>
+            <div class="strip-body">
+              <h3>MODPACK CPVP V1.0.2</h3>
+              <ul class="modpack-bullet-list">
+                <li><i class="fa-solid fa-check"></i> Optimized untuk Competitive Crystal PvP.</li>
+                <li><i class="fa-solid fa-check"></i> Lightweight modpack tanpa beban berlebih.</li>
+                <li><i class="fa-solid fa-check"></i> Clean combat experience untuk visibilitas maksimal.</li>
               </ul>
             </div>
-
-            <div>
+            <div class="strip-action">
               <a href="https://www.mediafire.com/file/3t2rxcxd7qliryn/Modpack_cpvp_V1.0.2_Gyzenn.zip/file"
-                target="_blank" rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%;">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download via MediaFire (.zip)</span>
+                target="_blank" rel="noopener noreferrer" class="btn btn-mediafire">
+                <i class="fa-solid fa-cloud-arrow-down"></i> DOWNLOAD MEDIAFIRE (.ZIP)
               </a>
             </div>
           </div>
 
-          <!-- Modpack 4: Modpack Vulkan V1 -->
-          <div class="glass-card modpack-card modpack-vulkan-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 1.21.11
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-vulkan">
-                  <i class="fa-solid fa-layer-group"></i> Vulkan
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-circle-check"></i> Latest Release
-                </span>
-              </div>
-
-              <div class="vulkan-header-group">
-                <div class="vulkan-project-badge">
-                  <i class="fa-solid fa-bolt"></i>
-                  <span>VULKAN PROJECT</span>
-                  <span class="vulkan-gen-pill">Generasi 1</span>
-                </div>
-                <h3 class="modpack-title">Modpack Vulkan V1</h3>
-                <p class="modpack-subtitle">Vulkan Graphics & Performance</p>
-              </div>
-
-              <p class="modpack-desc">
-                Modpack berbasis Vulkan untuk Minecraft 1.21.11 yang ditujukan untuk menghadirkan pengalaman rendering
-                modern dan gameplay yang lebih optimal.
-              </p>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Vulkan Graphics:</strong> Fokus pada penggunaan rendering berbasis Vulkan.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Minecraft:</strong> Dibuat untuk Minecraft 1.21.11.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Loader:</strong> Menggunakan Fabric Loader 0.19.3.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
+          <!-- Dual Column Block: Vulkan V1 & Vulkan V2 (Purple Theme) -->
+          <div class="vulkan-dual-block">
+            <!-- Vulkan V1 -->
+            <div class="vulkan-sub-card">
+              <span class="version-stamp">MC 1.21.11</span>
+              <h4 class="vulkan-card-title">MODPACK VULKAN V1</h4>
+              <p class="vulkan-card-sub">Vulkan Graphics & Performance (Gen 1)</p>
               <a href="https://www.mediafire.com/file/9hfszst5xz8w05e/Modpack_Vulkan_V1_Gyzenn.zip/file" target="_blank"
-                rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%;">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download via Mediafire (.zip)</span>
+                rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%; margin-top: 1rem;">
+                <i class="fa-solid fa-cloud-arrow-down"></i> DOWNLOAD V1 (.ZIP)
               </a>
             </div>
-          </div>
 
-          <!-- Modpack 5: Modpack Vulkan V2 -->
-          <div class="glass-card modpack-card modpack-vulkan-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 26.1.2
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-vulkan">
-                  <i class="fa-solid fa-layer-group"></i> Vulkan
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-circle-check"></i> Latest Release
-                </span>
-              </div>
-
-              <div class="vulkan-header-group">
-                <div class="vulkan-project-badge">
-                  <i class="fa-solid fa-bolt"></i>
-                  <span>VULKAN PROJECT</span>
-                  <span class="vulkan-gen-pill">Generasi 2</span>
-                </div>
-                <h3 class="modpack-title">Modpack Vulkan V2</h3>
-                <p class="modpack-subtitle">Vulkan Graphics & Performance</p>
-              </div>
-
-              <p class="modpack-desc">
-                Project Vulkan generasi kedua dari Gyzenn Community untuk Minecraft 26.1.2 dengan Fabric Loader 0.19.3.
-              </p>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Vulkan Graphics:</strong> Fokus pada penggunaan rendering berbasis Vulkan.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Minecraft:</strong> Dibuat untuk Minecraft 26.1.2.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Loader:</strong> Menggunakan Fabric Loader 0.19.3.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
+            <!-- Vulkan V2 -->
+            <div class="vulkan-sub-card">
+              <span class="version-stamp">MC 26.1.2</span>
+              <h4 class="vulkan-card-title">MODPACK VULKAN V2</h4>
+              <p class="vulkan-card-sub">Vulkan Graphics & Performance (Gen 2)</p>
               <a href="https://www.mediafire.com/file/3qwjrbybsbkycmh/Modpack_Vulkan_V2_Gyzenn.zip/file" target="_blank"
-                rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%;">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download via Mediafire (.zip)</span>
+                rel="noopener noreferrer" class="btn btn-mediafire" style="width: 100%; margin-top: 1rem;">
+                <i class="fa-solid fa-cloud-arrow-down"></i> DOWNLOAD V2 (.ZIP)
               </a>
             </div>
           </div>
 
-          <!-- Modpack 6: Xshadow's PvP 1.0.1 -->
-          <div class="glass-card modpack-card xshadow-pvp-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 26.1.2
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-pvp">
-                  <i class="fa-solid fa-crosshairs"></i> PvP
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-circle-check"></i> Latest Release
-                </span>
-              </div>
-
-              <div class="xshadow-header-group">
-                <div class="xshadow-special-badge">
-                  <i class="fa-solid fa-crosshairs"></i>
-                  <span>COMBAT PvP</span>
-                </div>
-                <h3 class="modpack-title">Xshadow's PvP V1.0.1</h3>
-                <p class="modpack-subtitle">PvP Combat Setup</p>
-              </div>
-
-              <p class="modpack-desc">
-                Project PvP Gyzenn Community untuk Minecraft 26.1.2 dengan Fabric Loader 0.19.3, ditujukan untuk
-                pengalaman combat yang fokus dan responsif.
-              </p>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>PvP Combat Setup:</strong> Fokus pada pengalaman gameplay PvP dan combat.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Minecraft:</strong> Dibuat untuk Minecraft 26.1.2.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Loader:</strong> Menggunakan Fabric Loader 0.19.3.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="download-mirrors">
-              <div class="download-mirrors-label">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download Mirrors</span>
-              </div>
-              <div class="download-mirror-buttons">
+          <!-- Dual Column Block: Xshadow & Uku's PvP Showcase -->
+          <div class="pvp-dual-block">
+            <!-- Xshadow PvP -->
+            <div class="pvp-sub-card card-red">
+              <span class="version-stamp">MC 26.1.2</span>
+              <h4>XSHADOW'S PVP V1.0.1</h4>
+              <div class="download-mirrors-stacked" style="margin-top: 1rem;">
                 <a href="https://www.mediafire.com/file/bv03qwbdrc3vbup/Xshadow%27s_PvP_1.0.1_Gyzenn.zip/file"
                   target="_blank" rel="noopener noreferrer" class="btn btn-mediafire">
-                  <i class="fa-brands fa-mediafire"></i>
-                  <span>Download via MediaFire</span>
+                  <i class="fa-solid fa-cloud-arrow-down"></i> MEDIAFIRE
                 </a>
                 <a href="https://drive.google.com/file/d/1Z77jpjh1cQWPzo9GZiePOEQk47qU1YB0/view?usp=sharing"
-                  target="_blank" rel="noopener noreferrer" class="btn btn-google-drive">
-                  <i class="fa-brands fa-google-drive"></i>
-                  <span>Download via Google Drive</span>
+                  target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle">
+                  <i class="fa-brands fa-google-drive"></i> GDRIVE
                 </a>
               </div>
             </div>
-          </div>
 
-          <!-- Modpack 7: Uku's PvP V2.5.0 -->
-          <div class="glass-card modpack-card uku-pvp-card">
-            <div>
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-mc-version">
-                  <i class="fa-solid fa-gamepad"></i> Minecraft 26.1.2
-                </span>
-                <span class="tag-badge tag-fabric">
-                  <i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3
-                </span>
-                <span class="tag-badge tag-pvp">
-                  <i class="fa-solid fa-crosshairs"></i> PvP
-                </span>
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-circle-check"></i> Latest Release
-                </span>
-              </div>
-
-              <div class="uku-pvp-header">
-                <div class="uku-pvp-special-badge">
-                  <i class="fa-solid fa-crosshairs"></i>
-                  <span>COMBAT PvP</span>
-                </div>
-                <h3 class="modpack-title">Uku's PvP V2.5.0</h3>
-                <p class="modpack-subtitle">PvP Combat Setup</p>
-              </div>
-
-              <p class="modpack-desc">
-                Project PvP untuk Minecraft 26.1.2 dengan Fabric Loader 0.19.3, dibuat untuk pengalaman combat yang
-                fokus pada gameplay PvP.
-              </p>
-
-              <ul class="modpack-features">
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>PvP Combat Setup:</strong> Project ditujukan untuk gameplay PvP dan combat.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Minecraft:</strong> Dibuat untuk Minecraft 26.1.2.</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-circle-check"></i>
-                  <span><strong>Loader:</strong> Menggunakan Fabric Loader 0.19.3.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="download-single-group">
-              <div class="download-mirrors-label">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-                <span>Download</span>
-              </div>
+            <!-- Uku's PvP -->
+            <div class="pvp-sub-card card-yellow">
+              <span class="version-stamp">MC 26.1.2</span>
+              <h4>UKU'S PVP V2.5.0</h4>
               <a href="https://drive.google.com/file/d/1T1ZyvEQX_BDStqpX2oBE3ZIOjw2OUsPb/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer" class="btn btn-google-drive" style="width: 100%;">
-                <i class="fa-brands fa-google-drive"></i>
-                <span>Download via Google Drive</span>
+                target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle"
+                style="width: 100%; margin-top: 1rem;">
+                <i class="fa-brands fa-google-drive"></i> DOWNLOAD GDRIVE
               </a>
             </div>
           </div>
@@ -1013,445 +730,304 @@
     </section>
 
     <!-- ==========================================================================
-         FITUR BARU: Modpack Gyzenn (FPSBoost & Survival Collection)
+         5. Dynamic Modpack Gyzenn (FPSBoost & Survival Collection)
          ========================================================================== -->
-    <section class="section gaming-mode" id="modpack-gyzenn">
+    <section class="section section-gyzenn-modpacks gaming-mode" id="modpack-gyzenn">
       <div class="container">
 
         <div class="section-header">
-          <span class="section-tag tag-gyzenn-modpacks">
-            <i class="fa-solid fa-boxes-stacked"></i> Modpack Collection
+          <span class="section-tag tag-retro-green">
+            <i class="fa-solid fa-boxes-stacked"></i> GYZENN COLLECTION
           </span>
-          <h2 class="section-title">Modpack Gyzenn</h2>
+          <h2 class="section-title">MODPACK GYZENN</h2>
           <p class="section-desc">
             Pilihan modpack optimization dan survival untuk berbagai versi Minecraft.
           </p>
 
           <!-- Interactive Gaming Mode Switcher -->
           <div class="gaming-mode-switch-wrapper">
-            <button type="button" class="btn-gaming-mode-toggle active" id="btnGamingModeToggle" aria-label="Toggle Gaming Mode">
+            <button type="button" class="btn-gaming-mode-toggle active" id="btnGamingModeToggle"
+              aria-label="Toggle Gaming Mode">
               <i class="fa-solid fa-gamepad"></i>
-              <span class="mode-text">Gaming Mode: <strong class="mode-status">ON</strong></span>
+              <span class="mode-text">GAMING MODE: <strong class="mode-status">ON</strong></span>
             </button>
           </div>
         </div>
 
-        <!-- Modpacks Grid -->
-        <div class="cards-grid gyzenn-modpacks-grid" id="gyzennModpacksGrid">
-
-          <!-- 1. Modpack FpsBoost V3 -->
-          <div class="glass-card gyzenn-modpack-card">
-            <div class="card-content">
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-fps-category"><i class="fa-solid fa-bolt"></i> FPS BOOST</span>
-                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft 1.21</span>
-                <span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.2</span>
-              </div>
-              <h3 class="modpack-title">Modpack FpsBoost V3</h3>
-            </div>
-            <div class="card-action">
-              <a href="https://drive.google.com/file/d/1Bt49_fwH8VNpVIM2bNAQ9-yl1GBQzwAU/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
-                <i class="fa-brands fa-google-drive"></i>
-                <span>Download Modpack</span>
-                <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 2. Modpack FpsBoost V4 -->
-          <div class="glass-card gyzenn-modpack-card">
-            <div class="card-content">
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-fps-category"><i class="fa-solid fa-bolt"></i> FPS BOOST</span>
-                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft 1.21.11</span>
-                <span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3</span>
-                <span class="tag-badge tag-extra-bonus"><i class="fa-solid fa-box-archive"></i> Resourcepack Included</span>
-              </div>
-              <h3 class="modpack-title">Modpack FpsBoost V4</h3>
-            </div>
-            <div class="card-action">
-              <a href="https://drive.google.com/file/d/12loZ_FYc41HiogJwDwZXi0bggaXWgDtY/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
-                <i class="fa-brands fa-google-drive"></i>
-                <span>Download Modpack</span>
-                <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 3. Modpack FpsBoost V5 -->
-          <div class="glass-card gyzenn-modpack-card">
-            <div class="card-content">
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-fps-category"><i class="fa-solid fa-bolt"></i> FPS BOOST</span>
-                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft 1.21.11</span>
-                <span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3</span>
-                <span class="tag-badge tag-extra-bonus"><i class="fa-solid fa-box-archive"></i> Resourcepack Included</span>
-              </div>
-              <h3 class="modpack-title">Modpack FpsBoost V5</h3>
-              <div class="modpack-note-box">
-                <i class="fa-solid fa-circle-info"></i>
-                <span>Ada mod Flashback. Kalau tidak suka, mod tersebut bisa dihapus.</span>
-              </div>
-            </div>
-            <div class="card-action">
-              <a href="https://drive.google.com/file/d/1fFOHr8H7mli-qDYFDZWs9zbjxPNMCqUS/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
-                <i class="fa-brands fa-google-drive"></i>
-                <span>Download Modpack</span>
-                <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 4. Modpack FpsBoost V6 -->
-          <div class="glass-card gyzenn-modpack-card">
-            <div class="card-content">
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-new-status"><i class="fa-solid fa-fire"></i> NEW</span>
-                <span class="tag-badge tag-recommended-status"><i class="fa-solid fa-star"></i> Recommended</span>
-                <span class="tag-badge tag-fps-category"><i class="fa-solid fa-bolt"></i> FPS BOOST</span>
-                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft 26.2</span>
-                <span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3</span>
-                <span class="tag-badge tag-extra-bonus"><i class="fa-solid fa-box-archive"></i> Resourcepack Included</span>
-              </div>
-              <h3 class="modpack-title">Modpack FpsBoost V6</h3>
-            </div>
-            <div class="card-action">
-              <a href="https://drive.google.com/file/d/1Bw3AgXkeX0qKYb191QuudxwoHvgP3FIP/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
-                <i class="fa-brands fa-google-drive"></i>
-                <span>Download Modpack</span>
-                <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 5. Modpack Survival V1 -->
-          <div class="glass-card gyzenn-modpack-card">
-            <div class="card-content">
-              <div class="modpack-badge-banner">
-                <span class="tag-badge tag-new-status"><i class="fa-solid fa-fire"></i> NEW</span>
-                <span class="tag-badge tag-survival-category"><i class="fa-solid fa-campground"></i> SURVIVAL</span>
-                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-gamepad"></i> Minecraft 26.2</span>
-                <span class="tag-badge tag-fabric"><i class="fa-solid fa-puzzle-piece"></i> Fabric 0.19.3</span>
-                <span class="tag-badge tag-extra-bonus"><i class="fa-solid fa-cubes"></i> 130 Mods</span>
-                <span class="tag-badge tag-extra-bonus"><i class="fa-solid fa-box-archive"></i> Resourcepack Included</span>
-                <span class="tag-badge tag-extra-bonus"><i class="fa-solid fa-wand-magic-sparkles"></i> Shaders Included</span>
-              </div>
-              <h3 class="modpack-title">Modpack Survival V1</h3>
-            </div>
-            <div class="card-action">
-              <a href="https://drive.google.com/file/d/1wlTff3EIipv1DAqdwfEt75UyLQABuC4f/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer" class="btn btn-google-drive btn-download-modpack">
-                <i class="fa-brands fa-google-drive"></i>
-                <span>Download Modpack</span>
-                <i class="fa-solid fa-arrow-up-right-from-square icon-ext"></i>
-              </a>
-            </div>
-          </div>
-
+        <!-- Dynamic Modpacks Render Grid (Handled by JS script) -->
+        <div class="editorial-modpacks-showcase" id="gyzennModpacksGrid">
+          <!-- Populated dynamically by JS -->
         </div>
 
       </div>
     </section>
 
-
     <!-- ==========================================================================
-         5. Zalith Launcher Section (Version 1.4.1.4 by MovTery)
+         6. Zalith Launcher Section (Windows 95/98 Installer Ad)
          ========================================================================== -->
-    <section class="section zalith-section" id="zalith">
+    <section class="section section-zalith" id="zalith">
       <div class="container">
 
         <div class="section-header">
-          <span class="section-tag">
-            <i class="fa-solid fa-mobile-screen"></i> Android Launcher
+          <span class="section-tag tag-retro-blue">
+            <i class="fa-solid fa-mobile-screen"></i> ANDROID LAUNCHER
           </span>
-          <h2 class="section-title">Download Zalith Launcher</h2>
+          <h2 class="section-title">DOWNLOAD ZALITH LAUNCHER</h2>
           <p class="section-desc">
             Versi rilis stabil terbaru <strong>1.4.1.4 by MovTery</strong>. Jalankan Minecraft Java Edition di perangkat
             Android dengan lancar dan kompatibel dengan berbagai mod.
           </p>
         </div>
 
-        <div class="glass-card zalith-main-card">
-
-          <!-- Top Info & Badges -->
-          <div class="zalith-header-info">
-            <div class="zalith-meta-row">
-              <span class="tag-badge tag-mc-version">v1.4.1.4 (Latest)</span>
-              <span class="tag-badge tag-fabric">Dev: MovTery</span>
-              <span class="tag-badge tag-release">Status: Stable Release</span>
+        <div class="retro-window-card zalith-main-card">
+          <div class="window-header">
+            <div class="window-buttons">
+              <span class="btn-win btn-win-close"></span>
+              <span class="btn-win btn-win-min"></span>
+              <span class="btn-win btn-win-max"></span>
             </div>
-
-            <h3 class="zalith-title">
-              Zalith Launcher 1.4.1.4
-            </h3>
+            <div class="window-title-text">
+              <i class="fa-solid fa-rocket"></i> ZALITH_LAUNCHER_V1.4.1.4_INSTALLER.EXE
+            </div>
           </div>
 
-          <!-- Changelog Box -->
-          <div class="changelog-box">
-            <div class="changelog-box-title">
-              <i class="fa-solid fa-wrench"></i> Catatan Pembaruan (Changelog):
+          <div class="window-body">
+            <div class="zalith-banner-header">
+              <div>
+                <span class="tag-badge tag-mc-version">v1.4.1.4 (Latest)</span>
+                <span class="tag-badge tag-fabric">Dev: MovTery</span>
+                <span class="tag-badge tag-release">Status: Stable Release</span>
+              </div>
+              <h3 class="zalith-big-title">ZALITH LAUNCHER 1.4.1.4</h3>
+              <p class="zalith-subtitle">PLAY MINECRAFT JAVA ON ANDROID ANYWHERE!</p>
             </div>
-            <ul class="changelog-list">
-              <li>
-                <i class="fa-solid fa-check"></i>
-                <span><strong>LWJGL-OpenGL Mapping:</strong> Memperbaiki error mapping LWJGL-OpenGL yang sering
-                  menyebabkan crash saat rendering.</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-check"></i>
-                <span><strong>JourneyMap Fix:</strong> Mengatasi kendala kompatibilitas dan rendering error pada minimap
-                  JourneyMap.</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-check"></i>
-                <span><strong>Version 1.7.2 Support:</strong> Memperbaiki masalah ketidakmampuan menjalankan Minecraft
-                  versi lama (1.7.2).</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-check"></i>
-                <span><strong>Date String Parsing:</strong> Memperbaiki parsing format tanggal yang tidak valid pada
-                  histori log launcher.</span>
-              </li>
-            </ul>
-          </div>
 
-          <!-- APK Download List -->
-          <div>
-            <h4
-              style="font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem; color: #fff; display: flex; align-items: center; gap: 0.45rem;">
-              <i class="fa-solid fa-file-arrow-down" style="color: var(--neon-cyan);"></i>
-              Daftar File APK Rilis 1.4.1.4:
-            </h4>
+            <!-- Retro Software Installer Status Bar -->
+            <div class="installer-status-bar" id="zalithInstallerStatus">
+              <div class="status-text-row">
+                <span class="retro-pixel-text"><i class="fa-solid fa-microchip"></i> INSTALLATION STATUS: SYSTEM
+                  READY<span class="blinking-cursor">█</span></span>
+                <span class="status-percent-text retro-pixel-text" id="zalithPercentText">100%</span>
+              </div>
+              <div class="installer-progress-track">
+                <div class="installer-progress-fill" id="zalithProgressFill"></div>
+              </div>
+            </div>
 
-            <div class="apk-downloads-container">
+            <!-- Changelog Box -->
+            <div class="changelog-box">
+              <div class="changelog-box-title">
+                <i class="fa-solid fa-wrench"></i> CATATAN PEMBARUAN (CHANGELOG):
+              </div>
+              <ul class="changelog-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <span><strong>LWJGL-OpenGL Mapping:</strong> Memperbaiki error mapping LWJGL-OpenGL yang sering
+                    menyebabkan crash saat rendering.</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <span><strong>JourneyMap Fix:</strong> Mengatasi kendala kompatibilitas dan rendering error pada
+                    minimap JourneyMap.</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <span><strong>Version 1.7.2 Support:</strong> Memperbaiki masalah ketidakmampuan menjalankan Minecraft
+                    versi lama (1.7.2).</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <span><strong>Date String Parsing:</strong> Memperbaiki parsing format tanggal yang tidak valid pada
+                    histori log launcher.</span>
+                </li>
+              </ul>
+            </div>
 
-              <!-- 1. arm64-v8a -->
-              <div class="apk-download-item">
-                <div class="apk-item-header">
+            <!-- APK Downloads List -->
+            <div style="margin-top: 1.75rem;">
+              <h4 class="apk-list-heading">
+                <i class="fa-solid fa-file-arrow-down"></i> DAFTAR FILE APK RILIS 1.4.1.4:
+              </h4>
+
+              <div class="apk-downloads-container">
+
+                <!-- 1. arm64-v8a -->
+                <div class="apk-download-item">
                   <div class="apk-name-group">
-                    <div class="apk-icon">
-                      <i class="fa-brands fa-android"></i>
-                    </div>
+                    <div class="apk-icon"><i class="fa-brands fa-android"></i></div>
                     <div>
                       <div class="apk-filename">ZalithLauncher-1.4.1.4-arm64-v8a.apk</div>
                       <div class="apk-arch-desc">Rekomendasi untuk sebagian besar HP Android 64-bit modern</div>
                     </div>
                   </div>
-                  <span class="apk-size-pill">
-                    <i class="fa-solid fa-hard-drive"></i> 145 MB
-                  </span>
+                  <div class="apk-action-wrap">
+                    <span class="apk-size-pill">145 MB</span>
+                    <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-arm64-v8a.apk"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-apk-download">
+                      <i class="fa-solid fa-download"></i> DOWNLOAD
+                    </a>
+                  </div>
                 </div>
 
-                <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-arm64-v8a.apk"
-                  target="_blank" rel="noopener noreferrer" class="apk-action-btn"
-                  title="Download ZalithLauncher 1.4.1.4 arm64-v8a">
-                  <i class="fa-solid fa-download"></i>
-                  <span>Download APK</span>
-                </a>
-              </div>
-
-              <!-- 2. armeabi-v7a -->
-              <div class="apk-download-item">
-                <div class="apk-item-header">
+                <!-- 2. armeabi-v7a -->
+                <div class="apk-download-item">
                   <div class="apk-name-group">
-                    <div class="apk-icon">
-                      <i class="fa-brands fa-android"></i>
-                    </div>
+                    <div class="apk-icon"><i class="fa-brands fa-android"></i></div>
                     <div>
                       <div class="apk-filename">ZalithLauncher-1.4.1.4-armeabi-v7a.apk</div>
                       <div class="apk-arch-desc">Untuk perangkat Android model lama berbasis 32-bit ARM</div>
                     </div>
                   </div>
-                  <span class="apk-size-pill">
-                    <i class="fa-solid fa-hard-drive"></i> 141 MB
-                  </span>
+                  <div class="apk-action-wrap">
+                    <span class="apk-size-pill">141 MB</span>
+                    <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-armeabi-v7a.apk"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-apk-download">
+                      <i class="fa-solid fa-download"></i> DOWNLOAD
+                    </a>
+                  </div>
                 </div>
 
-                <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-armeabi-v7a.apk"
-                  target="_blank" rel="noopener noreferrer" class="apk-action-btn"
-                  title="Download ZalithLauncher 1.4.1.4 armeabi-v7a">
-                  <i class="fa-solid fa-download"></i>
-                  <span>Download APK</span>
-                </a>
-              </div>
-
-              <!-- 3. x86 -->
-              <div class="apk-download-item">
-                <div class="apk-item-header">
+                <!-- 3. x86 -->
+                <div class="apk-download-item">
                   <div class="apk-name-group">
-                    <div class="apk-icon">
-                      <i class="fa-solid fa-desktop"></i>
-                    </div>
+                    <div class="apk-icon"><i class="fa-solid fa-desktop"></i></div>
                     <div>
                       <div class="apk-filename">ZalithLauncher-1.4.1.4-x86.apk</div>
                       <div class="apk-arch-desc">Untuk Emulator Android 32-bit (BlueStacks, LDPlayer, Nox)</div>
                     </div>
                   </div>
-                  <span class="apk-size-pill">
-                    <i class="fa-solid fa-hard-drive"></i> 130 MB
-                  </span>
+                  <div class="apk-action-wrap">
+                    <span class="apk-size-pill">130 MB</span>
+                    <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-x86.apk"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-apk-download">
+                      <i class="fa-solid fa-download"></i> DOWNLOAD
+                    </a>
+                  </div>
                 </div>
 
-                <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-x86.apk"
-                  target="_blank" rel="noopener noreferrer" class="apk-action-btn"
-                  title="Download ZalithLauncher 1.4.1.4 x86">
-                  <i class="fa-solid fa-download"></i>
-                  <span>Download APK</span>
-                </a>
-              </div>
-
-              <!-- 4. x86_64 -->
-              <div class="apk-download-item">
-                <div class="apk-item-header">
+                <!-- 4. x86_64 -->
+                <div class="apk-download-item">
                   <div class="apk-name-group">
-                    <div class="apk-icon">
-                      <i class="fa-solid fa-desktop"></i>
-                    </div>
+                    <div class="apk-icon"><i class="fa-solid fa-desktop"></i></div>
                     <div>
                       <div class="apk-filename">ZalithLauncher-1.4.1.4-x86_64.apk</div>
                       <div class="apk-arch-desc">Untuk Emulator Android 64-bit pada PC atau Laptop</div>
                     </div>
                   </div>
-                  <span class="apk-size-pill">
-                    <i class="fa-solid fa-hard-drive"></i> 149 MB
-                  </span>
+                  <div class="apk-action-wrap">
+                    <span class="apk-size-pill">149 MB</span>
+                    <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-x86_64.apk"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-apk-download">
+                      <i class="fa-solid fa-download"></i> DOWNLOAD
+                    </a>
+                  </div>
                 </div>
 
-                <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-x86_64.apk"
-                  target="_blank" rel="noopener noreferrer" class="apk-action-btn"
-                  title="Download ZalithLauncher 1.4.1.4 x86_64">
-                  <i class="fa-solid fa-download"></i>
-                  <span>Download APK</span>
-                </a>
-              </div>
-
-              <!-- 5. Universal -->
-              <div class="apk-download-item">
-                <div class="apk-item-header">
+                <!-- 5. Universal -->
+                <div class="apk-download-item item-universal">
                   <div class="apk-name-group">
-                    <div class="apk-icon">
-                      <i class="fa-solid fa-cube"></i>
-                    </div>
+                    <div class="apk-icon"><i class="fa-solid fa-cube"></i></div>
                     <div>
                       <div class="apk-filename">ZalithLauncher-1.4.1.4.apk</div>
                       <div class="apk-arch-desc">Versi Universal — Kompatibel untuk semua tipe perangkat & chipset</div>
                     </div>
                   </div>
-                  <span class="apk-size-pill">
-                    <i class="fa-solid fa-hard-drive"></i> Universal • 251 MB
-                  </span>
+                  <div class="apk-action-wrap">
+                    <span class="apk-size-pill">UNIVERSAL • 251 MB</span>
+                    <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4.apk"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-apk-download btn-apk-universal">
+                      <i class="fa-solid fa-download"></i> DOWNLOAD
+                    </a>
+                  </div>
                 </div>
 
-                <a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4.apk"
-                  target="_blank" rel="noopener noreferrer" class="apk-action-btn"
-                  title="Download ZalithLauncher 1.4.1.4 Universal">
-                  <i class="fa-solid fa-download"></i>
-                  <span>Download APK</span>
-                </a>
               </div>
-
             </div>
-          </div>
 
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         FITUR BARU 2: Server Minecraft Rekomendasi (KitaSMP)
+         7. KitaSMP Minecraft Server Section (Sports / Game Poster)
          ========================================================================== -->
-    <section class="section" id="server">
+    <section class="section section-server" id="server">
       <div class="container">
 
         <div class="section-header">
-          <span class="section-tag tag-server-header">
-            <i class="fa-solid fa-server"></i> Rekomendasi Server
+          <span class="section-tag tag-retro-orange">
+            <i class="fa-solid fa-server"></i> REKOMENDASI SERVER
           </span>
-          <h2 class="section-title">Server Minecraft Rekomendasi</h2>
+          <h2 class="section-title">SERVER MINECRAFT REKOMENDASI</h2>
           <p class="section-desc">
             Server Minecraft pilihan untuk mabar seru bareng admin Gyzenn dan sesama anggota komunitas.
           </p>
         </div>
 
-        <div class="glass-card server-main-card">
-          <div class="server-grid-layout">
+        <div class="retro-poster-box server-poster">
+          <div class="server-poster-grid">
 
             <!-- Server Image / Visual Column -->
-            <div>
-              <div class="server-image-wrapper">
+            <div class="server-img-col">
+              <div class="server-frame-wrapper" id="serverPosterFrame">
                 <img src="server.jpeg" alt="KitaSMP Minecraft Server" class="server-img"
                   onerror="this.classList.add('img-failed');">
                 <div class="server-img-fallback" aria-hidden="true">
                   <i class="fa-solid fa-server"></i>
-                  <span>KitaSMP Minecraft Server</span>
+                  <span>KITASMP MINECRAFT SERVER</span>
                 </div>
+                <div class="server-badge-overlay">RECOMMENDED SERVER</div>
               </div>
             </div>
 
             <!-- Server Information Column -->
-            <div class="server-info-content">
-
-              <!-- Badges Row -->
+            <div class="server-info-col">
               <div class="server-badges-row">
-                <span class="tag-badge tag-release">
-                  <i class="fa-solid fa-star"></i> RECOMMENDED SERVER
-                </span>
-                <span class="tag-badge tag-rpg">
-                  <i class="fa-solid fa-wand-magic-sparkles"></i> NEW RPG MODE
-                </span>
-                <span class="server-recommend-note">
-                  <i class="fa-solid fa-shield-halved"></i> Recommended oleh Gyzenn Community
-                </span>
+                <span class="tag-badge tag-release"><i class="fa-solid fa-star"></i> KITASMP</span>
+                <span class="tag-badge tag-rpg"><i class="fa-solid fa-wand-magic-sparkles"></i> NEW RPG MODE</span>
               </div>
 
-              <!-- Server Title & Description -->
-              <div>
-                <h3 class="server-title">Main Bareng di KitaSMP</h3>
-                <p class="server-desc" style="margin-top: 0.45rem;">
-                  Yokk main bareng atmin Gyzenn dan komunitas di KitaSMP. Sekarang KitaSMP juga menghadirkan mode baru
-                  yaitu mode RPG yg bisa kamu coba bersama pemain lainnya.
-                </p>
-              </div>
+              <h3 class="server-main-title">MAIN BARENG DI KITASMP</h3>
+              <p class="server-desc">
+                Yokk main bareng atmin Gyzenn dan komunitas di KitaSMP. Sekarang KitaSMP juga menghadirkan mode baru
+                yaitu mode RPG yg bisa kamu coba bersama pemain lainnya.
+              </p>
 
-              <!-- Server Info Chips Grid -->
+              <!-- Info Chips Grid -->
               <div class="server-chips-grid">
-                <div class="server-chip-item">
-                  <span class="chip-label">Server</span>
-                  <span class="chip-value">KitaSMP</span>
+                <div class="server-chip">
+                  <span class="chip-label">SERVER:</span>
+                  <span class="chip-val">KitaSMP</span>
                 </div>
-                <div class="server-chip-item">
-                  <span class="chip-label">Platform</span>
-                  <span class="chip-value">Java + Bedrock</span>
+                <div class="server-chip">
+                  <span class="chip-label">PLATFORM:</span>
+                  <span class="chip-val">Java + Bedrock</span>
                 </div>
-                <div class="server-chip-item">
-                  <span class="chip-label">Mode Permainan</span>
-                  <span class="chip-value">Economy & RPG</span>
+                <div class="server-chip">
+                  <span class="chip-label">MODE:</span>
+                  <span class="chip-val">Economy & RPG</span>
                 </div>
-                <div class="server-chip-item">
-                  <span class="chip-label">IP Server</span>
-                  <span class="chip-value ip-code">play.kitasmp.com</span>
+                <div class="server-chip chip-ip">
+                  <span class="chip-label">SERVER IP:</span>
+                  <span class="chip-val ip-text">play.kitasmp.com</span>
                 </div>
               </div>
 
-              <!-- Action Buttons: Copy IP & Discord KitaSMP -->
+              <!-- Action Buttons -->
               <div class="server-actions-group">
                 <button type="button" class="btn btn-copy-ip" id="btnCopyIp"
                   aria-label="Salin IP Server play.kitasmp.com">
                   <i class="fa-solid fa-copy"></i>
-                  <span id="copyIpBtnText">Copy IP</span>
+                  <span id="copyIpBtnText">COPY IP SERVER</span>
                 </button>
                 <a href="https://discord.gg/87wkxX3wu" target="_blank" rel="noopener noreferrer"
                   class="btn btn-discord-subtle" title="Gabung Discord Server KitaSMP">
                   <i class="fa-brands fa-discord"></i>
-                  <span>Discord KitaSMP</span>
+                  <span>DISCORD KITASMP</span>
                 </a>
               </div>
-
             </div>
 
           </div>
@@ -1463,47 +1039,43 @@
   </main>
 
   <!-- ==========================================================================
-       Site Footer
+       Site Footer (Giant Magazine Closing Poster)
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-content">
+      <div class="footer-poster-box">
 
-        <div class="footer-brand">
-          <div class="brand-icon-box">
-            <i class="fa-solid fa-cube"></i>
-          </div>
-          <span class="brand-title">Gyzenn Community</span>
-        </div>
+        <div class="footer-brand-title">GYZENN COMMUNITY</div>
 
         <p class="footer-desc">
           Komunitas kreator Minecraft Indonesia independen. Menyediakan modpack, shader rekomendasi, dan launcher
           Android terbaik untuk semua pemain.
         </p>
 
-        <ul class="footer-links">
-          <li><a href="#hero">Beranda</a></li>
-          <li><a href="#community">Komunitas</a></li>
-          <li><a href="#discord">Discord</a></li>
-          <li><a href="#derivative-shader">DERIVATIVE Shader</a></li>
-          <li><a href="#modpacks">Modpack Sodium</a></li>
-          <li><a href="#modpacks">Modpack FpsBoost</a></li>
-          <li><a href="#modpacks">Modpack CPvP</a></li>
-          <li><a href="#modpacks">Modpack Vulkan V1</a></li>
-          <li><a href="#modpacks">Modpack Vulkan V2</a></li>
-          <li><a href="#modpacks">Xshadow's PvP</a></li>
-          <li><a href="#modpacks">Uku's PvP</a></li>
-          <li><a href="#zalith">Zalith Launcher</a></li>
-          <li><a href="#server">Server KitaSMP</a></li>
-          <li><a href="https://linktr.ee/Gyzenn_" target="_blank" rel="noopener noreferrer">Linktree Resmi</a></li>
+        <ul class="footer-links-grid">
+          <li><a href="#hero">BERANDA</a></li>
+          <li><a href="#community">KOMUNITAS</a></li>
+          <li><a href="#discord">DISCORD</a></li>
+          <li><a href="#derivative-shader">DERIVATIVE SHADER</a></li>
+          <li><a href="#modpacks">MODPACK SODIUM</a></li>
+          <li><a href="#modpacks">MODPACK FPSBOOST</a></li>
+          <li><a href="#modpacks">MODPACK CPVP</a></li>
+          <li><a href="#modpacks">MODPACK VULKAN V1</a></li>
+          <li><a href="#modpacks">MODPACK VULKAN V2</a></li>
+          <li><a href="#modpacks">XSHADOW'S PVP</a></li>
+          <li><a href="#modpacks">UKU'S PVP</a></li>
+          <li><a href="#zalith">ZALITH LAUNCHER</a></li>
+          <li><a href="#server">SERVER KITASMP</a></li>
+          <li><a href="https://linktr.ee/Gyzenn_" target="_blank" rel="noopener noreferrer">LINKTREE RESMI</a></li>
         </ul>
 
-        <div class="footer-divider"></div>
+        <div class="footer-hr"></div>
 
         <div class="footer-bottom-row">
-          <p>© 2026 Gyzenn Community. All rights reserved. Created with <i class="fa-solid fa-heart"
-              style="color: var(--neon-green);"></i> for Minecraft Gamers.</p>
-          <p style="font-size: 0.72rem;">Device: Acer Nitro V15 RTX 4050 • Tested & Benchmarked</p>
+          <p>© 2026 GYZENN COMMUNITY. CREATED WITH <i class="fa-solid fa-heart" style="color: #FF2A85;"></i> FOR
+            MINECRAFT GAMERS.</p>
+          <p class="retro-pixel-text" style="font-size: 0.82rem;">DEVICE: ACER NITRO V15 RTX 4050 • TESTED & BENCHMARKED
+          </p>
         </div>
 
       </div>
@@ -1511,28 +1083,33 @@
   </footer>
 
   <!-- ==========================================================================
-       Mobile Bottom Quick Navigation Bar (Mobile & Tablet)
+       Mobile Bottom Quick Navigation Bar (Retro Control Deck)
        ========================================================================== -->
   <nav class="mobile-bottom-bar" aria-label="Mobile Bottom Navigation">
     <a href="#hero" class="bottom-nav-item active" id="bnav-home">
+      <span class="retro-btn-dot">◉</span>
       <i class="fa-solid fa-house"></i>
-      <span>Beranda</span>
+      <span>BERANDA</span>
     </a>
     <a href="#community" class="bottom-nav-item" id="bnav-community">
+      <span class="retro-btn-dot">●</span>
       <i class="fa-solid fa-users"></i>
-      <span>Komunitas</span>
+      <span>KOMUNITAS</span>
     </a>
     <a href="#discord" class="bottom-nav-item" id="bnav-discord">
+      <span class="retro-btn-dot">●</span>
       <i class="fa-brands fa-discord"></i>
-      <span>Discord</span>
+      <span>DISCORD</span>
     </a>
     <a href="#modpacks" class="bottom-nav-item" id="bnav-modpacks">
+      <span class="retro-btn-dot">●</span>
       <i class="fa-solid fa-cubes"></i>
-      <span>Modpacks</span>
+      <span>MODPACKS</span>
     </a>
     <a href="#server" class="bottom-nav-item" id="bnav-server">
+      <span class="retro-btn-dot">●</span>
       <i class="fa-solid fa-server"></i>
-      <span>Server</span>
+      <span>SERVER</span>
     </a>
   </nav>
 
@@ -1544,7 +1121,7 @@
   <!-- Toast Notification Container -->
   <div class="toast-container">
     <div class="toast" id="toastNotification">
-      <i class="fa-solid fa-circle-check" style="color: var(--neon-green);"></i>
+      <i class="fa-solid fa-circle-check" style="color: #A3E635;"></i>
       <span id="toastMessage">Pesan notifikasi</span>
     </div>
   </div>
