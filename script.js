@@ -491,37 +491,84 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   // 9. Modpack Gyzenn Data Structure & Dynamic Renderer
   // --------------------------------------------------------------------------
+  function spawnNewReleaseParticles(element) {
+    if (prefersReducedMotion || !element) return;
+    const rect = element.getBoundingClientRect();
+    const particleCount = 8;
+    const colors = ['#FF2A85', '#FFD600', '#2563EB', '#A3E635', '#FF5722'];
+    const shapes = ['★', '✦', '■', '▲', '+'];
+
+    for (let i = 0; i < particleCount; i++) {
+      const p = document.createElement('div');
+      p.className = 'v7-particle';
+      p.textContent = shapes[i % shapes.length];
+      p.style.color = colors[i % colors.length];
+      p.style.left = `${rect.left + rect.width / 2}px`;
+      p.style.top = `${rect.top + rect.height / 2}px`;
+      p.style.transform = 'translate(-50%, -50%) scale(0)';
+      p.style.opacity = '1';
+
+      document.body.appendChild(p);
+
+      const angle = (i / particleCount) * Math.PI * 2;
+      const dist = Math.random() * 35 + 25;
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+
+      requestAnimationFrame(() => {
+        p.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.1)`;
+        p.style.opacity = '0';
+      });
+
+      setTimeout(() => {
+        p.remove();
+      }, 650);
+    }
+  }
+
   const gyzennModpacks = [
     {
-      id: "fpsboost-v3",
-      name: "Modpack FpsBoost V3",
+      id: "fpsboost-v7",
+      name: "Modpack FpsBoost V7",
+      version: "V7",
       category: "FPS BOOST",
-      minecraft: "1.21",
-      fabric: "0.19.2",
+      minecraft: "1.21.1",
+      loader: "Fabric",
+      fabric: "0.19.3",
+      fabricLoader: "0.19.3",
+      description: "FpsBoost V7 is a performance-focused Fabric modpack for Minecraft 1.21.1, designed to improve FPS and provide a smoother gameplay experience.",
       badges: [],
       note: null,
-      isNew: false,
-      isRecommended: false,
-      downloadUrl: "https://drive.google.com/file/d/1Bt49_fwH8VNpVIM2bNAQ9-yl1GBQzwAU/view?usp=sharing"
+      isNew: true,
+      isRecommended: true,
+      mrpackUrl: "https://drive.google.com/file/d/1i7sWR6Dsy1BFLpPZspuUpe12DGm4IQwz/view?usp=sharing",
+      zipUrl: "https://drive.google.com/file/d/1wn9KM-NFKQTvoBnGar3Q4s_N-ymRWFj/view?usp=sharing",
+      downloadUrl: "https://drive.google.com/file/d/1i7sWR6Dsy1BFLpPZspuUpe12DGm4IQwz/view?usp=sharing"
     },
     {
-      id: "fpsboost-v4",
-      name: "Modpack FpsBoost V4",
+      id: "fpsboost-v6",
+      name: "Modpack FpsBoost V6",
+      version: "V6",
       category: "FPS BOOST",
-      minecraft: "1.21.11",
+      minecraft: "26.2",
+      loader: "Fabric",
       fabric: "0.19.3",
+      fabricLoader: "0.19.3",
       badges: ["Resourcepack Included"],
       note: null,
       isNew: false,
       isRecommended: false,
-      downloadUrl: "https://drive.google.com/file/d/12loZ_FYc41HiogJwDwZXi0bggaXWgDtY/view?usp=sharing"
+      downloadUrl: "https://drive.google.com/file/d/1Bw3AgXkeX0qKYb191QuudxwoHvgP3FIP/view?usp=sharing"
     },
     {
       id: "fpsboost-v5",
       name: "Modpack FpsBoost V5",
+      version: "V5",
       category: "FPS BOOST",
       minecraft: "1.21.11",
+      loader: "Fabric",
       fabric: "0.19.3",
+      fabricLoader: "0.19.3",
       badges: ["Resourcepack Included"],
       note: "Ada mod Flashback. Kalau tidak suka, mod tersebut bisa dihapus.",
       isNew: false,
@@ -529,26 +576,47 @@ document.addEventListener('DOMContentLoaded', () => {
       downloadUrl: "https://drive.google.com/file/d/1fFOHr8H7mli-qDYFDZWs9zbjxPNMCqUS/view?usp=sharing"
     },
     {
-      id: "fpsboost-v6",
-      name: "Modpack FpsBoost V6",
+      id: "fpsboost-v4",
+      name: "Modpack FpsBoost V4",
+      version: "V4",
       category: "FPS BOOST",
-      minecraft: "26.2",
+      minecraft: "1.21.11",
+      loader: "Fabric",
       fabric: "0.19.3",
+      fabricLoader: "0.19.3",
       badges: ["Resourcepack Included"],
       note: null,
-      isNew: true,
-      isRecommended: true,
-      downloadUrl: "https://drive.google.com/file/d/1Bw3AgXkeX0qKYb191QuudxwoHvgP3FIP/view?usp=sharing"
+      isNew: false,
+      isRecommended: false,
+      downloadUrl: "https://drive.google.com/file/d/12loZ_FYc41HiogJwDwZXi0bggaXWgDtY/view?usp=sharing"
+    },
+    {
+      id: "fpsboost-v3",
+      name: "Modpack FpsBoost V3",
+      version: "V3",
+      category: "FPS BOOST",
+      minecraft: "1.21",
+      loader: "Fabric",
+      fabric: "0.19.2",
+      fabricLoader: "0.19.2",
+      badges: [],
+      note: null,
+      isNew: false,
+      isRecommended: false,
+      downloadUrl: "https://drive.google.com/file/d/1Bt49_fwH8VNpVIM2bNAQ9-yl1GBQzwAU/view?usp=sharing"
     },
     {
       id: "survival-v1",
       name: "Modpack Survival V1",
+      version: "V1",
       category: "SURVIVAL",
       minecraft: "26.2",
+      loader: "Fabric",
       fabric: "0.19.3",
+      fabricLoader: "0.19.3",
       badges: ["130 Mods", "Resourcepack Included", "Shaders Included"],
       note: null,
-      isNew: true,
+      isNew: false,
       isRecommended: false,
       downloadUrl: "https://drive.google.com/file/d/1wlTff3EIipv1DAqdwfEt75UyLQABuC4f/view?usp=sharing"
     }
@@ -562,7 +630,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let badgeBannerHtml = '';
 
       if (modpack.isNew) {
-        badgeBannerHtml += `<span class="tag-badge tag-release"><i class="fa-solid fa-fire"></i> NEW</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-release tag-new-pulse ${modpack.id === 'fpsboost-v7' ? 'badge-new-v7' : ''}"><i class="fa-solid fa-fire"></i> NEW</span> `;
+      }
+      if (modpack.version) {
+        badgeBannerHtml += `<span class="tag-badge tag-version-pill">[${modpack.version}]</span> `;
       }
       if (modpack.isRecommended) {
         badgeBannerHtml += `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-star"></i> RECOMMENDED</span> `;
@@ -574,12 +645,18 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
       }
 
-      badgeBannerHtml += `<span class="tag-badge tag-mc-version">MC ${modpack.minecraft}</span> `;
-      badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric ${modpack.fabric}</span> `;
+      badgeBannerHtml += `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span> `;
+      badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric Loader ${modpack.fabricLoader || modpack.fabric}</span> `;
 
-      modpack.badges.forEach(b => {
-        badgeBannerHtml += `<span class="tag-badge tag-release">${b}</span> `;
-      });
+      if (Array.isArray(modpack.badges)) {
+        modpack.badges.forEach(b => {
+          badgeBannerHtml += `<span class="tag-badge tag-release">${b}</span> `;
+        });
+      }
+
+      const descHtml = modpack.description ? `
+        <p class="modpack-editorial-desc">${modpack.description}</p>
+      ` : '';
 
       const noteHtml = modpack.note ? `
         <div class="derivative-tip-box" style="margin-top: 0.5rem; font-size: 0.88rem;">
@@ -587,30 +664,87 @@ document.addEventListener('DOMContentLoaded', () => {
           <span>${modpack.note}</span>
         </div>` : '';
 
-      const stripTheme = (index % 2 === 0) ? 'strip-yellow' : 'strip-orange';
+      let downloadActionHtml = '';
+      if (modpack.mrpackUrl && modpack.zipUrl) {
+        downloadActionHtml = `
+          <div class="modpack-download-group">
+            <a href="${modpack.mrpackUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle btn-download-dual" aria-label="Download ${modpack.name} MRPACK">
+              <i class="fa-brands fa-google-drive"></i> MRPACK
+            </a>
+            <a href="${modpack.zipUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-download-dual btn-download-zip" aria-label="Download ${modpack.name} ZIP">
+              <i class="fa-brands fa-google-drive"></i> ZIP
+            </a>
+          </div>
+        `;
+      } else {
+        downloadActionHtml = `
+          <a href="${modpack.downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle" style="width: 100%;">
+            <i class="fa-brands fa-google-drive"></i> DOWNLOAD MODPACK
+          </a>
+        `;
+      }
+
+      let stripTheme = 'strip-orange';
+      if (modpack.id === 'fpsboost-v7') {
+        stripTheme = 'strip-v7-latest';
+      } else if (index % 2 === 0) {
+        stripTheme = 'strip-yellow';
+      }
+
+      const versionStampClass = (modpack.id === 'fpsboost-v7') ? 'version-stamp version-stamp-v7' : 'version-stamp';
+      const versionStampText = modpack.version ? `[${modpack.version}] MC ${modpack.minecraft}` : `MC ${modpack.minecraft}`;
 
       return `
-        <div class="modpack-editorial-strip ${stripTheme}" data-index="${index}" data-category="${modpack.category}">
+        <div class="modpack-editorial-strip ${stripTheme}" id="${modpack.id}" data-index="${index}" data-category="${modpack.category}">
           <div>
-            <span class="version-stamp">MC ${modpack.minecraft}</span>
+            <span class="${versionStampClass}">${versionStampText}</span>
             <div style="margin-top: 0.4rem;">
               ${badgeBannerHtml}
             </div>
           </div>
           <div>
             <h3>${modpack.name}</h3>
+            ${descHtml}
             ${noteHtml}
           </div>
           <div>
-            <a href="${modpack.downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle" style="width: 100%;">
-              <i class="fa-brands fa-google-drive"></i> DOWNLOAD MODPACK
-            </a>
+            ${downloadActionHtml}
           </div>
         </div>
       `;
     }).join('');
 
     container.innerHTML = cardsHtml;
+
+    // Observe V7 for New Release Particle Burst
+    const v7Card = document.getElementById('fpsboost-v7');
+    if (v7Card && 'IntersectionObserver' in window) {
+      const v7Observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const badgeNew = v7Card.querySelector('.badge-new-v7');
+            if (badgeNew) {
+              spawnNewReleaseParticles(badgeNew);
+            }
+            v7Observer.unobserve(v7Card);
+          }
+        });
+      }, { threshold: 0.25 });
+      v7Observer.observe(v7Card);
+    }
+
+    // GSAP ScrollTrigger Entrance Animation for Strips
+    if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
+      gsap.utils.toArray('.section-gyzenn-modpacks .modpack-editorial-strip').forEach((strip) => {
+        gsap.from(strip, {
+          scrollTrigger: { trigger: strip, start: 'top 90%' },
+          duration: 0.55,
+          y: 20,
+          opacity: 0,
+          ease: 'power2.out'
+        });
+      });
+    }
   }
 
   renderGyzennModpacks();
@@ -634,4 +768,72 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(`Gaming Mode: ${isGamingMode ? 'ON (Bold Shadow Glow)' : 'OFF (Standard Mode)'}`);
     });
   }
+
+  // --------------------------------------------------------------------------
+  // 11. Saweria Support Campaign (Micro Particle Burst & Editorial Entrance)
+  // --------------------------------------------------------------------------
+  function createRetroBurst(element, options = {}) {
+    if (prefersReducedMotion || !element) return;
+    const rect = element.getBoundingClientRect();
+    const count = options.count || 8;
+    const colors = options.colors || ['#FF2A85', '#FFD600', '#2563EB', '#A3E635', '#FF5722'];
+    const shapes = options.shapes || ['★', '✦', '■', '▲', '+', '♥'];
+
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'v7-particle';
+      p.textContent = shapes[i % shapes.length];
+      p.style.color = colors[i % colors.length];
+      p.style.left = `${rect.left + rect.width / 2}px`;
+      p.style.top = `${rect.top + rect.height / 2}px`;
+      p.style.transform = 'translate(-50%, -50%) scale(0)';
+      p.style.opacity = '1';
+
+      document.body.appendChild(p);
+
+      const angle = (i / count) * Math.PI * 2;
+      const dist = Math.random() * 35 + 25;
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+
+      requestAnimationFrame(() => {
+        p.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.2)`;
+        p.style.opacity = '0';
+      });
+
+      setTimeout(() => {
+        p.remove();
+      }, 550);
+    }
+  }
+
+  // Attach micro-burst to Saweria CTA buttons
+  const saweriaBurstBtns = document.querySelectorAll('.btn-saweria-burst');
+  saweriaBurstBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      createRetroBurst(btn, { count: 8 });
+    });
+  });
+
+  // GSAP Editorial ScrollTrigger Entrance for Support Campaign Section
+  const supportSection = document.getElementById('support');
+  if (supportSection && typeof gsap !== 'undefined' && !prefersReducedMotion) {
+    const supportTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#support',
+        start: 'top 82%',
+        once: true
+      }
+    });
+
+    supportTimeline
+      .from('#support .support-tag-row', { duration: 0.4, y: -15, opacity: 0, ease: 'power2.out' })
+      .from('#support .support-giant-title', { duration: 0.6, x: -30, opacity: 0, ease: 'back.out(1.4)' }, '-=0.2')
+      .from('#support .support-editorial-lead', { duration: 0.45, y: 15, opacity: 0, ease: 'power2.out' }, '-=0.2')
+      .from('#support .support-meta-tags .tag-badge', { duration: 0.35, scale: 0.8, opacity: 0, stagger: 0.08, ease: 'back.out(2)' }, '-=0.15')
+      .from('#support .saweria-editorial-poster', { duration: 0.6, y: 35, rotation: 6, opacity: 0, ease: 'back.out(1.5)' }, '-=0.35')
+      .from('#support .support-sticker-physical', { duration: 0.45, scale: 0, rotation: -18, opacity: 0, ease: 'back.out(2.2)' }, '-=0.2')
+      .from('#support .campaign-shape', { duration: 0.5, scale: 0, opacity: 0, stagger: 0.1, ease: 'power2.out' }, '-=0.3');
+  }
 });
+
