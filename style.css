@@ -1110,6 +1110,9 @@ img.img-failed { display: none !important; }
 .strip-yellow { background-color: var(--color-yellow); }
 .strip-orange { background-color: var(--bg-card); border-left: 8px solid var(--color-orange); }
 .strip-pink { background-color: var(--bg-card); border-left: 8px solid var(--color-pink); }
+.strip-blue { background-color: var(--bg-card); border-left: 8px solid var(--color-blue-bright); }
+.strip-green { background-color: var(--bg-card); border-left: 8px solid var(--color-green-dark); }
+.strip-purple { background-color: var(--bg-card); border-left: 8px solid var(--color-purple); }
 .strip-v7-latest {
   background-color: var(--bg-card);
   border-left: 8px solid var(--color-pink);
@@ -1172,6 +1175,23 @@ img.img-failed { display: none !important; }
   width: 100%;
 }
 
+.modpack-download-group.modpack-download-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.modpack-download-group.modpack-download-stack .btn,
+.modpack-download-group .btn-download-action {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.85rem;
+  text-align: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
 .btn-download-dual {
   padding: 0.7rem 0.85rem;
   font-size: 0.88rem;
@@ -1183,6 +1203,61 @@ img.img-failed { display: none !important; }
 .btn-download-zip {
   background-color: var(--color-pink);
   color: var(--text-inverted);
+}
+
+.btn-mediafire-subtle {
+  background-color: var(--color-blue-bright);
+  color: var(--text-inverted);
+}
+
+.btn-mediafire-subtle:hover {
+  background-color: #1d4ed8;
+  color: var(--text-inverted);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hover-sm);
+}
+
+/* Tactile Retro Callout / Warning Box for Modpacks */
+.modpack-note-callout {
+  background-color: #FEF08A;
+  border: 2px solid var(--ink-black);
+  border-left: 6px solid var(--color-orange);
+  box-shadow: 3px 3px 0px var(--ink-black);
+  padding: 0.65rem 0.85rem;
+  margin-top: 0.65rem;
+  border-radius: var(--radius-sharp);
+}
+
+.modpack-note-callout.note-warning {
+  background-color: #FEF9C3;
+  border-left: 6px solid var(--color-orange);
+}
+
+.modpack-note-header {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--ink-black);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.modpack-note-header i {
+  color: #C2410C;
+  font-size: 0.95rem;
+}
+
+.modpack-note-text {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink-black);
+  margin: 0;
+  font-weight: 600;
 }
 
 .v7-particle {
@@ -1400,7 +1475,7 @@ img.img-failed { display: none !important; }
 .btn-apk-universal { background-color: var(--color-pink); color: var(--text-inverted); }
 
 /* --------------------------------------------------------------------------
-   14. KitaSMP Server Section & Copy IP Burst
+   14. Casda Network Server Section & Copy IP Burst
    -------------------------------------------------------------------------- */
 .server-poster { background-color: var(--color-orange); }
 
@@ -1426,6 +1501,7 @@ img.img-failed { display: none !important; }
   width: min(100%, 100%);
   max-width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border: 2px solid #121212;
 }
@@ -1441,22 +1517,89 @@ img.img-failed { display: none !important; }
   font-size: 1rem;
   padding: 0.25rem 0.75rem;
   border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+}
+
+.tag-warning-pulse {
+  background-color: var(--color-yellow);
+  color: var(--ink-black);
+  border: 2px solid var(--ink-black);
+  box-shadow: 2px 2px 0px var(--ink-black);
+  font-weight: bold;
+  animation: subtleNewFloat 2s ease-in-out infinite alternate;
 }
 
 .server-info-col { color: var(--text-inverted); }
 .server-main-title { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-yellow); text-shadow: 3px 3px 0px #121212; margin: 0.35rem 0; }
 .server-desc { font-size: 1rem; margin-bottom: 1rem; }
 
-.server-chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-bottom: 1.25rem; }
+.server-chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-bottom: 1rem; }
 .server-chip { background-color: var(--bg-card); color: var(--ink-black); border: var(--border-thick); padding: 0.45rem 0.75rem; box-shadow: var(--shadow-sm); font-family: var(--font-heading); font-size: 0.82rem; }
 .chip-label { font-weight: 700; display: block; font-size: 0.72rem; color: var(--text-muted); }
 .chip-val { font-weight: 700; font-size: 0.9rem; }
+.chip-status .status-val { color: #B45309; font-weight: 800; }
 .chip-ip { background-color: var(--color-yellow); }
 .ip-text { font-family: var(--font-pixel); font-size: 1.15rem; color: var(--color-blue); }
 
+/* Server Planned Game Modes Preview Cards */
+.server-modes-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+}
+
+.mode-preview-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--ink-black);
+  box-shadow: 2px 2px 0px var(--ink-black);
+  padding: 0.5rem 0.65rem;
+}
+
+.mode-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+
+.mode-name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: var(--ink-black);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.mode-name i {
+  color: var(--color-orange);
+}
+
+.mode-status-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  font-weight: bold;
+  background-color: var(--color-yellow);
+  color: var(--ink-black);
+  border: 1px solid var(--ink-black);
+  padding: 0.05rem 0.35rem;
+  line-height: 1;
+}
+
+.mode-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin: 0;
+}
+
 .server-actions-group { display: flex; flex-wrap: wrap; gap: 0.85rem; }
-.btn-copy-ip { background-color: var(--color-green); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
-.btn-copy-ip.copied { background-color: var(--color-yellow); }
+.btn-copy-ip { background-color: var(--color-yellow); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
+.btn-copy-ip.copied { background-color: var(--color-green); color: var(--ink-black); }
 .btn-discord-subtle { background-color: var(--bg-card); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
 
 /* Exploding Pixel Particle Burst for Copy IP */
@@ -2002,7 +2145,8 @@ img.img-failed { display: none !important; }
 
   .group-actions-grid,
   .download-mirrors-stacked,
-  .server-chips-grid {
+  .server-chips-grid,
+  .server-modes-preview {
     grid-template-columns: 1fr;
   }
 

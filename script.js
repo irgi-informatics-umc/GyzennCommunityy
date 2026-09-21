@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 5. Copy IP Server KitaSMP Feature & Exploding Pixel Particles
+  // 5. Casda Network Server Feature (Under Development) & Pixel Particles
   // --------------------------------------------------------------------------
   const btnCopyIp = document.getElementById('btnCopyIp');
   const copyIpBtnText = document.getElementById('copyIpBtnText');
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < particleCount; i++) {
       const p = document.createElement('div');
       p.className = 'ip-particle';
-      p.textContent = 'IP!';
+      p.textContent = 'SOON!';
       p.style.backgroundColor = colors[i % colors.length];
       p.style.left = `${rect.left + rect.width / 2}px`;
       p.style.top = `${rect.top + rect.height / 2}px`;
@@ -297,53 +297,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function fallbackCopyText(text, successCallback) {
-    try {
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      textArea.style.position = 'fixed';
-      textArea.style.left = '-9999px';
-      textArea.style.top = '0';
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      const successful = document.execCommand('copy');
-      document.body.removeChild(textArea);
-      if (successful && successCallback) successCallback();
-    } catch (err) {
-      console.error('Fallback copy failed: ', err);
-    }
-  }
-
   if (btnCopyIp) {
     btnCopyIp.addEventListener('click', (e) => {
       e.preventDefault();
-      const serverIp = 'play.kitasmp.com';
+      spawnCopyIpParticles(btnCopyIp);
+      showToast('🟡 IP Casda Network akan segera diumumkan! Server sedang dalam tahap pengembangan.');
 
-      function handleCopySuccess() {
-        if (copyIpBtnText) copyIpBtnText.textContent = 'IP DISALIN!';
-        btnCopyIp.classList.add('copied');
-        const icon = btnCopyIp.querySelector('i');
-        if (icon) icon.className = 'fa-solid fa-check';
+      if (copyIpBtnText) copyIpBtnText.textContent = 'SEGERA DIUMUMKAN!';
+      btnCopyIp.classList.add('copied');
+      const icon = btnCopyIp.querySelector('i');
+      if (icon) icon.className = 'fa-solid fa-bullhorn';
 
-        spawnCopyIpParticles(btnCopyIp);
-        showToast('✓ IP play.kitasmp.com berhasil disalin!');
-
-        if (copyResetTimeout) clearTimeout(copyResetTimeout);
-        copyResetTimeout = setTimeout(() => {
-          if (copyIpBtnText) copyIpBtnText.textContent = 'COPY IP SERVER';
-          btnCopyIp.classList.remove('copied');
-          if (icon) icon.className = 'fa-solid fa-copy';
-        }, 2500);
-      }
-
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(serverIp).then(handleCopySuccess).catch(() => {
-          fallbackCopyText(serverIp, handleCopySuccess);
-        });
-      } else {
-        fallbackCopyText(serverIp, handleCopySuccess);
-      }
+      if (copyResetTimeout) clearTimeout(copyResetTimeout);
+      copyResetTimeout = setTimeout(() => {
+        if (copyIpBtnText) copyIpBtnText.textContent = 'IP SEGERA RILIS';
+        btnCopyIp.classList.remove('copied');
+        if (icon) icon.className = 'fa-solid fa-clock';
+      }, 2500);
     });
   }
 
@@ -379,15 +349,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = parseFloat(counter.getAttribute('data-target'));
       const suffix = counter.getAttribute('data-suffix') || '';
       const prefix = counter.getAttribute('data-prefix') || '';
+      const hasDecimal = target % 1 !== 0;
 
       function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const currentVal = Math.floor(easeOut * target);
+        const currentVal = hasDecimal ? (easeOut * target).toFixed(1) : Math.floor(easeOut * target);
 
         if (target >= 1000 && !suffix.includes('K')) {
-          counter.textContent = prefix + currentVal.toLocaleString('id-ID') + suffix;
+          counter.textContent = prefix + Math.floor(easeOut * target).toLocaleString('id-ID') + suffix;
         } else {
           counter.textContent = prefix + currentVal + suffix;
         }
@@ -528,6 +499,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const gyzennModpacks = [
     {
+      id: "sodiumpack-v2",
+      name: "Sodiumpack V2",
+      version: "V2",
+      category: "FPS BOOST",
+      minecraft: "1.21.11",
+      loader: "Fabric",
+      fabric: "0.19.2",
+      fabricLoader: "0.19.2",
+      description: "Modpack Sodium generasi V2 dengan optimasi rendering engine untuk Minecraft 1.21.11 Fabric Loader 0.19.2. Menghasilkan frame rate tinggi dan gameplay ultra responsif.",
+      badges: ["SODIUM"],
+      note: null,
+      isNew: true,
+      isRecommended: true,
+      theme: "strip-blue",
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://drive.google.com/file/d/1Hu-6s98Qdj4E8VwHIfNXoRpiMOXg6nHJ/view?usp=sharing",
+          type: "gdrive"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://www.mediafire.com/file/1i425xdbe5ahybf/Sodiumpack+V2.zip/file",
+          type: "mediafire"
+        }
+      ]
+    },
+    {
+      id: "cobra-ultimize-remake",
+      name: "Cobra Ultimize Remake",
+      version: "Remake",
+      category: "FPS BOOST",
+      minecraft: "1.21.11",
+      loader: "Fabric",
+      fabric: "0.19.3",
+      fabricLoader: "0.19.3",
+      description: "Modpack Cobra Ultimize Remake edisi performa tinggi untuk Minecraft 1.21.11 Fabric 0.19.3. Menghadirkan stabilitas FPS optimal untuk PvP dan eksplorasi intensif.",
+      badges: ["COBRA"],
+      note: null,
+      isNew: true,
+      isRecommended: false,
+      theme: "strip-orange",
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://drive.google.com/file/d/1kigZd3mRxc-e3h2WWE94bfO7o6r5HAL8/view?usp=sharing",
+          type: "gdrive"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://drive.usercontent.google.com/download?id=1Gs3FuSEChQcHkugyA0eXnkiPen9MvLXn&export=download&authuser=0",
+          type: "gdrive"
+        },
+        {
+          label: "DOWNLOAD ZIP MEDIAFIRE",
+          url: "https://www.mediafire.com/file/z8cv4570z7jnebg/Cobra+Ultimized+By+Gyzenn.zip/file",
+          type: "mediafire"
+        }
+      ]
+    },
+    {
+      id: "survival-x-fpsboost",
+      name: "Survival X Fpsboost",
+      version: "26.3",
+      category: "SURVIVAL",
+      minecraft: "26.3",
+      loader: "Fabric",
+      fabric: "0.19.5",
+      fabricLoader: "0.19.5",
+      description: "Paket modpack Survival lengkap berpadu optimasi FPS boost terbaru untuk Minecraft 26.3 Fabric Loader 0.19.5.",
+      badges: ["FPS BOOST"],
+      note: "Versi ZIP memiliki file mod Survival terpisah. Pasang file mod Survival tersebut hanya jika dibutuhkan. Jangan memasangnya jika tidak dibutuhkan.",
+      noteType: "warning",
+      isNew: true,
+      isRecommended: false,
+      theme: "strip-green",
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://www.mediafire.com/file/5y5pvjgf15ghqh5/Modpack_26.3_Gyzenn.mrpack/file",
+          type: "mediafire"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://www.mediafire.com/file/34t9fn7oa0tn7nm/Modpack_26.3_Gyzenn.zip/file",
+          type: "mediafire"
+        }
+      ]
+    },
+    {
       id: "fpsboost-v7",
       name: "Modpack FpsBoost V7",
       version: "V7",
@@ -539,8 +600,9 @@ document.addEventListener('DOMContentLoaded', () => {
       description: "FpsBoost V7 is a performance-focused Fabric modpack for Minecraft 1.21.1, designed to improve FPS and provide a smoother gameplay experience.",
       badges: [],
       note: null,
-      isNew: true,
+      isNew: false,
       isRecommended: true,
+      theme: "strip-v7-latest",
       mrpackUrl: "https://drive.google.com/file/d/1i7sWR6Dsy1BFLpPZspuUpe12DGm4IQwz/view?usp=sharing",
       zipUrl: "https://drive.google.com/file/d/1wn9KM-NFKQTvoBnGar3Q4s_N-ymRWFj/view?usp=sharing",
       downloadUrl: "https://drive.google.com/file/d/1i7sWR6Dsy1BFLpPZspuUpe12DGm4IQwz/view?usp=sharing"
@@ -658,14 +720,41 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="modpack-editorial-desc">${modpack.description}</p>
       ` : '';
 
-      const noteHtml = modpack.note ? `
-        <div class="derivative-tip-box" style="margin-top: 0.5rem; font-size: 0.88rem;">
-          <i class="fa-solid fa-circle-info"></i>
-          <span>${modpack.note}</span>
-        </div>` : '';
+      let noteHtml = '';
+      if (modpack.note) {
+        const isWarning = modpack.noteType === 'warning';
+        const noteIcon = isWarning ? 'fa-triangle-exclamation' : 'fa-circle-info';
+        const noteTitle = isWarning ? 'CATATAN PENTING' : 'INFO TAMBAHAN';
+        const noteClass = isWarning ? 'modpack-note-callout note-warning' : 'modpack-note-callout';
+        noteHtml = `
+          <div class="${noteClass}">
+            <div class="modpack-note-header">
+              <i class="fa-solid ${noteIcon}"></i>
+              <span>${noteTitle}</span>
+            </div>
+            <p class="modpack-note-text">${modpack.note}</p>
+          </div>
+        `;
+      }
 
       let downloadActionHtml = '';
-      if (modpack.mrpackUrl && modpack.zipUrl) {
+      if (Array.isArray(modpack.downloads) && modpack.downloads.length > 0) {
+        const isStack = modpack.downloads.length >= 3;
+        downloadActionHtml = `
+          <div class="modpack-download-group ${isStack ? 'modpack-download-stack' : ''}">
+            ${modpack.downloads.map(dl => {
+              const isMediafire = dl.type === 'mediafire';
+              const iconClass = isMediafire ? 'fa-solid fa-cloud-arrow-down' : 'fa-brands fa-google-drive';
+              const btnClass = isMediafire ? 'btn-mediafire-subtle' : 'btn-gdrive-subtle';
+              return `
+                <a href="${dl.url}" target="_blank" rel="noopener noreferrer" class="btn ${btnClass} btn-download-action" aria-label="${dl.label} ${modpack.name}">
+                  <i class="${iconClass}"></i> ${dl.label}
+                </a>
+              `;
+            }).join('')}
+          </div>
+        `;
+      } else if (modpack.mrpackUrl && modpack.zipUrl) {
         downloadActionHtml = `
           <div class="modpack-download-group">
             <a href="${modpack.mrpackUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-subtle btn-download-dual" aria-label="Download ${modpack.name} MRPACK">
@@ -684,11 +773,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      let stripTheme = 'strip-orange';
-      if (modpack.id === 'fpsboost-v7') {
-        stripTheme = 'strip-v7-latest';
-      } else if (index % 2 === 0) {
-        stripTheme = 'strip-yellow';
+      let stripTheme = modpack.theme || 'strip-orange';
+      if (!modpack.theme) {
+        if (modpack.id === 'fpsboost-v7') {
+          stripTheme = 'strip-v7-latest';
+        } else if (index % 2 === 0) {
+          stripTheme = 'strip-yellow';
+        }
       }
 
       const versionStampClass = (modpack.id === 'fpsboost-v7') ? 'version-stamp version-stamp-v7' : 'version-stamp';
@@ -716,21 +807,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = cardsHtml;
 
-    // Observe V7 for New Release Particle Burst
-    const v7Card = document.getElementById('fpsboost-v7');
-    if (v7Card && 'IntersectionObserver' in window) {
-      const v7Observer = new IntersectionObserver((entries) => {
+    // Observe all new release cards for particle burst
+    const newCards = document.querySelectorAll('.section-gyzenn-modpacks .tag-new-pulse');
+    if (newCards.length && 'IntersectionObserver' in window) {
+      const newObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const badgeNew = v7Card.querySelector('.badge-new-v7');
-            if (badgeNew) {
-              spawnNewReleaseParticles(badgeNew);
-            }
-            v7Observer.unobserve(v7Card);
+            spawnNewReleaseParticles(entry.target);
+            newObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.25 });
-      v7Observer.observe(v7Card);
+      newCards.forEach((badge) => newObserver.observe(badge));
     }
 
     // GSAP ScrollTrigger Entrance Animation for Strips
