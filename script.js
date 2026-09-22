@@ -499,6 +499,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const gyzennModpacks = [
     {
+      id: "cobra-x-boom-remake",
+      name: "Cobra x Boom Remake",
+      version: "1.21.11",
+      category: "SURVIVAL",
+      minecraft: "1.21.11",
+      loader: "Fabric",
+      fabric: "0.19.5",
+      fabricLoader: "0.19.5",
+      description: "Cobra x Boom Remake adalah modpack Minecraft 1.21.11 berbasis Fabric yang menghadirkan kombinasi gameplay survival dengan berbagai mod tambahan untuk meningkatkan pengalaman bermain, eksplorasi, utility, dan kenyamanan gameplay.",
+      badges: ["COBRA"],
+      note: null,
+      noteType: "info",
+      isNew: true,
+      isRecommended: false,
+      theme: "strip-orange",
+      image: "cobra-x-boom-remake.jpg",
+      imageAlt: "Cobra x Boom Remake Minecraft Modpack",
+      extraModsNote: "Beberapa mod tambahan dapat dihapus jika tidak diperlukan atau tidak sesuai dengan preferensi gameplay.",
+      extraMods: [
+        "Almanac",
+        "Balm",
+        "Better Advancements",
+        "C2ME",
+        "Chat Animation",
+        "Cherished Worlds",
+        "Click Mobs",
+        "Collective",
+        "Easy Elytra Takeoff",
+        "EnchDesc",
+        "Fast Chest",
+        "Fast Trading",
+        "Freecam",
+        "Gamma Utils",
+        "Infinite Trading",
+        "Let Me Despawn",
+        "LibJF",
+        "Litematica Printer",
+        "Mining and Placing Animations",
+        "Nether Portal Fix",
+        "No Resource Pack Warnings",
+        "Owo Lib",
+        "Prickle",
+        "Respackopts",
+        "Scalable Lux",
+        "Shoulder Surfing",
+        "ShulkerBox Tooltip",
+        "Smelter The Hedgehog",
+        "Sound Physics Remastered",
+        "SquatGrow",
+        "Stack Plus",
+        "StackRefill",
+        "Touch Controller",
+        "TreeHarvester"
+      ],
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://www.mediafire.com/file/2gebh0zhznbfak0/Caboom_x_Cobra_Remake.mrpack/file",
+          type: "mediafire"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://www.mediafire.com/file/9yydc93x40avtiz/Caboom_x_Cobra_Remake.zip/file",
+          type: "mediafire"
+        }
+      ]
+    },
+    {
+      id: "quick-cpvp-26-3",
+      name: "Quick CPVP 26.3",
+      version: "26.3",
+      category: "CPVP",
+      minecraft: "26.3",
+      loader: "Fabric",
+      fabric: "0.19.5",
+      fabricLoader: "0.19.5",
+      description: "Modpack ringan untuk Minecraft 26.3 yang difokuskan untuk gameplay PvP/CPvP dengan optimasi performa agar pengalaman bermain terasa lebih ringan dan responsif.",
+      badges: ["FPS BOOST"],
+      note: "Pakai ini kalau kalian suka main PvP only. Fokus ke performa dan FPS.",
+      noteType: "info",
+      isNew: true,
+      isRecommended: false,
+      theme: "strip-blue",
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://www.mediafire.com/file/e723973m3etjub1/Quick+CPVP+26.3.mrpack/file",
+          type: "mediafire"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://www.mediafire.com/file/4mrnm8wapiqrowx/Modpack+Quick+CPVP+26.3.zip/file",
+          type: "mediafire"
+        }
+      ]
+    },
+    {
       id: "sodiumpack-v2",
       name: "Sodiumpack V2",
       version: "V2",
@@ -705,6 +802,8 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeBannerHtml += `<span class="tag-badge tag-shader"><i class="fa-solid fa-bolt"></i> FPS BOOST</span> `;
       } else if (modpack.category === 'SURVIVAL') {
         badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
+      } else if (modpack.category === 'CPVP' || modpack.category === 'PVP') {
+        badgeBannerHtml += `<span class="tag-badge tag-shader cpvp-badge"><i class="fa-solid fa-crosshairs"></i> ${modpack.category}</span> `;
       }
 
       badgeBannerHtml += `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span> `;
@@ -712,13 +811,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (Array.isArray(modpack.badges)) {
         modpack.badges.forEach(b => {
-          badgeBannerHtml += `<span class="tag-badge tag-release">${b}</span> `;
+          if (b !== modpack.category) {
+            badgeBannerHtml += `<span class="tag-badge tag-release">${b}</span> `;
+          }
         });
       }
 
       const descHtml = modpack.description ? `
         <p class="modpack-editorial-desc">${modpack.description}</p>
       ` : '';
+
+      // Expandable Extra Mods List (Collapsible Accordion/Details)
+      let extraModsHtml = '';
+      if (Array.isArray(modpack.extraMods) && modpack.extraMods.length > 0) {
+        const modCount = modpack.extraMods.length;
+        const modNote = modpack.extraModsNote || 'Beberapa mod tambahan dapat dihapus jika tidak diperlukan atau tidak sesuai dengan preferensi gameplay.';
+        extraModsHtml = `
+          <details class="modpack-extra-mods-details">
+            <summary class="modpack-extra-mods-summary">
+              <span class="summary-title"><i class="fa-solid fa-boxes-stacked"></i> + MOD TAMBAHAN (${modCount} MOD)</span>
+              <span class="summary-hint">BUKA DAFTAR <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
+            </summary>
+            <div class="extra-mods-content">
+              <p class="extra-mods-notice">
+                <i class="fa-solid fa-circle-info"></i> ${modNote}
+              </p>
+              <div class="extra-mods-chips">
+                ${modpack.extraMods.map(m => `<span class="extra-mod-tag">${m}</span>`).join('')}
+              </div>
+            </div>
+          </details>
+        `;
+      }
 
       let noteHtml = '';
       if (modpack.note) {
@@ -785,20 +909,42 @@ document.addEventListener('DOMContentLoaded', () => {
       const versionStampClass = (modpack.id === 'fpsboost-v7') ? 'version-stamp version-stamp-v7' : 'version-stamp';
       const versionStampText = modpack.version ? `[${modpack.version}] MC ${modpack.minecraft}` : `MC ${modpack.minecraft}`;
 
+      // Cover image support with lazy loading & fallback
+      let coverImageHtml = '';
+      if (modpack.image) {
+        const altText = modpack.imageAlt || `${modpack.name} Minecraft Modpack`;
+        coverImageHtml = `
+          <div class="modpack-cover-frame">
+            <img src="${modpack.image}" 
+                 alt="${altText}" 
+                 class="modpack-cover-img" 
+                 loading="lazy" 
+                 onerror="this.onerror=null; this.closest('.modpack-cover-frame').classList.add('img-load-failed');">
+            <div class="modpack-cover-badge-tag">
+              <span class="cover-tag"><i class="fa-solid fa-gamepad"></i> ${modpack.name}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      const hasCoverClass = modpack.image ? 'has-cover-image' : '';
+
       return `
-        <div class="modpack-editorial-strip ${stripTheme}" id="${modpack.id}" data-index="${index}" data-category="${modpack.category}">
-          <div>
+        <div class="modpack-editorial-strip ${stripTheme} ${hasCoverClass}" id="${modpack.id}" data-index="${index}" data-category="${modpack.category}">
+          ${coverImageHtml}
+          <div class="strip-header-col">
             <span class="${versionStampClass}">${versionStampText}</span>
             <div style="margin-top: 0.4rem;">
               ${badgeBannerHtml}
             </div>
           </div>
-          <div>
+          <div class="strip-body-col">
             <h3>${modpack.name}</h3>
             ${descHtml}
+            ${extraModsHtml}
             ${noteHtml}
           </div>
-          <div>
+          <div class="strip-action-col">
             ${downloadActionHtml}
           </div>
         </div>

@@ -1260,6 +1260,244 @@ img.img-failed { display: none !important; }
   font-weight: 600;
 }
 
+/* ==========================================================================
+   Modpack Cover Image Card & Expandable Extra Mods (Cobra x Boom Remake & Dynamic)
+   ========================================================================== */
+.modpack-editorial-strip.has-cover-image {
+  grid-template-columns: 0.8fr 1.4fr 1fr;
+  grid-template-areas:
+    "cover cover cover"
+    "header body action";
+  padding: 0;
+  overflow: hidden;
+  align-items: start;
+}
+
+.modpack-editorial-strip.has-cover-image .modpack-cover-frame {
+  grid-area: cover;
+  width: 100%;
+  position: relative;
+  background-color: #0b111e;
+  border-bottom: var(--border-extra-thick);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modpack-editorial-strip.has-cover-image .modpack-cover-img {
+  width: 100%;
+  height: 280px;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.modpack-editorial-strip.has-cover-image:hover .modpack-cover-img {
+  transform: scale(1.02);
+}
+
+.modpack-cover-frame.img-load-failed {
+  display: none !important;
+}
+
+.modpack-cover-badge-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+}
+
+.modpack-cover-badge-tag .cover-tag {
+  font-family: var(--font-pixel);
+  font-size: 1.05rem;
+  font-weight: bold;
+  background-color: var(--color-yellow);
+  color: var(--ink-black);
+  border: 2px solid var(--ink-black);
+  box-shadow: 3px 3px 0px var(--ink-black);
+  padding: 0.25rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+}
+
+.modpack-editorial-strip.has-cover-image .strip-header-col {
+  grid-area: header;
+  padding: 1.35rem 0.5rem 1.5rem 1.5rem;
+}
+
+.modpack-editorial-strip.has-cover-image .strip-body-col {
+  grid-area: body;
+  padding: 1.35rem 0.75rem 1.5rem 0.5rem;
+}
+
+.modpack-editorial-strip.has-cover-image .strip-action-col {
+  grid-area: action;
+  padding: 1.35rem 1.5rem 1.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* CPVP Special Badge */
+.cpvp-badge {
+  background-color: var(--color-blue-bright) !important;
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   Expandable Extra Mods (Accordion/Details in 90s Memphis Style)
+   -------------------------------------------------------------------------- */
+.modpack-extra-mods-details {
+  margin-top: 0.85rem;
+  border: 2px solid var(--ink-black);
+  border-radius: var(--radius-sharp);
+  background-color: #ffffff;
+  box-shadow: 3px 3px 0px var(--ink-black);
+  overflow: hidden;
+  transition: box-shadow 0.15s ease;
+}
+
+.modpack-extra-mods-details:hover {
+  box-shadow: 4px 4px 0px var(--ink-black);
+}
+
+.modpack-extra-mods-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  background-color: #FEF08A;
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--ink-black);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  border-bottom: 2px solid transparent;
+  transition: background-color 0.15s ease;
+}
+
+.modpack-extra-mods-summary::-webkit-details-marker {
+  display: none;
+}
+
+.modpack-extra-mods-summary .summary-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  letter-spacing: 0.3px;
+}
+
+.modpack-extra-mods-summary .summary-title i {
+  color: var(--color-orange);
+  font-size: 0.9rem;
+}
+
+.modpack-extra-mods-summary .summary-hint {
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--ink-black);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #ffffff;
+  border: 1.5px solid var(--ink-black);
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-sharp);
+  box-shadow: 2px 2px 0px var(--ink-black);
+}
+
+.modpack-extra-mods-summary .summary-arrow {
+  transition: transform 0.2s ease;
+}
+
+.modpack-extra-mods-details[open] .modpack-extra-mods-summary {
+  background-color: var(--color-yellow);
+  border-bottom: 2px solid var(--ink-black);
+}
+
+.modpack-extra-mods-details[open] .summary-arrow {
+  transform: rotate(180deg);
+}
+
+.extra-mods-content {
+  padding: 0.85rem 0.9rem;
+  background-color: #FAF5FF;
+  max-height: 190px;
+  overflow-y: auto;
+}
+
+/* Custom Retro Scrollbar for Extra Mods */
+.extra-mods-content::-webkit-scrollbar {
+  width: 7px;
+}
+.extra-mods-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-left: 1px solid var(--ink-black);
+}
+.extra-mods-content::-webkit-scrollbar-thumb {
+  background: var(--color-pink);
+  border: 1px solid var(--ink-black);
+}
+.extra-mods-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange);
+}
+
+.extra-mods-notice {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #9A3412;
+  background-color: #FFEDD5;
+  border-left: 4px solid var(--color-orange);
+  padding: 0.45rem 0.65rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius-sharp);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.extra-mods-notice i {
+  color: var(--color-orange);
+  margin-top: 0.15rem;
+  font-size: 0.95rem;
+}
+
+.extra-mods-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.extra-mod-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background-color: #ffffff;
+  color: var(--ink-black);
+  border: 1.5px solid var(--ink-black);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sharp);
+  box-shadow: 2px 2px 0px var(--ink-black);
+  white-space: nowrap;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.extra-mod-tag:hover {
+  background-color: var(--color-yellow);
+  transform: translateY(-1px);
+}
+
 .v7-particle {
   position: fixed;
   pointer-events: none;
@@ -2034,6 +2272,33 @@ img.img-failed { display: none !important; }
   .modpack-editorial-strip {
     grid-template-columns: 1fr;
     gap: 0.85rem;
+  }
+
+  .modpack-editorial-strip.has-cover-image {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "cover"
+      "header"
+      "body"
+      "action";
+    gap: 0.5rem;
+  }
+
+  .modpack-editorial-strip.has-cover-image .modpack-cover-img {
+    height: 220px;
+    max-height: 220px;
+  }
+
+  .modpack-editorial-strip.has-cover-image .strip-header-col {
+    padding: 0.85rem 1rem 0 1rem;
+  }
+
+  .modpack-editorial-strip.has-cover-image .strip-body-col {
+    padding: 0.3rem 1rem 0.2rem 1rem;
+  }
+
+  .modpack-editorial-strip.has-cover-image .strip-action-col {
+    padding: 0.4rem 1rem 1.15rem 1rem;
   }
 
   /* Preserve 3 lightweight Memphis elements on mobile/tablet */
