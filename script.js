@@ -1,8 +1,9 @@
 /**
- * Gyzenn Community - 90s Retro Interactive Engine (Final Pass)
+ * Gyzenn Community - 90s Retro Interactive Engine (Homepage)
  * Centralized retro particle system, hero motion timeline & polaroid cursor tilt,
- * scrollspy navigation fix (#modpacks & #modpack-gyzenn), Zalith progress bar,
- * copy IP pixel particle burst, dynamic modpack renderer, and gaming mode toggle.
+ * scrollspy navigation, Zalith progress bar, Casda IP copy burst,
+ * dynamic modpack renderer with Survival V1 97 mods explorer,
+ * global dark/light theme toggle, and gaming mode toggle.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -396,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 7. Scrollspy Fix (#modpacks & #modpack-gyzenn Grouping)
+  // 7. Scrollspy Navigation Update
   // --------------------------------------------------------------------------
   const sections = document.querySelectorAll('section[id]');
   const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
@@ -498,6 +499,139 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const gyzennModpacks = [
+    {
+      id: "survival-v1",
+      name: "GYZENN SURVIVAL V1",
+      displayTitle: "GYZENN SURVIVAL V1",
+      version: "V1",
+      category: "SURVIVAL",
+      minecraft: "1.21.11",
+      loader: "Fabric",
+      fabric: "0.19.5",
+      fabricLoader: "0.19.5",
+      modCount: "97 Mods",
+      status: "RELEASED",
+      description: "Modpack survival Minecraft 1.21.11 berbasis Fabric dengan kombinasi performance, visual enhancement, quality of life, utility, exploration, building, dan survival gameplay.",
+      badges: ["NEW RELEASE", "SURVIVAL", "97 MODS"],
+      note: null,
+      noteType: "info",
+      isNew: true,
+      isRecommended: true,
+      theme: "strip-yellow",
+      image: "survival-v1.png",
+      imageAlt: "Gyzenn Survival V1 Minecraft Modpack Cover",
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://sfile.co/kz2S93BomE1",
+          type: "mrpack"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://www.mediafire.com/file/3top57qjgz2jhsb/Modpack+1.21.11+SURVIVAL+V1.zip/file",
+          type: "mediafire"
+        }
+      ],
+      mods: [
+        "Accurate Block Placement Reborn",
+        "Amber",
+        "Ambient Sounds",
+        "AppleSkin",
+        "Bridging Mod",
+        "C2ME",
+        "Carry On",
+        "Chat Animation",
+        "Chunky",
+        "Cloth Config",
+        "Clumps",
+        "Collective",
+        "Common Networking",
+        "Continuity",
+        "Controlling",
+        "CreativeCore",
+        "Day Counter",
+        "Durability Viewer",
+        "Dynamic FPS",
+        "Elytra Trails",
+        "Emotecraft",
+        "Entity Culling",
+        "Entity Model Features",
+        "Entity Texture Features",
+        "Exordium",
+        "Explosive Enhancement",
+        "Fabric API",
+        "Fabric Language Kotlin",
+        "FallingTree",
+        "FastQuit",
+        "FerriteCore",
+        "Forge Config API Port",
+        "Freecam",
+        "Fzzy Config",
+        "Get It Together, Drops!",
+        "HMI",
+        "IdleTweaks",
+        "Infinite Trading",
+        "Inventory Profiles Next",
+        "Jade",
+        "JEI",
+        "Jump Over Fences",
+        "Krypton",
+        "Ksyxis",
+        "lib-5555ff",
+        "libIPN",
+        "libJF",
+        "LiteMiner",
+        "Lithium",
+        "Loot Beams Refork",
+        "MaLiLib",
+        "Mezz Config",
+        "MidnightLib",
+        "Mine Frame Gen",
+        "Mining & Placing Animations",
+        "Mob Heads",
+        "ModernFix",
+        "Mod Menu",
+        "More Culling",
+        "Mouse Tweaks",
+        "MRU",
+        "Night Vision Toggle",
+        "Nirvana Lib",
+        "Noisium",
+        "Nvidium",
+        "OK Zoomer",
+        "Placeholder API",
+        "Player Animation Library",
+        "Presence Footsteps",
+        "Puzzle",
+        "Reanimated",
+        "Reese's Sodium Options",
+        "RenderScale",
+        "Resourcify",
+        "Respackopts",
+        "ScalableLux",
+        "Searchables",
+        "Shoulder Surfing",
+        "3D Skin Layers",
+        "Smooth GUI",
+        "Sodium Extra",
+        "Sodium",
+        "Sound Physics Remastered",
+        "Sounds",
+        "Subtle Effects",
+        "ThreadTweak",
+        "Tool Trims",
+        "Trade Cycling",
+        "Veinminer",
+        "View Model",
+        "Visible Traders",
+        "VMP",
+        "Simple Voice Chat",
+        "WorldEdit",
+        "Xaero's Minimap",
+        "Xaero's World Map",
+        "Yet Another Config Lib (YACL)"
+      ]
+    },
     {
       id: "cobra-x-boom-remake",
       name: "Cobra x Boom Remake",
@@ -765,8 +899,8 @@ document.addEventListener('DOMContentLoaded', () => {
       downloadUrl: "https://drive.google.com/file/d/1Bt49_fwH8VNpVIM2bNAQ9-yl1GBQzwAU/view?usp=sharing"
     },
     {
-      id: "survival-v1",
-      name: "Modpack Survival V1",
+      id: "survival-v1-legacy",
+      name: "Modpack Survival V1 (Legacy 26.2)",
       version: "V1",
       category: "SURVIVAL",
       minecraft: "26.2",
@@ -844,6 +978,59 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      // Collapsible Complete Mod List with Search (e.g. for Survival V1 with 97 mods)
+      let modsListHtml = '';
+      if (Array.isArray(modpack.mods) && modpack.mods.length > 0) {
+        const totalMods = modpack.mods.length;
+        modsListHtml = `
+          <div class="modpack-collapsible-wrapper" data-modpack-id="${modpack.id}">
+            <div class="collapsible-header-card" role="button" tabindex="0" aria-expanded="false" aria-controls="modlist-body-${modpack.id}">
+              <div class="collapsible-title-col">
+                <div class="collapsible-badge-wrap">
+                  <span class="summary-title"><i class="fa-solid fa-boxes-stacked"></i> MOD LIST</span>
+                  <span class="tag-badge tag-release">${totalMods} MODS</span>
+                </div>
+                <p class="collapsible-subtext">Complete list of included mods</p>
+              </div>
+              <div class="collapsible-action-col">
+                <button type="button" class="btn-toggle-modlist" aria-expanded="false" aria-controls="modlist-body-${modpack.id}" aria-label="Toggle Mod List ${modpack.name}">
+                  <span class="toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                  <span class="toggle-text">VIEW MOD LIST</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="collapsible-body-card" id="modlist-body-${modpack.id}" style="display: none;" aria-hidden="true">
+              <div class="modlist-search-toolbar">
+                <div class="modlist-search-box">
+                  <i class="fa-solid fa-magnifying-glass mod-search-icon" aria-hidden="true"></i>
+                  <input type="text" class="mod-inline-search" placeholder="Search mods (e.g. Sodium, Xaero)..." aria-label="Search mods in ${modpack.name}">
+                  <button type="button" class="btn-clear-inline-search" style="display:none;" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modlist-counter-status">
+                  Showing: <strong class="counter-num">${totalMods}</strong> / ${totalMods} mods
+                </div>
+              </div>
+
+              <div class="modlist-items-grid">
+                ${modpack.mods.map((modName, idx) => {
+                  const numStr = String(idx + 1).padStart(2, '0');
+                  return `
+                    <div class="modlist-item" data-num="${idx + 1}" data-num-str="${numStr}" data-name="${modName.toLowerCase()}">
+                      <span class="modlist-num">${numStr}</span>
+                      <span class="modlist-name">${modName}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+              <div class="modlist-no-results" style="display: none;">
+                <i class="fa-solid fa-circle-question"></i> No mods found.
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
       let noteHtml = '';
       if (modpack.note) {
         const isWarning = modpack.noteType === 'warning';
@@ -868,8 +1055,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="modpack-download-group ${isStack ? 'modpack-download-stack' : ''}">
             ${modpack.downloads.map(dl => {
               const isMediafire = dl.type === 'mediafire';
-              const iconClass = isMediafire ? 'fa-solid fa-cloud-arrow-down' : 'fa-brands fa-google-drive';
-              const btnClass = isMediafire ? 'btn-mediafire-subtle' : 'btn-gdrive-subtle';
+              const isMrpack = dl.type === 'mrpack';
+              const iconClass = isMediafire ? 'fa-solid fa-cloud-arrow-down' : (isMrpack ? 'fa-solid fa-download' : 'fa-brands fa-google-drive');
+              const btnClass = isMediafire ? 'btn-mediafire-subtle' : (isMrpack ? 'btn-primary' : 'btn-gdrive-subtle');
               return `
                 <a href="${dl.url}" target="_blank" rel="noopener noreferrer" class="btn ${btnClass} btn-download-action" aria-label="${dl.label} ${modpack.name}">
                   <i class="${iconClass}"></i> ${dl.label}
@@ -942,6 +1130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>${modpack.name}</h3>
             ${descHtml}
             ${extraModsHtml}
+            ${modsListHtml}
             ${noteHtml}
           </div>
           <div class="strip-action-col">
@@ -952,6 +1141,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
 
     container.innerHTML = cardsHtml;
+
+    // Interactive Handlers for Collapsible Mod Lists with Real-time Search
+    document.querySelectorAll('.modpack-collapsible-wrapper').forEach(wrapper => {
+      const toggleBtn = wrapper.querySelector('.btn-toggle-modlist');
+      const headerCard = wrapper.querySelector('.collapsible-header-card');
+      const bodyCard = wrapper.querySelector('.collapsible-body-card');
+      const searchInput = wrapper.querySelector('.mod-inline-search');
+      const clearBtn = wrapper.querySelector('.btn-clear-inline-search');
+      const counterEl = wrapper.querySelector('.counter-num');
+      const items = wrapper.querySelectorAll('.modlist-item');
+      const noResults = wrapper.querySelector('.modlist-no-results');
+      const toggleText = wrapper.querySelector('.toggle-text');
+      const toggleIcon = wrapper.querySelector('.toggle-icon');
+
+      const totalCount = items.length;
+
+      function resetSearch() {
+        if (searchInput) searchInput.value = '';
+        if (clearBtn) clearBtn.style.display = 'none';
+        items.forEach(item => { item.style.display = 'flex'; });
+        if (counterEl) counterEl.textContent = totalCount;
+        if (noResults) noResults.style.display = 'none';
+      }
+
+      function toggleOpen(forceState) {
+        const isCurrentlyOpen = bodyCard && bodyCard.style.display !== 'none';
+        const willOpen = typeof forceState === 'boolean' ? forceState : !isCurrentlyOpen;
+
+        if (willOpen) {
+          if (bodyCard) {
+            bodyCard.style.display = 'block';
+            bodyCard.setAttribute('aria-hidden', 'false');
+          }
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+          if (headerCard) headerCard.setAttribute('aria-expanded', 'true');
+          if (toggleText) toggleText.textContent = 'HIDE MOD LIST';
+          if (toggleIcon) toggleIcon.innerHTML = '<i class="fa-solid fa-minus"></i>';
+        } else {
+          if (bodyCard) {
+            bodyCard.style.display = 'none';
+            bodyCard.setAttribute('aria-hidden', 'true');
+          }
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+          if (headerCard) headerCard.setAttribute('aria-expanded', 'false');
+          if (toggleText) toggleText.textContent = 'VIEW MOD LIST';
+          if (toggleIcon) toggleIcon.innerHTML = '<i class="fa-solid fa-plus"></i>';
+          resetSearch();
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleOpen();
+        });
+      }
+
+      if (headerCard) {
+        headerCard.addEventListener('click', () => {
+          toggleOpen();
+        });
+        headerCard.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleOpen();
+          }
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const q = searchInput.value.trim().toLowerCase();
+          if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+
+          let visible = 0;
+          items.forEach(item => {
+            const name = item.getAttribute('data-name') || '';
+            const num = item.getAttribute('data-num-str') || '';
+            if (!q || name.includes(q) || num.includes(q)) {
+              item.style.display = 'flex';
+              visible++;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          if (counterEl) counterEl.textContent = visible;
+          if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          resetSearch();
+          searchInput.focus();
+        });
+      }
+    });
 
     // Observe all new release cards for particle burst
     const newCards = document.querySelectorAll('.section-gyzenn-modpacks .tag-new-pulse');
@@ -1069,5 +1356,61 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('#support .support-sticker-physical', { duration: 0.45, scale: 0, rotation: -18, opacity: 0, ease: 'back.out(2.2)' }, '-=0.2')
       .from('#support .campaign-shape', { duration: 0.5, scale: 0, opacity: 0, stagger: 0.1, ease: 'power2.out' }, '-=0.3');
   }
+
+  // --------------------------------------------------------------------------
+  // 12. Global Dark Mode / Light Mode Theme Controller
+  // --------------------------------------------------------------------------
+  const themeToggle = document.getElementById('themeToggle');
+
+  function updateThemeUI(theme) {
+    if (!themeToggle) return;
+    const isDark = theme === 'dark';
+    themeToggle.setAttribute('aria-pressed', isDark);
+    themeToggle.setAttribute('title', isDark ? 'Beralih ke Light Mode' : 'Beralih ke Dark Mode');
+    themeToggle.setAttribute('aria-label', isDark ? 'Beralih ke Light Mode' : 'Beralih ke Dark Mode');
+
+    const iconEl = themeToggle.querySelector('.theme-icon');
+    const textEl = themeToggle.querySelector('.theme-text');
+
+    if (iconEl && textEl) {
+      if (isDark) {
+        iconEl.className = 'fa-solid fa-sun theme-icon';
+        textEl.textContent = 'LIGHT';
+      } else {
+        iconEl.className = 'fa-solid fa-moon theme-icon';
+        textEl.textContent = 'DARK';
+      }
+    }
+  }
+
+  function applyTheme(theme, save = true) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (save) {
+      try {
+        localStorage.setItem('gyzenn-theme', theme);
+      } catch (e) {}
+    }
+    updateThemeUI(theme);
+  }
+
+  const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  updateThemeUI(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme, true);
+    });
+  }
+
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('gyzenn-theme')) {
+        applyTheme(e.matches ? 'dark' : 'light', false);
+      }
+    });
+  }
 });
+
 

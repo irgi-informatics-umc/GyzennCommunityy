@@ -40,11 +40,36 @@
   --shadow-hover: 6px 6px 0px #121212;
   --shadow-active: 1px 1px 0px #121212;
 
+  --border-color: #121212;
+  --bg-page-dots: rgba(18, 18, 18, 0.08);
+
   /* Typography */
   --font-display: 'Dela Gothic One', 'Impact', sans-serif;
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-pixel: 'VT323', monospace;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0F0F0F;
+  --bg-secondary: #141414;
+  --bg-card: #181818;
+  
+  --ink-black: #F5F5F5;
+  --text-main: #F5F5F5;
+  --text-muted: #A3A3A3;
+  --text-inverted: #121212;
+  --border-color: #F5F5F5;
+  --bg-page-dots: rgba(245, 245, 245, 0.08);
+
+  --border-thick: 3px solid #383842;
+  --border-extra-thick: 4px solid #383842;
+
+  --shadow-sm: 3px 3px 0px #000000;
+  --shadow-md: 4px 4px 0px #000000;
+  --shadow-lg: 6px 6px 0px #000000;
+  --shadow-hover: 6px 6px 0px #000000;
+  --shadow-active: 1px 1px 0px #000000;
 }
 
 /* --------------------------------------------------------------------------
@@ -63,7 +88,7 @@ html {
 
 body {
   background-color: var(--bg-primary);
-  background-image: radial-gradient(var(--ink-black) 1px, transparent 1px);
+  background-image: radial-gradient(var(--bg-page-dots, #121212) 1px, transparent 1px);
   background-size: 24px 24px;
   color: var(--text-main);
   font-family: var(--font-body);
@@ -1735,6 +1760,19 @@ img.img-failed { display: none !important; }
 
 .server-frame-wrapper:hover { transform: scale(1.02) rotate(-1deg); }
 
+/* Subtle rim light — tipis, bukan portal dimensi lain */
+.server-frame-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  pointer-events: none;
+  border-radius: 2px;
+  box-shadow:
+    0 0 25px rgba(255, 87, 34, 0.28),
+    0 0 55px rgba(255, 255, 255, 0.10);
+  z-index: 0;
+}
+
 .server-img {
   width: min(100%, 100%);
   max-width: 100%;
@@ -2451,3 +2489,723 @@ img.img-failed { display: none !important; }
   #retroParticleCanvas { display: none; }
   .ticker-content { animation: none; }
 }
+
+/* ==========================================================================
+   19. Global Header Theme Toggle Button
+   ========================================================================== */
+.btn-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.btn-theme-toggle:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-theme-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-active);
+}
+
+.btn-theme-toggle:focus-visible {
+  outline: 3px dashed var(--color-pink);
+  outline-offset: 3px;
+}
+
+.btn-theme-toggle .theme-icon {
+  color: var(--color-yellow);
+  font-size: 0.95rem;
+  transition: transform 0.25s ease;
+}
+
+/* ==========================================================================
+   20. Collapsible Modpack Mod List & Search Component
+   ========================================================================== */
+.modpack-collapsible-wrapper {
+  margin-top: 1rem;
+  border: 2px solid #121212;
+  box-shadow: 3px 3px 0px #121212;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-sharp);
+  overflow: hidden;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.collapsible-header-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-secondary);
+  gap: 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.collapsible-header-card:hover {
+  background-color: #EDE7DC;
+}
+
+.collapsible-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.collapsible-subtext {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.btn-toggle-modlist {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  background-color: var(--color-yellow);
+  color: #121212;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  white-space: nowrap;
+}
+
+.btn-toggle-modlist:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #121212;
+}
+
+.btn-toggle-modlist:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #121212;
+}
+
+.collapsible-body-card {
+  padding: 1rem;
+  border-top: 2px dashed #121212;
+  background-color: var(--bg-card);
+  animation: slideDownFade 0.22s ease-out;
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modlist-search-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.modlist-search-box {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 440px;
+}
+
+.mod-inline-search {
+  width: 100%;
+  padding: 0.5rem 2.2rem 0.5rem 2.2rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  border-radius: var(--radius-sharp);
+  background-color: #FFFFFF;
+  color: #121212;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.mod-inline-search:focus {
+  outline: none;
+  border-color: var(--color-pink);
+  box-shadow: 3px 3px 0px #121212;
+}
+
+.modlist-search-box .mod-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.btn-clear-inline-search {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.btn-clear-inline-search:hover {
+  color: var(--color-pink);
+}
+
+.modlist-counter-status {
+  font-family: var(--font-pixel);
+  font-size: 1.15rem;
+  font-weight: bold;
+  background-color: var(--bg-secondary);
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sharp);
+  white-space: nowrap;
+}
+
+.modlist-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.45rem;
+  max-height: 440px;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+}
+
+/* Custom scrollbar for mod list */
+.modlist-items-grid::-webkit-scrollbar {
+  width: 7px;
+}
+.modlist-items-grid::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+.modlist-items-grid::-webkit-scrollbar-thumb {
+  background: var(--color-yellow);
+  border: 1px solid var(--border-color);
+}
+
+.modlist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background-color: var(--bg-secondary);
+  border: 2px solid #121212;
+  box-shadow: 1px 1px 0px #121212;
+  border-radius: var(--radius-sharp);
+  transition: transform 0.1s ease, background-color 0.12s ease;
+}
+
+.modlist-item:hover {
+  transform: translate(-1px, -1px);
+  background-color: #FFF9DB;
+  box-shadow: 2px 2px 0px #121212;
+}
+
+.modlist-num {
+  font-family: var(--font-pixel);
+  font-size: 1.05rem;
+  font-weight: bold;
+  background-color: #121212;
+  color: var(--color-yellow);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.modlist-name {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.modlist-no-results {
+  text-align: center;
+  padding: 2.25rem 1rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.modlist-no-results i {
+  color: var(--color-pink);
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   21. Full Homepage Dark Mode Overrides
+   ========================================================================== */
+[data-theme="dark"] body {
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(rgba(245, 245, 245, 0.08) 1px, transparent 1px);
+  color: var(--text-main);
+}
+
+/* Header & Nav */
+[data-theme="dark"] .site-header {
+  background-color: rgba(20, 20, 24, 0.95);
+  border-bottom: 3px solid #2E2E38;
+}
+
+[data-theme="dark"] .brand-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .brand-icon-box {
+  background-color: var(--color-yellow);
+  color: #121212;
+  border-color: #F5F5F5;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  background-color: var(--color-yellow);
+  color: #121212;
+  border-color: #F5F5F5;
+}
+
+[data-theme="dark"] .btn-theme-toggle {
+  background-color: #24242C;
+  color: #F5F5F5;
+  border-color: #3E3E4C;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="dark"] .btn-header-cta {
+  background-color: var(--color-pink);
+  color: #FFFFFF;
+  border-color: #F5F5F5;
+}
+
+[data-theme="dark"] .menu-toggle span {
+  background-color: #F5F5F5;
+}
+
+/* Mobile Nav Drawer */
+[data-theme="dark"] .mobile-nav {
+  background-color: #141418;
+  border-left: 4px solid #2E2E38;
+}
+
+[data-theme="dark"] .mobile-nav-link {
+  background-color: #1E1E26;
+  color: #F5F5F5;
+  border-color: #383848;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="dark"] .mobile-nav-link:hover,
+[data-theme="dark"] .mobile-nav-link.active {
+  background-color: var(--color-yellow);
+  color: #121212;
+}
+
+/* Hero Section */
+[data-theme="dark"] .hero-title-top {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .hero-desc {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .polaroid-tape {
+  border-color: #2E2E38;
+}
+
+[data-theme="dark"] .hero-polaroid-frame {
+  background-color: #1E1E26;
+  border-color: #383848;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .polaroid-caption {
+  color: #F5F5F5;
+}
+
+/* Community Section */
+[data-theme="dark"] .community-card {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 4px 4px 0px #000000;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .community-card:hover {
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .community-card p {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .stats-banner {
+  background-color: #1E1E26;
+  border-color: #383848;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+[data-theme="dark"] .stat-label {
+  color: #A3A3A3;
+}
+
+/* Discord Section */
+[data-theme="dark"] .discord-editorial-card {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .d-title-top,
+[data-theme="dark"] .d-title-sub {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .discord-desc {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .discord-feature-item {
+  background-color: #22222E;
+  border-color: #383848;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .discord-feature-item i {
+  color: var(--color-green);
+}
+
+/* Section Modpacks & Dynamic Strips */
+[data-theme="dark"] .section-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .section-desc {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .modpack-editorial-strip {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 4px 4px 0px #000000;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .modpack-editorial-strip:hover {
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .modpack-editorial-strip.strip-yellow {
+  background-color: #201F12;
+  border-left: 8px solid var(--color-yellow);
+}
+
+[data-theme="dark"] .modpack-editorial-strip.strip-orange {
+  background-color: #251B15;
+  border-left: 8px solid var(--color-orange);
+}
+
+[data-theme="dark"] .modpack-editorial-strip.strip-blue {
+  background-color: #141D2B;
+  border-left: 8px solid var(--color-blue-bright);
+}
+
+[data-theme="dark"] .modpack-editorial-strip.strip-green {
+  background-color: #182214;
+  border-left: 8px solid var(--color-green);
+}
+
+[data-theme="dark"] .modpack-editorial-strip.strip-pink {
+  background-color: #291520;
+  border-left: 8px solid var(--color-pink);
+}
+
+[data-theme="dark"] .modpack-editorial-strip.strip-v7-latest {
+  background-color: #1C1C26;
+  border-left: 8px solid var(--color-pink);
+}
+
+[data-theme="dark"] .modpack-editorial-strip h3 {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .modpack-editorial-desc {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .version-stamp {
+  background-color: #2B2B3A;
+  color: #F5F5F5;
+  border-color: #383848;
+}
+
+[data-theme="dark"] .tag-mc-version {
+  background-color: #202738;
+  color: #93C5FD;
+  border-color: #383848;
+}
+
+[data-theme="dark"] .tag-fabric {
+  background-color: #1C2E20;
+  color: #86EFAC;
+  border-color: #383848;
+}
+
+[data-theme="dark"] .modpack-bullet-list {
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .vulkan-sub-card,
+[data-theme="dark"] .pvp-sub-card {
+  background-color: #1E1E26;
+  border-color: #383848;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .vulkan-card-title,
+[data-theme="dark"] .pvp-card-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .vulkan-card-sub,
+[data-theme="dark"] .pvp-card-sub {
+  color: #A3A3A3;
+}
+
+/* Collapsible Mod List Dark Mode */
+[data-theme="dark"] .modpack-collapsible-wrapper {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="dark"] .collapsible-header-card {
+  background-color: #20202A;
+  border-bottom-color: #383848;
+}
+
+[data-theme="dark"] .collapsible-header-card:hover {
+  background-color: #262634;
+}
+
+[data-theme="dark"] .collapsible-subtext {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .collapsible-body-card {
+  background-color: #14141A;
+  border-top-color: #383848;
+}
+
+[data-theme="dark"] .mod-inline-search {
+  background-color: #1E1E28;
+  border-color: #3E3E50;
+  box-shadow: 2px 2px 0px #000000;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .mod-inline-search:focus {
+  border-color: var(--color-pink);
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="dark"] .modlist-counter-status {
+  background-color: #242432;
+  border-color: #3E3E50;
+  box-shadow: 2px 2px 0px #000000;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .modlist-item {
+  background-color: #1E1E28;
+  border-color: #383848;
+  box-shadow: 1px 1px 0px #000000;
+}
+
+[data-theme="dark"] .modlist-item:hover {
+  background-color: #282838;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+[data-theme="dark"] .modlist-num {
+  background-color: #2C2C3C;
+  color: #FFD600;
+}
+
+[data-theme="dark"] .modlist-name {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .modlist-no-results {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .modpack-extra-mods-details {
+  background-color: #1E1E28;
+  border-color: #383848;
+}
+
+[data-theme="dark"] .modpack-extra-mods-summary {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .extra-mod-tag {
+  background-color: #14141A;
+  border-color: #383848;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .modpack-note-callout {
+  background-color: #271E15;
+  border-color: var(--color-orange);
+  color: #FED7AA;
+}
+
+/* Zalith & Casda */
+[data-theme="dark"] .zalith-window-poster {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .zalith-display-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .zalith-poster-lead {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .zalith-terminal-panel {
+  background-color: #0E0E14;
+  border-color: #2E2E3C;
+}
+
+[data-theme="dark"] .casda-terminal-window {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .casda-poster-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .casda-poster-desc {
+  color: #A3A3A3;
+}
+
+/* Support & Footer */
+[data-theme="dark"] .saweria-editorial-poster {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="dark"] .support-giant-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .support-editorial-lead {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .site-footer {
+  background-color: #0B0B0E;
+  border-top: 4px solid #2E2E38;
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .footer-title {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .footer-links-grid a {
+  color: #A3A3A3;
+}
+
+[data-theme="dark"] .footer-links-grid a:hover {
+  color: var(--color-yellow);
+}
+
+[data-theme="dark"] .bottom-nav-bar {
+  background-color: #141418;
+  border-top: 3px solid #2E2E38;
+}
+
+[data-theme="dark"] .bottom-nav-item {
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .bottom-nav-item.active {
+  background-color: var(--color-yellow);
+  color: #121212;
+}
+
+[data-theme="dark"] .back-to-top {
+  background-color: var(--color-yellow);
+  color: #121212;
+  border-color: #F5F5F5;
+}
+
+/* Modal and Toasts */
+[data-theme="dark"] .modal-content {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 6px 6px 0px #000000;
+  color: #F5F5F5;
+}
+
+[data-theme="dark"] .toast {
+  background-color: #18181E;
+  border-color: #383848;
+  box-shadow: 4px 4px 0px #000000;
+  color: #F5F5F5;
+}
+
