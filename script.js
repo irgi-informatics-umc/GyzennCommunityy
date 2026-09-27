@@ -701,6 +701,64 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
+      id: "cobra-fresh-smooth",
+      name: "Cobra Ultimized X Fresh & Smooth",
+      displayTitle: "COBRA ULTIMIZED X\nFRESH & SMOOTH",
+      edition: "BASED ON COBRA ULTIMIZED",
+      category: "OPTIMIZATION / VISUAL",
+      status: "RELEASED",
+      badge: "NEW RELEASE",
+      badges: ["FRESH & SMOOTH", "COBRA ULTIMIZED EDITION"],
+      description: "Pengalaman bermain Minecraft Java seperti Minecraft Bedrock dengan addon Action And Stuff, namun di versi Java dengan combo mod optimize dari Cobra Ultimized.",
+      note: null,
+      isNew: true,
+      isRecommended: true,
+      theme: "strip-fresh-green",
+      image: "cobra fresh.jpg",
+      imageAlt: "Cobra Ultimized X Fresh & Smooth Cover",
+      downloads: [
+        {
+          label: "DOWNLOAD MRPACK",
+          url: "https://www.mediafire.com/file/dzai6r11d30ko3k/Cobra+ultimized+X+Fresh+&+Smooth+(ekstrak+dulu).zip/file",
+          type: "mediafire"
+        },
+        {
+          label: "DOWNLOAD ZIP",
+          url: "https://www.mediafire.com/file/l88nxd49ozj2rzk/Cobra+Ultimize+x+Fresh+&+Smooth.zip/file",
+          type: "mediafire"
+        }
+      ],
+      additionalMods: [
+        "Particle Interactions",
+        "Smooth Scrolling",
+        "Chat Animation",
+        "Chat Animation",
+        "Smooth Swapping",
+        "Smooth Swapping",
+        "Punchy"
+      ],
+      resourcepacks: [
+        "AL's Piglins Revamped x Fresh Animations",
+        "Sun & Moon Fusion",
+        "Fresh XP Orbs",
+        "Tears & Cheers - Ghast Revamp",
+        "Fresh Flowers and Plants",
+        "Weskerson's Torches",
+        "AL's Armor Stands Revamped",
+        "FA+Emissiv",
+        "AL's Creepers Revamped",
+        "Fresh Animations",
+        "Motschen's Better Leaves",
+        "Enchant Icons",
+        "Joyful Motions",
+        "Mace Fusion",
+        "Fyoncle's 3D Trims",
+        "Rethoughted Spawn Eggs",
+        "Enhanced 3D Food",
+        "Enhanced 3d Armors"
+      ]
+    },
+    {
       id: "quick-cpvp-26-3",
       name: "Quick CPVP 26.3",
       version: "26.3",
@@ -923,7 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let badgeBannerHtml = '';
 
       if (modpack.isNew) {
-        badgeBannerHtml += `<span class="tag-badge tag-release tag-new-pulse ${modpack.id === 'fpsboost-v7' ? 'badge-new-v7' : ''}"><i class="fa-solid fa-fire"></i> NEW</span> `;
+        badgeBannerHtml += `<span class="tag-badge tag-release tag-new-pulse ${modpack.id === 'fpsboost-v7' ? 'badge-new-v7' : ''}"><i class="fa-solid fa-fire"></i> NEW RELEASE</span> `;
       }
       if (modpack.version) {
         badgeBannerHtml += `<span class="tag-badge tag-version-pill">[${modpack.version}]</span> `;
@@ -938,15 +996,24 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
       } else if (modpack.category === 'CPVP' || modpack.category === 'PVP') {
         badgeBannerHtml += `<span class="tag-badge tag-shader cpvp-badge"><i class="fa-solid fa-crosshairs"></i> ${modpack.category}</span> `;
+      } else if (modpack.category) {
+        badgeBannerHtml += `<span class="tag-badge tag-shader tag-category-visual"><i class="fa-solid fa-wand-magic-sparkles"></i> ${modpack.category}</span> `;
       }
 
-      badgeBannerHtml += `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span> `;
-      badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric Loader ${modpack.fabricLoader || modpack.fabric}</span> `;
+      if (modpack.minecraft) {
+        badgeBannerHtml += `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span> `;
+      }
+      if (modpack.fabricLoader || modpack.fabric) {
+        badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric Loader ${modpack.fabricLoader || modpack.fabric}</span> `;
+      }
 
       if (Array.isArray(modpack.badges)) {
         modpack.badges.forEach(b => {
-          if (b !== modpack.category) {
-            badgeBannerHtml += `<span class="tag-badge tag-release">${b}</span> `;
+          if (b !== modpack.category && (b !== 'NEW RELEASE' || !modpack.isNew)) {
+            let extraClass = '';
+            if (b === 'FRESH & SMOOTH') extraClass = 'tag-badge-fresh';
+            else if (b.includes('COBRA')) extraClass = 'tag-badge-cobra';
+            badgeBannerHtml += `<span class="tag-badge tag-release ${extraClass}">${b}</span> `;
           }
         });
       }
@@ -1031,6 +1098,92 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      // Collapsible Additional Content (Mods + Resourcepacks) e.g. for Cobra Ultimized X Fresh & Smooth
+      let additionalContentHtml = '';
+      if ((Array.isArray(modpack.additionalMods) && modpack.additionalMods.length > 0) ||
+          (Array.isArray(modpack.resourcepacks) && modpack.resourcepacks.length > 0)) {
+        
+        const rawMods = modpack.additionalMods || [];
+        const rawPacks = modpack.resourcepacks || [];
+        const modCount = rawMods.length;
+        const packCount = rawPacks.length;
+
+        // Group duplicates cleanly in UI (e.g. Chat Animation ×2, Smooth Swapping ×2) while preserving raw data
+        const modOccurrences = {};
+        const orderedModKeys = [];
+        rawMods.forEach(m => {
+          if (!modOccurrences[m]) {
+            modOccurrences[m] = 1;
+            orderedModKeys.push(m);
+          } else {
+            modOccurrences[m]++;
+          }
+        });
+
+        additionalContentHtml = `
+          <div class="modpack-collapsible-wrapper modpack-addon-wrapper" data-modpack-id="${modpack.id}">
+            <div class="collapsible-header-card" role="button" tabindex="0" aria-expanded="false" aria-controls="addon-body-${modpack.id}">
+              <div class="collapsible-title-col">
+                <span class="summary-title"><i class="fa-solid fa-layer-group"></i> ADDITIONAL CONTENT</span>
+                <div class="additional-content-summary">
+                  <span class="tag-badge tag-release tag-badge-fresh">${modCount} MODS</span>
+                  <span class="tag-badge tag-release tag-badge-fresh">${packCount} RESOURCEPACKS</span>
+                </div>
+                <p class="collapsible-subtext">${modCount} MOD ENTRIES • ${packCount} RESOURCEPACKS</p>
+              </div>
+              <div class="collapsible-action-col">
+                <button type="button" class="btn-toggle-modlist btn-toggle-addon" aria-expanded="false" aria-controls="addon-body-${modpack.id}" aria-label="Toggle Additional Content ${modpack.name}">
+                  <span class="toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                  <span class="toggle-text">SHOW ADDITIONAL CONTENT</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="collapsible-body-card addon-body-card" id="addon-body-${modpack.id}" style="display: none;" aria-hidden="true">
+              <!-- Additional Mods Section -->
+              ${modCount > 0 ? `
+                <div class="addon-subgroup">
+                  <div class="addon-subgroup-title">
+                    <span><i class="fa-solid fa-cubes"></i> ADDITIONAL MODS</span>
+                    <span class="addon-pill-count">${modCount} ENTRIES</span>
+                  </div>
+                  <ul class="addon-item-list mod-entries-list">
+                    ${orderedModKeys.map(name => {
+                      const count = modOccurrences[name];
+                      return `
+                        <li class="addon-item mod-item">
+                          <span class="addon-bullet">•</span>
+                          <span class="addon-name">${name}</span>
+                          ${count > 1 ? `<span class="addon-dup-badge">×${count}</span>` : ''}
+                        </li>
+                      `;
+                    }).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+
+              <!-- Additional Resourcepacks Section -->
+              ${packCount > 0 ? `
+                <div class="addon-subgroup" style="margin-top: 1rem;">
+                  <div class="addon-subgroup-title">
+                    <span><i class="fa-solid fa-palette"></i> ADDITIONAL RESOURCEPACKS</span>
+                    <span class="addon-pill-count rp-pill">${packCount} RESOURCEPACKS</span>
+                  </div>
+                  <ul class="addon-item-list rp-entries-list">
+                    ${rawPacks.map((rp, idx) => `
+                      <li class="addon-item rp-item">
+                        <span class="addon-rp-num">${String(idx + 1).padStart(2, '0')}</span>
+                        <span class="addon-name">${rp}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }
+
       let noteHtml = '';
       if (modpack.note) {
         const isWarning = modpack.noteType === 'warning';
@@ -1095,7 +1248,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const versionStampClass = (modpack.id === 'fpsboost-v7') ? 'version-stamp version-stamp-v7' : 'version-stamp';
-      const versionStampText = modpack.version ? `[${modpack.version}] MC ${modpack.minecraft}` : `MC ${modpack.minecraft}`;
+      const versionStampText = modpack.version 
+        ? (modpack.minecraft ? `[${modpack.version}] MC ${modpack.minecraft}` : `[${modpack.version}]`) 
+        : (modpack.minecraft ? `MC ${modpack.minecraft}` : (modpack.status || 'RELEASED'));
+
+      const editionHtml = modpack.edition ? `
+        <div class="modpack-edition-tag">
+          <i class="fa-solid fa-leaf"></i> ${modpack.edition}
+        </div>
+      ` : '';
 
       // Cover image support with lazy loading & fallback
       let coverImageHtml = '';
@@ -1122,15 +1283,20 @@ document.addEventListener('DOMContentLoaded', () => {
           ${coverImageHtml}
           <div class="strip-header-col">
             <span class="${versionStampClass}">${versionStampText}</span>
-            <div style="margin-top: 0.4rem;">
+            <div class="strip-badges-desktop" style="margin-top: 0.45rem;">
               ${badgeBannerHtml}
             </div>
           </div>
           <div class="strip-body-col">
-            <h3>${modpack.name}</h3>
+            ${editionHtml}
+            <h3 class="modpack-card-title">${modpack.displayTitle ? modpack.displayTitle.replace(/\n/g, '<br>') : modpack.name}</h3>
             ${descHtml}
+            <div class="strip-badges-mobile">
+              ${badgeBannerHtml}
+            </div>
             ${extraModsHtml}
             ${modsListHtml}
+            ${additionalContentHtml}
             ${noteHtml}
           </div>
           <div class="strip-action-col">
@@ -1168,6 +1334,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function toggleOpen(forceState) {
         const isCurrentlyOpen = bodyCard && bodyCard.style.display !== 'none';
         const willOpen = typeof forceState === 'boolean' ? forceState : !isCurrentlyOpen;
+        const isAddon = wrapper.classList.contains('modpack-addon-wrapper');
 
         if (willOpen) {
           if (bodyCard) {
@@ -1176,7 +1343,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
           if (headerCard) headerCard.setAttribute('aria-expanded', 'true');
-          if (toggleText) toggleText.textContent = 'HIDE MOD LIST';
+          if (toggleText) toggleText.textContent = isAddon ? 'HIDE ADDITIONAL CONTENT' : 'HIDE MOD LIST';
           if (toggleIcon) toggleIcon.innerHTML = '<i class="fa-solid fa-minus"></i>';
         } else {
           if (bodyCard) {
@@ -1185,7 +1352,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
           if (headerCard) headerCard.setAttribute('aria-expanded', 'false');
-          if (toggleText) toggleText.textContent = 'VIEW MOD LIST';
+          if (toggleText) toggleText.textContent = isAddon ? 'SHOW ADDITIONAL CONTENT' : 'VIEW MOD LIST';
           if (toggleIcon) toggleIcon.innerHTML = '<i class="fa-solid fa-plus"></i>';
           resetSearch();
         }
