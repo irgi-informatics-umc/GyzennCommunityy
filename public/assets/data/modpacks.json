@@ -176,7 +176,7 @@
     "type": "modpack",
     "name": "COBRA SERVER MANIA REMAKE",
     "displayTitle": "COBRA SERVER MANIA REMAKE",
-    "edition": null,
+    "edition": "Cobra Ultimized + Utility Server",
     "version": "1.21.11",
     "minecraft": "1.21.11",
     "loader": "Fabric",
@@ -188,12 +188,12 @@
     "isArchived": false,
     "badges": ["COBRA", "SERVER", "UTILITY", "1.21.11"],
     "theme": "strip-purple",
-    "image": "/assets/img/cobraserver.jpg",
+    "image": "/assets/img/server-mania.png",
     "imageAlt": "Cobra Server Mania Remake Minecraft Modpack",
-    "description": "Modpack ini cocok banget buat yang suka main server. Berbasis Cobra Ultimized dengan tambahan utility server seperti voice chat, bubble chat, global chat dengan kepala skin, emote, dan optimisasi performa server. Remaked by Gyzenn.",
+    "description": "Modpack untuk bermain di server dengan fitur voice chat, bubble chat, chat global yang menampilkan kepala skin pemain, emote, serta optimisasi untuk pengalaman multiplayer.",
     "note": {
       "type": "info",
-      "text": "Remaked switch to Fabric Loader 0.19.5 and add other mod"
+      "text": "Remake dengan Fabric Loader 0.19.5 dan penambahan mod lainnya."
     },
     "downloads": [
       {
@@ -302,8 +302,8 @@
   {
     "id": "survival-v2",
     "type": "modpack",
-    "name": "GYZENN SURVIVAL V2",
-    "displayTitle": "GYZENN SURVIVAL V2",
+    "name": "Modpack Survival V2",
+    "displayTitle": "MODPACK SURVIVAL V2",
     "edition": null,
     "version": "V2",
     "minecraft": "1.21.1",
@@ -317,8 +317,8 @@
     "badges": ["NEW RELEASE", "SURVIVAL", "V2"],
     "theme": "strip-yellow",
     "image": "/assets/img/survival-v2.jpg",
-    "imageAlt": "Gyzenn Survival V2 Minecraft Modpack Cover",
-    "description": "Modpack survival Minecraft 1.21.1 berbasis Fabric Loader 0.19.5 dengan kombinasi performance, visual enhancement, quality of life, utility, exploration, building, dan survival gameplay.",
+    "imageAlt": "Modpack Survival V2 Cover",
+    "description": "Modpack survival untuk menemani petualangan Minecraft dengan konfigurasi mod yang sudah disiapkan. Tersedia dua pilihan download untuk menyesuaikan kebutuhan instalasi.",
     "note": null,
     "downloads": [
       {
@@ -330,6 +330,54 @@
       {
         "label": "DOWNLOAD ZIP",
         "url": "https://www.mediafire.com/file/rm0jfkfo9jtjaoo/Modpack_Survival_V2.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": true
+  },
+  {
+    "id": "gyzenn-optimized-1-21-11",
+    "type": "modpack",
+    "name": "Gyzenn Optimized 1.21.11",
+    "displayTitle": "GYZENN OPTIMIZED 1.21.11",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.19.5",
+    "categories": ["FPS BOOST", "OPTIMIZATION"],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": true,
+    "isArchived": false,
+    "badges": ["OPTIMIZED", "1.21.11"],
+    "theme": "strip-orange",
+    "image": "/assets/img/gyzen-optimized.png",
+    "imageAlt": "Gyzenn Optimized 1.21.11 Minecraft Modpack Cover",
+    "description": "Modpack optimisasi Minecraft dengan 75 mod, konfigurasi tambahan, resource pack, dan shader untuk pengalaman bermain yang telah disesuaikan.",
+    "note": null,
+    "features": [
+      "75 Mods",
+      "Config Included",
+      "Resource Pack",
+      "Shaders"
+    ],
+    "downloads": [
+      {
+        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
+        "url": "https://www.mediafire.com/file/yg5emly9vbtrfy4/Gyzenn+Optimized+(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "DOWNLOAD ZIP",
+        "url": "https://www.mediafire.com/file/rga8dcjuzxzlalb/Gyzenn+Optimized.zip/file",
         "host": "mediafire",
         "type": "mediafire"
       }
