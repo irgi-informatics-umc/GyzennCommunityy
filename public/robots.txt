@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gyzenn-communityy.vercel.app/sitemap.xml

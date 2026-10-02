@@ -1,0 +1,170 @@
+/* ==========================================================================
+   PAGE: MODPACKS - Catalog Modpack, Shaders, Resource Pack, Filters & Archive
+   ========================================================================== */
+
+.modpack-subnav-sticky {
+  position: sticky;
+  top: 60px;
+  z-index: 990;
+  background-color: var(--bg-card);
+  border-bottom: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  padding: 0.65rem 0;
+  margin-bottom: 2rem;
+}
+
+.modpack-subnav-chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  overflow-x: auto;
+}
+
+.subnav-chip {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  background-color: var(--bg-secondary);
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  border-radius: var(--radius-sharp);
+  color: var(--ink-black);
+  white-space: nowrap;
+}
+
+.subnav-chip.active {
+  background-color: var(--color-yellow);
+  box-shadow: 3px 3px 0px #121212;
+}
+
+/* Shader & Resource Card Specifications Format */
+.derivative-poster-head { margin-bottom: 1.25rem; }
+.derivative-title { display: flex; flex-direction: column; margin-bottom: 0.35rem; }
+.d-title-top { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 0.95; color: var(--color-blue); }
+.d-title-sub { font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 0.95; color: var(--color-pink); display: flex; align-items: center; gap: 0.5rem; }
+.exe-tag { font-family: var(--font-pixel); font-size: 1.3rem; color: var(--ink-black); background-color: var(--color-yellow); border: 2px solid #121212; padding: 0.1rem 0.45rem; }
+
+.derivative-badges-banner { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.75rem; margin-bottom: 1.25rem; }
+.derivative-preview-frame { background-color: var(--bg-secondary); border: var(--border-extra-thick); padding: 0.75rem; box-shadow: var(--shadow-lg); margin-bottom: 1.25rem; transform: rotate(-1deg); }
+.preview-tag-head { font-family: var(--font-pixel); font-weight: bold; font-size: 1rem; background-color: var(--color-yellow); padding: 0.15rem 0.45rem; border: 2px solid #121212; margin-bottom: 0.5rem; display: inline-block; }
+.derivative-preview-image { width: 100%; height: auto; object-fit: cover; border: 2px solid #121212; }
+.preview-caption { font-family: var(--font-pixel); font-size: 1.05rem; text-align: center; margin-top: 0.45rem; font-weight: bold; }
+
+.derivative-spec-sheet { background-color: var(--bg-secondary); border: var(--border-thick); box-shadow: var(--shadow-sm); padding: 1rem; margin: 1rem 0; }
+.spec-sheet-head { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: bold; background-color: var(--color-blue); color: var(--text-inverted); padding: 0.2rem 0.6rem; border: 2px solid #121212; display: inline-block; margin-bottom: 0.75rem; }
+.derivative-feature-list { display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.92rem; }
+.derivative-feature-list li { display: flex; align-items: flex-start; gap: 0.55rem; }
+.derivative-feature-list i { color: var(--color-green-dark); font-size: 1.1rem; margin-top: 0.2rem; }
+
+.derivative-tip-box { background-color: var(--color-yellow); border: var(--border-thick); padding: 0.85rem; box-shadow: var(--shadow-sm); margin-bottom: 1rem; }
+.tip-header { font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+.derivative-credit-box { background-color: var(--color-blue); color: var(--text-inverted); border: var(--border-thick); padding: 0.85rem; text-align: center; box-shadow: var(--shadow-sm); }
+.credit-author { font-family: var(--font-display); font-size: 1.6rem; color: var(--color-pink); line-height: 1; }
+.btn-gdrive-large { background-color: var(--color-green); color: var(--ink-black); width: 100%; font-size: 1.05rem; padding: 0.95rem; margin-top: 1.25rem; }
+
+/* Filter Bar & Gaming Mode Controls */
+.modpack-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--bg-card);
+  border: var(--border-thick);
+  border-radius: var(--radius-sharp);
+  box-shadow: var(--shadow-sm);
+}
+
+.modpack-filters-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  overflow-x: auto;
+  padding: 0.2rem 0;
+  max-width: 100%;
+}
+
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  background-color: var(--bg-secondary);
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-pill.active {
+  background-color: var(--color-orange);
+  color: #ffffff;
+  box-shadow: 2px 2px 0px #121212;
+}
+
+.btn-gaming-mode-toggle {
+  background-color: var(--color-yellow);
+  color: var(--ink-black);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.55rem 1.35rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.btn-gaming-mode-toggle.active {
+  background-color: var(--color-pink);
+  color: var(--text-inverted);
+}
+
+.editorial-modpacks-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Modpack Archived Section Accordion */
+details.modpack-archive-details {
+  margin-top: 3rem;
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-sharp);
+}
+
+details.modpack-archive-details summary {
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-secondary);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+details.modpack-archive-details[open] summary {
+  border-bottom: var(--border-thick);
+  background-color: var(--color-yellow);
+}
+
+.archive-grid {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}

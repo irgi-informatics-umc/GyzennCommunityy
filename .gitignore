@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env
+.env.*
+/audit/
+/_legacy/
+npm-debug.log*
+.DS_Store
+.idea/

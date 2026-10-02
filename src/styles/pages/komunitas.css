@@ -1,0 +1,226 @@
+/* ==========================================================================
+   PAGE: KOMUNITAS - Social Wall (TikTok, WA Channel, WA Groups) & Discord Poster
+   ========================================================================== */
+
+.social-wall-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.social-block {
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.social-block:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.block-seal {
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  background-color: var(--color-pink);
+  color: var(--text-inverted);
+  font-family: var(--font-pixel);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.15rem 0.65rem;
+  border: var(--border-thick);
+  box-shadow: 2px 2px 0px #121212;
+}
+
+.seal-green { background-color: var(--color-green); color: var(--ink-black); }
+.seal-orange { background-color: var(--color-orange); color: var(--text-inverted); }
+
+.block-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.block-icon {
+  width: 46px;
+  height: 46px;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.icon-tiktok { background-color: var(--ink-black); color: var(--color-pink); }
+.icon-wa { background-color: var(--color-green); color: var(--ink-black); }
+.icon-group { background-color: var(--color-orange); color: var(--text-inverted); }
+
+.block-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
+.block-subtitle { font-family: var(--font-pixel); font-size: 1rem; color: var(--text-muted); }
+
+.block-tiktok {
+  background-color: var(--bg-card);
+  border-left: 8px solid var(--color-pink);
+  transform: rotate(-1.5deg);
+}
+
+.tiktok-score-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: var(--ink-black);
+  color: var(--text-inverted);
+  border: var(--border-thick);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.score-main { text-align: left; }
+.score-main .stat-value { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-pink); line-height: 1; }
+.score-label { font-family: var(--font-pixel); font-size: 0.95rem; color: var(--color-yellow); }
+
+.score-sub {
+  display: flex;
+  gap: 1.25rem;
+  border-left: 2px dashed #444;
+  padding-left: 1.25rem;
+}
+
+.score-sub .stat-value { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-green); line-height: 1; }
+.block-body { font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--text-muted); }
+
+.btn-tiktok-solid { background-color: var(--ink-black); color: var(--text-inverted); }
+.btn-wa-solid { background-color: var(--color-green); color: var(--ink-black); }
+
+.block-wa-channel {
+  background-color: var(--color-yellow);
+  border-left: 8px solid var(--color-green-dark);
+  transform: rotate(1.5deg);
+}
+
+.wa-channel-stat-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-card);
+  border: var(--border-thick);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.wa-follower-num { font-family: var(--font-display); font-size: 2.4rem; color: var(--color-green-dark); line-height: 1; }
+.wa-follower-label { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; }
+
+.block-wa-group {
+  background-color: var(--bg-card);
+  border-left: 8px solid var(--color-orange);
+  transform: rotate(-1deg);
+}
+
+.group-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.btn-group-solid { background-color: var(--color-orange); color: var(--text-inverted); font-size: 0.85rem; padding: 0.7rem 0.5rem; }
+
+/* Discord Section Poster */
+.retro-poster-box {
+  background-color: var(--color-blue);
+  color: var(--text-inverted);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-lg);
+  padding: 2.25rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.discord-poster {
+  background-color: #312E81;
+  background-image: radial-gradient(#4338CA 2px, transparent 2px);
+  background-size: 18px 18px;
+}
+
+.poster-decor-star { position: absolute; font-size: 3.5rem; color: var(--color-yellow); opacity: 0.7; }
+.decor-star-1 { top: 8px; right: 16px; }
+.decor-star-2 { bottom: 8px; left: 16px; }
+
+.discord-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.tag-discord-badge {
+  background-color: var(--color-pink);
+  color: var(--text-inverted);
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.2rem 0.65rem;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+}
+
+.poster-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  line-height: 1;
+  color: var(--color-yellow);
+  text-shadow: 3px 3px 0px #121212;
+  margin-top: 0.4rem;
+}
+
+.poster-subtitle { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--color-green); }
+
+.discord-badge-icon-box {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-yellow);
+  color: var(--ink-black);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  border-radius: var(--radius-sharp);
+  transform: rotate(5deg);
+}
+
+.poster-text { font-size: 1.05rem; max-width: 800px; margin-bottom: 1.5rem; }
+.discord-features-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.discord-mini-chip {
+  background-color: var(--bg-card);
+  color: var(--ink-black);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.45rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn-discord-main { background-color: var(--color-yellow); color: var(--ink-black); font-size: 1.05rem; padding: 0.85rem 1.6rem; }
+
+@media (max-width: 768px) {
+  .social-block { transform: none !important; }
+  .tiktok-score-display { flex-direction: column; text-align: center; }
+  .score-sub { border-left: none; border-top: 2px dashed #444; padding-left: 0; padding-top: 0.75rem; width: 100%; justify-content: space-around; }
+  .wa-channel-stat-banner { flex-direction: column; text-align: center; }
+  .group-actions-grid { grid-template-columns: 1fr; }
+  .discord-header-flex { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,340 @@
+/* ==========================================================================
+   PAGE: HOME / BERANDA - Hero Layout, Support Campaign & Teasers
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  padding: 2rem 0 2rem 0;
+  z-index: 2;
+}
+
+.hero-poster-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-yellow);
+  border: var(--border-thick);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 0.85rem;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-red);
+  border-radius: 50%;
+  border: 2px solid #121212;
+  animation: pulseDot 1.4s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(0.95); opacity: 1; }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8.5vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.word-gyzenn {
+  color: var(--color-blue);
+  text-shadow: 3px 3px 0px var(--color-yellow), 6px 6px 0px var(--ink-black);
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.word-community {
+  color: var(--color-pink);
+  text-shadow: 3px 3px 0px var(--color-green), 6px 6px 0px var(--ink-black);
+  transform: rotate(2deg);
+  display: inline-block;
+  margin-top: -0.2rem;
+}
+
+.hero-tag-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-visual-center {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  perspective: 1000px;
+}
+
+.retro-polaroid-frame {
+  background-color: var(--bg-card);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-lg);
+  padding: 0.85rem;
+  transform: rotate(-2deg);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+}
+
+.polaroid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--border-thick);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.polaroid-dots { font-size: 0.85rem; color: var(--color-red); }
+.polaroid-title { font-family: var(--font-pixel); font-weight: bold; font-size: 0.95rem; }
+
+.avatars-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.avatar-card {
+  background-color: var(--bg-secondary);
+  border: var(--border-thick);
+  padding: 0.65rem;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.avatar-wa-card { transform: rotate(-2deg); }
+.avatar-tiktok-card { transform: rotate(2deg); }
+.avatar-card:hover { transform: translateY(-3px) scale(1.02); }
+
+.avatar-ring {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 0.5rem auto;
+  border: var(--border-thick);
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-yellow);
+}
+
+.avatar-img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+.avatar-label { font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; display: block; }
+
+.polaroid-caption {
+  text-align: center;
+  margin-top: 0.75rem;
+  padding-top: 0.4rem;
+  border-top: 2px dashed #121212;
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+}
+
+.hero-action-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.device-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-blue);
+  color: var(--text-inverted);
+  border: var(--border-thick);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sharp);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+
+.gpu-badge {
+  background-color: var(--color-green);
+  color: var(--ink-black);
+  font-family: var(--font-pixel);
+  font-weight: bold;
+  padding: 0.15rem 0.45rem;
+  border: 2px solid #121212;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+/* Home Page Navigation Teaser Grid */
+.home-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.teaser-card {
+  background-color: var(--bg-card);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.teaser-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.teaser-card-icon {
+  width: 44px;
+  height: 44px;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.teaser-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.teaser-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Support Campaign Section */
+.section-support-campaign { padding: 3rem 0; position: relative; }
+
+.support-campaign-wrapper {
+  background-color: var(--bg-card);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-lg);
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: visible;
+}
+
+.campaign-shape { position: absolute; pointer-events: none; z-index: 1; user-select: none; }
+.shape-starburst { top: 1.5rem; right: 2.5rem; font-family: var(--font-pixel); font-size: 3rem; color: var(--color-yellow); opacity: 0.85; }
+.shape-squiggle { bottom: 1.5rem; left: 2.5rem; opacity: 0.75; }
+.shape-dots-cluster { top: 45%; left: 48%; width: 60px; height: 60px; background-image: radial-gradient(var(--ink-black) 2px, transparent 2px); background-size: 10px 10px; opacity: 0.25; }
+
+.support-campaign-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.support-typography-col { display: flex; flex-direction: column; }
+.support-tag-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+
+.support-giant-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  line-height: 0.95;
+  color: var(--ink-black);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.support-giant-title .highlight-yellow { color: var(--color-yellow); text-shadow: 4px 4px 0px #121212; display: inline-block; }
+
+.support-editorial-lead {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 520px;
+}
+
+.support-meta-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.support-visual-col { position: relative; display: flex; justify-content: center; }
+
+.support-sticker-physical {
+  position: absolute;
+  top: -16px;
+  right: -10px;
+  background-color: var(--color-pink);
+  color: var(--text-inverted);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  padding: 0.35rem 0.8rem;
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  font-weight: bold;
+  transform: rotate(-6deg);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.saweria-editorial-poster {
+  background-color: var(--color-yellow);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem 1.75rem;
+  width: 100%;
+  max-width: 380px;
+  transform: rotate(2deg);
+  position: relative;
+}
+
+.poster-badge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px dashed #121212;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.15rem;
+  font-family: var(--font-pixel);
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.poster-center-box { text-align: center; margin-bottom: 1.35rem; }
+.poster-headline { font-family: var(--font-display); font-size: 2.2rem; line-height: 0.95; margin-bottom: 0.65rem; }
+.btn-saweria-editorial { background-color: var(--color-pink); color: var(--text-inverted); width: 100%; }
+
+@media (max-width: 1024px) {
+  .support-campaign-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .saweria-editorial-poster { transform: none; max-width: 100%; }
+}

@@ -1,0 +1,61 @@
+---
+import siteData from '../../public/assets/data/site.json';
+const { site } = siteData;
+const currentPath = Astro.url.pathname;
+---
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+  <div>
+    <div class="brand-logo" style="margin-bottom: 1.5rem;">
+      <div class="brand-icon-box">
+        <i class="fa-solid fa-cube"></i>
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">GYZENN</span>
+        <span class="brand-tag">RETRO MENU POSTER</span>
+      </div>
+    </div>
+
+    <ul class="mobile-menu-links">
+      <li>
+        <a href="/" class={`mobile-nav-link ${currentPath === '/' ? 'active' : ''}`} aria-current={currentPath === '/' ? 'page' : undefined}>
+          <span class="nav-num">01</span>
+          <span>BERANDA</span>
+        </a>
+      </li>
+      <li>
+        <a href="/komunitas/" class={`mobile-nav-link link-pink ${currentPath.startsWith('/komunitas') ? 'active' : ''}`} aria-current={currentPath.startsWith('/komunitas') ? 'page' : undefined}>
+          <span class="nav-num">02</span>
+          <span>KOMUNITAS</span>
+        </a>
+      </li>
+      <li>
+        <a href="/modpacks/" class={`mobile-nav-link link-yellow ${currentPath.startsWith('/modpacks') ? 'active' : ''}`} aria-current={currentPath.startsWith('/modpacks') ? 'page' : undefined}>
+          <span class="nav-num">03</span>
+          <span>MODPACKS</span>
+        </a>
+      </li>
+      <li>
+        <a href="/zalith/" class={`mobile-nav-link link-blue ${currentPath.startsWith('/zalith') ? 'active' : ''}`} aria-current={currentPath.startsWith('/zalith') ? 'page' : undefined}>
+          <span class="nav-num">04</span>
+          <span>ZALITH LAUNCHER</span>
+        </a>
+      </li>
+      <li>
+        <a href="/casda-network/" class={`mobile-nav-link link-orange ${currentPath.startsWith('/casda-network') ? 'active' : ''}`} aria-current={currentPath.startsWith('/casda-network') ? 'page' : undefined}>
+          <span class="nav-num">05</span>
+          <span>CASDA NETWORK</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mobile-nav-footer">
+    <a href={site.links.linktree} target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
+      <i class="fa-solid fa-tree"></i> LINKTREE GYZENN
+    </a>
+    <p class="retro-pixel-text" style="font-size: 0.8rem; text-align: center; margin-top: 0.75rem;">
+      DEVICE: {site.deviceSpec}
+    </p>
+  </div>
+</nav>

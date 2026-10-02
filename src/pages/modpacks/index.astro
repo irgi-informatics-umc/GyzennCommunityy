@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ModpackCard from '../../components/ModpackCard.astro';
+import modpacksData from '../../../public/assets/data/modpacks.json';
+import '../../styles/pages/modpacks.css';
+
+const activeModpacks = modpacksData.filter(m => !m.isArchived && m.type === 'modpack');
+const archivedModpacks = modpacksData.filter(m => m.isArchived && m.type === 'modpack');
+const shaderCard = modpacksData.find(m => m.type === 'shader');
+const resourcepackCard = modpacksData.find(m => m.type === 'resourcepack');
+---
+<BaseLayout 
+  title="Katalog Modpacks, Shader & Resource Pack - Gyzenn Community"
+  description="Katalog Modpack Minecraft Indonesia — DERIVATIVE Shader, Better Sound Java, Survival V2, Cobra Remake Series, FpsBoost & CPvP."
+>
+  {/* Sticky Subnav Chips */}
+  <div class="modpack-subnav-sticky">
+    <div class="container">
+      <div class="modpack-subnav-chips">
+        <a href="#derivative-shader" class="subnav-chip active"><i class="fa-solid fa-wand-magic-sparkles"></i> DERIVATIVE Shader</a>
+        <a href="#better-sound-java" class="subnav-chip"><i class="fa-solid fa-music"></i> Resource Pack</a>
+        <a href="#modpack-gyzenn" class="subnav-chip"><i class="fa-solid fa-boxes-stacked"></i> Modpacks Hub</a>
+        {archivedModpacks.length > 0 && (
+          <a href="#archive-section" class="subnav-chip"><i class="fa-solid fa-box-archive"></i> Versi Lama</a>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <section class="section section-modpacks" id="modpacks">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-tag tag-retro-yellow">
+          <i class="fa-solid fa-cubes-stacked"></i> CATALOG MODPACK & SHADER
+        </span>
+        <h1 class="section-title">SHADERS & MODPACK PILIHAN</h1>
+        <p class="section-desc">
+          Shader dan modpack yang telah dioptimasi dan diuji performanya oleh Gyzenn Community untuk visual sinematik, stabilitas FPS, dan pengalaman bermain terbaik.
+        </p>
+      </div>
+
+      {/* DERIVATIVE Shader Poster */}
+      {shaderCard && (
+        <div class="retro-window-card derivative-card" id="derivative-shader">
+          <div class="window-header">
+            <div class="window-buttons">
+              <span class="btn-win btn-win-close"></span>
+              <span class="btn-win btn-win-min"></span>
+              <span class="btn-win btn-win-max"></span>
+            </div>
+            <div class="window-title-text">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> DERIVATIVE_SHADER
+            </div>
+          </div>
+
+          <div class="window-body">
+            <div class="derivative-poster-head">
+              <h2 class="derivative-title">
+                <span class="d-title-top">DERIVATIVE</span>
+                <span class="d-title-sub">SHADER <span class="exe-tag">.zip</span></span>
+              </h2>
+              <p class="derivative-brand">EDIT BY GYZENN • MINECRAFT JAVA</p>
+
+              <div class="derivative-badges-banner">
+                <span class="tag-badge tag-shader"><i class="fa-solid fa-wand-magic-sparkles"></i> SHADERS</span>
+                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-cube"></i> JAVA EDITION</span>
+                <span class="tag-badge tag-fabric"><i class="fa-solid fa-gamepad"></i> 1.21+</span>
+                <span class="tag-badge tag-release"><i class="fa-solid fa-bolt"></i> LATEST RELEASE</span>
+              </div>
+            </div>
+
+            <div class="derivative-preview-frame">
+              <div class="preview-tag-head"><i class="fa-solid fa-camera"></i> PREVIEW / SHADER SCREENSHOT</div>
+              <img src="/assets/img/preview.png" alt="DERIVATIVE Edit by Gyzenn Minecraft Shader Preview" class="derivative-preview-image" loading="lazy" />
+              <div class="preview-caption">"Lag dikit? ga ngaruh ah wkwk"</div>
+            </div>
+
+            <div class="derivative-info-poster">
+              <p class="derivative-desc">{shaderCard.description}</p>
+
+              <div class="derivative-spec-sheet">
+                <div class="spec-sheet-head"><i class="fa-solid fa-microchip"></i> SOFTWARE SPECIFICATIONS</div>
+                <ul class="derivative-feature-list">
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Pencahayaan Realistis</strong> - Cahaya matahari, langit & ambient natural.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Warna & Kontras Seimbang</strong> - Kontras hidup & nyaman di mata.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Bayangan Halus</strong> - Transisi shadow lembut & detail.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Air Jernih & Reflektif</strong> - Efek refleksi air jernih.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Daun & Vegetasi Hidup</strong> - Animasi vegetasi natural.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Performa Optimal</strong> - FPS stabil untuk survival/PvP.</div></li>
+                </ul>
+              </div>
+
+              <div class="derivative-tip-box">
+                <div class="tip-header"><i class="fa-solid fa-lightbulb"></i> PERFORMANCE TIP</div>
+                <p>Gunakan render distance 12+ chunk & sesuaikan quality dengan perangkatmu.</p>
+              </div>
+
+              <div class="derivative-credit-box">
+                <div class="credit-label">EDIT & OPTIMIZED BY</div>
+                <div class="credit-author">GYZENN</div>
+                <div class="credit-subtext">MINECRAFT CREATOR INDONESIA</div>
+              </div>
+
+              <div class="derivative-download-wrapper">
+                <a href={shaderCard.downloads[0].url} target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-large">
+                  <i class="fa-brands fa-google-drive"></i>
+                  <span>DOWNLOAD DERIVATIVE SHADER</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Better Sound Java Resource Pack */}
+      {resourcepackCard && (
+        <div class="retro-window-card resourcepack-card" id="better-sound-java">
+          <div class="window-header" style="background-color: var(--color-purple, #7C3AED);">
+            <div class="window-buttons">
+              <span class="btn-win btn-win-close"></span>
+              <span class="btn-win btn-win-min"></span>
+              <span class="btn-win btn-win-max"></span>
+            </div>
+            <div class="window-title-text">
+              <i class="fa-solid fa-music"></i> RESOURCEPACK_BETTER_SOUND_JAVA.ZIP
+            </div>
+          </div>
+
+          <div class="window-body">
+            <div class="derivative-poster-head">
+              <h2 class="derivative-title">
+                <span class="d-title-top" style="color: var(--color-purple, #7C3AED);">BETTER SOUND</span>
+                <span class="d-title-sub">JAVA <span class="exe-tag">RESOURCE PACK</span></span>
+              </h2>
+              <p class="derivative-brand">OFFICIAL AUDIO RESOURCE PACK • MINECRAFT JAVA</p>
+
+              <div class="derivative-badges-banner">
+                <span class="tag-badge" style="background-color: #7C3AED; color: #ffffff;"><i class="fa-solid fa-music"></i> RESOURCE PACK</span>
+                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-cube"></i> MINECRAFT 1.20 - 26.3</span>
+                <span class="tag-badge tag-fabric"><i class="fa-solid fa-sliders"></i> ALL LOADERS / VANILLA</span>
+                <span class="tag-badge tag-release"><i class="fa-solid fa-headphones"></i> IMMERSIVE AUDIO</span>
+              </div>
+            </div>
+
+            <div class="derivative-info-poster">
+              <p class="derivative-desc">{resourcepackCard.description}</p>
+
+              <div class="derivative-spec-sheet">
+                <div class="spec-sheet-head" style="background-color: #7C3AED;"><i class="fa-solid fa-circle-info"></i> RESOURCE PACK SPECIFICATIONS</div>
+                <ul class="derivative-feature-list">
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Audio Enhancement</strong> - Suara langkah, ambient lingkungan, air, dan sound effect lebih dinamis & jernih.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Wide Compatibility</strong> - Kompatibel dengan Minecraft Java versi 1.20 sampai dengan 26.3.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Zero Performance Loss</strong> - Murni audio resource pack, tidak membebani FPS atau konsumsi RAM.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Bukan Modpack</strong> - Pasang langsung di direktori <code>resourcepacks</code> pada game client Anda.</div></li>
+                </ul>
+              </div>
+
+              <div class="derivative-download-wrapper">
+                <a href={resourcepackCard.downloads[0].url} target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-large" style="background-color: #7C3AED; color: #ffffff; text-decoration: none;">
+                  <i class="fa-solid fa-cloud-arrow-down"></i>
+                  <span>DOWNLOAD RESOURCE PACK BETTER SOUND JAVA (SFILE)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Main Dynamic Modpack Grid */}
+      <div class="section-header" id="modpack-gyzenn" style="margin-top: 3rem;">
+        <span class="section-tag tag-retro-green">
+          <i class="fa-solid fa-boxes-stacked"></i> GYZENN COLLECTION
+        </span>
+        <h2 class="section-title">MODPACK GYZENN</h2>
+        <p class="section-desc">Pilihan modpack optimization dan survival untuk berbagai versi Minecraft.</p>
+
+        {/* Filter Bar & Gaming Mode Controls */}
+        <div class="modpack-controls-bar">
+          <div class="modpack-filters-scroll" role="tablist" aria-label="Kategori Modpack">
+            <button type="button" class="filter-pill active" data-category="ALL" role="tab" aria-selected="true">
+              <i class="fa-solid fa-layer-group"></i> SEMUA
+            </button>
+            <button type="button" class="filter-pill" data-category="FPS BOOST" role="tab" aria-selected="false">
+              <i class="fa-solid fa-bolt"></i> FPS BOOST
+            </button>
+            <button type="button" class="filter-pill" data-category="SURVIVAL" role="tab" aria-selected="false">
+              <i class="fa-solid fa-campground"></i> SURVIVAL
+            </button>
+            <button type="button" class="filter-pill" data-category="CPVP" role="tab" aria-selected="false">
+              <i class="fa-solid fa-crosshairs"></i> CPVP
+            </button>
+            <button type="button" class="filter-pill" data-category="SERVER" role="tab" aria-selected="false">
+              <i class="fa-solid fa-server"></i> SERVER
+            </button>
+            <button type="button" class="filter-pill" data-category="VISUAL" role="tab" aria-selected="false">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> VISUAL
+            </button>
+          </div>
+
+          <div class="gaming-mode-switch-wrapper">
+            <button type="button" class="btn-gaming-mode-toggle active" id="btnGamingModeToggle" aria-label="Toggle Gaming Mode">
+              <i class="fa-solid fa-gamepad"></i>
+              <span class="mode-text">GAMING MODE: <strong class="mode-status">ON</strong></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="editorial-modpacks-showcase" id="gyzennModpacksGrid">
+        {activeModpacks.map((modpack, idx) => (
+          <ModpackCard modpack={modpack} index={idx} />
+        ))}
+      </div>
+
+      {/* Archived / Versi Lama Accordion */}
+      {archivedModpacks.length > 0 && (
+        <details class="modpack-archive-details" id="archive-section">
+          <summary>
+            <i class="fa-solid fa-box-archive"></i> ARSIP / VERSI LAMA MODPACK ({archivedModpacks.length} MODPACK)
+          </summary>
+          <div class="archive-grid">
+            {archivedModpacks.map((modpack, idx) => (
+              <ModpackCard modpack={modpack} index={idx} />
+            ))}
+          </div>
+        </details>
+      )}
+
+    </div>
+  </section>
+
+  <script is:inline src="/assets/js/pages/modpacks.js" defer></script>
+</BaseLayout>

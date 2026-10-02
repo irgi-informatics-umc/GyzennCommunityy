@@ -1,0 +1,180 @@
+---
+interface Props {
+  modpack: any;
+  index: number;
+}
+const { modpack, index } = Astro.props;
+
+let badgeBannerHtml = '';
+if (modpack.isNew) {
+  badgeBannerHtml += `<span class="tag-badge tag-release tag-new-pulse ${modpack.id === 'fpsboost-v7' ? 'badge-new-v7' : ''}"><i class="fa-solid fa-fire"></i> NEW RELEASE</span> `;
+}
+if (modpack.version) {
+  badgeBannerHtml += `<span class="tag-badge tag-version-pill">[${modpack.version}]</span> `;
+}
+if (modpack.isRecommended) {
+  badgeBannerHtml += `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-star"></i> RECOMMENDED</span> `;
+}
+
+if (modpack.categories && modpack.categories.includes('FPS BOOST')) {
+  badgeBannerHtml += `<span class="tag-badge tag-shader"><i class="fa-solid fa-bolt"></i> FPS BOOST</span> `;
+}
+if (modpack.categories && modpack.categories.includes('SURVIVAL')) {
+  badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
+}
+if (modpack.categories && (modpack.categories.includes('CPVP') || modpack.categories.includes('PVP'))) {
+  badgeBannerHtml += `<span class="tag-badge tag-shader cpvp-badge"><i class="fa-solid fa-crosshairs"></i> ${modpack.categories.find(c => c === 'CPVP' || c === 'PVP')}</span> `;
+}
+if (modpack.categories && modpack.categories.includes('SERVER')) {
+  badgeBannerHtml += `<span class="tag-badge tag-shader tag-badge-fresh"><i class="fa-solid fa-server"></i> SERVER</span> `;
+}
+if (modpack.categories && modpack.categories.includes('VISUAL')) {
+  badgeBannerHtml += `<span class="tag-badge tag-shader tag-category-visual"><i class="fa-solid fa-wand-magic-sparkles"></i> VISUAL</span> `;
+}
+
+if (modpack.minecraft) {
+  badgeBannerHtml += `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span> `;
+}
+if (modpack.loaderVersion || modpack.loader) {
+  badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric Loader ${modpack.loaderVersion || '0.19.5'}</span> `;
+}
+
+if (Array.isArray(modpack.badges)) {
+  modpack.badges.forEach(b => {
+    if (!modpack.categories.includes(b) && (b !== 'NEW RELEASE' || !modpack.isNew)) {
+      let extraClass = '';
+      if (b === 'FRESH & SMOOTH') extraClass = 'tag-badge-fresh';
+      else if (b.includes('COBRA')) extraClass = 'tag-badge-cobra';
+      else if (b === 'IRIS SUPPORT') extraClass = 'tag-badge-iris';
+      badgeBannerHtml += `<span class="tag-badge tag-release ${extraClass}">${b}</span> `;
+    }
+  });
+}
+
+let stripTheme = modpack.theme || 'strip-orange';
+const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.categories[0] : 'ALL';
+---
+<div class={`modpack-editorial-strip ${stripTheme} ${modpack.image ? 'has-cover-image' : ''}`} id={modpack.id} data-index={index} data-category={primaryCategory}>
+  {modpack.image && (
+    <div class="modpack-cover-frame">
+      <img src={modpack.image} alt={modpack.imageAlt || `${modpack.name} Minecraft Modpack`} class="modpack-cover-img" loading="lazy" />
+      <div class="modpack-cover-badge-tag">
+        <span class="cover-tag"><i class="fa-solid fa-gamepad"></i> {modpack.name}</span>
+      </div>
+    </div>
+  )}
+  <div class="strip-header-col">
+    <span class={`version-stamp ${modpack.id === 'fpsboost-v7' ? 'version-stamp-v7' : ''}`}>
+      {modpack.version ? (modpack.minecraft ? `[${modpack.version}] MC ${modpack.minecraft}` : `[${modpack.version}]`) : (modpack.minecraft ? `MC ${modpack.minecraft}` : (modpack.status || 'RELEASED'))}
+    </span>
+    <div class="strip-badges-desktop" style="margin-top: 0.45rem;" set:html={badgeBannerHtml} />
+    <div class="strip-badges-mobile" set:html={badgeBannerHtml} />
+  </div>
+
+  <div class="strip-body-col">
+    {modpack.edition && (
+      <div class="modpack-edition-tag">
+        <i class="fa-solid fa-leaf"></i> {modpack.edition}
+      </div>
+    )}
+    <h3 class="modpack-card-title" set:html={modpack.displayTitle ? modpack.displayTitle.replace(/\n/g, '<br>') : modpack.name} />
+    
+    {modpack.description && (
+      <p class="modpack-editorial-desc">{modpack.description}</p>
+    )}
+
+    {/* Hardcoded Feature Bullet List for Sodium/FpsBoost/CPvP cards */}
+    {Array.isArray(modpack.features) && modpack.features.length > 0 && (
+      <ul class="modpack-bullet-list" style="margin-top: 0.5rem;">
+        {modpack.features.map(f => (
+          <li><i class="fa-solid fa-check"></i> {f}</li>
+        ))}
+      </ul>
+    )}
+
+    {/* Expandable Extra Mods */}
+    {Array.isArray(modpack.extraMods) && modpack.extraMods.length > 0 && (
+      <details class="modpack-extra-mods-details">
+        <summary class="modpack-extra-mods-summary">
+          <span class="summary-title"><i class="fa-solid fa-boxes-stacked"></i> + MOD TAMBAHAN ({modpack.extraMods.length} MOD)</span>
+          <span class="summary-hint">BUKA DAFTAR <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
+        </summary>
+        <div class="extra-mods-content">
+          <p class="extra-mods-notice">
+            <i class="fa-solid fa-circle-info"></i> {modpack.extraModsNote || 'Beberapa mod tambahan dapat dihapus jika tidak diperlukan.'}
+          </p>
+          <div class="extra-mods-chips">
+            {modpack.extraMods.map(m => <span class="extra-mod-tag">{m}</span>)}
+          </div>
+        </div>
+      </details>
+    )}
+
+    {/* Additional Content (Mods + Resourcepacks) */}
+    {((Array.isArray(modpack.additionalMods) && modpack.additionalMods.length > 0) || (Array.isArray(modpack.resourcepacks) && modpack.resourcepacks.length > 0)) && (
+      <details class="modpack-extra-mods-details modpack-addon-wrapper">
+        <summary class="modpack-extra-mods-summary">
+          <span class="summary-title"><i class="fa-solid fa-layer-group"></i> ADDITIONAL CONTENT</span>
+          <span class="summary-hint">SHOW CONTENT <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
+        </summary>
+        <div class="extra-mods-content addon-body-card">
+          {modpack.additionalMods && modpack.additionalMods.length > 0 && (
+            <div class="addon-subgroup">
+              <div class="addon-subgroup-title">
+                <span><i class="fa-solid fa-cubes"></i> ADDITIONAL MODS</span>
+                <span class="addon-pill-count">{modpack.additionalMods.length} ENTRIES</span>
+              </div>
+              <ul class="addon-item-list">
+                {modpack.additionalMods.map(m => (
+                  <li class="addon-item"><span class="addon-bullet">•</span> <span class="addon-name">{m}</span></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {modpack.resourcepacks && modpack.resourcepacks.length > 0 && (
+            <div class="addon-subgroup" style="margin-top: 1rem;">
+              <div class="addon-subgroup-title">
+                <span><i class="fa-solid fa-palette"></i> ADDITIONAL RESOURCEPACKS</span>
+                <span class="addon-pill-count rp-pill">{modpack.resourcepacks.length} PACKS</span>
+              </div>
+              <ul class="addon-item-list">
+                {modpack.resourcepacks.map((rp, idx) => (
+                  <li class="addon-item"><span class="addon-rp-num">{String(idx + 1).padStart(2, '0')}</span> <span class="addon-name">{rp}</span></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </details>
+    )}
+
+    {/* Note Callout */}
+    {modpack.note && (
+      <div class={`modpack-note-callout ${modpack.note.type === 'warning' ? 'note-warning' : ''}`}>
+        <div class="modpack-note-header">
+          <i class={`fa-solid ${modpack.note.type === 'warning' ? 'fa-triangle-exclamation' : 'fa-circle-info'}`}></i>
+          <span>{modpack.note.type === 'warning' ? 'CATATAN PENTING' : 'INFO TAMBAHAN'}</span>
+        </div>
+        <p class="modpack-note-text">{modpack.note.text}</p>
+      </div>
+    )}
+  </div>
+
+  <div class="strip-action-col">
+    {Array.isArray(modpack.downloads) && modpack.downloads.length > 0 && (
+      <div class={`modpack-download-group ${modpack.downloads.length >= 3 ? 'modpack-download-stack' : ''}`}>
+        {modpack.downloads.map(dl => {
+          const isMediafire = dl.type === 'mediafire';
+          const isMrpack = dl.type === 'mrpack';
+          const iconClass = isMediafire ? 'fa-solid fa-cloud-arrow-down' : (isMrpack ? 'fa-solid fa-download' : 'fa-brands fa-google-drive');
+          const btnClass = isMediafire ? 'btn-mediafire-subtle' : (isMrpack ? 'btn-primary' : 'btn-gdrive-subtle');
+          return (
+            <a href={dl.url} target="_blank" rel="noopener noreferrer" class={`btn ${btnClass} btn-download-action`} aria-label={`${dl.label} ${modpack.name}`}>
+              <i class={iconClass}></i> {dl.label}
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</div>

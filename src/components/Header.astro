@@ -1,0 +1,66 @@
+---
+import siteData from '../../public/assets/data/site.json';
+const { site } = siteData;
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header" id="siteHeader">
+  <div class="container nav-container">
+    <a href="/" class="brand-logo" aria-label="Gyzenn Community Home">
+      <div class="brand-icon-box">
+        <i class="fa-solid fa-cube"></i>
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">GYZENN</span>
+        <span class="brand-tag">COMMUNITY</span>
+      </div>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <ul class="nav-menu">
+        <li>
+          <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`} aria-current={currentPath === '/' ? 'page' : undefined}>
+            <i class="fa-solid fa-house"></i> Beranda
+          </a>
+        </li>
+        <li>
+          <a href="/komunitas/" class={`nav-link ${currentPath.startsWith('/komunitas') ? 'active' : ''}`} aria-current={currentPath.startsWith('/komunitas') ? 'page' : undefined}>
+            <i class="fa-solid fa-users"></i> Komunitas
+          </a>
+        </li>
+        <li>
+          <a href="/modpacks/" class={`nav-link ${currentPath.startsWith('/modpacks') ? 'active' : ''}`} aria-current={currentPath.startsWith('/modpacks') ? 'page' : undefined}>
+            <i class="fa-solid fa-box-open"></i> Modpacks
+          </a>
+        </li>
+        <li>
+          <a href="/zalith/" class={`nav-link ${currentPath.startsWith('/zalith') ? 'active' : ''}`} aria-current={currentPath.startsWith('/zalith') ? 'page' : undefined}>
+            <i class="fa-solid fa-rocket"></i> Zalith
+          </a>
+        </li>
+        <li>
+          <a href="/casda-network/" class={`nav-link ${currentPath.startsWith('/casda-network') ? 'active' : ''}`} aria-current={currentPath.startsWith('/casda-network') ? 'page' : undefined}>
+            <i class="fa-solid fa-server"></i> Casda Network
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button type="button" class="btn-theme-toggle" id="themeToggle" aria-label="Toggle Dark / Light Mode" title="Toggle Dark / Light Mode">
+        <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+        <span class="theme-text">DARK</span>
+      </button>
+
+      <a href={site.links.linktree} target="_blank" rel="noopener noreferrer" class="btn-header-cta" title="Buka Linktree Resmi">
+        <i class="fa-solid fa-tree"></i>
+        <span>LINKTREE</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>

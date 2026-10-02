@@ -1,0 +1,124 @@
+/* ==========================================================================
+   PAGE: ZALITH LAUNCHER - Installer Poster, Progress Bar, APK Grid
+   ========================================================================== */
+
+.zalith-main-card {
+  background-color: var(--bg-card);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-lg);
+}
+
+.zalith-banner-header {
+  border-bottom: var(--border-thick);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.zalith-big-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-blue);
+  line-height: 1;
+  margin-top: 0.35rem;
+}
+
+.zalith-subtitle { font-family: var(--font-pixel); font-size: 1.2rem; font-weight: bold; color: var(--color-orange); }
+
+.installer-status-bar {
+  background-color: var(--ink-black);
+  color: var(--text-inverted);
+  border: var(--border-thick);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.status-text-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.blinking-cursor {
+  animation: cursorBlink 1s infinite;
+  color: var(--color-pink);
+  margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.installer-progress-track {
+  width: 100%;
+  height: 16px;
+  background-color: #222;
+  border: 2px solid var(--color-yellow);
+  padding: 2px;
+}
+
+.installer-progress-fill {
+  width: 0%;
+  height: 100%;
+  background-color: var(--color-green);
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.changelog-box {
+  background-color: var(--bg-secondary);
+  border: var(--border-thick);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.changelog-box-title { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; margin-bottom: 0.65rem; }
+.changelog-list { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
+.changelog-list li { display: flex; align-items: flex-start; gap: 0.55rem; }
+.changelog-list i { color: var(--color-green-dark); margin-top: 0.2rem; }
+
+.apk-list-heading { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.85rem; }
+.apk-downloads-container { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.apk-download-item {
+  background-color: var(--bg-card);
+  border: var(--border-thick);
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: transform 0.15s ease;
+}
+
+.apk-download-item:hover { transform: translateX(4px); }
+.item-universal { background-color: var(--color-yellow); }
+
+.apk-name-group { display: flex; align-items: center; gap: 0.75rem; }
+.apk-icon {
+  width: 38px;
+  height: 38px;
+  background-color: var(--color-blue);
+  color: var(--text-inverted);
+  border: 2px solid #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.apk-filename { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; }
+.apk-arch-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+.apk-action-wrap { display: flex; align-items: center; gap: 0.85rem; }
+.apk-size-pill { font-family: var(--font-pixel); font-size: 1rem; font-weight: bold; }
+
+.btn-apk-download { background-color: var(--color-green); color: var(--ink-black); font-size: 0.82rem; padding: 0.45rem 0.85rem; }
+.btn-apk-universal { background-color: var(--color-pink); color: var(--text-inverted); }
+
+@media (max-width: 768px) {
+  .apk-download-item { flex-direction: column; align-items: flex-start; }
+  .apk-action-wrap { width: 100%; justify-content: space-between; }
+}

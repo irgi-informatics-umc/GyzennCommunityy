@@ -1,0 +1,30 @@
+---
+const currentPath = Astro.url.pathname;
+---
+<nav class="mobile-bottom-bar" aria-label="Mobile Bottom Navigation">
+  <a href="/" class={`bottom-nav-item ${currentPath === '/' ? 'active' : ''}`} aria-current={currentPath === '/' ? 'page' : undefined} id="bnav-home">
+    <span class="retro-btn-dot">◉</span>
+    <i class="fa-solid fa-house"></i>
+    <span>BERANDA</span>
+  </a>
+  <a href="/komunitas/" class={`bottom-nav-item ${currentPath.startsWith('/komunitas') ? 'active' : ''}`} aria-current={currentPath.startsWith('/komunitas') ? 'page' : undefined} id="bnav-community">
+    <span class="retro-btn-dot">●</span>
+    <i class="fa-solid fa-users"></i>
+    <span>KOMUNITAS</span>
+  </a>
+  <a href="/modpacks/" class={`bottom-nav-item ${currentPath.startsWith('/modpacks') ? 'active' : ''}`} aria-current={currentPath.startsWith('/modpacks') ? 'page' : undefined} id="bnav-modpacks">
+    <span class="retro-btn-dot">●</span>
+    <i class="fa-solid fa-cubes"></i>
+    <span>MODPACKS</span>
+  </a>
+  <a href="/zalith/" class={`bottom-nav-item ${currentPath.startsWith('/zalith') ? 'active' : ''}`} aria-current={currentPath.startsWith('/zalith') ? 'page' : undefined} id="bnav-zalith">
+    <span class="retro-btn-dot">●</span>
+    <i class="fa-solid fa-rocket"></i>
+    <span>ZALITH</span>
+  </a>
+  <a href="/casda-network/" class={`bottom-nav-item ${currentPath.startsWith('/casda-network') ? 'active' : ''}`} aria-current={currentPath.startsWith('/casda-network') ? 'page' : undefined} id="bnav-server">
+    <span class="retro-btn-dot">●</span>
+    <i class="fa-solid fa-server"></i>
+    <span>SERVER</span>
+  </a>
+</nav>

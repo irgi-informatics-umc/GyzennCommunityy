@@ -1,0 +1,26 @@
+---
+import siteData from '../../public/assets/data/site.json';
+import modpacksData from '../../public/assets/data/modpacks.json';
+
+const { site } = siteData;
+const tickerModpacks = modpacksData.filter(m => m.ticker);
+---
+<div class="retro-ticker-bar" aria-label="Pengumuman Komunitas">
+  <div class="ticker-content">
+    {site.ticker.map(t => (
+      <span><i class={t.icon}></i> {t.text}</span>
+    ))}
+    {tickerModpacks.map(m => (
+      <span><i class="fa-solid fa-fire"></i> {m.name.toUpperCase()} {m.version ? `[${m.version}]` : ''}</span>
+    ))}
+    {/* Cloned marquee content marked with aria-hidden */}
+    <span aria-hidden="true">
+      {site.ticker.map(t => (
+        <span><i class={t.icon}></i> {t.text}</span>
+      ))}
+      {tickerModpacks.map(m => (
+        <span><i class="fa-solid fa-fire"></i> {m.name.toUpperCase()} {m.version ? `[${m.version}]` : ''}</span>
+      ))}
+    </span>
+  </div>
+</div>

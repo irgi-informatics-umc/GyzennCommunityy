@@ -1,0 +1,72 @@
+{
+  "version": "1.4.1.4",
+  "developer": "MovTery",
+  "status": "Stable Release",
+  "title": "ZALITH LAUNCHER 1.4.1.4",
+  "subtitle": "PLAY MINECRAFT JAVA ON ANDROID ANYWHERE!",
+  "changelog": [
+    {
+      "title": "LWJGL-OpenGL Mapping",
+      "text": "Memperbaiki error mapping LWJGL-OpenGL yang sering menyebabkan crash saat rendering."
+    },
+    {
+      "title": "JourneyMap Fix",
+      "text": "Mengatasi kendala kompatibilitas dan rendering error pada minimap JourneyMap."
+    },
+    {
+      "title": "Version 1.7.2 Support",
+      "text": "Memperbaiki masalah ketidakmampuan menjalankan Minecraft versi lama (1.7.2)."
+    },
+    {
+      "title": "Date String Parsing",
+      "text": "Memperbaiki parsing format tanggal yang tidak valid pada histori log launcher."
+    }
+  ],
+  "apks": [
+    {
+      "filename": "ZalithLauncher-1.4.1.4-arm64-v8a.apk",
+      "arch": "arm64-v8a",
+      "description": "Rekomendasi untuk sebagian besar HP Android 64-bit modern",
+      "size": "145 MB",
+      "url": "https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-arm64-v8a.apk",
+      "icon": "fa-brands fa-android",
+      "universal": false
+    },
+    {
+      "filename": "ZalithLauncher-1.4.1.4-armeabi-v7a.apk",
+      "arch": "armeabi-v7a",
+      "description": "Untuk perangkat Android model lama berbasis 32-bit ARM",
+      "size": "141 MB",
+      "url": "https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-armeabi-v7a.apk",
+      "icon": "fa-brands fa-android",
+      "universal": false
+    },
+    {
+      "filename": "ZalithLauncher-1.4.1.4-x86.apk",
+      "arch": "x86",
+      "description": "Untuk Emulator Android 32-bit (BlueStacks, LDPlayer, Nox)",
+      "size": "130 MB",
+      "url": "https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-x86.apk",
+      "icon": "fa-solid fa-desktop",
+      "universal": false
+    },
+    {
+      "filename": "ZalithLauncher-1.4.1.4-x86_64.apk",
+      "arch": "x86_64",
+      "description": "Untuk Emulator Android 64-bit pada PC atau Laptop",
+      "size": "149 MB",
+      "url": "https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4-x86_64.apk",
+      "icon": "fa-solid fa-desktop",
+      "universal": false
+    },
+    {
+      "filename": "ZalithLauncher-1.4.1.4.apk",
+      "arch": "Universal",
+      "description": "Versi Universal — Kompatibel untuk semua tipe perangkat & chipset",
+      "size": "251 MB",
+      "url": "https://github.com/ZalithLauncher/ZalithLauncher/releases/download/141400/ZalithLauncher-1.4.1.4.apk",
+      "icon": "fa-solid fa-cube",
+      "universal": true
+    }
+  ]
+}

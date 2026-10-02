@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import zalithData from '../../../public/assets/data/zalith.json';
+import '../../styles/pages/zalith.css';
+---
+<BaseLayout 
+  title="Download Zalith Launcher 1.4.1.4 (Android) - Gyzenn Community"
+  description="Download Zalith Launcher versi rilis 1.4.1.4 by MovTery. Jalankan Minecraft Java Edition di Android dengan lancar."
+>
+  <section class="section section-zalith" id="zalith">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-tag tag-retro-blue">
+          <i class="fa-solid fa-mobile-screen"></i> ANDROID LAUNCHER
+        </span>
+        <h1 class="section-title">DOWNLOAD ZALITH LAUNCHER</h1>
+        <p class="section-desc">
+          Versi rilis stabil terbaru <strong>{zalithData.version} by {zalithData.developer}</strong>. Jalankan Minecraft Java Edition di perangkat Android dengan lancar dan kompatibel dengan berbagai mod.
+        </p>
+      </div>
+
+      <div class="retro-window-card zalith-main-card">
+        <div class="window-header">
+          <div class="window-buttons">
+            <span class="btn-win btn-win-close"></span>
+            <span class="btn-win btn-win-min"></span>
+            <span class="btn-win btn-win-max"></span>
+          </div>
+          <div class="window-title-text">
+            <i class="fa-solid fa-rocket"></i> ZALITH_LAUNCHER_V{zalithData.version}_INSTALLER.EXE
+          </div>
+        </div>
+
+        <div class="window-body">
+          <div class="zalith-banner-header">
+            <div>
+              <span class="tag-badge tag-mc-version">v{zalithData.version} (Latest)</span>
+              <span class="tag-badge tag-fabric">Dev: {zalithData.developer}</span>
+              <span class="tag-badge tag-release">Status: {zalithData.status}</span>
+            </div>
+            <h2 class="zalith-big-title">{zalithData.title}</h2>
+            <p class="zalith-subtitle">{zalithData.subtitle}</p>
+          </div>
+
+          <!-- Retro Software Installer Status Bar -->
+          <div class="installer-status-bar" id="zalithInstallerStatus">
+            <div class="status-text-row">
+              <span class="retro-pixel-text"><i class="fa-solid fa-microchip"></i> INSTALLATION STATUS: SYSTEM READY<span class="blinking-cursor">█</span></span>
+              <span class="status-percent-text retro-pixel-text" id="zalithPercentText">100%</span>
+            </div>
+            <div class="installer-progress-track">
+              <div class="installer-progress-fill" id="zalithProgressFill"></div>
+            </div>
+          </div>
+
+          <!-- Changelog Box -->
+          <div class="changelog-box">
+            <div class="changelog-box-title">
+              <i class="fa-solid fa-wrench"></i> CATATAN PEMBARUAN (CHANGELOG):
+            </div>
+            <ul class="changelog-list">
+              {zalithData.changelog.map(item => (
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <span><strong>{item.title}:</strong> {item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- APK Downloads List -->
+          <div style="margin-top: 1.75rem;">
+            <h3 class="apk-list-heading">
+              <i class="fa-solid fa-file-arrow-down"></i> DAFTAR FILE APK RILIS {zalithData.version}:
+            </h3>
+
+            <div class="apk-downloads-container">
+              {zalithData.apks.map(apk => (
+                <div class={`apk-download-item ${apk.universal ? 'item-universal' : ''}`}>
+                  <div class="apk-name-group">
+                    <div class="apk-icon"><i class={apk.icon}></i></div>
+                    <div>
+                      <div class="apk-filename">{apk.filename}</div>
+                      <div class="apk-arch-desc">{apk.description}</div>
+                    </div>
+                  </div>
+                  <div class="apk-action-wrap">
+                    <span class="apk-size-pill">{apk.universal ? `UNIVERSAL • ${apk.size}` : apk.size}</span>
+                    <a href={apk.url} target="_blank" rel="noopener noreferrer" class={`btn btn-apk-download ${apk.universal ? 'btn-apk-universal' : ''}`}>
+                      <i class="fa-solid fa-download"></i> DOWNLOAD
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script is:inline src="/assets/js/pages/zalith.js" defer></script>
+</BaseLayout>

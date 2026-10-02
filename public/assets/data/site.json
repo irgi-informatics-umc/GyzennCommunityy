@@ -1,0 +1,36 @@
+{
+  "site": {
+    "title": "Gyzenn Community",
+    "subtitle": "Minecraft Creator, Modpack Hub & Casda Network",
+    "author": "Gyzenn / giovmare",
+    "deviceSpec": "ACER NITRO V15 RTX 4050",
+    "links": {
+      "linktree": "https://linktr.ee/Gyzenn_",
+      "tiktok": "https://www.tiktok.com/@giovmare",
+      "whatsappChannel": "https://whatsapp.com/channel/0029VbBhyH347Xe8WNtwwL2j",
+      "whatsappGroup1": "https://chat.whatsapp.com/Kyn5WvX7DlPEdUuld7K9iJ",
+      "whatsappGroup2": "https://chat.whatsapp.com/EozIWLmesrjKsudbqSa3NK?mode=gi_t",
+      "discord": "https://discord.gg/AVCE3cv7J",
+      "discordCasda": "https://discord.gg/87wkxX3wu",
+      "saweria": "https://saweria.co/GiiPrtma"
+    },
+    "stats": {
+      "tiktokLikes": 35.5,
+      "tiktokFollowers": 1606,
+      "tiktokFollowing": 101,
+      "whatsappFollowers": 623
+    },
+    "ticker": [
+      { "icon": "fa-solid fa-leaf", "text": "COBRA ULTIMIZED X FRESH & SMOOTH" },
+      { "icon": "fa-solid fa-fire", "text": "COBRA X BOOM REMAKE" },
+      { "icon": "fa-solid fa-bolt", "text": "COBRA ULTIMIZED REMAKE 26.3 & 26.1" },
+      { "icon": "fa-solid fa-campground", "text": "GYZENN SURVIVAL V2 RELEASED" },
+      { "icon": "fa-solid fa-crosshairs", "text": "QUICK CPVP 26.3" },
+      { "icon": "fa-solid fa-star", "text": "SODIUMPACK V2" },
+      { "icon": "fa-solid fa-music", "text": "BETTER SOUND JAVA RESOURCE PACK" },
+      { "icon": "fa-solid fa-wand-magic-sparkles", "text": "DERIVATIVE SHADER 1.21+" },
+      { "icon": "fa-solid fa-rocket", "text": "ZALITH LAUNCHER 1.4.1.4" },
+      { "icon": "fa-solid fa-network-wired", "text": "CASDA NETWORK • COMING SOON" }
+    ]
+  }
+}

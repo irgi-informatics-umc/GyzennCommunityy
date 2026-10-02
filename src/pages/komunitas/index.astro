@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import siteData from '../../../public/assets/data/site.json';
+import '../../styles/pages/komunitas.css';
+
+const { site } = siteData;
+---
+<BaseLayout 
+  title="Komunitas & Discord - Gyzenn Community"
+  description="Gabung Komunitas Gyzenn — Social Wall TikTok, Saluran WhatsApp, Group WhatsApp, dan Official Discord Hub."
+>
+  <section class="section section-community" id="community">
+    <div class="container">
+      <div class="section-header dense-header">
+        <span class="section-tag tag-retro-pink">
+          <i class="fa-solid fa-circle-nodes"></i> RETRO SOCIAL WALL
+        </span>
+        <h1 class="section-title">MEDIA SOSIAL & KOMUNITAS</h1>
+        <p class="section-desc">
+          Tetap terhubung bersama Gyzenn Community untuk info update modpack terbaru, tutorial konfigurasi, dan mabar seru bareng member lainnya.
+        </p>
+      </div>
+
+      <div class="social-wall-layout">
+        <!-- Block 1: TikTok -->
+        <div class="social-block block-tiktok">
+          <div class="block-seal">TIKTOK CREATOR</div>
+          <div class="block-head">
+            <div class="block-icon icon-tiktok"><i class="fa-brands fa-tiktok"></i></div>
+            <div>
+              <h2 class="block-title">TIKTOK HIGH-SCORE</h2>
+              <p class="block-subtitle">@giovmare</p>
+            </div>
+          </div>
+
+          <div class="tiktok-score-display">
+            <div class="score-main">
+              <span class="stat-value counter-animate" data-target={site.stats.tiktokLikes} data-suffix="K">{site.stats.tiktokLikes}K</span>
+              <span class="score-label">TOTAL SUKA</span>
+            </div>
+            <div class="score-sub">
+              <div>
+                <span class="stat-value counter-animate" data-target={site.stats.tiktokFollowers}>{site.stats.tiktokFollowers}</span>
+                <span class="score-label">PENGIKUT</span>
+              </div>
+              <div>
+                <span class="stat-value counter-animate" data-target={site.stats.tiktokFollowing}>{site.stats.tiktokFollowing}</span>
+                <span class="score-label">MENGIKUTI</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="block-body">
+            Showcase shader Minecraft, review modpack FPS boost, dan gameplay seru setiap minggu!
+          </p>
+
+          <a href={site.links.tiktok} target="_blank" rel="noopener noreferrer" class="btn btn-tiktok-solid" style="width: 100%;">
+            <i class="fa-brands fa-tiktok"></i>
+            <span>follow my tiktok</span>
+          </a>
+        </div>
+
+        <!-- Block 2: WhatsApp Channel -->
+        <div class="social-block block-wa-channel">
+          <div class="block-seal seal-green">OFFICIAL CHANNEL</div>
+          <div class="block-head">
+            <div class="block-icon icon-wa"><i class="fa-solid fa-bullhorn"></i></div>
+            <div>
+              <h2 class="block-title">SALURAN WHATSAPP</h2>
+              <p class="block-subtitle">Gyzenn | Community</p>
+            </div>
+          </div>
+
+          <div class="wa-channel-stat-banner">
+            <div class="wa-follower-num counter-animate" data-target={site.stats.whatsappFollowers}>{site.stats.whatsappFollowers}</div>
+            <div>
+              <div class="wa-follower-label">PENGIKUT AKTIF</div>
+              <div class="retro-pixel-text" style="font-size: 0.85rem;">UPDATE LANGSUNG TANPA SPAM</div>
+            </div>
+          </div>
+
+          <p class="block-body">
+            Dapatkan tautan modpack fresh, resource pack rekomendasi, dan pengumuman tercepat langsung di WhatsApp Anda.
+          </p>
+
+          <a href={site.links.whatsappChannel} target="_blank" rel="noopener noreferrer" class="btn btn-wa-solid" style="width: 100%;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Ikuti saluran whatsapp</span>
+          </a>
+        </div>
+
+        <!-- Block 3: WhatsApp Group -->
+        <div class="social-block block-wa-group">
+          <div class="block-seal seal-orange">COMMUNITY CHAT</div>
+          <div class="block-head">
+            <div class="block-icon icon-group"><i class="fa-solid fa-comments"></i></div>
+            <div>
+              <h2 class="block-title">GROUP WHATSAPP</h2>
+              <p class="block-subtitle">Diskusi & Mabar Minecraft</p>
+            </div>
+          </div>
+
+          <p class="block-body">
+            Gabung ke komunitas obrolan kami! Tempat sharing seputar modifikasi Minecraft, tanya jawab error launcher, dan mabar bareng teman-teman baru.
+          </p>
+
+          <div class="group-actions-grid">
+            <a href={site.links.whatsappGroup1} target="_blank" rel="noopener noreferrer" class="btn btn-group-solid">
+              <i class="fa-solid fa-user-group"></i>
+              <span>GABUNG CHAT 1</span>
+            </a>
+            <a href={site.links.whatsappGroup2} target="_blank" rel="noopener noreferrer" class="btn btn-group-solid">
+              <i class="fa-solid fa-user-group"></i>
+              <span>GABUNG CHAT 2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discord Section Integrated inside Komunitas Page -->
+  <section class="section section-discord" id="discord">
+    <div class="container">
+      <div class="retro-poster-box discord-poster">
+        <div class="poster-decor-star decor-star-1">★</div>
+        <div class="poster-decor-star decor-star-2">★</div>
+
+        <div class="discord-header-flex">
+          <div>
+            <span class="tag-badge tag-discord-badge">
+              <i class="fa-brands fa-discord"></i> DISCORD COMMUNITY
+            </span>
+            <h2 class="poster-main-title">JOIN DISCORD GYZENN</h2>
+            <p class="poster-subtitle">OFFICIAL MINECRAFT HUB & VOICE CHANNELS</p>
+          </div>
+
+          <div class="discord-badge-icon-box">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+        </div>
+
+        <p class="poster-text">
+          Tempat ngobrol, mabar, berbagi Minecraft setup, mod, shader, resource pack, dan update terbaru dari Gyzenn Community secara interaktif 24/7!
+        </p>
+
+        <div class="discord-features-grid">
+          <div class="discord-mini-chip">
+            <i class="fa-solid fa-gamepad"></i>
+            <span>MINECRAFT COMMUNITY</span>
+          </div>
+          <div class="discord-mini-chip">
+            <i class="fa-solid fa-headset"></i>
+            <span>MABAR & NONGKRONG</span>
+          </div>
+          <div class="discord-mini-chip">
+            <i class="fa-solid fa-bullhorn"></i>
+            <span>UPDATE & ANNOUNCEMENT</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <a href={site.links.discord} target="_blank" rel="noopener noreferrer" class="btn btn-discord-main" style="width: 100%;">
+            <i class="fa-brands fa-discord"></i>
+            <span>GABUNG DISCORD GYZENN NOW</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="/assets/js/pages/komunitas.js" defer></script>
+</BaseLayout>
