@@ -684,6 +684,173 @@ details.modpack-archive-details[open] summary {
   gap: 1.75rem;
 }
 
+/* --------------------------------------------------------------------------
+   6. Additional Content (Mods & Resource Packs Accordion)
+   -------------------------------------------------------------------------- */
+.modpack-addon-wrapper {
+  margin-top: 0.75rem;
+}
+
+.summary-arrow {
+  transition: transform 0.2s var(--ease);
+}
+
+details[open] .summary-arrow {
+  transform: rotate(180deg);
+}
+
+.addon-body-card {
+  background-color: var(--surface-raised);
+  padding: 1rem;
+}
+
+.addon-subgroup {
+  margin-bottom: 0.5rem;
+}
+
+.addon-subgroup-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.addon-pill-count {
+  font-size: 0.7rem;
+  font-weight: 900;
+  background-color: var(--surface);
+  color: var(--ink-fixed);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 0.15rem 0.5rem;
+  box-shadow: 2px 2px 0 var(--shadow-line);
+}
+
+.addon-pill-count.rp-pill {
+  background-color: var(--blush);
+}
+
+.addon-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.addon-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.addon-bullet {
+  color: var(--pink);
+  font-weight: 900;
+}
+
+.addon-name {
+  font-weight: 600;
+}
+
+.addon-rp-num {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.7rem;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+}
+
+.strip-badges-desktop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Gaming Mode & Controls Bar
+   -------------------------------------------------------------------------- */
+.gaming-mode-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.mode-text {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.mode-status {
+  font-weight: 900;
+}
+
+/* Gaming Mode Toggle State: Glow Shadow-lg */
+.gaming-mode .modpack-editorial-strip {
+  box-shadow: 10px 10px 0 var(--pink) !important;
+}
+
+[data-theme="dark"] .gaming-mode .modpack-editorial-strip {
+  box-shadow: 10px 10px 0 var(--blue) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. DERIVATIVE Shader & Resource Pack Posters
+   -------------------------------------------------------------------------- */
+.derivative-card {
+  border-color: var(--line);
+}
+
+.resourcepack-card {
+  border-color: var(--line);
+}
+
+.derivative-desc {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.derivative-info-poster {
+  display: flex;
+  flex-direction: column;
+}
+
+.derivative-download-wrapper {
+  margin-top: 1.25rem;
+}
+
+.credit-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.credit-subtext {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
 @media (max-width: 768px) {
   .editorial-modpacks-showcase {
     grid-template-columns: 1fr;
@@ -693,5 +860,14 @@ details.modpack-archive-details[open] summary {
   }
   .archive-grid {
     grid-template-columns: 1fr;
+  }
+  .strip-badges-desktop {
+    display: none;
+  }
+  .strip-badges-mobile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
   }
 }
