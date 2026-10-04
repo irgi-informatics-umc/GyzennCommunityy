@@ -9,34 +9,56 @@ const latestModpacks = modpacksData
 ---
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-poster-box">
-      <div class="footer-brand-title">GYZENN COMMUNITY</div>
-
-      <p class="footer-desc">
-        Komunitas kreator Minecraft Indonesia independen. Menyediakan modpack, shader rekomendasi, dan launcher Android terbaik untuk semua pemain.
-      </p>
-
-      <ul class="footer-links-grid">
-        <li><a href="/">BERANDA</a></li>
-        <li><a href="/komunitas/">KOMUNITAS</a></li>
-        <li><a href="/komunitas/#discord">DISCORD COMMUNITY</a></li>
-        <li><a href="/modpacks/">SEMUA MODPACKS</a></li>
-        {latestModpacks.map(m => (
-          <li><a href={`/modpacks/#${m.id}`}>{m.name.toUpperCase()}</a></li>
-        ))}
-        <li><a href="/zalith/">ZALITH LAUNCHER</a></li>
-        <li><a href="/casda-network/">CASDA NETWORK</a></li>
-        <li><a href="/#support">SUPPORT GYZENN</a></li>
-        <li><a href={site.links.saweria} target="_blank" rel="noopener noreferrer" style="color: var(--color-pink);"><i class="fa-solid fa-heart"></i> SUPPORT ON SAWERIA</a></li>
-        <li><a href={site.links.linktree} target="_blank" rel="noopener noreferrer">LINKTREE RESMI</a></li>
-      </ul>
-
-      <div class="footer-hr"></div>
-
-      <div class="footer-bottom-row">
-        <p>© 2026 GYZENN COMMUNITY. CREATED WITH <i class="fa-solid fa-heart" style="color: #FF2A85;"></i> FOR MINECRAFT GAMERS.</p>
-        <p class="retro-pixel-text" style="font-size: 0.82rem;">DEVICE: {site.deviceSpec} • TESTED & BENCHMARKED</p>
+    <div class="footer-columns-grid">
+      <!-- Kolom 1: Halaman -->
+      <div class="footer-col">
+        <div class="footer-brand-badge">GYZENN</div>
+        <h3 class="footer-col-title">HALAMAN</h3>
+        <ul class="footer-links-list">
+          <li><a href="/">BERANDA</a></li>
+          <li><a href="/komunitas/">KOMUNITAS</a></li>
+          <li><a href="/komunitas/#discord">DISCORD COMMUNITY</a></li>
+          <li><a href="/modpacks/">SEMUA MODPACKS</a></li>
+          <li><a href="/zalith/">ZALITH LAUNCHER</a></li>
+          <li><a href="/casda-network/">CASDA NETWORK</a></li>
+        </ul>
       </div>
+
+      <!-- Kolom 2: Modpack Terbaru -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">MODPACK TERBARU</h3>
+        <ul class="footer-links-list">
+          {latestModpacks.map(m => (
+            <li><a href={`/modpacks/#${m.id}`}>{m.name.toUpperCase()}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Kolom 3: Support -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">SUPPORT & CONNECT</h3>
+        <p class="footer-desc">
+          Komunitas kreator Minecraft Indonesia independen. Menyediakan modpack, shader rekomendasi, dan launcher Android terbaik untuk semua pemain.
+        </p>
+        <div class="footer-support-actions">
+          <a href={site.links.saweria} target="_blank" rel="noopener noreferrer" class="btn btn-primary footer-btn">
+            <i class="fa-solid fa-heart"></i>
+            <span>SUPPORT ON SAWERIA</span>
+          </a>
+          <a href={site.links.linktree} target="_blank" rel="noopener noreferrer" class="btn btn-secondary footer-btn">
+            <i class="fa-solid fa-tree"></i>
+            <span>LINKTREE RESMI</span>
+          </a>
+          <a href="/#support" class="footer-quick-support">SUPPORT GYZENN</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-hr"></div>
+
+    <div class="footer-bottom-row">
+      <p class="footer-copyright">© 2026 GYZENN COMMUNITY. CREATED WITH <i class="fa-solid fa-heart" style="color: var(--pink);"></i> FOR MINECRAFT GAMERS.</p>
+      <p class="footer-device">DEVICE: {site.deviceSpec} • TESTED & BENCHMARKED</p>
     </div>
   </div>
 </footer>

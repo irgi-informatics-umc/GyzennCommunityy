@@ -60,10 +60,10 @@ import '../../styles/pages/zalith.css';
               <i class="fa-solid fa-wrench"></i> CATATAN PEMBARUAN (CHANGELOG):
             </div>
             <ul class="changelog-list">
-              {zalithData.changelog.map(item => (
-                <li>
-                  <i class="fa-solid fa-check"></i>
-                  <span><strong>{item.title}:</strong> {item.text}</span>
+              {zalithData.changelog.map((item, idx) => (
+                <li class="changelog-item">
+                  <span class="changelog-num-circle">{idx + 1}</span>
+                  <div class="changelog-text-wrap"><strong>{item.title}:</strong> {item.text}</div>
                 </li>
               ))}
             </ul>

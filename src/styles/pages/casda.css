@@ -1,37 +1,38 @@
 /* ==========================================================================
-   PAGE: CASDA NETWORK - Server Poster, Chips, Mode Previews & Copy IP
+   PAGE: CASDA NETWORK - Soft Brutalism (Dummy.my Style)
+   Server Card, Chips Grid, Mode Previews & Copy IP Actions
    ========================================================================== */
 
-.server-poster { background-color: var(--color-orange); }
+.server-poster {
+  background-color: var(--surface);
+  border: var(--border-thick);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
 
 .server-poster-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 1.5rem;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 2.25rem;
   align-items: center;
 }
 
 .server-frame-wrapper {
-  background-color: var(--bg-card);
+  background-color: var(--surface-raised);
   border: var(--border-thick);
-  padding: 0.65rem;
+  border-radius: var(--r-card);
+  padding: 0.75rem;
   box-shadow: var(--shadow-md);
   position: relative;
-  transition: transform 0.25s ease;
+  transition: transform 0.2s var(--ease);
 }
 
-.server-frame-wrapper:hover { transform: scale(1.02) rotate(-1deg); }
-
-.server-frame-wrapper::after {
-  content: "";
-  position: absolute;
-  inset: 8%;
-  pointer-events: none;
-  border-radius: 2px;
-  box-shadow:
-    0 0 25px rgba(255, 87, 34, 0.28),
-    0 0 55px rgba(255, 255, 255, 0.10);
-  z-index: 0;
+@media (hover: hover) {
+  .server-frame-wrapper:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 .server-img {
@@ -39,122 +40,239 @@
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border: 2px solid #121212;
+  border: 2px solid var(--line);
 }
 
 .server-badge-overlay {
   position: absolute;
   bottom: 1.25rem;
   left: 1.25rem;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.25rem 0.75rem;
+  background-color: #ffffff;
+  color: var(--ink-fixed);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
   border: var(--border-thick);
+  border-radius: var(--r-pill);
   box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .tag-warning-pulse {
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  font-weight: bold;
-  animation: subtleNewFloat 2s ease-in-out infinite alternate;
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--r-pill);
+  font-weight: 800;
+  font-size: 0.75rem;
 }
 
-.server-info-col { color: var(--text-inverted); }
-.server-main-title { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-yellow); text-shadow: 3px 3px 0px #121212; margin: 0.35rem 0; }
-.server-desc { font-size: 1rem; margin-bottom: 1rem; }
+.server-info-col {
+  color: var(--text);
+}
 
-.server-chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-bottom: 1rem; }
-.server-chip { background-color: var(--bg-card); color: var(--ink-black); border: var(--border-thick); padding: 0.45rem 0.75rem; box-shadow: var(--shadow-sm); font-family: var(--font-heading); font-size: 0.82rem; }
-.chip-label { font-weight: 700; display: block; font-size: 0.72rem; color: var(--text-muted); }
-.chip-val { font-weight: 700; font-size: 0.9rem; }
-.chip-status .status-val { color: #B45309; font-weight: 800; }
-.chip-ip { background-color: var(--color-yellow); }
-.ip-text { font-family: var(--font-pixel); font-size: 1.15rem; color: var(--color-blue); }
+.server-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
 
+.server-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.server-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Chips Grid */
+.server-chips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.server-chip {
+  background-color: var(--surface-raised);
+  color: var(--text);
+  border: 2px solid var(--line);
+  border-radius: var(--r-btn);
+  padding: 0.65rem 0.85rem;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-heading);
+}
+
+.chip-label {
+  font-weight: 800;
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.chip-val {
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.chip-status .status-val {
+  color: #b45309;
+}
+
+.chip-ip {
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+}
+
+.chip-ip .chip-label {
+  color: var(--ink-fixed);
+  opacity: 0.75;
+}
+
+.ip-text {
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: var(--ink-fixed);
+}
+
+/* Mode Preview Cards */
 .server-modes-preview {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.55rem;
-  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .mode-preview-card {
-  background-color: var(--bg-card);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  padding: 0.5rem 0.65rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--r-btn);
+  box-shadow: var(--shadow-sm);
+  padding: 0.75rem 0.85rem;
 }
 
 .mode-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.35rem;
-  margin-bottom: 0.2rem;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
 }
 
 .mode-name {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.78rem;
-  color: var(--ink-black);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
-.mode-name i { color: var(--color-orange); }
+.mode-name i {
+  color: var(--orange);
+}
 
 .mode-status-badge {
-  font-family: var(--font-pixel);
-  font-size: 0.85rem;
-  font-weight: bold;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 1px solid var(--ink-black);
-  padding: 0.05rem 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: var(--surface-raised);
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 0.1rem 0.45rem;
 }
 
 .mode-card-desc {
-  font-family: var(--font-body);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  line-height: 1.3;
+  line-height: 1.4;
   margin: 0;
 }
 
-.server-actions-group { display: flex; flex-wrap: wrap; gap: 0.85rem; }
-.btn-copy-ip { background-color: var(--color-yellow); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
-.btn-copy-ip.copied { background-color: var(--color-green); color: var(--ink-black); }
-.btn-discord-subtle { background-color: var(--bg-card); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
+/* Actions Group */
+.server-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-copy-ip {
+  background-color: var(--line);
+  color: var(--text-inverted);
+}
+
+[data-theme="dark"] .btn-copy-ip {
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+}
+
+.btn-copy-ip.copied {
+  background-color: var(--green) !important;
+  color: var(--ink-fixed) !important;
+}
+
+.btn-discord-subtle {
+  background-color: var(--surface);
+  color: var(--text);
+}
 
 .ip-particle {
   position: fixed;
   pointer-events: none;
   z-index: 1050;
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 0.85rem;
-  padding: 0.1rem 0.3rem;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 1px solid #121212;
-  border-radius: 2px;
-  box-shadow: 2px 2px 0px #121212;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.25rem 0.65rem;
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+  border: 2px solid var(--line);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 @media (max-width: 1024px) {
-  .server-poster-grid { grid-template-columns: 1fr; }
+  .server-poster-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .server-chips-grid, .server-modes-preview { grid-template-columns: 1fr; }
-  .server-actions-group { flex-direction: column; width: 100%; }
+  .server-chips-grid,
+  .server-modes-preview {
+    grid-template-columns: 1fr;
+  }
+  .server-actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .server-actions-group .btn {
+    width: 100%;
+  }
 }

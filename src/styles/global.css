@@ -1,79 +1,115 @@
 /* ==========================================================================
-   GYZENN COMMUNITY - 90s RETRO × MEMPHIS × Y2K DESIGN SYSTEM (RE-DIRECTION)
-   Art Direction: Editorial Composition, Tactile Physicality, Mobile Poster Layout
+   GYZENN COMMUNITY - SOFT BRUTALISM DESIGN SYSTEM
+   Visual Hierarchy: Flat Sharp Cards, Rounded Pastel Tiles, Pill Badges, Hard Crisp Shadows
+   Reference: Dummy.my • Soft Brutalism System
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. CSS Variables & Theme Tokens
+   1. Design Tokens & CSS Custom Properties
    -------------------------------------------------------------------------- */
 :root {
-  --bg-primary: #FDFBF7;
-  --bg-secondary: #F4EFE6;
-  --bg-card: #FFFFFF;
-  
-  --ink-black: #121212;
-  --text-main: #121212;
-  --text-muted: #4A4A4A;
-  --text-inverted: #FFFFFF;
+  /* Netral */
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-raised: #f1f5f9;
+  --text: #1e293b;
+  --text-muted: #5b6472;
+  --line: #0f172a;          /* Border navy & shadow keras */
+  --shadow-line: #0f172a;   /* Shadow keras */
+  --ink-fixed: #0f172a;     /* Teks gelap di atas fill pastel/gradien (tetap di kedua mode) */
 
-  /* Retro Memphis Palette */
-  --color-blue: #1E3A8A;
-  --color-blue-bright: #2563EB;
-  --color-orange: #FF5722;
-  --color-pink: #FF2A85;
-  --color-yellow: #FFD600;
-  --color-green: #A3E635;
-  --color-green-dark: #65A30D;
-  --color-red: #E11D48;
-  --color-purple: #7C3AED;
+  /* Palet Aksen */
+  --pink: #ff5c8a;
+  --pink-2: #ec3b8d;
+  --blue: #3b9cff;
+  --blue-2: #00b4e6;
+  --orange: #ffb000;
+  --orange-2: #ff7a00;
+  --green: #00d97a;
+  --green-2: #00b86b;
+  --lavender: #d8b4fe;
+  --blush: #f9a8d4;
+  --yellow: #fde047;
 
-  /* Outlines & Hard Shadows (Physical Tactile System) */
-  --border-thick: 3px solid #121212;
-  --border-extra-thick: 4px solid #121212;
-  --radius-sharp: 4px;
-  --radius-round: 14px;
-  --radius-pill: 9999px;
+  /* Gradien Pastel & Aksen */
+  --grad-hero: linear-gradient(135deg, #d8b4fe 0%, #f9a8d4 100%);
+  --grad-pink: linear-gradient(135deg, #ff6b8a 0%, #f02d8c 100%);
+  --grad-blue: linear-gradient(135deg, #3da5ff 0%, #00b0e8 100%);
+  --grad-orange: linear-gradient(135deg, #ffb300 0%, #ff6f00 100%);
+  --grad-green: linear-gradient(135deg, #00dc7a 0%, #00b867 100%);
+  --grad-lavender: linear-gradient(135deg, #c084fc 0%, #d8b4fe 100%);
+  --grad-yellow: linear-gradient(135deg, #fde047 0%, #facc15 100%);
 
-  --shadow-sm: 3px 3px 0px #121212;
-  --shadow-md: 4px 4px 0px #121212;
-  --shadow-lg: 6px 6px 0px #121212;
-  --shadow-hover: 6px 6px 0px #121212;
-  --shadow-active: 1px 1px 0px #121212;
+  /* Bentuk & Ketebalan */
+  --bw: 3px;
+  --bw-thin: 1px;
+  --r-card: 0px;            /* Sudut siku untuk kartu (Soft Brutalism) */
+  --r-tile: 18px;           /* Sudut membulat untuk icon tile */
+  --r-pill: 999px;          /* Pill badge & filter chips */
+  --r-btn: 2px;             /* Sudut siku terstruktur untuk tombol */
 
-  --border-color: #121212;
-  --bg-page-dots: rgba(18, 18, 18, 0.08);
+  /* Hard Shadows (Crisp / Tanpa Blur ke Kanan Bawah) */
+  --shadow-sm: 3px 3px 0 var(--shadow-line);
+  --shadow-md: 5px 5px 0 var(--shadow-line);
+  --shadow-lg: 8px 8px 0 var(--shadow-line);
+  --ease: cubic-bezier(.2, .8, .2, 1);
 
-  /* Typography */
-  --font-display: 'Dela Gothic One', 'Impact', sans-serif;
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-pixel: 'VT323', monospace;
+  /* Kompatibilitas Token Legacy */
+  --bg-primary: var(--bg);
+  --bg-secondary: #f1f5f9;
+  --bg-card: var(--surface);
+  --ink-black: var(--line);
+  --text-main: var(--text);
+  --text-inverted: #ffffff;
+  --border-thick: var(--bw) solid var(--line);
+  --border-extra-thick: var(--bw) solid var(--line);
+  --radius-sharp: var(--r-btn);
+  --radius-round: var(--r-tile);
+  --radius-pill: var(--r-pill);
+  --border-color: var(--line);
+
+  --color-blue: var(--blue);
+  --color-blue-bright: var(--blue-2);
+  --color-orange: var(--orange);
+  --color-pink: var(--pink);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-2);
+  --color-purple: var(--lavender);
+  --color-red: #ef4444;
+
+  /* Tipografi Bersih: Inter */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-pixel: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --bottom-nav-height: 64px;
 }
 
 [data-theme="dark"] {
-  --bg-primary: #0B0D0C;
-  --bg-secondary: #101412;
-  --bg-card: #151A17;
-  --bg-card-elevated: #1B211D;
-  
-  --ink-black: #F5F5F5;
-  --text-main: #F5F5F5;
-  --text-muted: #A7AEA9;
-  --text-inverted: #0B0D0C;
-  --border-color: #38453E;
-  --bg-page-dots: rgba(245, 245, 245, 0.08);
+  --bg: #0b1220;
+  --surface: #131c31;
+  --surface-raised: #1a253e;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --line: #e2e8f0;          /* Border terang di dark mode */
+  --shadow-line: #475569;   /* Shadow keras abu-biru slate agar kontras jelas di atas bg gelap */
+  --ink-fixed: #0f172a;     /* Teks gelap di atas fill pastel */
 
-  --border-thick: 3px solid #38453E;
-  --border-extra-thick: 4px solid #38453E;
+  --shadow-sm: 3px 3px 0 var(--shadow-line);
+  --shadow-md: 5px 5px 0 var(--shadow-line);
+  --shadow-lg: 8px 8px 0 var(--shadow-line);
 
-  --shadow-sm: 3px 3px 0px #000000;
-  --shadow-md: 4px 4px 0px #000000;
-  --shadow-lg: 6px 6px 0px #000000;
-  --shadow-hover: 6px 6px 0px #000000;
-  --shadow-active: 1px 1px 0px #000000;
-
-  --color-cobra-accent: #22C55E;
+  /* Legacy tokens mapping */
+  --bg-primary: var(--bg);
+  --bg-secondary: #1a253e;
+  --bg-card: var(--surface);
+  --bg-card-elevated: #1e2b48;
+  --ink-black: var(--line);
+  --text-main: var(--text);
+  --border-color: var(--line);
+  --border-thick: var(--bw) solid var(--line);
+  --border-extra-thick: var(--bw) solid var(--line);
 }
 
 /* --------------------------------------------------------------------------
@@ -94,47 +130,41 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
-  background-image: radial-gradient(var(--bg-page-dots, #121212) 1px, transparent 1px);
-  background-size: 24px 24px;
-  color: var(--text-main);
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   overflow-x: hidden;
   position: relative;
   width: 100%;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.22s ease, color 0.22s ease;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-/* Global Container & Box Safety */
-section,
-.container,
-.card,
-.grid,
-.flex,
-img,
-button,
-input {
-  max-width: 100%;
+/* Focus Visible Accessibility */
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
 }
 
-body,
-.site-header,
-.modpack-editorial-strip,
-.modpack-collapsible-wrapper,
-.mobile-bottom-bar,
-.site-footer,
-.saweria-editorial-poster,
-.zalith-window-poster,
-.casda-terminal-window {
-  transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; border: none; background: none; cursor: pointer; }
-ul { list-style: none; }
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
 
 img {
   max-width: 100%;
@@ -142,17 +172,26 @@ img {
   display: block;
 }
 
-img.img-failed { display: none !important; }
+img.img-failed {
+  display: none !important;
+}
 
+/* Container */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
+}
+
+/* Section Spacing */
+.section {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  position: relative;
 }
 
 /* --------------------------------------------------------------------------
-   3. Centralized Lightweight Retro Canvas Particle Engine & Memphis Shapes
+   3. Neutralized Canvas & Removed Retro Memphis Decorations
    -------------------------------------------------------------------------- */
 #retroParticleCanvas {
   position: fixed;
@@ -162,47 +201,35 @@ img.img-failed { display: none !important; }
   height: 100vh;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.15; /* Subtle ambient particles, non-distracting */
 }
 
 .memphis-bg-decorations {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+  display: none !important;
 }
 
-.memphis-shape {
-  position: absolute;
-  opacity: 0.75;
-  user-select: none;
-  transition: transform 0.3s ease;
+.retro-ribbon-divider {
+  height: 3px;
+  background-color: var(--line);
+  margin: 1.5rem 0;
+  border: none;
 }
-
-.shape-circle-blue { top: 12%; left: 2%; width: 50px; height: 50px; background-color: var(--color-blue-bright); border: var(--border-thick); border-radius: 50%; }
-.shape-donut-yellow { top: 48%; right: 3%; width: 60px; height: 60px; background-color: var(--color-yellow); border: var(--border-thick); border-radius: 50%; box-shadow: var(--shadow-sm); }
-.shape-triangle-pink { top: 78%; left: 3%; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 40px solid var(--color-pink); filter: drop-shadow(3px 3px 0px #121212); transform: rotate(20deg); }
-.shape-squiggle-green { top: 30%; right: 8%; width: 80px; }
-.shape-cross-red { top: 62%; left: 8%; font-family: var(--font-display); font-size: 2.5rem; color: var(--color-red); text-shadow: 2px 2px 0px #121212; }
-.shape-star-purple { top: 85%; right: 6%; font-size: 3rem; color: var(--color-purple); text-shadow: 3px 3px 0px #121212; }
 
 /* --------------------------------------------------------------------------
-   4. Top Ticker Marquee Announcement Bar
+   4. Top Announcement Ticker
    -------------------------------------------------------------------------- */
 .retro-ticker-bar {
-  background-color: var(--color-yellow);
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
   border-bottom: var(--border-thick);
-  color: var(--ink-black);
-  font-family: var(--font-pixel);
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   overflow: hidden;
   white-space: nowrap;
-  padding: 0.3rem 0;
+  padding: 0.45rem 0;
   position: relative;
   z-index: 1000;
 }
@@ -210,14 +237,14 @@ img.img-failed { display: none !important; }
 .ticker-content {
   display: inline-block;
   white-space: nowrap;
-  animation: tickerMarquee 26s linear infinite;
+  animation: tickerMarquee 28s linear infinite;
 }
 
 .ticker-content span {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-right: 2rem;
+  margin-right: 2.5rem;
 }
 
 @keyframes tickerMarquee {
@@ -226,2160 +253,776 @@ img.img-failed { display: none !important; }
 }
 
 /* --------------------------------------------------------------------------
-   5. Site Header & Mobile Masthead
+   5. Site Header & Nav (Soft Brutalism Nav)
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 999;
-  background-color: var(--color-yellow);
+  background-color: var(--surface);
   border-bottom: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 var(--shadow-line);
+  transition: all 0.2s var(--ease);
 }
 
 .site-header.scrolled {
-  background-color: var(--color-yellow);
-  box-shadow: var(--shadow-md);
+  background-color: var(--surface);
+  box-shadow: 0 5px 0 var(--shadow-line);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  gap: 1rem;
 }
 
+/* Brand Wordmark */
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .brand-icon-box {
-  width: 38px;
-  height: 38px;
-  background-color: var(--color-pink);
+  width: 40px;
+  height: 40px;
+  background: var(--grad-pink);
   color: var(--text-inverted);
   border: var(--border-thick);
+  border-radius: var(--r-btn);
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  border-radius: var(--radius-sharp);
-  transform: rotate(-3deg);
+  font-size: 1.15rem;
+  transition: transform 0.15s var(--ease);
+}
+
+.brand-logo:hover .brand-icon-box {
+  transform: translate(-2px, -2px);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.25rem;
   line-height: 1;
-  color: var(--ink-black);
+  letter-spacing: -0.03em;
+  color: var(--text);
 }
 
 .brand-tag {
-  font-family: var(--font-pixel);
-  font-size: 0.9rem;
-  color: var(--color-blue);
-  line-height: 1;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: var(--pink);
+  line-height: 1.2;
 }
 
+/* Nav Menu Links */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .nav-link {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--r-pill);
   border: 2px solid transparent;
-  color: var(--ink-black);
+  color: var(--text);
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  transition: all 0.15s ease;
+  gap: 0.45rem;
+  transition: all 0.15s var(--ease);
 }
 
-.nav-link:hover {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
+@media (hover: hover) {
+  .nav-link:hover {
+    background-color: var(--surface-raised);
+    border-color: var(--line);
+  }
+}
+
+/* Active Link: Filled Pill + Border (Soft Brutalism) */
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Nav Actions Right */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Theme Toggle Button: Circular 40px + Border + Shadow-sm */
+.btn-theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   border: var(--border-thick);
-  box-shadow: 2px 2px 0px #121212;
+  background-color: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  position: relative;
 }
 
-.nav-link.active {
-  background-color: var(--color-orange);
-  color: var(--text-inverted);
-  border: var(--border-thick);
-  box-shadow: 3px 3px 0px #121212;
+@media (hover: hover) {
+  .btn-theme-toggle:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
+.btn-theme-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.theme-text {
+  display: none; /* Visually hidden, keeps JS contract intact */
+}
+
+/* Primary Header CTA (Linktree) */
 .btn-header-cta {
-  background-color: var(--color-green);
-  color: var(--ink-black);
+  background-color: var(--line);
+  color: var(--text-inverted);
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.88rem;
-  padding: 0.45rem 1rem;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.1rem;
   border: var(--border-thick);
-  border-radius: var(--radius-sharp);
+  border-radius: var(--r-btn);
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  transform: rotate(-1deg);
+  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
 
-.btn-header-cta:hover {
-  background-color: #bef264;
-  box-shadow: var(--shadow-hover);
-  transform: translate(-2px, -2px) rotate(0deg);
+[data-theme="dark"] .btn-header-cta {
+  background-color: var(--pink);
+  color: var(--ink-fixed);
+}
+
+@media (hover: hover) {
+  .btn-header-cta:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .btn-header-cta:active {
   transform: translate(2px, 2px);
-  box-shadow: var(--shadow-active);
+  box-shadow: none;
 }
 
+/* Mobile Hamburger Menu Toggle */
 .menu-toggle {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 38px;
-  height: 36px;
-  padding: 7px;
-  background-color: var(--bg-card);
+  width: 40px;
+  height: 40px;
+  padding: 9px 8px;
+  background-color: var(--surface);
   border: var(--border-thick);
   box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sharp);
+  border-radius: var(--r-btn);
 }
 
 .menu-toggle span {
   width: 100%;
   height: 3px;
-  background-color: var(--ink-black);
-  border-radius: 2px;
-  transition: all 0.25s ease;
+  background-color: var(--line);
+  border-radius: 1px;
+  transition: all 0.2s var(--ease);
 }
 
 .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
-.menu-toggle.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+.menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile Drawer Retro Menu Poster */
+/* --------------------------------------------------------------------------
+   6. Mobile Drawer Navigation
+   -------------------------------------------------------------------------- */
 .mobile-nav-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(15, 23, 42, 0.65);
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.25s ease;
+  transition: all 0.25s var(--ease);
 }
 
-.mobile-nav-backdrop.show { opacity: 1; visibility: visible; }
+.mobile-nav-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
 
 .mobile-nav {
   position: fixed;
   top: 0;
   right: -100%;
   width: 85%;
-  max-width: 330px;
+  max-width: 320px;
   height: 100vh;
   height: 100dvh;
-  background-color: var(--bg-primary);
-  border-left: var(--border-extra-thick);
+  background-color: var(--surface);
+  border-left: var(--border-thick);
+  box-shadow: -8px 0 0 var(--shadow-line);
   z-index: 1001;
-  padding: calc(1.5rem + env(safe-area-inset-top, 0px)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom, 0px)) 1.25rem;
+  padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -8px 0px 0px rgba(0,0,0,0.15);
+  transition: right 0.25s var(--ease);
 }
 
-.mobile-nav.open { right: 0; }
+.mobile-nav.open {
+  right: 0;
+}
 
 .mobile-menu-links {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  margin-top: 1.5rem;
 }
 
 .mobile-nav-link {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0.65rem 0.85rem;
-  background-color: var(--bg-card);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--surface-raised);
   border: var(--border-thick);
-  border-radius: var(--radius-sharp);
+  border-radius: var(--r-btn);
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--ink-black);
+  color: var(--text);
+  transition: transform 0.12s var(--ease);
+}
+
+.mobile-nav-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 .nav-num {
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: var(--ink-black);
+  font-size: 0.8rem;
+  font-weight: 900;
+  background-color: var(--line);
   color: var(--text-inverted);
   padding: 0.15rem 0.45rem;
+  border-radius: 2px;
 }
 
-.link-pink { border-left: 6px solid var(--color-pink); }
-.link-indigo { border-left: 6px solid var(--color-purple); }
-.link-yellow { border-left: 6px solid var(--color-yellow); }
-.link-blue { border-left: 6px solid var(--color-blue-bright); }
-.link-orange { border-left: 6px solid var(--color-orange); }
-
 .mobile-nav-link.active {
-  background-color: var(--color-orange);
-  color: var(--text-inverted);
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
 }
 
 .mobile-nav-link.active .nav-num {
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-}
-
-/* --------------------------------------------------------------------------
-   6. Hero Section (Mobile Vertical Poster Layout)
-   -------------------------------------------------------------------------- */
-.hero-section {
-  position: relative;
-  padding: 2rem 0 2rem 0;
-  z-index: 2;
-}
-
-.hero-poster-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-yellow);
-  border: var(--border-thick);
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 0.85rem;
-}
-
-.pulse-dot {
-  width: 10px;
-  height: 10px;
-  background-color: var(--color-red);
-  border-radius: 50%;
-  border: 2px solid #121212;
-  animation: pulseDot 1.4s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(0.95); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.7; }
-  100% { transform: scale(0.95); opacity: 1; }
-}
-
-.retro-pixel-text {
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  line-height: 1;
-}
-
-/* Massive Editorial Title */
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8.5vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -2px;
-  text-transform: uppercase;
-  margin-bottom: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.word-gyzenn {
-  color: var(--color-blue);
-  text-shadow: 3px 3px 0px var(--color-yellow), 6px 6px 0px var(--ink-black);
-  transform: rotate(-2deg);
-  display: inline-block;
-}
-
-.word-community {
-  color: var(--color-pink);
-  text-shadow: 3px 3px 0px var(--color-green), 6px 6px 0px var(--ink-black);
-  transform: rotate(2deg);
-  display: inline-block;
-  margin-top: -0.2rem;
-}
-
-.hero-tag-strip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.45rem;
-  margin-bottom: 1.25rem;
-}
-
-.sticker-tag {
-  background-color: var(--bg-card);
-  color: var(--ink-black);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.25rem 0.65rem;
-  transform: rotate(-1deg);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.sticker-tag:hover {
-  transform: translateY(-2px) rotate(1deg);
-  box-shadow: var(--shadow-md);
-}
-
-.tag-pink { background-color: var(--color-pink); color: var(--text-inverted); transform: rotate(2deg); }
-.tag-yellow { background-color: var(--color-yellow); transform: rotate(-2deg); }
-.tag-green { background-color: var(--color-green); color: var(--ink-black); transform: rotate(1deg); }
-
-/* Center Polaroid Photo Frame */
-.hero-visual-center {
-  margin-bottom: 1.5rem;
-  width: 100%;
-  max-width: 420px;
-  perspective: 1000px;
-}
-
-.retro-polaroid-frame {
-  background-color: var(--bg-card);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-lg);
-  padding: 0.85rem;
-  transform: rotate(-2deg);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-  transform-style: preserve-3d;
-}
-
-.polaroid-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: var(--border-thick);
-  padding-bottom: 0.4rem;
-  margin-bottom: 0.85rem;
-}
-
-.polaroid-dots { font-size: 0.85rem; color: var(--color-red); }
-.polaroid-title { font-family: var(--font-pixel); font-weight: bold; font-size: 0.95rem; }
-
-.avatars-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.avatar-card {
-  background-color: var(--bg-secondary);
-  border: var(--border-thick);
-  padding: 0.65rem;
-  text-align: center;
-  transition: transform 0.15s ease;
-}
-
-.avatar-wa-card { transform: rotate(-2deg); }
-.avatar-tiktok-card { transform: rotate(2deg); }
-
-.avatar-card:hover { transform: translateY(-3px) scale(1.02); }
-
-.avatar-ring {
-  width: 75px;
-  height: 75px;
-  margin: 0 auto 0.5rem auto;
-  border: var(--border-thick);
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: var(--color-yellow);
-}
-
-.avatar-img { width: 100%; height: 100%; object-fit: cover; }
-.avatar-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
-
-.avatar-label {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.8rem;
-  display: block;
-}
-
-.polaroid-caption {
-  text-align: center;
-  margin-top: 0.75rem;
-  padding-top: 0.4rem;
-  border-top: 2px dashed #121212;
-  font-family: var(--font-pixel);
-  font-size: 1rem;
-}
-
-/* Tactile 3D Physical Button Language */
-.hero-action-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.device-spec-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-blue);
+  background-color: var(--line);
   color: var(--text-inverted);
-  border: var(--border-thick);
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-sharp);
-  box-shadow: var(--shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   7. Typography Hierarchy
+   -------------------------------------------------------------------------- */
+h1, .h1 {
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text);
 }
 
-.gpu-badge {
-  background-color: var(--color-green);
-  color: var(--ink-black);
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  padding: 0.15rem 0.45rem;
-  border: 2px solid #121212;
-}
-
-.hero-cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.85rem;
-  width: 100%;
-}
-
-.btn {
+h2, .h2 {
   font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.75rem 1.4rem;
-  border: var(--border-thick);
-  border-radius: var(--radius-sharp);
-  box-shadow: var(--shadow-md);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--text);
 }
 
-.btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-hover);
+p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
 }
 
-.btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-active);
-}
-
-.btn-primary { background-color: var(--color-pink); color: var(--text-inverted); }
-.btn-secondary { background-color: var(--color-yellow); color: var(--ink-black); }
-
-/* --------------------------------------------------------------------------
-   7. Checkerboard Ribbon Divider
-   -------------------------------------------------------------------------- */
-.retro-ribbon-divider {
-  height: 20px;
-  background-image: linear-gradient(45deg, #121212 25%, transparent 25%), 
-                    linear-gradient(-45deg, #121212 25%, transparent 25%), 
-                    linear-gradient(45deg, transparent 75%, #121212 75%), 
-                    linear-gradient(-45deg, transparent 75%, #121212 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-  background-color: var(--color-yellow);
-  border-top: var(--border-thick);
-  border-bottom: var(--border-thick);
-  margin: 1.25rem 0;
-}
-
-/* --------------------------------------------------------------------------
-   8. Dense Section Header
-   -------------------------------------------------------------------------- */
-.section { padding: 2.5rem 0; }
-
+/* Section Header Structure */
 .section-header {
   text-align: center;
-  max-width: 750px;
-  margin: 0 auto 1.75rem auto;
+  max-width: 760px;
+  margin: 0 auto 2.5rem auto;
 }
-
-.dense-header { margin-bottom: 1.25rem; }
 
 .section-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sharp);
-  margin-bottom: 0.65rem;
-}
-
-.tag-retro-pink { background-color: var(--color-pink); color: var(--text-inverted); }
-.tag-retro-yellow { background-color: var(--color-yellow); color: var(--ink-black); }
-.tag-retro-green { background-color: var(--color-green); color: var(--ink-black); }
-.tag-retro-blue { background-color: var(--color-blue); color: var(--text-inverted); }
-.tag-retro-orange { background-color: var(--color-orange); color: var(--text-inverted); }
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: var(--ink-black);
-  margin-bottom: 0.65rem;
-}
-
-.section-desc { font-size: 0.98rem; color: var(--text-muted); }
-
-/* --------------------------------------------------------------------------
-   9. Community Social Wall (Distinct Personalities)
-   -------------------------------------------------------------------------- */
-.social-wall-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.social-block {
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-md);
-  padding: 1.5rem;
-  position: relative;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.social-block:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-hover);
-}
-
-.block-seal {
-  position: absolute;
-  top: -12px;
-  right: 16px;
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.15rem 0.65rem;
-  border: var(--border-thick);
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.seal-green { background-color: var(--color-green); color: var(--ink-black); }
-.seal-orange { background-color: var(--color-orange); color: var(--text-inverted); }
-
-.block-head {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1rem;
-}
-
-.block-icon {
-  width: 46px;
-  height: 46px;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-}
-
-.icon-tiktok { background-color: var(--ink-black); color: var(--color-pink); }
-.icon-wa { background-color: var(--color-green); color: var(--ink-black); }
-.icon-group { background-color: var(--color-orange); color: var(--text-inverted); }
-
-.block-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
-.block-subtitle { font-family: var(--font-pixel); font-size: 1rem; color: var(--text-muted); }
-
-/* TikTok Arcade Billboard */
-.block-tiktok {
-  background-color: var(--bg-card);
-  border-left: 8px solid var(--color-pink);
-  transform: rotate(-1.5deg);
-}
-
-.tiktok-score-display {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background-color: var(--ink-black);
-  color: var(--text-inverted);
-  border: var(--border-thick);
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.score-main { text-align: left; }
-.score-main .stat-value { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-pink); line-height: 1; }
-.score-label { font-family: var(--font-pixel); font-size: 0.95rem; color: var(--color-yellow); }
-
-.score-sub {
-  display: flex;
-  gap: 1.25rem;
-  border-left: 2px dashed #444;
-  padding-left: 1.25rem;
-}
-
-.score-sub .stat-value { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-green); line-height: 1; }
-
-.block-body { font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--text-muted); }
-
-.btn-tiktok-solid { background-color: var(--ink-black); color: var(--text-inverted); }
-.btn-wa-solid { background-color: var(--color-green); color: var(--ink-black); }
-
-/* WhatsApp Channel Newspaper Callout */
-.block-wa-channel {
-  background-color: var(--color-yellow);
-  border-left: 8px solid var(--color-green-dark);
-  transform: rotate(1.5deg);
-}
-
-.wa-channel-stat-banner {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--bg-card);
-  border: var(--border-thick);
-  padding: 0.85rem 1rem;
-  margin-bottom: 1rem;
-}
-
-.wa-follower-num { font-family: var(--font-display); font-size: 2.4rem; color: var(--color-green-dark); line-height: 1; }
-.wa-follower-label { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; }
-
-/* WhatsApp Groups Wall */
-.block-wa-group {
-  background-color: var(--bg-card);
-  border-left: 8px solid var(--color-orange);
-  transform: rotate(-1deg);
-}
-
-.group-actions-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.btn-group-solid { background-color: var(--color-orange); color: var(--text-inverted); font-size: 0.85rem; padding: 0.7rem 0.5rem; }
-
-/* --------------------------------------------------------------------------
-   10. Discord Campaign Poster Box
-   -------------------------------------------------------------------------- */
-.retro-poster-box {
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-lg);
-  padding: 2.25rem 1.75rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.discord-poster {
-  background-color: #312E81;
-  background-image: radial-gradient(#4338CA 2px, transparent 2px);
-  background-size: 18px 18px;
-}
-
-.poster-decor-star { position: absolute; font-size: 3.5rem; color: var(--color-yellow); opacity: 0.7; }
-.decor-star-1 { top: 8px; right: 16px; }
-.decor-star-2 { bottom: 8px; left: 16px; }
-
-.discord-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.tag-discord-badge {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.2rem 0.65rem;
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.poster-main-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  line-height: 1;
-  color: var(--color-yellow);
-  text-shadow: 3px 3px 0px #121212;
-  margin-top: 0.4rem;
-}
-
-.poster-subtitle { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--color-green); }
-
-.discord-badge-icon-box {
-  width: 60px;
-  height: 60px;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.4rem;
-  border-radius: var(--radius-sharp);
-  transform: rotate(5deg);
-}
-
-.poster-text { font-size: 1.05rem; max-width: 800px; margin-bottom: 1.5rem; }
-
-.discord-features-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
-.discord-mini-chip {
-  background-color: var(--bg-card);
-  color: var(--ink-black);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.45rem 0.85rem;
-  display: inline-flex;
-  align-items: center;
   gap: 0.45rem;
-}
-
-.btn-discord-main { background-color: var(--color-yellow); color: var(--ink-black); font-size: 1.05rem; padding: 0.85rem 1.6rem; }
-
-/* --------------------------------------------------------------------------
-   11. Modpack Section & DERIVATIVE Shader Poster
-   -------------------------------------------------------------------------- */
-.retro-window-card {
-  background-color: var(--bg-card);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: 2.5rem;
-}
-
-.window-header {
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  border-bottom: var(--border-thick);
-  padding: 0.5rem 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.window-buttons { display: flex; align-items: center; gap: 5px; }
-.btn-win { width: 12px; height: 12px; border: 2px solid #121212; border-radius: 50%; display: inline-block; }
-.btn-win-close { background-color: var(--color-red); }
-.btn-win-min { background-color: var(--color-yellow); }
-.btn-win-max { background-color: var(--color-green); }
-
-.window-title-text { font-family: var(--font-pixel); font-size: 1.05rem; font-weight: bold; }
-.window-body { padding: 1.5rem; }
-
-.derivative-poster-head { margin-bottom: 1.25rem; }
-.derivative-title { display: flex; flex-direction: column; margin-bottom: 0.35rem; }
-.d-title-top { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 0.95; color: var(--color-blue); }
-.d-title-sub { font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 0.95; color: var(--color-pink); display: flex; align-items: center; gap: 0.5rem; }
-.exe-tag { font-family: var(--font-pixel); font-size: 1.3rem; color: var(--ink-black); background-color: var(--color-yellow); border: 2px solid #121212; padding: 0.1rem 0.45rem; }
-
-.derivative-badges-banner { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.75rem; margin-bottom: 1.25rem; }
-
-.tag-badge {
-  font-family: var(--font-pixel);
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.2rem 0.65rem;
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-  border-radius: var(--radius-sharp);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.tag-shader { background-color: var(--color-pink); color: var(--text-inverted); }
-.tag-mc-version { background-color: var(--color-yellow); color: var(--ink-black); }
-.tag-fabric { background-color: var(--color-green); color: var(--ink-black); }
-.tag-release { background-color: var(--color-orange); color: var(--text-inverted); }
-
-.derivative-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; }
-
-.derivative-preview-frame {
-  background-color: var(--bg-secondary);
-  border: var(--border-extra-thick);
-  padding: 0.75rem;
-  box-shadow: var(--shadow-lg);
-  margin-bottom: 1.25rem;
-  transform: rotate(-1deg);
-}
-
-.preview-tag-head {
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 1rem;
-  background-color: var(--color-yellow);
-  padding: 0.15rem 0.45rem;
-  border: 2px solid #121212;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-}
-
-.derivative-preview-image {
-  width: min(100%, 100%);
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  border: 2px solid #121212;
-}
-
-.preview-caption { font-family: var(--font-pixel); font-size: 1.05rem; text-align: center; margin-top: 0.45rem; font-weight: bold; }
-
-.derivative-spec-sheet {
-  background-color: var(--bg-secondary);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  padding: 1rem;
-  margin: 1rem 0;
-}
-
-.spec-sheet-head {
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  padding: 0.2rem 0.6rem;
-  border: 2px solid #121212;
-  display: inline-block;
-  margin-bottom: 0.75rem;
-}
-
-.derivative-tip-box {
-  background-color: var(--color-yellow);
-  border: var(--border-thick);
-  padding: 0.85rem;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 1rem;
-}
-
-.tip-header { font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
-
-.derivative-credit-box {
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  border: var(--border-thick);
-  padding: 0.85rem;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-}
-
-.credit-author { font-family: var(--font-display); font-size: 1.6rem; color: var(--color-pink); line-height: 1; }
-.derivative-desc { font-size: 1rem; margin-bottom: 1rem; }
-
-.derivative-feature-list { display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.92rem; }
-.derivative-feature-list li { display: flex; align-items: flex-start; gap: 0.55rem; }
-.derivative-feature-list i { color: var(--color-green-dark); font-size: 1.1rem; margin-top: 0.2rem; }
-
-.btn-gdrive-large { background-color: var(--color-green); color: var(--ink-black); width: 100%; font-size: 1.05rem; padding: 0.95rem; margin-top: 1.25rem; }
-
-/* Alternating Editorial Showcase for Modpacks */
-.modpacks-grid-heading {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin: 2.5rem 0 1.5rem 0;
-  border-bottom: var(--border-thick);
-  padding-bottom: 0.65rem;
-}
-
-.heading-badge { background-color: var(--color-orange); color: var(--text-inverted); font-family: var(--font-pixel); font-size: 1.1rem; font-weight: bold; padding: 0.2rem 0.65rem; border: var(--border-thick); }
-.modpacks-grid-heading h3 { font-family: var(--font-display); font-size: 1.6rem; }
-
-.editorial-modpacks-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.modpack-editorial-strip {
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-md);
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: 0.8fr 1.4fr 1fr;
-  gap: 1.25rem;
-  align-items: center;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.modpack-editorial-strip:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-hover);
-}
-
-.strip-yellow { background-color: var(--color-yellow); }
-.strip-orange { background-color: var(--bg-card); border-left: 8px solid var(--color-orange); }
-.strip-pink { background-color: var(--bg-card); border-left: 8px solid var(--color-pink); }
-.strip-blue { background-color: var(--bg-card); border-left: 8px solid var(--color-blue-bright); }
-.strip-green { background-color: var(--bg-card); border-left: 8px solid var(--color-green-dark); }
-.strip-fresh-green {
-  background-color: var(--bg-card);
-  border-left: 8px solid #22c55e;
-  position: relative;
-}
-
-.modpack-editorial-strip.strip-fresh-green:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.28), var(--shadow-hover);
-}
-.strip-purple { background-color: var(--bg-card); border-left: 8px solid var(--color-purple); }
-.strip-v7-latest {
-  background-color: var(--bg-card);
-  border-left: 8px solid var(--color-pink);
-  position: relative;
-}
-
-.modpack-editorial-strip.strip-v7-latest:hover {
-  transform: translate(-3px, -3px) rotate(-0.5deg);
-  box-shadow: var(--shadow-hover);
-}
-
-.version-stamp {
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: var(--ink-black);
-  color: var(--text-inverted);
-  padding: 0.2rem 0.55rem;
-  display: inline-block;
-  margin-bottom: 0.4rem;
-  border-radius: var(--radius-sharp);
-}
-
-.version-stamp-v7 {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-}
-
-.tag-version-pill {
-  background-color: var(--color-purple);
-  color: var(--text-inverted);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  font-weight: bold;
-}
-
-.tag-new-pulse {
-  animation: subtleNewFloat 2.2s ease-in-out infinite alternate;
-}
-
-@keyframes subtleNewFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-2px); }
-}
-
-.modpack-editorial-desc {
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.45;
-  margin-top: 0.45rem;
-}
-
-.modpack-download-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  width: 100%;
-}
-
-.modpack-download-group.modpack-download-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  width: 100%;
-}
-
-.modpack-download-group.modpack-download-stack .btn,
-.modpack-download-group .btn-download-action {
-  width: 100%;
-  padding: 0.65rem 0.8rem;
-  font-size: 0.85rem;
-  text-align: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.btn-download-dual {
-  padding: 0.7rem 0.85rem;
-  font-size: 0.88rem;
-  width: 100%;
-  text-align: center;
-  gap: 0.4rem;
-}
-
-.btn-download-zip {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-}
-
-.btn-mediafire-subtle {
-  background-color: var(--color-blue-bright);
-  color: var(--text-inverted);
-}
-
-.btn-mediafire-subtle:hover {
-  background-color: #1d4ed8;
-  color: var(--text-inverted);
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-hover-sm);
-}
-
-/* Tactile Retro Callout / Warning Box for Modpacks */
-.modpack-note-callout {
-  background-color: #FEF08A;
-  border: 2px solid var(--ink-black);
-  border-left: 6px solid var(--color-orange);
-  box-shadow: 3px 3px 0px var(--ink-black);
-  padding: 0.65rem 0.85rem;
-  margin-top: 0.65rem;
-  border-radius: var(--radius-sharp);
-}
-
-.modpack-note-callout.note-warning {
-  background-color: #FEF9C3;
-  border-left: 6px solid var(--color-orange);
-}
-
-.modpack-note-header {
   font-family: var(--font-heading);
+  font-size: 0.75rem;
   font-weight: 800;
-  font-size: 0.82rem;
-  color: var(--ink-black);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.25rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-}
-
-.modpack-note-header i {
-  color: #C2410C;
-  font-size: 0.95rem;
-}
-
-.modpack-note-text {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  line-height: 1.4;
-  color: var(--ink-black);
-  margin: 0;
-  font-weight: 600;
-}
-
-/* ==========================================================================
-   Modpack Cover Image Card & Expandable Extra Mods (Cobra x Boom Remake & Dynamic)
-   ========================================================================== */
-.modpack-editorial-strip.has-cover-image {
-  grid-template-columns: 0.8fr 1.4fr 1fr;
-  grid-template-areas:
-    "cover cover cover"
-    "header body action";
-  padding: 0;
-  overflow: hidden;
-  align-items: start;
-}
-
-.modpack-editorial-strip.has-cover-image .modpack-cover-frame {
-  grid-area: cover;
-  width: 100%;
-  height: 320px;
-  position: relative;
-  background: radial-gradient(circle at center, #14281c 0%, #07130b 100%);
-  border-bottom: var(--border-extra-thick);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modpack-editorial-strip.has-cover-image .modpack-cover-img {
-  width: 100%;
-  height: 320px;
-  max-height: 340px;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.modpack-editorial-strip.has-cover-image:hover .modpack-cover-img {
-  transform: scale(1.02);
-}
-
-.modpack-cover-frame.img-load-failed {
-  display: none !important;
-}
-
-.modpack-cover-badge-tag {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 2;
-}
-
-.modpack-cover-badge-tag .cover-tag {
-  font-family: var(--font-pixel);
-  font-size: 1.05rem;
-  font-weight: bold;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 2px solid var(--ink-black);
-  box-shadow: 3px 3px 0px var(--ink-black);
-  padding: 0.25rem 0.65rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-transform: uppercase;
-}
-
-.modpack-editorial-strip.has-cover-image .strip-header-col {
-  grid-area: header;
-  padding: 1.35rem 0.5rem 1.5rem 1.5rem;
-}
-
-.modpack-editorial-strip.has-cover-image .strip-body-col {
-  grid-area: body;
-  padding: 1.35rem 0.75rem 1.5rem 0.5rem;
-}
-
-.modpack-editorial-strip.has-cover-image .strip-action-col {
-  grid-area: action;
-  padding: 1.35rem 1.5rem 1.5rem 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* CPVP Special Badge */
-.cpvp-badge {
-  background-color: var(--color-blue-bright) !important;
-  color: #ffffff !important;
-}
-
-.strip-badges-desktop {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.strip-badges-mobile {
-  display: none;
-}
-
-.modpack-card-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 4.5vw, 1.85rem);
-  line-height: 1.1;
-  margin-top: 0.25rem;
-  margin-bottom: 0.5rem;
-  word-break: break-word;
-  color: var(--ink-black);
-}
-
-/* --------------------------------------------------------------------------
-   Expandable Extra Mods (Accordion/Details in 90s Memphis Style)
-   -------------------------------------------------------------------------- */
-.modpack-extra-mods-details {
-  margin-top: 0.85rem;
-  border: 2px solid var(--ink-black);
-  border-radius: var(--radius-sharp);
-  background-color: #ffffff;
-  box-shadow: 3px 3px 0px var(--ink-black);
-  overflow: hidden;
-  transition: box-shadow 0.15s ease;
-}
-
-.modpack-extra-mods-details:hover {
-  box-shadow: 4px 4px 0px var(--ink-black);
-}
-
-.modpack-extra-mods-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 0.9rem;
-  background-color: #FEF08A;
-  font-family: var(--font-heading);
-  font-size: 0.84rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  cursor: pointer;
-  user-select: none;
-  list-style: none;
-  border-bottom: 2px solid transparent;
-  transition: background-color 0.15s ease;
-}
-
-.modpack-extra-mods-summary::-webkit-details-marker {
-  display: none;
-}
-
-.modpack-extra-mods-summary .summary-title {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  letter-spacing: 0.3px;
-}
-
-.modpack-extra-mods-summary .summary-title i {
-  color: var(--color-orange);
-  font-size: 0.9rem;
-}
-
-.modpack-extra-mods-summary .summary-hint {
-  font-family: var(--font-pixel);
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--ink-black);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: #ffffff;
-  border: 1.5px solid var(--ink-black);
-  padding: 0.1rem 0.45rem;
-  border-radius: var(--radius-sharp);
-  box-shadow: 2px 2px 0px var(--ink-black);
-}
-
-.modpack-extra-mods-summary .summary-arrow {
-  transition: transform 0.2s ease;
-}
-
-.modpack-extra-mods-details[open] .modpack-extra-mods-summary {
-  background-color: var(--color-yellow);
-  border-bottom: 2px solid var(--ink-black);
-}
-
-.modpack-extra-mods-details[open] .summary-arrow {
-  transform: rotate(180deg);
-}
-
-.extra-mods-content {
-  padding: 0.85rem 0.9rem;
-  background-color: #FAF5FF;
-  max-height: 190px;
-  overflow-y: auto;
-}
-
-/* Custom Retro Scrollbar for Extra Mods */
-.extra-mods-content::-webkit-scrollbar {
-  width: 7px;
-}
-.extra-mods-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-left: 1px solid var(--ink-black);
-}
-.extra-mods-content::-webkit-scrollbar-thumb {
-  background: var(--color-pink);
-  border: 1px solid var(--ink-black);
-}
-.extra-mods-content::-webkit-scrollbar-thumb:hover {
-  background: var(--color-orange);
-}
-
-.extra-mods-notice {
-  font-size: 0.82rem;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #9A3412;
-  background-color: #FFEDD5;
-  border-left: 4px solid var(--color-orange);
-  padding: 0.45rem 0.65rem;
-  margin-bottom: 0.75rem;
-  border-radius: var(--radius-sharp);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.45rem;
-}
-
-.extra-mods-notice i {
-  color: var(--color-orange);
-  margin-top: 0.15rem;
-  font-size: 0.95rem;
-}
-
-.extra-mods-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  align-items: center;
-}
-
-.extra-mod-tag {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 700;
-  background-color: #ffffff;
-  color: var(--ink-black);
-  border: 1.5px solid var(--ink-black);
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sharp);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  white-space: nowrap;
-  transition: transform 0.1s ease, background-color 0.1s ease;
-}
-
-.extra-mod-tag:hover {
-  background-color: var(--color-yellow);
-  transform: translateY(-1px);
-}
-
-.v7-particle {
-  position: fixed;
-  pointer-events: none;
-  z-index: 99999;
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sharp);
-  transition: transform 0.6s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 0.6s ease;
-  user-select: none;
-}
-
-.btn:focus-visible,
-.btn-gaming-mode-toggle:focus-visible,
-.btn-download-dual:focus-visible {
-  outline: 3px dashed var(--color-pink);
-  outline-offset: 3px;
-}
-
-.modpack-editorial-strip h3 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 0.4rem; }
-.modpack-bullet-list { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; }
-.modpack-bullet-list li { display: flex; align-items: flex-start; gap: 0.4rem; }
-.modpack-bullet-list i { color: var(--color-green-dark); margin-top: 0.2rem; }
-
-.btn-mediafire { background-color: var(--color-blue-bright); color: var(--text-inverted); }
-
-.vulkan-dual-block,
-.pvp-dual-block {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-.vulkan-sub-card,
-.pvp-sub-card {
-  background-color: var(--bg-card);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-md);
-  padding: 1.25rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.vulkan-sub-card:hover,
-.pvp-sub-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-hover);
-}
-
-.vulkan-sub-card { border-top: 8px solid var(--color-purple); }
-.card-red { border-top: 8px solid var(--color-red); }
-.card-yellow { border-top: 8px solid var(--color-yellow); }
-
-.vulkan-card-title { font-family: var(--font-display); font-size: 1.4rem; }
-.vulkan-card-sub { font-family: var(--font-pixel); font-size: 1rem; color: var(--text-muted); }
-
-.download-mirrors-stacked {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.btn-gdrive-subtle { background-color: var(--color-yellow); color: var(--ink-black); }
-
-/* --------------------------------------------------------------------------
-   12. Dynamic Modpack Gyzenn & Gaming Mode Controls
-   -------------------------------------------------------------------------- */
-.modpack-controls-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.25rem;
-  margin-bottom: 2rem;
-  padding: 0.85rem 1.25rem;
-  background-color: var(--bg-card);
+  padding: 0.35rem 0.9rem;
+  background-color: var(--surface);
   border: var(--border-thick);
-  border-radius: var(--radius-sharp);
+  border-radius: var(--r-pill);
   box-shadow: var(--shadow-sm);
-}
-
-.modpack-filters-scroll {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 0.2rem 0;
-  max-width: 100%;
-}
-
-.modpack-filters-scroll::-webkit-scrollbar {
-  height: 5px;
-}
-.modpack-filters-scroll::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-.modpack-filters-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-orange);
-  border-radius: 4px;
-}
-
-.filter-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 1rem;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--text-main);
-  background-color: var(--bg-secondary);
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-  border-radius: var(--radius-sharp);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.12s ease, color 0.15s ease;
-  user-select: none;
-}
-
-.filter-pill:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #121212;
-  background-color: var(--color-yellow);
-  color: #121212;
-}
-
-.filter-pill:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #121212;
-}
-
-.filter-pill.active {
-  background-color: var(--color-orange);
-  color: #ffffff;
-  border-color: #121212;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.gaming-mode-switch-wrapper {
-  margin-top: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.btn-gaming-mode-toggle {
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.55rem 1.35rem;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.btn-gaming-mode-toggle.active {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-}
-
-.section-gyzenn-modpacks.gaming-mode .modpack-editorial-strip,
-.section-gyzenn-modpacks.gaming-mode .pvp-sub-card {
-  box-shadow: 6px 6px 0px var(--color-pink);
-}
-
-/* --------------------------------------------------------------------------
-   13. Zalith Launcher Section (Software Installer Status Bar)
-   -------------------------------------------------------------------------- */
-.zalith-banner-header {
-  border-bottom: var(--border-thick);
-  padding-bottom: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-.zalith-big-title {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  color: var(--color-blue);
-  line-height: 1;
-  margin-top: 0.35rem;
-}
-
-.zalith-subtitle { font-family: var(--font-pixel); font-size: 1.2rem; font-weight: bold; color: var(--color-orange); }
-
-/* Windows 95/98 Installer Progress Bar */
-.installer-status-bar {
-  background-color: var(--ink-black);
-  color: var(--text-inverted);
-  border: var(--border-thick);
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.status-text-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.4rem;
-}
-
-.blinking-cursor {
-  animation: cursorBlink 1s infinite;
-  color: var(--color-pink);
-  margin-left: 2px;
-}
-
-@keyframes cursorBlink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.installer-progress-track {
-  width: 100%;
-  height: 16px;
-  background-color: #222;
-  border: 2px solid var(--color-yellow);
-  padding: 2px;
-}
-
-.installer-progress-fill {
-  width: 0%;
-  height: 100%;
-  background-color: var(--color-green);
-  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.changelog-box {
-  background-color: var(--bg-secondary);
-  border: var(--border-thick);
-  padding: 1rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.changelog-box-title { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; margin-bottom: 0.65rem; }
-.changelog-list { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
-.changelog-list li { display: flex; align-items: flex-start; gap: 0.55rem; }
-.changelog-list i { color: var(--color-green-dark); margin-top: 0.2rem; }
-
-.apk-list-heading { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.85rem; }
-.apk-downloads-container { display: flex; flex-direction: column; gap: 0.75rem; }
-
-.apk-download-item {
-  background-color: var(--bg-card);
-  border: var(--border-thick);
-  padding: 0.85rem 1rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  transition: transform 0.15s ease;
-}
-
-.apk-download-item:hover { transform: translateX(4px); }
-.item-universal { background-color: var(--color-yellow); }
-
-.apk-name-group { display: flex; align-items: center; gap: 0.75rem; }
-.apk-icon {
-  width: 38px;
-  height: 38px;
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  border: 2px solid #121212;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.apk-filename { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; }
-.apk-arch-desc { font-size: 0.82rem; color: var(--text-muted); }
-
-.apk-action-wrap { display: flex; align-items: center; gap: 0.85rem; }
-.apk-size-pill { font-family: var(--font-pixel); font-size: 1rem; font-weight: bold; }
-
-.btn-apk-download { background-color: var(--color-green); color: var(--ink-black); font-size: 0.82rem; padding: 0.45rem 0.85rem; }
-.btn-apk-universal { background-color: var(--color-pink); color: var(--text-inverted); }
-
-/* --------------------------------------------------------------------------
-   14. Casda Network Server Section & Copy IP Burst
-   -------------------------------------------------------------------------- */
-.server-poster { background-color: var(--color-orange); }
-
-.server-poster-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.server-frame-wrapper {
-  background-color: var(--bg-card);
-  border: var(--border-thick);
-  padding: 0.65rem;
-  box-shadow: var(--shadow-md);
-  position: relative;
-  transition: transform 0.25s ease;
-}
-
-.server-frame-wrapper:hover { transform: scale(1.02) rotate(-1deg); }
-
-/* Subtle rim light — tipis, bukan portal dimensi lain */
-.server-frame-wrapper::after {
-  content: "";
-  position: absolute;
-  inset: 8%;
-  pointer-events: none;
-  border-radius: 2px;
-  box-shadow:
-    0 0 25px rgba(255, 87, 34, 0.28),
-    0 0 55px rgba(255, 255, 255, 0.10);
-  z-index: 0;
-}
-
-.server-img {
-  width: min(100%, 100%);
-  max-width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border: 2px solid #121212;
-}
-
-.server-badge-overlay {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.25rem 0.75rem;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-}
-
-.tag-warning-pulse {
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  font-weight: bold;
-  animation: subtleNewFloat 2s ease-in-out infinite alternate;
-}
-
-.server-info-col { color: var(--text-inverted); }
-.server-main-title { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-yellow); text-shadow: 3px 3px 0px #121212; margin: 0.35rem 0; }
-.server-desc { font-size: 1rem; margin-bottom: 1rem; }
-
-.server-chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-bottom: 1rem; }
-.server-chip { background-color: var(--bg-card); color: var(--ink-black); border: var(--border-thick); padding: 0.45rem 0.75rem; box-shadow: var(--shadow-sm); font-family: var(--font-heading); font-size: 0.82rem; }
-.chip-label { font-weight: 700; display: block; font-size: 0.72rem; color: var(--text-muted); }
-.chip-val { font-weight: 700; font-size: 0.9rem; }
-.chip-status .status-val { color: #B45309; font-weight: 800; }
-.chip-ip { background-color: var(--color-yellow); }
-.ip-text { font-family: var(--font-pixel); font-size: 1.15rem; color: var(--color-blue); }
-
-/* Server Planned Game Modes Preview Cards */
-.server-modes-preview {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.55rem;
-  margin-bottom: 1.25rem;
-}
-
-.mode-preview-card {
-  background-color: var(--bg-card);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  padding: 0.5rem 0.65rem;
-}
-
-.mode-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.35rem;
-  margin-bottom: 0.2rem;
-}
-
-.mode-name {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.78rem;
-  color: var(--ink-black);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.mode-name i {
-  color: var(--color-orange);
-}
-
-.mode-status-badge {
-  font-family: var(--font-pixel);
-  font-size: 0.85rem;
-  font-weight: bold;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 1px solid var(--ink-black);
-  padding: 0.05rem 0.35rem;
-  line-height: 1;
-}
-
-.mode-card-desc {
-  font-family: var(--font-body);
-  font-size: 0.74rem;
-  color: var(--text-muted);
-  line-height: 1.3;
-  margin: 0;
-}
-
-.server-actions-group { display: flex; flex-wrap: wrap; gap: 0.85rem; }
-.btn-copy-ip { background-color: var(--color-yellow); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
-.btn-copy-ip.copied { background-color: var(--color-green); color: var(--ink-black); }
-.btn-discord-subtle { background-color: var(--bg-card); color: var(--ink-black); font-size: 0.95rem; padding: 0.75rem 1.25rem; }
-
-/* Exploding Pixel Particle Burst for Copy IP */
-.ip-particle {
-  position: fixed;
-  pointer-events: none;
-  z-index: 1050;
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 0.85rem;
-  padding: 0.1rem 0.3rem;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: 1px solid #121212;
-  border-radius: 2px;
-  box-shadow: 2px 2px 0px #121212;
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-}
-
-/* --------------------------------------------------------------------------
-   14.5 Support Gyzenn Campaign (90s Retro Editorial Campaign Poster)
-   -------------------------------------------------------------------------- */
-.section-support-campaign {
-  padding: 3rem 0;
-  position: relative;
-}
-
-.support-campaign-wrapper {
-  background-color: var(--bg-card);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-lg);
-  padding: 3rem 2.5rem;
-  position: relative;
-  overflow: visible;
-}
-
-/* Memphis Graphic Elements behind Content */
-.campaign-shape {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  user-select: none;
-}
-
-.shape-starburst {
-  top: 1.5rem;
-  right: 2.5rem;
-  font-family: var(--font-pixel);
-  font-size: 3rem;
-  color: var(--color-yellow);
-  opacity: 0.85;
-}
-
-.shape-squiggle {
-  bottom: 1.5rem;
-  left: 2.5rem;
-  opacity: 0.75;
-}
-
-.shape-dots-cluster {
-  top: 45%;
-  left: 48%;
-  width: 60px;
-  height: 60px;
-  background-image: radial-gradient(var(--ink-black) 2px, transparent 2px);
-  background-size: 10px 10px;
-  opacity: 0.25;
-}
-
-.support-campaign-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2.5rem;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-/* Left Column: Giant Typography & Content */
-.support-typography-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.support-tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.support-giant-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  line-height: 0.95;
-  color: var(--ink-black);
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.support-giant-title .highlight-yellow {
-  color: var(--color-yellow);
-  text-shadow: 4px 4px 0px #121212;
-  display: inline-block;
-}
-
-.support-editorial-lead {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-  max-width: 520px;
-}
-
-.support-meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-/* Right Column: Tactile Physical Saweria Editorial Poster Card */
-.support-visual-col {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-/* Physical Tactile Sticker */
-.support-sticker-physical {
-  position: absolute;
-  top: -16px;
-  right: -10px;
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  padding: 0.35rem 0.8rem;
-  font-family: var(--font-pixel);
-  font-size: 1rem;
-  font-weight: bold;
-  transform: rotate(-6deg);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  user-select: none;
-}
-
-.support-sticker-physical:hover {
-  transform: rotate(-2deg) scale(1.05);
-  box-shadow: var(--shadow-md);
-}
-
-.sticker-heart-icon {
-  color: var(--color-yellow);
-}
-
-/* Main Saweria Editorial Card */
-.saweria-editorial-poster {
-  background-color: var(--color-yellow);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-lg);
-  padding: 2rem 1.75rem;
-  width: 100%;
-  max-width: 380px;
-  transform: rotate(2deg);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-}
-
-.saweria-editorial-poster:hover {
-  transform: translate(-3px, -3px) rotate(0.5deg);
-  box-shadow: var(--shadow-hover);
-}
-
-.poster-badge-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px dashed #121212;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.15rem;
-  font-family: var(--font-pixel);
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--ink-black);
-}
-
-.poster-dot {
-  color: var(--color-pink);
-}
-
-.poster-center-box {
-  text-align: center;
-  margin-bottom: 1.35rem;
-}
-
-.poster-sub-label {
-  font-family: var(--font-pixel);
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--color-blue);
-  margin-bottom: 0.35rem;
-}
-
-.poster-headline {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  line-height: 0.95;
-  color: var(--ink-black);
-  margin-bottom: 0.65rem;
-}
-
-.poster-caption {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: #222;
-  line-height: 1.45;
-}
-
-.poster-cta-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-saweria-editorial {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.85rem 1.4rem;
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-md);
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.btn-saweria-editorial:hover {
-  background-color: #E11D48;
-}
-
-.poster-direct-url {
-  font-family: var(--font-pixel);
-  font-size: 0.88rem;
-  font-weight: bold;
-  color: var(--ink-black);
-  opacity: 0.75;
-}
-
-.btn-saweria-editorial:focus-visible {
-  outline: 3px dashed var(--color-pink);
-  outline-offset: 3px;
-}
-
-/* --------------------------------------------------------------------------
-   15. Site Footer
-   -------------------------------------------------------------------------- */
-.site-footer { padding: 3rem 0 5rem 0; }
-
-.footer-poster-box {
-  background-color: var(--ink-black);
-  color: var(--text-inverted);
-  border: var(--border-extra-thick);
-  box-shadow: var(--shadow-lg);
-  padding: 3rem 2rem;
-  text-align: center;
-}
-
-.footer-brand-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.5vw, 4rem);
-  color: var(--color-yellow);
-  text-shadow: 3px 3px 0px var(--color-pink);
+  color: var(--ink-fixed);
   margin-bottom: 0.85rem;
 }
 
-.footer-desc { max-width: 600px; margin: 0 auto 2rem auto; font-size: 0.98rem; color: #DDD; }
+.tag-retro-pink { background-color: var(--blush); color: var(--ink-fixed); }
+.tag-retro-yellow { background-color: var(--yellow); color: var(--ink-fixed); }
+.tag-retro-green { background-color: #bbf7d0; color: var(--ink-fixed); }
+.tag-retro-blue { background-color: #bae6fd; color: var(--ink-fixed); }
+.tag-retro-orange { background-color: #fed7aa; color: var(--ink-fixed); }
 
-.footer-links-grid {
-  display: flex;
-  flex-wrap: wrap;
+.section-title {
+  margin-bottom: 0.75rem;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. Buttons System (Soft Brutalism)
+   -------------------------------------------------------------------------- */
+.btn {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.4rem;
+  border: var(--border-thick);
+  border-radius: var(--r-btn);
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 0.85rem 1.25rem;
-  margin-bottom: 2rem;
+  gap: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: transform 0.14s var(--ease), box-shadow 0.14s var(--ease);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+/* Primer: Latar Gelap / Kontras */
+.btn-primary {
+  background-color: var(--line);
+  color: var(--text-inverted);
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--pink);
+  color: var(--ink-fixed);
+}
+
+/* Sekunder: Latar Putih */
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+/* Flat Button inside Cards (Anatomi Screenshot) */
+.btn-card-action,
+.card-btn {
+  height: 42px;
+  border-radius: var(--r-btn);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: none !important;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  flex: 1 1 0;
+  min-width: 140px;
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
 }
 
-.footer-links-grid a:hover { color: var(--color-yellow); text-decoration: underline; }
-.footer-hr { height: 3px; background-color: var(--color-yellow); margin: 1.5rem 0; }
-.footer-bottom-row { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; }
+.card-btn-primary,
+.btn-primary.btn-download-action {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: 1px solid #2b2b2b;
+}
+
+.card-btn-primary:hover,
+.btn-primary.btn-download-action:hover {
+  background-color: #121212;
+}
+
+.card-btn-secondary,
+.btn-mediafire-subtle,
+.btn-gdrive-subtle {
+  background-color: #ffffff;
+  color: #2b2b2b;
+  border: 1px solid #2b2b2b;
+}
+
+[data-theme="dark"] .card-btn-secondary,
+[data-theme="dark"] .btn-mediafire-subtle,
+[data-theme="dark"] .btn-gdrive-subtle {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.card-btn-secondary:hover,
+.btn-mediafire-subtle:hover,
+.btn-gdrive-subtle:hover {
+  background-color: #f1f5f9;
+}
 
 /* --------------------------------------------------------------------------
-   16. Retro Control Panel Bottom Navigation Bar (Safe Area Bottom Inset)
+   9. Badges, Tags, and Pill Badges
+   -------------------------------------------------------------------------- */
+.tag-badge {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--r-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--surface);
+  color: var(--ink-fixed);
+}
+
+.tag-shader { background-color: var(--blush); color: var(--ink-fixed); }
+.tag-mc-version { background-color: var(--yellow); color: var(--ink-fixed); }
+.tag-fabric { background-color: #bbf7d0; color: var(--ink-fixed); }
+.tag-release { background-color: #fed7aa; color: var(--ink-fixed); }
+.tag-badge-fresh { background-color: #a7f3d0; color: var(--ink-fixed); }
+.tag-badge-cobra { background-color: #fed7aa; color: var(--ink-fixed); }
+.tag-badge-iris { background-color: #c4b5fd; color: var(--ink-fixed); }
+.tag-category-visual { background-color: #fbcfe8; color: var(--ink-fixed); }
+.cpvp-badge { background-color: #e9d5ff; color: var(--ink-fixed); }
+.tag-version-pill { background-color: var(--surface-raised); color: var(--ink-fixed); }
+
+.tag-new-pulse {
+  background-color: var(--pink);
+  color: var(--text-inverted);
+}
+
+.version-stamp {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--line);
+  color: var(--text-inverted);
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+[data-theme="dark"] .version-stamp {
+  background-color: var(--line);
+  color: var(--bg);
+}
+
+/* --------------------------------------------------------------------------
+   10. Window Card & Retro Window Container
+   -------------------------------------------------------------------------- */
+.retro-window-card {
+  background-color: var(--surface);
+  border: var(--border-thick);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.window-header {
+  background-color: var(--line);
+  color: var(--text-inverted);
+  border-bottom: var(--border-thick);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-theme="dark"] .window-header {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.window-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-win {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-win-close { background-color: #ef4444; }
+.btn-win-min { background-color: var(--yellow); }
+.btn-win-max { background-color: var(--green); }
+
+.window-title-text {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.window-body {
+  padding: 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer (3 Kolom Soft Brutalism)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border-top: var(--border-thick);
+  padding: 4rem 0 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand-badge {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #fde047;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.footer-col-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links-list a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  transition: color 0.15s var(--ease), transform 0.15s var(--ease);
+  display: inline-block;
+}
+
+.footer-links-list a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.footer-support-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-btn {
+  font-size: 0.82rem;
+  padding: 0.65rem 1rem;
+  justify-content: flex-start;
+  width: fit-content;
+}
+
+.footer-quick-support {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fde047;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+}
+
+.footer-hr {
+  height: 1px;
+  background-color: #334155;
+  margin-bottom: 2rem;
+}
+
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.footer-copyright {
+  font-weight: 500;
+}
+
+.footer-device {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* --------------------------------------------------------------------------
+   12. Mobile Bottom Bar
    -------------------------------------------------------------------------- */
 .mobile-bottom-bar {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  background-color: var(--ink-black);
+  width: 100vw;
+  height: var(--bottom-nav-height);
+  background-color: var(--surface);
   border-top: var(--border-thick);
+  box-shadow: 0 -4px 0 var(--shadow-line);
   z-index: 998;
-  padding-top: 0.35rem;
-  padding-bottom: max(0.35rem, env(safe-area-inset-bottom));
-  box-shadow: 0px -4px 0px rgba(0,0,0,0.2);
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.25rem 0.5rem;
 }
 
 .bottom-nav-item {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-pixel);
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: #AAA;
-  padding: 0.2rem 0;
-  transition: all 0.1s ease;
+  justify-content: center;
+  gap: 0.2rem;
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--r-btn);
+  transition: all 0.15s var(--ease);
+}
+
+.bottom-nav-item i {
+  font-size: 1.15rem;
 }
 
 .retro-btn-dot {
-  font-size: 0.65rem;
-  line-height: 1;
-  color: #555;
+  display: none; /* Disembunyikan untuk tampilan Soft Brutalism yang bersih */
 }
-
-.bottom-nav-item i { font-size: 1.15rem; margin: 1px 0; }
 
 .bottom-nav-item.active {
-  color: var(--ink-black);
-  background-color: var(--color-yellow);
-  border: 2px solid #121212;
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 #121212;
+  color: var(--ink-fixed);
+  background-color: var(--yellow);
+  border: 2px solid var(--line);
 }
 
-.bottom-nav-item.active .retro-btn-dot {
-  color: var(--color-pink);
-}
-
-/* Back to Top Floating Button */
+/* --------------------------------------------------------------------------
+   13. Back to Top & Toast
+   -------------------------------------------------------------------------- */
 .back-to-top {
   position: fixed;
-  bottom: 4.5rem;
-  right: 1.25rem;
-  width: 44px;
-  height: 44px;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
+  bottom: 1.75rem;
+  right: 1.75rem;
+  width: 46px;
+  height: 46px;
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
   border: var(--border-thick);
+  border-radius: 50%;
   box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sharp);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2387,1971 +1030,72 @@ img.img-failed { display: none !important; }
   z-index: 990;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s var(--ease);
 }
 
-.back-to-top.visible { opacity: 1; visibility: visible; }
-.back-to-top:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
 
-/* Toast Notification */
-.toast-container {
+@media (hover: hover) {
+  .back-to-top:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.back-to-top:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.toast-notification {
   position: fixed;
-  bottom: 5rem;
+  bottom: 2rem;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 1010;
-  pointer-events: none;
-}
-
-.toast {
-  background-color: var(--ink-black);
+  transform: translateX(-50%) translateY(30px);
+  background-color: var(--line);
   color: var(--text-inverted);
   border: var(--border-thick);
+  border-radius: var(--r-btn);
+  padding: 0.75rem 1.5rem;
   box-shadow: var(--shadow-md);
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-sharp);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
+  z-index: 2000;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.toast.show { opacity: 1; transform: translateY(0); }
-
-/* --------------------------------------------------------------------------
-   17. Responsive Breakpoint System & Mobile Memphis Preservation
-   -------------------------------------------------------------------------- */
-
-/* Tablet & Smaller Desktops (<= 1024px) */
-@media (max-width: 1024px) {
-  .derivative-grid,
-  .server-poster-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .support-campaign-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .saweria-editorial-poster {
-    transform: none;
-    max-width: 100%;
-  }
-
-  .support-sticker-physical {
-    top: -14px;
-    right: 15px;
-  }
-
-  .modpack-editorial-strip {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
-
-  .modpack-editorial-strip.has-cover-image {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "cover"
-      "header"
-      "body"
-      "action";
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    border-radius: var(--radius-md);
-  }
-
-  .modpack-editorial-strip.has-cover-image .modpack-cover-frame {
-    grid-area: cover;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    min-height: unset;
-    max-height: none;
-    background: radial-gradient(circle at center, #14281c 0%, #07130b 100%);
-    border-bottom: var(--border-thick);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modpack-editorial-strip.has-cover-image .modpack-cover-img {
-    width: 100%;
-    height: 100%;
-    max-height: none;
-    object-fit: contain;
-    object-position: center;
-    display: block;
-  }
-
-  .modpack-cover-badge-tag {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 2;
-    max-width: calc(100% - 24px);
-  }
-
-  .modpack-cover-badge-tag .cover-tag {
-    font-size: 0.8rem;
-    padding: 0.28rem 0.6rem;
-    line-height: 1.2;
-    white-space: normal;
-    box-shadow: 2px 2px 0px var(--ink-black);
-    border-radius: var(--radius-sharp);
-  }
-
-  .strip-badges-desktop {
-    display: none !important;
-  }
-
-  .strip-badges-mobile {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 0.75rem;
-    margin-bottom: 0.85rem;
-  }
-
-  .modpack-editorial-strip.has-cover-image .strip-header-col {
-    padding: 1rem 1.1rem 0.25rem 1.1rem;
-  }
-
-  .modpack-editorial-strip.has-cover-image .strip-body-col {
-    padding: 0.25rem 1.1rem 0.85rem 1.1rem;
-  }
-
-  .modpack-editorial-strip.has-cover-image .strip-action-col {
-    padding: 0.25rem 1.1rem 1.25rem 1.1rem;
-  }
-
-  /* Preserve 3 lightweight Memphis elements on mobile/tablet */
-  .memphis-shape {
-    opacity: 0.35;
-    transform: scale(0.65);
-  }
-  .shape-circle-blue { top: 15%; left: 2%; width: 34px; height: 34px; }
-  .shape-donut-yellow { top: 45%; right: 2%; width: 40px; height: 40px; }
-  .shape-cross-red { top: 68%; left: 4%; font-size: 1.8rem; }
-  
-  .shape-triangle-pink,
-  .shape-squiggle-green,
-  .shape-star-purple,
-  .shape-zigzag-orange { display: none; }
-}
-
-/* Mobile Landscape & Tablets (<= 768px) */
-@media (max-width: 768px) {
-  body {
-    padding-bottom: calc(var(--bottom-nav-height, 60px) + 24px + env(safe-area-inset-bottom, 0px));
-  }
-
-  /* 1. Top Ticker */
-  .retro-ticker-bar {
-    font-size: 0.95rem;
-    padding: 0.25rem 0;
-    max-width: 100vw;
-    overflow: hidden;
-  }
-
-  /* 2. Header & 3. Mobile Header Actions */
-  .nav-menu { display: none; }
-  .menu-toggle {
-    display: flex;
-    width: 44px;
-    height: 44px;
-    padding: 10px 8px;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    flex-shrink: 0;
-  }
-  .mobile-bottom-bar { display: flex; }
-  .site-header { min-height: 58px; }
-  .nav-container { padding: 0.45rem 0.85rem; }
-  .nav-actions { display: flex; align-items: center; gap: 0.45rem; }
-  .btn-theme-toggle {
-    min-height: 44px;
-    padding: 0.4rem 0.75rem;
-    font-size: 0.78rem;
-  }
-
-  /* 4. Mobile Drawer */
-  .mobile-nav {
-    width: 85%;
-    max-width: 320px;
-  }
-  .mobile-nav-link {
-    min-height: 48px;
-    font-size: 0.95rem;
-  }
-
-  /* 5. Hero & 6. Hero Title & 7. Hero Tags */
-  .hero-section {
-    padding-top: 1.75rem;
-    padding-bottom: 2rem;
-  }
-  .hero-poster-layout {
-    gap: 1.15rem;
-  }
-  .status-badge {
-    font-size: 0.78rem;
-    padding: 0.35rem 0.65rem;
-    text-align: center;
-    max-width: 100%;
-    white-space: normal;
-    line-height: 1.35;
-  }
-  .hero-title {
-    font-size: clamp(2.4rem, 10vw, 3.8rem);
-    line-height: 0.95;
-    letter-spacing: -0.5px;
-    text-shadow: 3px 3px 0px #121212;
-  }
-  .hero-tag-strip {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.4rem;
-  }
-  .hero-tag-strip .sticker-tag {
-    font-size: 0.8rem;
-    padding: 0.25rem 0.55rem;
-  }
-
-  /* 8. Creator / Profile Card & 9. Device Badge */
-  .hero-visual-center {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .retro-polaroid-frame {
-    max-width: 320px;
-    width: 100%;
-    transform: none;
-    padding: 0.85rem;
-    margin: 0 auto;
-    box-shadow: 4px 4px 0px #121212;
-  }
-  .avatars-wrapper {
-    gap: 1rem;
-    justify-content: center;
-  }
-  .avatar-ring {
-    width: 74px;
-    height: 74px;
-  }
-  .avatar-label {
-    font-size: 0.78rem;
-  }
-  .polaroid-caption {
-    font-size: 0.82rem;
-  }
-  .device-spec-pill {
-    font-size: 0.82rem;
-    padding: 0.45rem 0.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    gap: 0.35rem;
-  }
-
-  /* 10. Hero Buttons */
-  .hero-cta-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-  }
-  .hero-cta-group .btn {
-    width: 100%;
-    min-height: 48px;
-    justify-content: center;
-    font-size: 0.92rem;
-  }
-  .hero-sticker-badge { display: none; }
-
-  /* Section Headers */
-  .section {
-    padding: 2.75rem 0;
-  }
-  .section-title {
-    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
-  }
-  .section-desc {
-    font-size: 0.92rem;
-  }
-
-  /* Shaders Section */
-  #derivative-shader {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-  }
-  .derivative-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .derivative-preview-frame {
-    transform: none;
-    margin-bottom: 1rem;
-  }
-  .derivative-preview-image {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* 11. Social Wall, 12. TikTok Card, 13. WhatsApp Card */
-  .social-wall-layout {
-    gap: 1.25rem;
-  }
-  .social-block {
-    transform: none !important;
-    padding: 1.25rem;
-  }
-  .block-tiktok,
-  .block-wa-channel,
-  .block-wa-group {
-    transform: none !important;
-  }
-  .tiktok-score-display {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.75rem;
-    padding: 0.85rem;
-  }
-  .score-main .stat-value {
-    font-size: 2.2rem;
-  }
-  .score-sub {
-    border-left: none;
-    border-top: 2px dashed #444;
-    padding-left: 0;
-    padding-top: 0.75rem;
-    width: 100%;
-    justify-content: space-around;
-  }
-  .score-sub .stat-value {
-    font-size: 1.3rem;
-  }
-  .wa-channel-stat-banner {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.45rem;
-    padding: 0.75rem;
-  }
-  .wa-follower-num {
-    font-size: 2.1rem;
-  }
-  .group-actions-grid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .btn-group-solid,
-  .btn-tiktok-solid,
-  .btn-wa-solid {
-    width: 100%;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* 14. Discord Section */
-  .retro-poster-box {
-    padding: 1.5rem 1.15rem;
-  }
-  .discord-header-flex {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-  }
-  .d-title-top {
-    font-size: clamp(2rem, 7.5vw, 2.75rem);
-  }
-  .d-title-sub {
-    font-size: clamp(1.8rem, 6.8vw, 2.45rem);
-  }
-  .discord-cta-row {
-    width: 100%;
-  }
-  .btn-discord {
-    width: 100%;
-    min-height: 48px;
-    justify-content: center;
-    font-size: 0.95rem;
-  }
-  .poster-decor-star {
-    font-size: 2.2rem;
-    opacity: 0.45;
-  }
-
-  /* 15. Modpack Section, 16. Controls, 17. Filters */
-  .modpack-controls-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
-    padding: 0.75rem;
-  }
-  .modpack-filters-scroll {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 0.35rem;
-  }
-  .filter-pill {
-    min-height: 44px;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.82rem;
-  }
-  .gaming-mode-switch-wrapper {
-    width: 100%;
-  }
-  .btn-gaming-mode-toggle {
-    width: 100%;
-    min-height: 44px;
-    justify-content: center;
-    font-size: 0.88rem;
-  }
-
-  /* 18. Modpack Cards, 19. Cover Images */
-  .modpack-card-title {
-    font-size: clamp(1.3rem, 5vw, 1.65rem);
-  }
-  .vulkan-dual-block,
-  .pvp-dual-block {
-    grid-template-columns: 1fr;
-  }
-
-  /* 20. Additional Content, 21. Mod List, 22. Search Mod */
-  .modpack-collapsible-wrapper,
-  .modpack-addon-wrapper {
-    margin-top: 0.85rem;
-  }
-  .collapsible-header-card {
-    padding: 0.75rem;
-    gap: 0.65rem;
-  }
-  .btn-toggle-modlist,
-  .btn-toggle-addon {
-    min-height: 44px;
-    font-size: 0.82rem;
-  }
-  .modlist-search-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
-  }
-  .modlist-search-box {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-  .mod-inline-search {
-    min-height: 44px;
-    font-size: 0.9rem;
-  }
-  .modlist-counter-status {
-    text-align: center;
-  }
-  .modlist-items-grid {
-    grid-template-columns: 1fr;
-    max-height: 360px;
-  }
-  .addon-item-list {
-    grid-template-columns: 1fr;
-  }
-  .additional-content-summary {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-  }
-
-  /* 23. Download Buttons */
-  .modpack-download-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .modpack-download-group .btn,
-  .modpack-download-group .btn-download-action,
-  .modpack-download-group .btn-download-dual {
-    width: 100%;
-    min-height: 48px;
-    padding: 0.7rem 1rem;
-    font-size: 0.88rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  /* 24. Zalith Section */
-  .zalith-window-poster {
-    padding: 1.25rem 1rem;
-  }
-  .zalith-big-title {
-    font-size: clamp(1.8rem, 6vw, 2.3rem);
-  }
-  .status-text-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    font-size: 0.85rem;
-  }
-  .apk-download-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 0.85rem;
-  }
-  .apk-name-group {
-    width: 100%;
-  }
-  .apk-action-wrap {
-    width: 100%;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-  .btn-apk-download {
-    flex: 1;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* 25. Casda Network */
-  .server-poster {
-    padding: 2rem 1.25rem;
-  }
-  .server-frame-wrapper {
-    margin-bottom: 0.75rem;
-    transform: none !important;
-  }
-  .server-main-title {
-    font-size: clamp(1.9rem, 6.5vw, 2.4rem);
-  }
-  .server-chips-grid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .server-chip {
-    padding: 0.45rem 0.65rem;
-  }
-  .server-modes-preview {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .server-actions-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-  .server-actions-group .btn {
-    width: 100%;
-    min-height: 48px;
-    justify-content: center;
-  }
-
-  /* 26. Support / Saweria */
-  .support-campaign-wrapper {
-    padding: 2rem 1.15rem;
-  }
-  .support-giant-title {
-    font-size: clamp(2.1rem, 7.5vw, 2.8rem);
-  }
-  .saweria-editorial-poster {
-    transform: none !important;
-    max-width: 100%;
-    padding: 1.5rem 1.15rem;
-  }
-  .support-sticker-physical {
-    top: -14px;
-    right: 10px;
-    font-size: 0.88rem;
-    padding: 0.25rem 0.6rem;
-    transform: rotate(-3deg);
-  }
-  .btn-saweria-editorial {
-    width: 100%;
-    min-height: 48px;
-    font-size: 0.95rem;
-  }
-
-  /* 27. Footer */
-  .site-footer {
-    padding: 2.5rem 0 5.5rem 0;
-  }
-  .footer-poster-box {
-    padding: 2rem 1.15rem;
-  }
-  .footer-brand-title {
-    font-size: clamp(2rem, 7.5vw, 2.8rem);
-  }
-  .footer-links-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.65rem 0.85rem;
-    text-align: left;
-  }
-  .footer-links-grid a {
-    font-size: 0.82rem;
-    padding: 0.25rem 0;
-    display: block;
-    word-break: break-word;
-  }
-  .footer-bottom-row {
-    font-size: 0.8rem;
-    text-align: center;
-  }
-
-  /* 28. Bottom Navigation */
-  .mobile-bottom-bar {
-    min-height: 60px;
-    height: calc(60px + env(safe-area-inset-bottom, 0px));
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  .bottom-nav-item {
-    min-height: 48px;
-    font-size: 0.78rem;
-    padding: 0.25rem 0.15rem;
-  }
-  .bottom-nav-item i {
-    font-size: 1.1rem;
-  }
-
-  /* 29. Back-to-Top Button */
-  .back-to-top {
-    bottom: calc(var(--bottom-nav-height, 60px) + 12px + env(safe-area-inset-bottom, 0px));
-    right: 12px;
-    width: 44px;
-    height: 44px;
-    z-index: 996;
-  }
-}
-
-/* Screen <= 640px: Clean Mobile Header */
-@media (max-width: 640px) {
-  .site-header .btn-header-cta {
-    display: none !important;
-  }
-}
-
-/* Small Smartphone (<= 480px) */
-@media (max-width: 480px) {
-  /* 1. Top Ticker */
-  .retro-ticker-bar {
-    font-size: 0.88rem;
-    padding: 0.2rem 0;
-  }
-
-  /* 2. Header & 3. Header Actions */
-  .nav-container {
-    padding: 0.4rem 0.65rem;
-  }
-  .brand-logo { gap: 0.35rem; }
-  .brand-icon-box {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-  .brand-title {
-    font-size: 1.15rem;
-  }
-  .brand-tag {
-    font-size: 0.72rem;
-  }
-  .btn-theme-toggle {
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    justify-content: center;
-  }
-  .btn-theme-toggle .theme-text {
-    display: none;
-  }
-  .btn-theme-toggle .theme-icon {
-    margin: 0;
-    font-size: 1.1rem;
-  }
-  .menu-toggle {
-    width: 44px;
-    height: 44px;
-    padding: 10px 8px;
-  }
-
-  /* 5. Hero & 6. Title */
-  .hero-title {
-    font-size: clamp(2.1rem, 9.5vw, 2.7rem);
-  }
-  .retro-polaroid-frame {
-    padding: 0.65rem;
-  }
-  .avatars-wrapper {
-    gap: 0.75rem;
-  }
-  .avatar-ring {
-    width: 66px;
-    height: 66px;
-  }
-  .polaroid-title {
-    font-size: 0.85rem;
-  }
-
-  /* 18. Modpack Cards */
-  .modpack-editorial-strip h3,
-  .modpack-card-title {
-    font-size: 1.35rem;
-  }
-  .modpack-edition-tag {
-    font-size: 0.85rem;
-  }
-  .tag-badge {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.45rem;
-  }
-
-  /* 20. Additional Content Collapsible */
-  .collapsible-header-card {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.65rem;
-  }
-  .collapsible-title-col {
-    width: 100%;
-  }
-  .collapsible-title-col .summary-title {
-    font-size: 0.88rem;
-  }
-  .collapsible-action-col {
-    width: 100%;
-  }
-  .btn-toggle-modlist,
-  .btn-toggle-addon {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* 24. Zalith */
-  .window-body {
-    padding: 1rem;
-  }
-
-  /* 26. Support / Saweria */
-  .support-giant-title {
-    font-size: 2.35rem;
-  }
-  .saweria-editorial-poster {
-    padding: 1.35rem 1rem;
-  }
-  .poster-headline {
-    font-size: 1.85rem;
-  }
-
-  /* 27. Footer */
-  .footer-links-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-brand-title {
-    font-size: 2.2rem;
-  }
-}
-
-/* Compact Smartphones (<= 390px) */
-@media (max-width: 390px) {
-  .container {
-    padding: 0 0.75rem;
-  }
-  .nav-container {
-    padding-left: 0.45rem;
-    padding-right: 0.45rem;
-  }
-  .hero-title {
-    font-size: 2.1rem;
-  }
-  .d-title-top {
-    font-size: 2.2rem;
-  }
-  .d-title-sub {
-    font-size: 2rem;
-  }
-  .social-block {
-    padding: 1.15rem;
-  }
-  .score-main .stat-value {
-    font-size: 2.1rem;
-  }
-  .wa-follower-num {
-    font-size: 2rem;
-  }
-  .modpack-card-title {
-    font-size: 1.25rem;
-  }
-  .modpack-download-group .btn,
-  .modpack-download-group .btn-download-action,
-  .modpack-download-group .btn-download-dual {
-    font-size: 0.82rem;
-    padding: 0.65rem 0.75rem;
-  }
-}
-
-/* Extra Compact Phones (<= 360px) */
-@media (max-width: 360px) {
-  .container {
-    padding-left: 0.65rem;
-    padding-right: 0.65rem;
-  }
-  .nav-container {
-    padding-left: 0.35rem;
-    padding-right: 0.35rem;
-  }
-  .brand-logo {
-    gap: 0.3rem;
-  }
-  .brand-icon-box {
-    width: 28px;
-    height: 28px;
-    font-size: 0.9rem;
-  }
-  .brand-title {
-    font-size: 1.05rem;
-  }
-  .brand-tag {
-    font-size: 0.65rem;
-  }
-  .hero-title {
-    font-size: 1.95rem;
-  }
-  .avatar-ring {
-    width: 58px;
-    height: 58px;
-  }
-  .score-main .stat-value {
-    font-size: 1.9rem;
-  }
-  .score-sub .stat-value {
-    font-size: 1.15rem;
-  }
-  .bottom-nav-item span:last-child {
-    font-size: 0.68rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   18. Reduced Motion Accessibility Compliance
-   -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  #retroParticleCanvas { display: none; }
-  .ticker-content { animation: none; }
-}
-
-/* ==========================================================================
-   19. Global Header Theme Toggle Button
-   ========================================================================== */
-.btn-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  padding: 0.45rem 0.85rem;
-  font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  background-color: var(--bg-card);
-  color: var(--text-main);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sharp);
-  cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease, color 0.2s ease;
-  user-select: none;
-}
-
-.btn-theme-toggle:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-theme-toggle:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-active);
-}
-
-.btn-theme-toggle:focus-visible {
-  outline: 3px dashed var(--color-pink);
-  outline-offset: 3px;
-}
-
-.btn-theme-toggle .theme-icon {
-  color: var(--color-yellow);
-  font-size: 0.95rem;
-  transition: transform 0.25s ease;
-}
-
-/* ==========================================================================
-   20. Collapsible Modpack Mod List & Search Component
-   ========================================================================== */
-.modpack-collapsible-wrapper {
-  margin-top: 1rem;
-  border: 2px solid #121212;
-  box-shadow: 3px 3px 0px #121212;
-  background-color: var(--bg-card);
-  border-radius: var(--radius-sharp);
-  overflow: hidden;
-  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.collapsible-header-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background-color: var(--bg-secondary);
-  gap: 1rem;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.15s ease;
-}
-
-.collapsible-header-card:hover {
-  background-color: #EDE7DC;
-}
-
-.collapsible-badge-wrap {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.collapsible-subtext {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-top: 0.15rem;
-}
-
-.btn-toggle-modlist {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.85rem;
-  background-color: var(--color-yellow);
-  color: #121212;
-  font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-  border-radius: var(--radius-sharp);
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  white-space: nowrap;
-}
-
-.btn-toggle-modlist:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #121212;
-}
-
-.btn-toggle-modlist:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #121212;
-}
-
-.collapsible-body-card {
-  padding: 1rem;
-  border-top: 2px dashed #121212;
-  background-color: var(--bg-card);
-  animation: slideDownFade 0.22s ease-out;
-}
-
-@keyframes slideDownFade {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.modlist-search-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
-}
-
-.modlist-search-box {
-  position: relative;
-  flex: 1;
-  min-width: 200px;
-  max-width: 440px;
-}
-
-.mod-inline-search {
-  width: 100%;
-  padding: 0.5rem 2.2rem 0.5rem 2.2rem;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-  border-radius: var(--radius-sharp);
-  background-color: #FFFFFF;
-  color: #121212;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.mod-inline-search:focus {
-  outline: none;
-  border-color: var(--color-pink);
-  box-shadow: 3px 3px 0px #121212;
-}
-
-.modlist-search-box .mod-search-icon {
-  position: absolute;
-  left: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  visibility: hidden;
+  transition: all 0.25s var(--ease);
   pointer-events: none;
 }
 
-.btn-clear-inline-search {
-  position: absolute;
-  right: 0.65rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 0.2rem;
-  font-size: 0.8rem;
+[data-theme="dark"] .toast-notification {
+  background-color: var(--surface-raised);
+  color: var(--text);
+  border-color: var(--line);
 }
 
-.btn-clear-inline-search:hover {
-  color: var(--color-pink);
+.toast-notification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
-.modlist-counter-status {
-  font-family: var(--font-pixel);
-  font-size: 1.15rem;
-  font-weight: bold;
-  background-color: var(--bg-secondary);
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-  padding: 0.3rem 0.65rem;
-  border-radius: var(--radius-sharp);
-  white-space: nowrap;
+/* --------------------------------------------------------------------------
+   14. Responsive Layout Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .nav-menu { display: none; }
+  .menu-toggle { display: flex; }
+  .footer-columns-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
 
-.modlist-items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 0.45rem;
-  max-height: 440px;
-  overflow-y: auto;
-  padding-right: 0.35rem;
+@media (max-width: 768px) {
+  .mobile-bottom-bar { display: flex; }
+  body { padding-bottom: var(--bottom-nav-height); }
+  .back-to-top { bottom: calc(var(--bottom-nav-height) + 1rem); }
+  .footer-columns-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom-row { flex-direction: column; text-align: center; }
 }
-
-/* Custom scrollbar for mod list */
-.modlist-items-grid::-webkit-scrollbar {
-  width: 7px;
-}
-.modlist-items-grid::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-}
-.modlist-items-grid::-webkit-scrollbar-thumb {
-  background: var(--color-yellow);
-  border: 1px solid var(--border-color);
-}
-
-.modlist-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.6rem;
-  background-color: var(--bg-secondary);
-  border: 2px solid #121212;
-  box-shadow: 1px 1px 0px #121212;
-  border-radius: var(--radius-sharp);
-  transition: transform 0.1s ease, background-color 0.12s ease;
-}
-
-.modlist-item:hover {
-  transform: translate(-1px, -1px);
-  background-color: #FFF9DB;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.modlist-num {
-  font-family: var(--font-pixel);
-  font-size: 1.05rem;
-  font-weight: bold;
-  background-color: #121212;
-  color: var(--color-yellow);
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.modlist-name {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-main);
-  line-height: 1.25;
-  word-break: break-word;
-}
-
-.modlist-no-results {
-  text-align: center;
-  padding: 2.25rem 1rem;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.modlist-no-results i {
-  color: var(--color-pink);
-  font-size: 1.5rem;
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-/* ==========================================================================
-   20B. Cobra Ultimized X Fresh & Smooth Additional Content Component
-   ========================================================================== */
-.tag-badge-fresh {
-  background-color: #22c55e !important;
-  color: #052e16 !important;
-  font-weight: 800 !important;
-  border: 2px solid #121212 !important;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.tag-badge-cobra {
-  background-color: #f97316 !important;
-  color: #ffffff !important;
-  font-weight: 800 !important;
-  border: 2px solid #121212 !important;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.tag-badge-iris {
-  background-color: #8b5cf6 !important;
-  color: #ffffff !important;
-  font-weight: 800 !important;
-  border: 2px solid #121212 !important;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.tag-category-visual {
-  background-color: #06b6d4 !important;
-  color: #ffffff !important;
-  border: 2px solid #121212 !important;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.modpack-edition-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-pixel);
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: #15803d;
-  background-color: #dcfce7;
-  border: 2px solid #16a34a;
-  box-shadow: 2px 2px 0px #121212;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-sharp);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-}
-
-.additional-content-summary {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.35rem;
-}
-
-.modpack-addon-wrapper {
-  margin-top: 1rem;
-  border: 2px solid #121212;
-  box-shadow: 3px 3px 0px #121212;
-  background-color: var(--bg-card);
-  border-radius: var(--radius-sharp);
-  overflow: hidden;
-  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.modpack-addon-wrapper:hover {
-  box-shadow: 4px 4px 0px #121212;
-}
-
-.modpack-addon-wrapper .collapsible-header-card {
-  background-color: #f0fdf4;
-  border-left: 5px solid #22c55e;
-}
-
-.modpack-addon-wrapper .collapsible-header-card:hover {
-  background-color: #dcfce7;
-}
-
-.btn-toggle-addon {
-  background-color: #22c55e;
-  color: #052e16;
-}
-
-.btn-toggle-addon:hover {
-  background-color: #16a34a;
-  color: #ffffff;
-}
-
-.addon-body-card {
-  padding: 1.15rem;
-  border-top: 2px dashed #121212;
-  background-color: var(--bg-card);
-  animation: slideDownFade 0.22s ease-out;
-}
-
-.addon-subgroup {
-  background: var(--bg-secondary);
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-  border-radius: var(--radius-sharp);
-  padding: 0.85rem 1rem;
-}
-
-.addon-subgroup-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: var(--font-heading);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: #121212;
-  letter-spacing: 0.4px;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1.5px solid #e2e8f0;
-}
-
-.addon-subgroup-title i {
-  color: #16a34a;
-  margin-right: 0.35rem;
-}
-
-.addon-pill-count {
-  font-family: var(--font-pixel);
-  font-size: 0.95rem;
-  font-weight: bold;
-  background-color: #22c55e;
-  color: #052e16;
-  border: 1.5px solid #121212;
-  box-shadow: 1.5px 1.5px 0px #121212;
-  padding: 0.1rem 0.45rem;
-  border-radius: var(--radius-sharp);
-}
-
-.addon-pill-count.rp-pill {
-  background-color: #38bdf8;
-  color: #082f49;
-}
-
-.addon-item-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0.5rem;
-}
-
-.addon-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.65rem;
-  background-color: #ffffff;
-  border: 1.5px solid #121212;
-  box-shadow: 1.5px 1.5px 0px #121212;
-  border-radius: var(--radius-sharp);
-  font-family: var(--font-body);
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: #121212;
-  transition: transform 0.12s ease, background-color 0.12s ease;
-}
-
-.addon-item:hover {
-  transform: translate(-1px, -1px);
-  background-color: #f0fdf4;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.addon-item .addon-bullet {
-  color: #16a34a;
-  font-size: 1.15rem;
-  font-weight: bold;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.addon-item .addon-name {
-  flex: 1;
-  word-break: break-word;
-}
-
-.addon-dup-badge {
-  font-family: var(--font-pixel);
-  font-size: 0.95rem;
-  font-weight: bold;
-  background-color: #fef08a;
-  color: #854d0e;
-  border: 1.5px solid #121212;
-  box-shadow: 1px 1px 0px #121212;
-  padding: 0.05rem 0.35rem;
-  border-radius: 3px;
-  margin-left: auto;
-  flex-shrink: 0;
-}
-
-.addon-rp-num {
-  font-family: var(--font-pixel);
-  font-size: 0.9rem;
-  font-weight: bold;
-  background-color: #121212;
-  color: #86efac;
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-/* ==========================================================================
-   21. Full Homepage Dark Mode Overrides
-   ========================================================================== */
-[data-theme="dark"] body {
-  background-color: var(--bg-primary);
-  background-image: radial-gradient(rgba(245, 245, 245, 0.08) 1px, transparent 1px);
-  color: var(--text-main);
-}
-
-/* Header & Nav */
-[data-theme="dark"] .site-header {
-  background-color: #111311;
-  border-bottom: 3px solid #E8E8E8;
-  box-shadow: 0 4px 0 #000000;
-}
-
-[data-theme="dark"] .site-header.scrolled {
-  background-color: #111311;
-  box-shadow: 0 4px 0 #000000;
-}
-
-[data-theme="dark"] .brand-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .brand-tag {
-  color: #38BDF8;
-}
-
-[data-theme="dark"] .brand-icon-box {
-  background-color: var(--color-pink);
-  color: #FFFFFF;
-  border-color: #E8E8E8;
-}
-
-[data-theme="dark"] .nav-link {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .nav-link:hover,
-[data-theme="dark"] .nav-link.active {
-  background-color: var(--color-yellow);
-  color: #121212;
-  border-color: #E8E8E8;
-}
-
-[data-theme="dark"] .btn-theme-toggle {
-  background-color: #1B211D;
-  color: #22C55E;
-  border-color: #22C55E;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="dark"] .btn-theme-toggle .theme-icon {
-  color: var(--color-yellow);
-}
-
-[data-theme="dark"] .btn-header-cta {
-  background-color: var(--color-pink);
-  color: #FFFFFF;
-  border-color: #E8E8E8;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="dark"] .menu-toggle {
-  background-color: #1B211D;
-  border-color: #E8E8E8;
-}
-
-[data-theme="dark"] .menu-toggle span {
-  background-color: #F5F5F5;
-}
-
-[data-theme="dark"] .mobile-bottom-bar {
-  background-color: #111311;
-  border-top: 3px solid #E8E8E8;
-}
-
-[data-theme="dark"] .section-gyzenn-modpacks {
-  background-color: #101412;
-}
-
-[data-theme="dark"] .bottom-nav-item {
-  color: #A7AEA9;
-}
-
-[data-theme="dark"] .bottom-nav-item i {
-  color: #A7AEA9;
-}
-
-[data-theme="dark"] .bottom-nav-item.active {
-  background-color: var(--color-yellow);
-  color: #121212;
-  border: 2px solid #121212;
-}
-
-[data-theme="dark"] .bottom-nav-item.active i {
-  color: #121212;
-}
-
-[data-theme="dark"] .back-to-top {
-  background-color: var(--color-yellow);
-  color: #121212;
-  border-color: #E8E8E8;
-}
-
-/* Mobile Nav Drawer */
-[data-theme="dark"] .mobile-nav {
-  background-color: #141418;
-  border-left: 4px solid #2E2E38;
-}
-
-[data-theme="dark"] .mobile-nav-link {
-  background-color: #1E1E26;
-  color: #F5F5F5;
-  border-color: #383848;
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="dark"] .mobile-nav-link:hover,
-[data-theme="dark"] .mobile-nav-link.active {
-  background-color: var(--color-yellow);
-  color: #121212;
-}
-
-/* Hero Section */
-[data-theme="dark"] .hero-title-top {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .hero-desc {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .polaroid-tape {
-  border-color: #2E2E38;
-}
-
-[data-theme="dark"] .hero-polaroid-frame {
-  background-color: #1E1E26;
-  border-color: #383848;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .polaroid-caption {
-  color: #F5F5F5;
-}
-
-/* Community Section */
-[data-theme="dark"] .community-card {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 4px 4px 0px #000000;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .community-card:hover {
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .community-card p {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .stats-banner {
-  background-color: #1E1E26;
-  border-color: #383848;
-  box-shadow: 4px 4px 0px #000000;
-}
-
-[data-theme="dark"] .stat-label {
-  color: #A3A3A3;
-}
-
-/* Discord Section */
-[data-theme="dark"] .discord-editorial-card {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .d-title-top,
-[data-theme="dark"] .d-title-sub {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .discord-desc {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .discord-feature-item {
-  background-color: #22222E;
-  border-color: #383848;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .discord-feature-item i {
-  color: var(--color-green);
-}
-
-/* Section Modpacks & Dynamic Strips */
-[data-theme="dark"] .section-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .section-desc {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .modpack-editorial-strip {
-  background-color: #151A17;
-  border-color: #38453E;
-  box-shadow: 4px 4px 0px #000000;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .modpack-editorial-strip:hover {
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-yellow {
-  background-color: #151A17;
-  border-left: 8px solid var(--color-yellow);
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-orange {
-  background-color: #151A17;
-  border-left: 8px solid var(--color-orange);
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-blue {
-  background-color: #151A17;
-  border-left: 8px solid var(--color-blue-bright);
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-green {
-  background-color: #151A17;
-  border-left: 8px solid var(--color-green);
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-fresh-green {
-  background-color: #151A17;
-  border-left: 8px solid #22C55E;
-  border-color: #38453E;
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-fresh-green:hover {
-  box-shadow: 0 0 22px rgba(34, 197, 94, 0.28), 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-pink {
-  background-color: #151A17;
-  border-left: 8px solid var(--color-pink);
-}
-
-[data-theme="dark"] .modpack-editorial-strip.strip-v7-latest {
-  background-color: #151A17;
-  border-left: 8px solid var(--color-pink);
-}
-
-[data-theme="dark"] .modpack-editorial-strip h3,
-[data-theme="dark"] .modpack-card-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .modpack-editorial-desc {
-  color: #A7AEA9;
-}
-
-[data-theme="dark"] .version-stamp {
-  background-color: #1B211D;
-  color: #F5F5F5;
-  border: 2px solid #38453E;
-}
-
-[data-theme="dark"] .tag-mc-version {
-  background-color: #202738;
-  color: #93C5FD;
-  border-color: #383848;
-}
-
-[data-theme="dark"] .tag-fabric {
-  background-color: #1C2E20;
-  color: #86EFAC;
-  border-color: #383848;
-}
-
-[data-theme="dark"] .modpack-bullet-list {
-  color: #E2E8F0;
-}
-
-[data-theme="dark"] .vulkan-sub-card,
-[data-theme="dark"] .pvp-sub-card {
-  background-color: #1E1E26;
-  border-color: #383848;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .vulkan-card-title,
-[data-theme="dark"] .pvp-card-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .vulkan-card-sub,
-[data-theme="dark"] .pvp-card-sub {
-  color: #A3A3A3;
-}
-
-/* Modpack Controls Bar Dark Mode */
-[data-theme="dark"] .modpack-controls-bar {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 4px 4px 0px #000000;
-}
-
-[data-theme="dark"] .filter-pill {
-  background-color: #22222E;
-  color: #F5F5F5;
-  border-color: #383848;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="dark"] .filter-pill:hover {
-  background-color: var(--color-yellow);
-  color: #121212;
-  border-color: #E8E8E8;
-}
-
-[data-theme="dark"] .filter-pill.active {
-  background-color: var(--color-orange);
-  color: #ffffff;
-  border-color: #E8E8E8;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-/* Collapsible Mod List Dark Mode */
-[data-theme="dark"] .modpack-collapsible-wrapper {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="dark"] .collapsible-header-card {
-  background-color: #20202A;
-  border-bottom-color: #383848;
-}
-
-[data-theme="dark"] .collapsible-header-card:hover {
-  background-color: #262634;
-}
-
-[data-theme="dark"] .collapsible-subtext {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .collapsible-body-card {
-  background-color: #14141A;
-  border-top-color: #383848;
-}
-
-[data-theme="dark"] .mod-inline-search {
-  background-color: #1E1E28;
-  border-color: #3E3E50;
-  box-shadow: 2px 2px 0px #000000;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .mod-inline-search:focus {
-  border-color: var(--color-pink);
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="dark"] .modlist-counter-status {
-  background-color: #242432;
-  border-color: #3E3E50;
-  box-shadow: 2px 2px 0px #000000;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .modlist-item {
-  background-color: #1E1E28;
-  border-color: #383848;
-  box-shadow: 1px 1px 0px #000000;
-}
-
-[data-theme="dark"] .modlist-item:hover {
-  background-color: #282838;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="dark"] .modlist-num {
-  background-color: #2C2C3C;
-  color: #FFD600;
-}
-
-[data-theme="dark"] .modlist-name {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .modlist-no-results {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .modpack-extra-mods-details {
-  background-color: #1E1E28;
-  border-color: #383848;
-}
-
-[data-theme="dark"] .modpack-extra-mods-summary {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .extra-mod-tag {
-  background-color: #14141A;
-  border-color: #383848;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .modpack-note-callout {
-  background-color: #271E15;
-  border-color: var(--color-orange);
-  color: #FED7AA;
-}
-
-/* Cobra Fresh & Smooth Additional Content Dark Mode */
-[data-theme="dark"] .modpack-edition-tag {
-  color: #86efac;
-  background-color: #14321d;
-  border-color: #22c55e;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="dark"] .modpack-addon-wrapper {
-  background-color: #151A17;
-  border: 2px solid #22C55E;
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="dark"] .modpack-addon-wrapper .collapsible-header-card {
-  background-color: #151A17;
-  border-left: 5px solid #22C55E;
-}
-
-[data-theme="dark"] .modpack-addon-wrapper .collapsible-header-card:hover {
-  background-color: #1B211D;
-}
-
-[data-theme="dark"] .modpack-addon-wrapper .summary-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .modpack-addon-wrapper .collapsible-subtext {
-  color: #A7AEA9;
-}
-
-[data-theme="dark"] .btn-toggle-addon {
-  background-color: #22C55E;
-  color: #07130b;
-  font-weight: 800;
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0 #000000;
-}
-
-[data-theme="dark"] .btn-toggle-addon:hover {
-  background-color: #4ade80;
-  color: #07130b;
-}
-
-[data-theme="dark"] .addon-body-card {
-  background-color: #101412;
-  border-top: 2px dashed #22C55E;
-}
-
-[data-theme="dark"] .addon-subgroup {
-  background-color: #151A17;
-  border: 2px solid #2A3830;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="dark"] .addon-subgroup-title {
-  color: #F5F5F5;
-  border-bottom: 1.5px solid #223328;
-}
-
-[data-theme="dark"] .addon-subgroup-title i {
-  color: #22C55E;
-}
-
-[data-theme="dark"] .addon-item {
-  background-color: #1B211D;
-  border: 1.5px solid #2A3830;
-  box-shadow: 1.5px 1.5px 0px #000000;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .addon-item:hover {
-  background-color: #222B25;
-  border-color: #22C55E;
-}
-
-[data-theme="dark"] .addon-dup-badge {
-  background-color: #FEE08B;
-  color: #713F12;
-  border: 1px solid #121212;
-}
-
-[data-theme="dark"] .addon-rp-num {
-  background-color: #0B0D0C;
-  color: #22C55E;
-  border: 1px solid #22C55E;
-}
-
-/* Zalith & Casda */
-[data-theme="dark"] .zalith-window-poster {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .zalith-display-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .zalith-poster-lead {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .zalith-terminal-panel {
-  background-color: #0E0E14;
-  border-color: #2E2E3C;
-}
-
-[data-theme="dark"] .casda-terminal-window {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .casda-poster-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .casda-poster-desc {
-  color: #A3A3A3;
-}
-
-/* Support & Footer */
-[data-theme="dark"] .saweria-editorial-poster {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="dark"] .support-giant-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .support-editorial-lead {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .site-footer {
-  background-color: #0B0B0E;
-  border-top: 4px solid #2E2E38;
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .footer-title {
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .footer-links-grid a {
-  color: #A3A3A3;
-}
-
-[data-theme="dark"] .footer-links-grid a:hover {
-  color: var(--color-yellow);
-}
-
-/* Modal and Toasts */
-[data-theme="dark"] .modal-content {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 6px 6px 0px #000000;
-  color: #F5F5F5;
-}
-
-[data-theme="dark"] .toast {
-  background-color: #18181E;
-  border-color: #383848;
-  box-shadow: 4px 4px 0px #000000;
-  color: #F5F5F5;
-}
-

@@ -1,226 +1,374 @@
 /* ==========================================================================
-   PAGE: KOMUNITAS - Social Wall (TikTok, WA Channel, WA Groups) & Discord Poster
+   PAGE: KOMUNITAS - Soft Brutalism (Dummy.my Style)
+   Social Wall (TikTok, WA Channel, WA Groups) & Discord Campaign Box
    ========================================================================== */
 
 .social-wall-layout {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .social-block {
-  border: var(--border-extra-thick);
+  background-color: var(--surface);
+  border: var(--border-thick);
+  border-radius: var(--r-card);
   box-shadow: var(--shadow-md);
-  padding: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
   position: relative;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
 
-.social-block:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-hover);
+@media (hover: hover) {
+  .social-block:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
+/* Block Pill Seal (Top-Right Badge) */
 .block-seal {
   position: absolute;
-  top: -12px;
-  right: 16px;
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  font-family: var(--font-pixel);
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.15rem 0.65rem;
+  top: -14px;
+  right: 20px;
+  background-color: var(--blush);
+  color: var(--ink-fixed);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
   border: var(--border-thick);
-  box-shadow: 2px 2px 0px #121212;
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-sm);
 }
 
-.seal-green { background-color: var(--color-green); color: var(--ink-black); }
-.seal-orange { background-color: var(--color-orange); color: var(--text-inverted); }
+.seal-green { background-color: #bbf7d0; }
+.seal-orange { background-color: #fed7aa; }
 
 .block-head {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1rem;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
+/* Icon Tile 64x64px, Radius 18px with Gradient */
 .block-icon {
-  width: 46px;
-  height: 46px;
+  width: 64px;
+  height: 64px;
   border: var(--border-thick);
+  border-radius: var(--r-tile);
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  flex-shrink: 0;
 }
 
-.icon-tiktok { background-color: var(--ink-black); color: var(--color-pink); }
-.icon-wa { background-color: var(--color-green); color: var(--ink-black); }
-.icon-group { background-color: var(--color-orange); color: var(--text-inverted); }
+.icon-tiktok {
+  background: var(--grad-pink);
+  color: #ffffff;
+}
 
-.block-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
-.block-subtitle { font-family: var(--font-pixel); font-size: 1rem; color: var(--text-muted); }
+.icon-wa {
+  background: var(--grad-green);
+  color: #ffffff;
+}
 
+.icon-group {
+  background: var(--grad-orange);
+  color: #ffffff;
+}
+
+.block-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.45rem;
+  line-height: 1.15;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.block-subtitle {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* TikTok Arcade Display */
 .block-tiktok {
-  background-color: var(--bg-card);
-  border-left: 8px solid var(--color-pink);
-  transform: rotate(-1.5deg);
+  border-left: 8px solid var(--pink);
 }
 
 .tiktok-score-display {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  background-color: var(--ink-black);
-  color: var(--text-inverted);
+  gap: 1.5rem;
+  background-color: var(--surface-raised);
   border: var(--border-thick);
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: var(--r-card);
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
-.score-main { text-align: left; }
-.score-main .stat-value { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-pink); line-height: 1; }
-.score-label { font-family: var(--font-pixel); font-size: 0.95rem; color: var(--color-yellow); }
+.score-main {
+  text-align: left;
+}
+
+.score-main .stat-value {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2.75rem;
+  color: var(--pink);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.score-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  display: block;
+}
 
 .score-sub {
   display: flex;
-  gap: 1.25rem;
-  border-left: 2px dashed #444;
-  padding-left: 1.25rem;
+  gap: 2rem;
+  border-left: 2px solid var(--line);
+  padding-left: 2rem;
 }
 
-.score-sub .stat-value { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-green); line-height: 1; }
-.block-body { font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--text-muted); }
+.score-sub .stat-value {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--green);
+  line-height: 1;
+}
 
-.btn-tiktok-solid { background-color: var(--ink-black); color: var(--text-inverted); }
-.btn-wa-solid { background-color: var(--color-green); color: var(--ink-black); }
+.block-body {
+  font-size: 0.98rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
 
+.btn-tiktok-solid {
+  background-color: var(--line);
+  color: var(--text-inverted);
+}
+
+[data-theme="dark"] .btn-tiktok-solid {
+  background-color: var(--pink);
+  color: var(--ink-fixed);
+}
+
+/* WhatsApp Channel Banner */
 .block-wa-channel {
-  background-color: var(--color-yellow);
-  border-left: 8px solid var(--color-green-dark);
-  transform: rotate(1.5deg);
+  border-left: 8px solid var(--green);
 }
 
 .wa-channel-stat-banner {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background-color: var(--bg-card);
+  gap: 1.5rem;
+  background-color: #dcfce7;
+  color: #14532d;
   border: var(--border-thick);
-  padding: 0.85rem 1rem;
-  margin-bottom: 1rem;
+  border-radius: var(--r-card);
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
-.wa-follower-num { font-family: var(--font-display); font-size: 2.4rem; color: var(--color-green-dark); line-height: 1; }
-.wa-follower-label { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; }
+[data-theme="dark"] .wa-channel-stat-banner {
+  background-color: #052e16;
+  color: #86efac;
+  border-color: var(--line);
+}
 
+.wa-follower-num {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2.75rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--green);
+}
+
+.wa-follower-label {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.btn-wa-solid {
+  background-color: var(--green);
+  color: var(--ink-fixed);
+}
+
+/* WhatsApp Groups Wall */
 .block-wa-group {
-  background-color: var(--bg-card);
-  border-left: 8px solid var(--color-orange);
-  transform: rotate(-1deg);
+  border-left: 8px solid var(--orange);
 }
 
 .group-actions-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-.btn-group-solid { background-color: var(--color-orange); color: var(--text-inverted); font-size: 0.85rem; padding: 0.7rem 0.5rem; }
+.btn-group-solid {
+  background-color: var(--surface);
+  color: var(--text);
+  border: var(--border-thick);
+}
 
-/* Discord Section Poster */
+/* --------------------------------------------------------------------------
+   2. Discord Campaign Box (Soft Brutalism)
+   -------------------------------------------------------------------------- */
 .retro-poster-box {
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  border: var(--border-extra-thick);
+  background-color: var(--surface);
+  border: var(--border-thick);
+  border-radius: var(--r-card);
   box-shadow: var(--shadow-lg);
-  padding: 2.25rem 1.75rem;
+  padding: clamp(2rem, 5vw, 3rem);
   position: relative;
-  overflow: hidden;
 }
 
 .discord-poster {
-  background-color: #312E81;
-  background-image: radial-gradient(#4338CA 2px, transparent 2px);
-  background-size: 18px 18px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  color: #ffffff;
 }
 
-.poster-decor-star { position: absolute; font-size: 3.5rem; color: var(--color-yellow); opacity: 0.7; }
-.decor-star-1 { top: 8px; right: 16px; }
-.decor-star-2 { bottom: 8px; left: 16px; }
+.poster-decor-star {
+  display: none; /* Hilangkan dekorasi bintang retro */
+}
 
 .discord-header-flex {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1.25rem;
-  margin-bottom: 1rem;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .tag-discord-badge {
-  background-color: var(--color-pink);
-  color: var(--text-inverted);
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.2rem 0.65rem;
-  border: 2px solid #121212;
-  box-shadow: 2px 2px 0px #121212;
-}
-
-.poster-main-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  line-height: 1;
-  color: var(--color-yellow);
-  text-shadow: 3px 3px 0px #121212;
-  margin-top: 0.4rem;
-}
-
-.poster-subtitle { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--color-green); }
-
-.discord-badge-icon-box {
-  width: 60px;
-  height: 60px;
-  background-color: var(--color-yellow);
-  color: var(--ink-black);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.4rem;
-  border-radius: var(--radius-sharp);
-  transform: rotate(5deg);
-}
-
-.poster-text { font-size: 1.05rem; max-width: 800px; margin-bottom: 1.5rem; }
-.discord-features-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
-.discord-mini-chip {
-  background-color: var(--bg-card);
-  color: var(--ink-black);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-sm);
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border: 2px solid var(--line);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-sm);
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
 }
 
-.btn-discord-main { background-color: var(--color-yellow); color: var(--ink-black); font-size: 1.05rem; padding: 0.85rem 1.6rem; }
+.poster-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-top: 0.65rem;
+}
+
+.poster-subtitle {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: #a5b4fc;
+  text-transform: uppercase;
+}
+
+.discord-badge-icon-box {
+  width: 64px;
+  height: 64px;
+  background: var(--grad-blue);
+  color: #ffffff;
+  border: var(--border-thick);
+  border-radius: var(--r-tile);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.poster-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 800px;
+  margin-bottom: 1.75rem;
+  color: #e0e7ff;
+}
+
+.discord-features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.discord-mini-chip {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--r-pill);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.45rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-discord-main {
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+  font-size: 1rem;
+  padding: 0.95rem 1.75rem;
+}
 
 @media (max-width: 768px) {
-  .social-block { transform: none !important; }
-  .tiktok-score-display { flex-direction: column; text-align: center; }
-  .score-sub { border-left: none; border-top: 2px dashed #444; padding-left: 0; padding-top: 0.75rem; width: 100%; justify-content: space-around; }
-  .wa-channel-stat-banner { flex-direction: column; text-align: center; }
-  .group-actions-grid { grid-template-columns: 1fr; }
-  .discord-header-flex { flex-direction: column; align-items: flex-start; }
+  .tiktok-score-display {
+    flex-direction: column;
+    text-align: center;
+  }
+  .score-sub {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 1rem;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .wa-channel-stat-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .group-actions-grid {
+    grid-template-columns: 1fr;
+  }
+  .discord-header-flex {
+    flex-direction: column;
+  }
 }

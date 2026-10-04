@@ -1,35 +1,49 @@
 /* ==========================================================================
-   PAGE: ZALITH LAUNCHER - Installer Poster, Progress Bar, APK Grid
+   PAGE: ZALITH LAUNCHER - Soft Brutalism (Dummy.my Plans & FAQ Style)
+   Installer Window, Pill Progress Track, Numbered Changelog, APK Cards
    ========================================================================== */
 
 .zalith-main-card {
-  background-color: var(--bg-card);
-  border: var(--border-extra-thick);
+  background-color: var(--surface);
+  border: var(--border-thick);
+  border-radius: var(--r-card);
   box-shadow: var(--shadow-lg);
 }
 
 .zalith-banner-header {
-  border-bottom: var(--border-thick);
-  padding-bottom: 1rem;
-  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .zalith-big-title {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  color: var(--color-blue);
-  line-height: 1;
-  margin-top: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-top: 0.65rem;
 }
 
-.zalith-subtitle { font-family: var(--font-pixel); font-size: 1.2rem; font-weight: bold; color: var(--color-orange); }
+.zalith-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-top: 0.25rem;
+}
 
+/* --------------------------------------------------------------------------
+   1. Installer Progress Track (Height 20px, Pill Radius, Gradient Fill)
+   -------------------------------------------------------------------------- */
 .installer-status-bar {
-  background-color: var(--ink-black);
-  color: var(--text-inverted);
+  background-color: var(--surface-raised);
+  color: var(--text);
   border: var(--border-thick);
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.25rem;
+  border-radius: var(--r-card);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
   box-shadow: var(--shadow-sm);
 }
 
@@ -37,13 +51,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.65rem;
 }
 
 .blinking-cursor {
   animation: cursorBlink 1s infinite;
-  color: var(--color-pink);
-  margin-left: 2px;
+  color: var(--pink);
+  margin-left: 3px;
 }
 
 @keyframes cursorBlink {
@@ -53,72 +67,225 @@
 
 .installer-progress-track {
   width: 100%;
-  height: 16px;
-  background-color: #222;
-  border: 2px solid var(--color-yellow);
+  height: 20px;
+  background-color: var(--surface);
+  border: var(--border-thick);
+  border-radius: var(--r-pill);
   padding: 2px;
+  overflow: hidden;
 }
 
 .installer-progress-fill {
   width: 0%;
   height: 100%;
-  background-color: var(--color-green);
-  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--grad-green);
+  border-radius: var(--r-pill);
+  transition: width 1.4s var(--ease);
 }
 
+/* --------------------------------------------------------------------------
+   2. Numbered FAQ / Changelog (Circle with Border)
+   -------------------------------------------------------------------------- */
 .changelog-box {
-  background-color: var(--bg-secondary);
+  background-color: var(--surface-raised);
   border: var(--border-thick);
-  padding: 1rem;
+  border-radius: var(--r-card);
+  padding: 1.5rem;
   box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
 }
 
-.changelog-box-title { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; margin-bottom: 0.65rem; }
-.changelog-list { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
-.changelog-list li { display: flex; align-items: flex-start; gap: 0.55rem; }
-.changelog-list i { color: var(--color-green-dark); margin-top: 0.2rem; }
+.changelog-box-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-.apk-list-heading { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.85rem; }
-.apk-downloads-container { display: flex; flex-direction: column; gap: 0.75rem; }
+.changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.changelog-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* Numbered Circle (Dummy.my FAQ Pattern) */
+.changelog-num-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background-color: var(--surface);
+  color: var(--ink-fixed);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.changelog-text-wrap {
+  color: var(--text);
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   3. APK Downloads Cards (Dummy.my Plans Layout)
+   -------------------------------------------------------------------------- */
+.apk-list-heading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.apk-downloads-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .apk-download-item {
-  background-color: var(--bg-card);
+  background-color: var(--surface);
   border: var(--border-thick);
-  padding: 0.85rem 1rem;
+  border-radius: var(--r-card);
+  padding: 1.1rem 1.35rem;
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  transition: transform 0.15s ease;
+  gap: 1.5rem;
+  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
 
-.apk-download-item:hover { transform: translateX(4px); }
-.item-universal { background-color: var(--color-yellow); }
+@media (hover: hover) {
+  .apk-download-item:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-md);
+  }
+}
 
-.apk-name-group { display: flex; align-items: center; gap: 0.75rem; }
+/* Universal Featured Card (Highlight Fill + Shadow-lg) */
+.item-universal {
+  background-color: var(--yellow);
+  color: var(--ink-fixed);
+  box-shadow: var(--shadow-lg);
+}
+
+.item-universal .apk-filename {
+  color: var(--ink-fixed);
+}
+
+.item-universal .apk-arch-desc {
+  color: var(--ink-fixed);
+  opacity: 0.85;
+}
+
+.apk-name-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .apk-icon {
-  width: 38px;
-  height: 38px;
-  background-color: var(--color-blue);
-  color: var(--text-inverted);
-  border: 2px solid #121212;
+  width: 44px;
+  height: 44px;
+  background: var(--grad-blue);
+  color: #ffffff;
+  border: 2px solid var(--line);
+  border-radius: var(--r-tile);
+  box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
-.apk-filename { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; }
-.apk-arch-desc { font-size: 0.82rem; color: var(--text-muted); }
+.item-universal .apk-icon {
+  background: var(--grad-pink);
+}
 
-.apk-action-wrap { display: flex; align-items: center; gap: 0.85rem; }
-.apk-size-pill { font-family: var(--font-pixel); font-size: 1rem; font-weight: bold; }
+.apk-filename {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
 
-.btn-apk-download { background-color: var(--color-green); color: var(--ink-black); font-size: 0.82rem; padding: 0.45rem 0.85rem; }
-.btn-apk-universal { background-color: var(--color-pink); color: var(--text-inverted); }
+.apk-arch-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.apk-action-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.apk-size-pill {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: var(--surface);
+  color: var(--ink-fixed);
+  border: 2px solid var(--line);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-apk-download {
+  background-color: var(--line);
+  color: var(--text-inverted);
+  font-size: 0.82rem;
+  padding: 0.55rem 1.15rem;
+}
+
+[data-theme="dark"] .btn-apk-download {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.btn-apk-universal {
+  background-color: var(--line) !important;
+  color: var(--text-inverted) !important;
+}
 
 @media (max-width: 768px) {
-  .apk-download-item { flex-direction: column; align-items: flex-start; }
-  .apk-action-wrap { width: 100%; justify-content: space-between; }
+  .apk-download-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .apk-action-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
