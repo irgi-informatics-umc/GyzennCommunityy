@@ -557,6 +557,17 @@ img.img-failed {
   color: var(--text-inverted);
 }
 
+.link-pink { border-left: 6px solid var(--pink); }
+.link-yellow { border-left: 6px solid var(--yellow); }
+.link-blue { border-left: 6px solid var(--blue); }
+.link-orange { border-left: 6px solid var(--orange); }
+
+.mobile-nav-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
 /* --------------------------------------------------------------------------
    7. Typography Hierarchy
    -------------------------------------------------------------------------- */
@@ -1050,7 +1061,17 @@ p {
   box-shadow: none;
 }
 
-.toast-notification {
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.toast-notification,
+.toast {
   position: fixed;
   bottom: 2rem;
   left: 50%;
@@ -1069,6 +1090,10 @@ p {
   visibility: hidden;
   transition: all 0.25s var(--ease);
   pointer-events: none;
+}
+
+.toast-message {
+  display: inline-block;
 }
 
 [data-theme="dark"] .toast-notification {
