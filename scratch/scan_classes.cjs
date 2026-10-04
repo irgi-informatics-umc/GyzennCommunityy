@@ -29,7 +29,7 @@ function extractClassesFromAstro(content) {
     const tokens = raw.replace(/\${[^}]*}/g, ' ').split(/[\s'"`?:]+/);
     tokens.forEach(t => {
       t = t.trim();
-      if (t && /^[a-zA-Z0-9_\-]+$/.test(t) && !['true', 'false', 'undefined', 'null', 'modpack', 'index'].includes(t)) {
+      if (t && /^[a-zA-Z0-9_\-]+$/.test(t) && !['true', 'false', 'undefined', 'null', 'modpack', 'index', 'iconClass', 'isGamingMode'].includes(t)) {
         usedClasses.add(t);
       }
     });
@@ -37,19 +37,21 @@ function extractClassesFromAstro(content) {
 }
 
 function extractClassesFromJS(content) {
-  // classList.add / remove / toggle
-  const clMatches = content.matchAll(/\.classList\.(?:add|remove|toggle|contains)\(([^)]+)\)/g);
+  // classList.add / remove / toggle - ambil argumen pertama saja
+  const clMatches = content.matchAll(/\.classList\.(?:add|remove|toggle|contains)\(([^),]+)/g);
   for (const m of clMatches) {
-    m[1].split(',').forEach(arg => {
-      const cleaned = arg.replace(/['"\s]/g, '');
-      if (cleaned && /^[a-zA-Z0-9_\-]+$/.test(cleaned)) usedClasses.add(cleaned);
-    });
+    const cleaned = m[1].replace(/['"\s]/g, '');
+    if (cleaned && /^[a-zA-Z0-9_\-]+$/.test(cleaned)) usedClasses.add(cleaned);
   }
   // class="..." dalam template string
   const strMatches = content.matchAll(/class=["']([^"']+)["']/g);
   for (const m of strMatches) {
-    m[1].split(/\s+/).forEach(c => {
-      if (c && /^[a-zA-Z0-9_\-]+$/.test(c)) usedClasses.add(c);
+    const raw = m[1].replace(/\${[^}]*}/g, ' ');
+    raw.split(/\s+/).forEach(c => {
+      c = c.trim();
+      if (c && /^[a-zA-Z0-9_\-]+$/.test(c) && !['iconClass', 'isGamingMode', 'true', 'false', 'undefined', 'null'].includes(c)) {
+        usedClasses.add(c);
+      }
     });
   }
 }

@@ -170,6 +170,14 @@
   gap: 1rem;
 }
 
+.hero-container {
+  max-width: 900px;
+}
+
+.hero-word {
+  display: inline-block;
+}
+
 .avatar-card {
   background-color: var(--surface-raised);
   border: 2px solid var(--line);
@@ -177,6 +185,14 @@
   padding: 1rem 0.75rem;
   text-align: center;
   transition: transform 0.15s var(--ease);
+}
+
+.avatar-wa-card {
+  border-top: 4px solid var(--green);
+}
+
+.avatar-tiktok-card {
+  border-top: 4px solid var(--pink);
 }
 
 @media (hover: hover) {
@@ -194,6 +210,14 @@
   overflow: hidden;
   background-color: var(--surface);
   box-shadow: var(--shadow-sm);
+}
+
+.wa-ring {
+  background: var(--grad-green);
+}
+
+.tiktok-ring {
+  background: var(--grad-pink);
 }
 
 .avatar-img {
@@ -579,4 +603,24 @@
   .saweria-editorial-poster {
     max-width: 100%;
   }
+}
+
+.dense-header {
+  margin-bottom: 2rem;
+}
+
+.poster-dot {
+  color: var(--pink);
+  margin: 0 0.35rem;
+}
+
+.sticker-heart-icon {
+  color: var(--yellow);
+  font-size: 1rem;
+}
+
+.status-percent-text {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.85rem;
 }

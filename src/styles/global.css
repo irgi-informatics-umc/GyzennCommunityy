@@ -33,7 +33,7 @@
 
   /* Gradien Pastel & Aksen */
   --grad-hero: linear-gradient(135deg, #d8b4fe 0%, #f9a8d4 100%);
-  --grad-pink: linear-gradient(135deg, #ff6b8a 0%, #f02d8c 100%);
+  --grad-pink: linear-gradient(135deg, #ff6b8a 0%, #d81b60 100%);
   --grad-blue: linear-gradient(135deg, #3da5ff 0%, #00b0e8 100%);
   --grad-orange: linear-gradient(135deg, #ffb300 0%, #ff6f00 100%);
   --grad-green: linear-gradient(135deg, #00dc7a 0%, #00b867 100%);
@@ -190,6 +190,27 @@ img.img-failed {
   position: relative;
 }
 
+.section-community,
+.section-discord,
+.section-modpacks,
+.section-server,
+.section-zalith {
+  position: relative;
+}
+
+.counter-animate {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.theme-icon {
+  font-size: 1rem;
+}
+
+.btn-saweria-burst {
+  position: relative;
+}
+
 /* --------------------------------------------------------------------------
    3. Neutralized Canvas & Removed Retro Memphis Decorations
    -------------------------------------------------------------------------- */
@@ -201,10 +222,23 @@ img.img-failed {
   height: 100vh;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.15; /* Subtle ambient particles, non-distracting */
+  opacity: 0.15;
 }
 
-.memphis-bg-decorations {
+.memphis-bg-decorations,
+.memphis-shape,
+.shape-circle-blue,
+.shape-cross-red,
+.shape-donut-yellow,
+.shape-dots-cluster,
+.shape-squiggle,
+.shape-squiggle-green,
+.shape-star-purple,
+.shape-starburst,
+.shape-triangle-pink,
+.shape-zigzag-orange,
+.decor-star-1,
+.decor-star-2 {
   display: none !important;
 }
 

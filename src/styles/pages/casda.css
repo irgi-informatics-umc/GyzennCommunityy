@@ -18,6 +18,11 @@
   align-items: center;
 }
 
+.server-img-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .server-frame-wrapper {
   background-color: var(--surface-raised);
   border: var(--border-thick);
