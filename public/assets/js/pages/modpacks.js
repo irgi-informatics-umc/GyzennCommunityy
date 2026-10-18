@@ -112,4 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modpackSections.forEach(s => subnavObserver.observe(s));
   }
+
+  // 6. Read More Toggle for Long Modpack Descriptions
+  document.querySelectorAll('.btn-read-more').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const desc = btn.parentElement.querySelector('.modpack-editorial-desc');
+      if (!desc) return;
+      const isExpanded = desc.classList.toggle('is-expanded');
+      desc.classList.toggle('is-clamped', !isExpanded);
+      btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      const textSpan = btn.querySelector('span');
+      if (textSpan) {
+        textSpan.textContent = isExpanded ? 'Sembunyikan' : 'Baca selengkapnya';
+      }
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
+    });
+  });
 });

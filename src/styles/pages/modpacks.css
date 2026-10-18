@@ -807,6 +807,131 @@ details[open] .summary-arrow {
 }
 
 /* --------------------------------------------------------------------------
+.resourcepack-window-header {
+  background-color: var(--color-purple, var(--lavender));
+}
+
+.resourcepack-title-accent {
+  color: var(--color-purple, var(--lavender));
+}
+
+.tag-badge-purple {
+  background-color: var(--color-purple, var(--lavender));
+  color: var(--ink-fixed);
+}
+
+.resourcepack-tag-head {
+  background-color: var(--color-purple, var(--lavender));
+  color: var(--ink-fixed);
+}
+
+.resourcepack-spec-head {
+  background-color: var(--color-purple, var(--lavender));
+  color: var(--ink-fixed);
+}
+
+.btn-resourcepack-download {
+  background-color: var(--color-purple, var(--lavender));
+  color: var(--ink-fixed);
+  text-decoration: none;
+}
+
+/* Modpack Note Config Code Formatting */
+.modpack-note-text code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  background-color: var(--surface-raised);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--r-btn);
+  display: inline-block;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  max-width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Description Clamp & Read More */
+.modpack-desc-wrapper {
+  margin-bottom: 0.75rem;
+}
+
+.modpack-editorial-desc.is-clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.modpack-editorial-desc.is-expanded {
+  display: block;
+}
+
+.btn-read-more {
+  background: none;
+  border: none;
+  padding: 0.25rem 0;
+  margin-top: 0.35rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: var(--pink-2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.btn-read-more:hover {
+  text-decoration: underline;
+}
+
+.btn-read-more i {
+  font-size: 0.7rem;
+  transition: transform 0.2s var(--ease);
+}
+
+.btn-read-more[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+/* Download Wrapper & Extract Notice */
+.modpack-download-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.download-extract-notice {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--surface-raised);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-btn);
+}
+
+/* Base strip badges container */
+.strip-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
    8. DERIVATIVE Shader & Resource Pack Posters
    -------------------------------------------------------------------------- */
 .derivative-card {
@@ -822,11 +947,14 @@ details[open] .summary-arrow {
   line-height: 1.65;
   color: var(--text);
   margin-bottom: 1.5rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .derivative-info-poster {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .derivative-download-wrapper {
@@ -851,23 +979,292 @@ details[open] .summary-arrow {
   margin-top: 0.25rem;
 }
 
+/* --------------------------------------------------------------------------
+   Mobile Optimizations (@media max-width: 768px, tested on 320-430px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  .section-modpacks {
+    overflow-x: hidden;
+  }
+
   .editorial-modpacks-showcase {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  .modpack-download-group {
-    flex-direction: column;
-  }
+
   .archive-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  .strip-badges-desktop {
+
+  /* Card Anatomy Mobile */
+  .modpack-editorial-strip {
+    border-radius: var(--r-card);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modpack-media-top {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .modpack-media-badge-tag {
+    max-width: calc(100% - 1.5rem);
+    top: 10px;
+    left: 10px;
+  }
+
+  .modpack-media-badge-tag .cover-tag {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .modpack-card-body {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .strip-header-col {
+    margin-bottom: 0.75rem;
+    gap: 0.4rem;
+  }
+
+  /* Limit visible badges to 5 on mobile */
+  .strip-badges {
+    gap: 0.35rem;
+  }
+
+  .strip-badges .tag-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+    white-space: nowrap;
+  }
+
+  .strip-badges .tag-badge:nth-child(n+6) {
     display: none;
   }
-  .strip-badges-mobile {
+
+  /* Text & Description */
+  .modpack-card-title {
+    font-size: 1.25rem;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .modpack-editorial-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .modpack-bullet-list {
+    padding-left: 0;
+    gap: 0.35rem;
+  }
+
+  .modpack-bullet-list li {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    gap: 0.45rem;
+    align-items: flex-start;
+  }
+
+  .modpack-bullet-list li i {
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .modpack-bullet-list li span {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Note callout mobile text wrap */
+  .modpack-note-callout {
+    padding: 0.65rem 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .modpack-note-text {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    min-width: 0;
+  }
+
+  /* Accordion Summary Mobile */
+  .modpack-extra-mods-summary {
+    padding: 0.65rem 0.75rem;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  .summary-title {
+    font-size: 0.74rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .summary-hint .summary-hint-text {
+    display: none;
+  }
+
+  .summary-hint .summary-arrow {
+    font-size: 0.85rem;
+  }
+
+  .addon-item {
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .extra-mod-tag {
+    font-size: 0.72rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Download Buttons Mobile (Stack, Full Width, min 48px touch target) */
+  .modpack-download-group {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btn-card-action,
+  .card-btn {
+    width: 100% !important;
+    min-height: 48px;
+    height: auto;
+    padding: 0.75rem 1rem;
+    box-sizing: border-box;
+    font-size: 0.85rem;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: none;
+  }
+
+  /* Posters (Derivative & Better Sound) Mobile */
+  .window-title-text {
+    font-size: 0.74rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: calc(100% - 60px);
+  }
+
+  .window-body {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .derivative-title {
     display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .d-title-top {
+    font-size: 2.2rem;
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  .d-title-sub {
+    font-size: 1.8rem;
+    line-height: 1.05;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: 0.45rem;
+  }
+
+  .d-title-sub .exe-tag {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .derivative-badges-banner {
+    gap: 0.35rem;
+    margin-top: 0.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .derivative-badges-banner .tag-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .derivative-preview-frame {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .derivative-preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .derivative-spec-sheet {
+    padding: 0.85rem;
+    margin: 1rem 0;
+  }
+
+  .derivative-feature-list {
+    padding-left: 0;
+    gap: 0.5rem;
+  }
+
+  .derivative-feature-list li {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    gap: 0.45rem;
+    align-items: flex-start;
+  }
+
+  .derivative-feature-list li i {
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .derivative-download-wrapper .btn-gdrive-large {
+    width: 100%;
+    min-height: 48px;
+    height: auto;
+    padding: 0.85rem 1rem;
+    box-sizing: border-box;
+    font-size: 0.88rem;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .modpack-editorial-strip,
+  .modpack-cover-img,
+  .subnav-chip,
+  .filter-pill,
+  .btn-gaming-mode-toggle,
+  .back-to-top,
+  .toast-notification,
+  .btn-read-more i {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

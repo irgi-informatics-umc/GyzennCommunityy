@@ -22,7 +22,7 @@ npm run preview  # Melihat hasil build
 
 ## Menambah/Mengubah Modpack
 
-Modpack data dibaca dari file `public/assets/js/modpacks.json`.
+Modpack data dibaca dari file `public/assets/data/modpacks.json`.
 
 **Penjelasan Field Data Modpack:**
 - `id`: String unik untuk modpack (huruf kecil, dipisah tanda hubung).
@@ -43,7 +43,7 @@ Modpack data dibaca dari file `public/assets/js/modpacks.json`.
 
 ## Update Versi Zalith
 
-Untuk memperbarui data Zalith Client, edit file `public/assets/js/zalith.json`. Data ini digunakan untuk menampilkan spesifikasi dan link unduhan terbaru di halaman Zalith.
+Untuk memperbarui data Zalith Client, edit file `public/assets/data/zalith.json`. Data ini digunakan untuk menampilkan spesifikasi dan link unduhan terbaru di halaman Zalith.
 
 ## Deploy ke Vercel
 

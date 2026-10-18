@@ -5,60 +5,113 @@ interface Props {
 }
 const { modpack, index } = Astro.props;
 
-let badgeBannerHtml = '';
+// Build structured badges in prioritized order
+// Priority: NEW -> primary category -> Minecraft version -> Fabric Loader -> other non-redundant badges
+const badgesList: { html: string; text: string }[] = [];
+
 if (modpack.isNew) {
-  badgeBannerHtml += `<span class="tag-badge tag-release tag-new-pulse ${modpack.id === 'fpsboost-v7' ? 'badge-new-v7' : ''}"><i class="fa-solid fa-fire"></i> NEW RELEASE</span> `;
-}
-if (modpack.version) {
-  badgeBannerHtml += `<span class="tag-badge tag-version-pill">[${modpack.version}]</span> `;
-}
-if (modpack.isRecommended) {
-  badgeBannerHtml += `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-star"></i> RECOMMENDED</span> `;
+  badgesList.push({
+    text: 'NEW RELEASE',
+    html: `<span class="tag-badge tag-release tag-new-pulse ${modpack.id === 'fpsboost-v7' ? 'badge-new-v7' : ''}"><i class="fa-solid fa-fire"></i> NEW RELEASE</span>`
+  });
 }
 
-if (modpack.categories && modpack.categories.includes('FPS BOOST')) {
-  badgeBannerHtml += `<span class="tag-badge tag-shader"><i class="fa-solid fa-bolt"></i> FPS BOOST</span> `;
-}
-if (modpack.categories && modpack.categories.includes('SURVIVAL')) {
-  badgeBannerHtml += `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span> `;
-}
-if (modpack.categories && (modpack.categories.includes('CPVP') || modpack.categories.includes('PVP'))) {
-  badgeBannerHtml += `<span class="tag-badge tag-shader cpvp-badge"><i class="fa-solid fa-crosshairs"></i> ${modpack.categories.find(c => c === 'CPVP' || c === 'PVP')}</span> `;
-}
-if (modpack.categories && modpack.categories.includes('SERVER')) {
-  badgeBannerHtml += `<span class="tag-badge tag-shader tag-badge-fresh"><i class="fa-solid fa-server"></i> SERVER</span> `;
-}
-if (modpack.categories && modpack.categories.includes('VISUAL')) {
-  badgeBannerHtml += `<span class="tag-badge tag-shader tag-category-visual"><i class="fa-solid fa-wand-magic-sparkles"></i> VISUAL</span> `;
+if (modpack.categories && modpack.categories.length > 0) {
+  const cat = modpack.categories[0];
+  if (cat === 'FPS BOOST') {
+    badgesList.push({ text: 'FPS BOOST', html: `<span class="tag-badge tag-shader"><i class="fa-solid fa-bolt"></i> FPS BOOST</span>` });
+  } else if (cat === 'SURVIVAL') {
+    badgesList.push({ text: 'SURVIVAL', html: `<span class="tag-badge tag-fabric"><i class="fa-solid fa-campground"></i> SURVIVAL</span>` });
+  } else if (cat === 'CPVP' || cat === 'PVP') {
+    badgesList.push({ text: cat, html: `<span class="tag-badge tag-shader cpvp-badge"><i class="fa-solid fa-crosshairs"></i> ${cat}</span>` });
+  } else if (cat === 'SERVER') {
+    badgesList.push({ text: 'SERVER', html: `<span class="tag-badge tag-shader tag-badge-fresh"><i class="fa-solid fa-server"></i> SERVER</span>` });
+  } else if (cat === 'VISUAL') {
+    badgesList.push({ text: 'VISUAL', html: `<span class="tag-badge tag-shader tag-category-visual"><i class="fa-solid fa-wand-magic-sparkles"></i> VISUAL</span>` });
+  } else if (cat === 'OPTIMIZATION') {
+    badgesList.push({ text: 'OPTIMIZATION', html: `<span class="tag-badge tag-shader"><i class="fa-solid fa-bolt"></i> OPTIMIZATION</span>` });
+  }
 }
 
 if (modpack.minecraft) {
-  badgeBannerHtml += `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span> `;
-}
-if (modpack.loaderVersion || modpack.loader) {
-  badgeBannerHtml += `<span class="tag-badge tag-fabric">Fabric Loader ${modpack.loaderVersion || '0.19.5'}</span> `;
+  badgesList.push({
+    text: `Minecraft ${modpack.minecraft}`,
+    html: `<span class="tag-badge tag-mc-version">Minecraft ${modpack.minecraft}</span>`
+  });
 }
 
+if (modpack.loaderVersion || modpack.loader) {
+  badgesList.push({
+    text: `Fabric Loader ${modpack.loaderVersion || '0.19.5'}`,
+    html: `<span class="tag-badge tag-fabric">Fabric Loader ${modpack.loaderVersion || '0.19.5'}</span>`
+  });
+}
+
+if (modpack.isRecommended) {
+  badgesList.push({
+    text: 'RECOMMENDED',
+    html: `<span class="tag-badge tag-mc-version"><i class="fa-solid fa-star"></i> RECOMMENDED</span>`
+  });
+}
+
+// Extra badges from badges[] (filter out redundant version strings, minecraft version, categories, etc.)
 if (Array.isArray(modpack.badges)) {
   modpack.badges.forEach(b => {
-    if (!modpack.categories.includes(b) && (b !== 'NEW RELEASE' || !modpack.isNew)) {
+    const trimmed = String(b).trim();
+    const isRedundant = 
+      trimmed === modpack.minecraft ||
+      trimmed === modpack.version ||
+      (modpack.categories && modpack.categories.includes(trimmed)) ||
+      (trimmed === 'NEW' || trimmed === 'NEW RELEASE') ||
+      trimmed.startsWith('Minecraft ') ||
+      badgesList.some(item => item.text.toLowerCase() === trimmed.toLowerCase());
+      
+    if (!isRedundant) {
       let extraClass = '';
-      if (b === 'FRESH & SMOOTH') extraClass = 'tag-badge-fresh';
-      else if (b.includes('COBRA')) extraClass = 'tag-badge-cobra';
-      else if (b === 'IRIS SUPPORT') extraClass = 'tag-badge-iris';
-      badgeBannerHtml += `<span class="tag-badge tag-release ${extraClass}">${b}</span> `;
+      if (trimmed === 'FRESH & SMOOTH') extraClass = 'tag-badge-fresh';
+      else if (trimmed.includes('COBRA')) extraClass = 'tag-badge-cobra';
+      else if (trimmed === 'IRIS SUPPORT') extraClass = 'tag-badge-iris';
+      badgesList.push({
+        text: trimmed,
+        html: `<span class="tag-badge tag-release ${extraClass}">${trimmed}</span>`
+      });
     }
   });
 }
 
+const badgeBannerHtml = badgesList.map(b => b.html).join(' ');
+
 let stripTheme = modpack.theme || 'strip-orange';
 const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.categories[0] : 'ALL';
+
+// Format note text to wrap config code in <code>
+let noteHtml = '';
+if (modpack.note && modpack.note.text) {
+  const text = modpack.note.text;
+  if (text.includes('Settings >')) {
+    const parts = text.split('Settings >');
+    noteHtml = `${parts[0]} Settings &gt; <code>${parts[1].trim()}</code>`;
+  } else {
+    noteHtml = text;
+  }
+}
+
+const isLongDesc = modpack.description && modpack.description.length > 220;
 ---
 <div class={`modpack-editorial-strip ${stripTheme} ${modpack.image ? 'has-cover-image' : 'has-fallback-media'}`} id={modpack.id} data-index={index} data-category={primaryCategory}>
   <!-- Media di atas (Gambar Cover atau Fallback Gradien Pastel) -->
   <div class="modpack-media-top">
     {modpack.image ? (
-      <img src={modpack.image} alt={modpack.imageAlt || `${modpack.name} Minecraft Modpack`} class="modpack-cover-img" loading="lazy" />
+      <img
+        src={modpack.image}
+        alt={modpack.imageAlt || `${modpack.name} Minecraft Modpack`}
+        class="modpack-cover-img"
+        loading={index === 0 ? "eager" : "lazy"}
+        onerror="this.onerror=null;this.style.display='none';if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"
+      />
+      <div class="modpack-gradient-placeholder" style="display: none;">
+        <i class="fa-solid fa-box-open placeholder-icon"></i>
+      </div>
     ) : (
       <div class="modpack-gradient-placeholder">
         <i class="fa-solid fa-box-open placeholder-icon"></i>
@@ -75,8 +128,7 @@ const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.ca
       <span class={`version-stamp ${modpack.id === 'fpsboost-v7' ? 'version-stamp-v7' : ''}`}>
         {modpack.version ? (modpack.minecraft ? `[${modpack.version}] MC ${modpack.minecraft}` : `[${modpack.version}]`) : (modpack.minecraft ? `MC ${modpack.minecraft}` : (modpack.status || 'RELEASED'))}
       </span>
-      <div class="strip-badges-desktop" style="margin-top: 0.45rem;" set:html={badgeBannerHtml} />
-      <div class="strip-badges-mobile" set:html={badgeBannerHtml} />
+      <div class="strip-badges" style="margin-top: 0.45rem;" set:html={badgeBannerHtml} />
     </div>
 
     <!-- Body Information -->
@@ -89,14 +141,21 @@ const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.ca
       <h3 class="modpack-card-title" set:html={modpack.displayTitle ? modpack.displayTitle.replace(/\n/g, '<br>') : modpack.name} />
       
       {modpack.description && (
-        <p class="modpack-editorial-desc">{modpack.description}</p>
+        <div class="modpack-desc-wrapper">
+          <p class={`modpack-editorial-desc ${isLongDesc ? 'is-clamped' : ''}`}>{modpack.description}</p>
+          {isLongDesc && (
+            <button type="button" class="btn-read-more" aria-expanded="false">
+              <span>Baca selengkapnya</span> <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          )}
+        </div>
       )}
 
-      {/* Hardcoded Feature Bullet List for Sodium/FpsBoost/CPvP cards */}
+      {/* Feature Bullet List */}
       {Array.isArray(modpack.features) && modpack.features.length > 0 && (
         <ul class="modpack-bullet-list" style="margin-top: 0.5rem;">
           {modpack.features.map(f => (
-            <li><i class="fa-solid fa-check"></i> {f}</li>
+            <li><i class="fa-solid fa-square-check"></i> <span>{f}</span></li>
           ))}
         </ul>
       )}
@@ -106,7 +165,7 @@ const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.ca
         <details class="modpack-extra-mods-details">
           <summary class="modpack-extra-mods-summary">
             <span class="summary-title"><i class="fa-solid fa-boxes-stacked"></i> + MOD TAMBAHAN ({modpack.extraMods.length} MOD)</span>
-            <span class="summary-hint">BUKA DAFTAR <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
+            <span class="summary-hint"><span class="summary-hint-text">BUKA DAFTAR</span> <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
           </summary>
           <div class="extra-mods-content">
             <p class="extra-mods-notice">
@@ -124,7 +183,7 @@ const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.ca
         <details class="modpack-extra-mods-details modpack-addon-wrapper">
           <summary class="modpack-extra-mods-summary">
             <span class="summary-title"><i class="fa-solid fa-layer-group"></i> ADDITIONAL CONTENT</span>
-            <span class="summary-hint">SHOW CONTENT <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
+            <span class="summary-hint"><span class="summary-hint-text">SHOW CONTENT</span> <i class="fa-solid fa-chevron-down summary-arrow"></i></span>
           </summary>
           <div class="extra-mods-content addon-body-card">
             {modpack.additionalMods && modpack.additionalMods.length > 0 && (
@@ -164,7 +223,7 @@ const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.ca
             <i class={`fa-solid ${modpack.note.type === 'warning' ? 'fa-triangle-exclamation' : 'fa-circle-info'}`}></i>
             <span>{modpack.note.type === 'warning' ? 'CATATAN PENTING' : 'INFO TAMBAHAN'}</span>
           </div>
-          <p class="modpack-note-text">{modpack.note.text}</p>
+          <p class="modpack-note-text" set:html={noteHtml} />
         </div>
       )}
     </div>
@@ -172,19 +231,26 @@ const primaryCategory = modpack.categories && modpack.categories[0] ? modpack.ca
     <!-- Action Buttons (Flat in card anatomy) -->
     <div class="strip-action-col">
       {Array.isArray(modpack.downloads) && modpack.downloads.length > 0 && (
-        <div class={`modpack-download-group ${modpack.downloads.length >= 3 ? 'modpack-download-stack' : ''}`}>
-          {modpack.downloads.map((dl, dIdx) => {
-            const isMediafire = dl.type === 'mediafire';
-            const isMrpack = dl.type === 'mrpack';
-            const iconClass = isMediafire ? 'fa-solid fa-cloud-arrow-down' : (isMrpack ? 'fa-solid fa-download' : 'fa-brands fa-google-drive');
-            const isPrimary = dIdx === 0;
-            const btnClass = isPrimary ? 'card-btn-primary' : 'card-btn-secondary';
-            return (
-              <a href={dl.url} target="_blank" rel="noopener noreferrer" class={`btn-card-action ${btnClass}`} aria-label={`${dl.label} ${modpack.name}`}>
-                <i class={iconClass}></i> {dl.label}
-              </a>
-            );
-          })}
+        <div class="modpack-download-wrapper">
+          <div class={`modpack-download-group ${modpack.downloads.length >= 3 ? 'modpack-download-stack' : ''}`}>
+            {modpack.downloads.map((dl, dIdx) => {
+              const isMediafire = dl.type === 'mediafire';
+              const isMrpack = dl.type === 'mrpack' || (dl.label && dl.label.toLowerCase().includes('mrpack'));
+              const iconClass = isMediafire ? 'fa-solid fa-cloud-arrow-down' : (isMrpack ? 'fa-solid fa-download' : 'fa-brands fa-google-drive');
+              const isPrimary = dIdx === 0;
+              const btnClass = isPrimary ? 'card-btn-primary' : 'card-btn-secondary';
+              return (
+                <a href={dl.url} target="_blank" rel="noopener noreferrer" class={`btn-card-action ${btnClass}`} aria-label={`${dl.label} ${modpack.name}`}>
+                  <i class={iconClass}></i> <span>{dl.label}</span>
+                </a>
+              );
+            })}
+          </div>
+          {modpack.downloads.some(dl => dl.url && (dl.url.includes('(ekstrak+dulu)') || dl.url.includes('ekstrak'))) && (
+            <div class="download-extract-notice">
+              <i class="fa-solid fa-circle-info"></i> <span>Ekstrak dulu sebelum dipakai</span>
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -1,5 +1,227 @@
 [
   {
+    "id": "gyzenn-vanilla-plus-plus",
+    "type": "modpack",
+    "name": "Gyzenn Vanilla++",
+    "displayTitle": "GYZENN VANILLA++",
+    "edition": null,
+    "version": "26.3",
+    "minecraft": "26.3",
+    "loader": "Fabric",
+    "loaderVersion": "0.19.5",
+    "categories": [
+      "SURVIVAL",
+      "VISUAL",
+      "FPS BOOST"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": true,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "VANILLA++",
+      "26.3"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/Gyzen-Vanilla.jpg",
+    "imageAlt": "Gyzenn Vanilla++ Minecraft Modpack Cover",
+    "description": "Gyzenn Vanilla++ adalah kumpulan mod yang dirancang untuk meningkatkan pengalaman bermain Minecraft tanpa menghilangkan ciri khas dan nuansa Vanilla Minecraft. Mulai dari peningkatan performa, visual yang lebih menarik, animasi yang lebih hidup, hingga berbagai fitur tambahan yang membuat permainan terasa lebih nyaman, semuanya dikemas untuk menghadirkan pengalaman Minecraft yang lebih optimal, modern, dan menyenangkan, tanpa mengubahnya menjadi permainan yang terasa berbeda dari versi aslinya.",
+    "note": {
+      "type": "info",
+      "text": "Ekstrak dulu sebelum dipakai"
+    },
+    "features": [
+      "Optimasi Performa",
+      "Visual yang Lebih Menarik",
+      "Animasi Mob yang Lebih Hidup",
+      "Eksplorasi Lebih Seru",
+      "Peningkatan Kualitas Bermain",
+      "Tetap dengan Nuansa Vanilla",
+      "dan masih banyak lagi"
+    ],
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/0d1tf5os0cmmupb/Gyzenn+Vanilla+++(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/uoxtun3ui0cxy04/Gyzenn+Vanilla++.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-and-stuff",
+    "type": "modpack",
+    "name": "Gyzenn & Stuff",
+    "displayTitle": "GYZENN & STUFF",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.19.5",
+    "categories": [
+      "VISUAL",
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": true,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "ACTION & STUFF STYLE",
+      "1.21.11"
+    ],
+    "theme": "strip-purple",
+    "image": "/assets/img/Gyzenn-Stuff.jpg",
+    "imageAlt": "Gyzenn & Stuff Minecraft Modpack Cover",
+    "description": "Modpack Minecraft Java dengan nuansa yang terinspirasi dari Action And Stuff di Bedrock. Berisi animasi player yang lebih smooth, efek visual yang keren, serta pengalaman bermain yang lebih hidup dan realistis.",
+    "note": {
+      "type": "info",
+      "text": "Ekstrak dulu sebelum dipakai"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/tuw3aivn6xbc2f2/Gyzen+And+Stuff+1.21.11+(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/hu5n3f2u7zfzw2w/Gyzenn+And+Stuff.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-26-1",
+    "type": "modpack",
+    "name": "Gyzenn Optimized 26.1",
+    "displayTitle": "GYZENN OPTIMIZED 26.1",
+    "edition": null,
+    "version": "26.1",
+    "minecraft": "26.1",
+    "loader": "Fabric",
+    "loaderVersion": "0.19.5",
+    "categories": [
+      "FPS BOOST",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": true,
+    "isArchived": false,
+    "badges": [
+      "OPTIMIZED",
+      "26.1"
+    ],
+    "theme": "strip-orange",
+    "image": "/assets/img/gyzen-optimized.webp",
+    "imageAlt": "Gyzenn Optimized 26.1 Minecraft Modpack Cover",
+    "description": "Modpack optimisasi Minecraft 26.1 berbasis Fabric Loader 0.19.5 yang dirancang untuk meningkatkan stabilitas FPS, efisiensi resource, dan kenyamanan bermain.",
+    "note": {
+      "type": "info",
+      "text": "Ekstrak dulu sebelum dipakai"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/5hkmdjl490rkkia/Gyzenn+Optimized+26.1+(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/hft6djda9bkwaxe/Gyzenn+Optimized+26.1.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-1-21-11",
+    "type": "modpack",
+    "name": "Gyzenn Optimized 1.21.11",
+    "displayTitle": "GYZENN OPTIMIZED 1.21.11",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.19.5",
+    "categories": [
+      "FPS BOOST",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": true,
+    "isArchived": false,
+    "badges": [
+      "OPTIMIZED",
+      "1.21.11"
+    ],
+    "theme": "strip-orange",
+    "image": "/assets/img/gyzen-optimized.webp",
+    "imageAlt": "Gyzenn Optimized 1.21.11 Minecraft Modpack Cover",
+    "description": "Modpack optimisasi Minecraft dengan 75 mod, konfigurasi tambahan, resource pack, dan shader untuk pengalaman bermain yang telah disesuaikan.",
+    "note": {
+      "type": "info",
+      "text": "Ekstrak dulu sebelum dipakai"
+    },
+    "features": [
+      "Total 75 Mods",
+      "Config Included",
+      "Resourcepack Included",
+      "Shaders Included"
+    ],
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/yg5emly9vbtrfy4/Gyzenn+Optimized+(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/rga8dcjuzxzlalb/Gyzenn+Optimized.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
     "id": "cobra-fresh-smooth",
     "type": "modpack",
     "name": "Cobra Ultimized X Fresh & Smooth",
@@ -9,12 +231,18 @@
     "minecraft": null,
     "loader": "Fabric",
     "loaderVersion": null,
-    "categories": ["VISUAL", "OPTIMIZATION"],
+    "categories": [
+      "VISUAL",
+      "OPTIMIZATION"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": true,
     "isArchived": false,
-    "badges": ["FRESH & SMOOTH", "COBRA ULTIMIZED EDITION"],
+    "badges": [
+      "FRESH & SMOOTH",
+      "COBRA ULTIMIZED EDITION"
+    ],
     "theme": "strip-fresh-green",
     "image": "/assets/img/cobra-fresh.jpg",
     "imageAlt": "Cobra Ultimized X Fresh & Smooth Cover",
@@ -64,7 +292,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "cobra-ultimize-remake-26-3",
@@ -76,12 +304,18 @@
     "minecraft": "26.3",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["COBRA", "FPS BOOST", "26.3"],
+    "badges": [
+      "COBRA",
+      "FPS BOOST",
+      "26.3"
+    ],
     "theme": "strip-orange",
     "image": "/assets/img/26-3.jpg",
     "imageAlt": "Cobra Ultimized Remake 26.3 Minecraft Modpack",
@@ -92,7 +326,7 @@
     },
     "downloads": [
       {
-        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
+        "label": "DOWNLOAD MRPACK",
         "url": "https://www.mediafire.com/file/wzragzu685rtbpm/Cobra+ultimized+Remake+V26.3+(ekstrak+dulu).zip/file",
         "host": "mediafire",
         "type": "mediafire"
@@ -117,7 +351,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "cobra-ultimize-remake-26-1",
@@ -129,12 +363,18 @@
     "minecraft": "26.1",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["COBRA", "FPS BOOST", "26.1"],
+    "badges": [
+      "COBRA",
+      "FPS BOOST",
+      "26.1"
+    ],
     "theme": "strip-orange",
     "image": "/assets/img/26-1.jpg",
     "imageAlt": "Cobra Ultimized Remake 26.1 Minecraft Modpack",
@@ -145,7 +385,7 @@
     },
     "downloads": [
       {
-        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
+        "label": "DOWNLOAD MRPACK",
         "url": "https://www.mediafire.com/file/di30mfl2ug1t52y/Cobra+ultimized+Remake+26.1+(Ekstrak+dulu).zip/file",
         "host": "mediafire",
         "type": "mediafire"
@@ -169,7 +409,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "cobra-server-mania-remake",
@@ -181,14 +421,22 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["SERVER", "UTILITY"],
+    "categories": [
+      "SERVER",
+      "UTILITY"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": true,
     "isArchived": false,
-    "badges": ["COBRA", "SERVER", "UTILITY", "1.21.11"],
+    "badges": [
+      "COBRA",
+      "SERVER",
+      "UTILITY",
+      "1.21.11"
+    ],
     "theme": "strip-purple",
-    "image": "/assets/img/server-mania.png",
+    "image": "/assets/img/server-mania.webp",
     "imageAlt": "Cobra Server Mania Remake Minecraft Modpack",
     "description": "Modpack untuk bermain di server dengan fitur voice chat, bubble chat, chat global yang menampilkan kepala skin pemain, emote, serta optimisasi untuk pengalaman multiplayer.",
     "note": {
@@ -197,7 +445,7 @@
     },
     "downloads": [
       {
-        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
+        "label": "DOWNLOAD MRPACK",
         "url": "https://www.mediafire.com/file/klkwa73tz2ckq1f/Cobra+Server+Mania+Remake+(ekstrak+dulu).zip/file",
         "host": "mediafire",
         "type": "mediafire"
@@ -220,7 +468,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "cobra-x-boom-remake",
@@ -232,12 +480,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["SURVIVAL"],
+    "categories": [
+      "SURVIVAL"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["COBRA"],
+    "badges": [
+      "COBRA"
+    ],
     "theme": "strip-orange",
     "image": "/assets/img/cobra-x-boom-remake.jpg",
     "imageAlt": "Cobra x Boom Remake Minecraft Modpack",
@@ -297,7 +549,7 @@
     ],
     "extraModsNote": "Beberapa mod tambahan dapat dihapus jika tidak diperlukan atau tidak sesuai dengan preferensi gameplay.",
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "survival-v2",
@@ -309,12 +561,18 @@
     "minecraft": "1.21.1",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["SURVIVAL"],
+    "categories": [
+      "SURVIVAL"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": true,
     "isArchived": false,
-    "badges": ["NEW RELEASE", "SURVIVAL", "V2"],
+    "badges": [
+      "NEW RELEASE",
+      "SURVIVAL",
+      "V2"
+    ],
     "theme": "strip-yellow",
     "image": "/assets/img/survival-v2.jpg",
     "imageAlt": "Modpack Survival V2 Cover",
@@ -322,7 +580,7 @@
     "note": null,
     "downloads": [
       {
-        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
+        "label": "DOWNLOAD MRPACK",
         "url": "https://www.mediafire.com/file/ap3vegsjvjwmgll/Modpack_Survival_V2_%2528ekstrak_dulu%2529.zip/file",
         "host": "mediafire",
         "type": "mediafire"
@@ -339,55 +597,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
-  },
-  {
-    "id": "gyzenn-optimized-1-21-11",
-    "type": "modpack",
-    "name": "Gyzenn Optimized 1.21.11",
-    "displayTitle": "GYZENN OPTIMIZED 1.21.11",
-    "edition": null,
-    "version": "1.21.11",
-    "minecraft": "1.21.11",
-    "loader": "Fabric",
-    "loaderVersion": "0.19.5",
-    "categories": ["FPS BOOST", "OPTIMIZATION"],
-    "status": "RELEASED",
-    "isNew": true,
-    "isRecommended": true,
-    "isArchived": false,
-    "badges": ["OPTIMIZED", "1.21.11"],
-    "theme": "strip-orange",
-    "image": "/assets/img/gyzenn-optimized.png",
-    "imageAlt": "Gyzenn Optimized 1.21.11 Minecraft Modpack Cover",
-    "description": "Modpack optimisasi Minecraft dengan 75 mod, konfigurasi tambahan, resource pack, dan shader untuk pengalaman bermain yang telah disesuaikan.",
-    "note": null,
-    "features": [
-      "75 Mods",
-      "Config Included",
-      "Resource Pack",
-      "Shaders"
-    ],
-    "downloads": [
-      {
-        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
-        "url": "https://www.mediafire.com/file/yg5emly9vbtrfy4/Gyzenn+Optimized+(ekstrak+dulu).zip/file",
-        "host": "mediafire",
-        "type": "mediafire"
-      },
-      {
-        "label": "DOWNLOAD ZIP",
-        "url": "https://www.mediafire.com/file/rga8dcjuzxzlalb/Gyzenn+Optimized.zip/file",
-        "host": "mediafire",
-        "type": "mediafire"
-      }
-    ],
-    "additionalMods": [],
-    "resourcepacks": [],
-    "extraMods": [],
-    "extraModsNote": null,
-    "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "quick-cpvp-26-3",
@@ -399,12 +609,17 @@
     "minecraft": "26.3",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["CPVP", "FPS BOOST"],
+    "categories": [
+      "CPVP",
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["FPS BOOST"],
+    "badges": [
+      "FPS BOOST"
+    ],
     "theme": "strip-blue",
     "image": null,
     "imageAlt": null,
@@ -432,7 +647,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "sodiumpack-v2",
@@ -444,12 +659,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.2",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": true,
     "isArchived": false,
-    "badges": ["SODIUM"],
+    "badges": [
+      "SODIUM"
+    ],
     "theme": "strip-blue",
     "image": null,
     "imageAlt": null,
@@ -474,7 +693,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "cobra-ultimize-remake",
@@ -486,12 +705,18 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["COBRA", "FPS BOOSTT", "IRIS SUPPORT"],
+    "badges": [
+      "COBRA",
+      "FPS BOOSTT",
+      "IRIS SUPPORT"
+    ],
     "theme": "strip-orange",
     "image": null,
     "imageAlt": null,
@@ -502,7 +727,7 @@
     },
     "downloads": [
       {
-        "label": "DOWNLOAD MRPACK (EXTRACT FIRST)",
+        "label": "DOWNLOAD MRPACK",
         "url": "https://www.mediafire.com/file/9z0bhwi244vn22y/Cobra+ultimized+Fabric+0.19.5+(ekstrak+dulu).zip/file",
         "host": "mediafire",
         "type": "mediafire"
@@ -519,7 +744,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "survival-x-fpsboost",
@@ -531,12 +756,17 @@
     "minecraft": "26.3",
     "loader": "Fabric",
     "loaderVersion": "0.19.5",
-    "categories": ["SURVIVAL", "FPS BOOST"],
+    "categories": [
+      "SURVIVAL",
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["FPS BOOST"],
+    "badges": [
+      "FPS BOOST"
+    ],
     "theme": "strip-green",
     "image": null,
     "imageAlt": null,
@@ -564,7 +794,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "modpack-sodium",
@@ -576,12 +806,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["Sodium Engine"],
+    "badges": [
+      "Sodium Engine"
+    ],
     "theme": "strip-yellow",
     "image": null,
     "imageAlt": null,
@@ -605,7 +839,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "fpsboost-v1-legacy",
@@ -617,12 +851,16 @@
     "minecraft": "1.21.1",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": true,
-    "badges": ["MAX FPS"],
+    "badges": [
+      "MAX FPS"
+    ],
     "theme": "strip-orange",
     "image": null,
     "imageAlt": null,
@@ -658,12 +896,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["CPVP"],
+    "categories": [
+      "CPVP"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["COMPETITIVE PvP"],
+    "badges": [
+      "COMPETITIVE PvP"
+    ],
     "theme": "strip-pink",
     "image": null,
     "imageAlt": null,
@@ -687,7 +929,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "vulkan-v1",
@@ -699,12 +941,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": null,
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["Vulkan Graphics"],
+    "badges": [
+      "Vulkan Graphics"
+    ],
     "theme": "strip-purple",
     "image": null,
     "imageAlt": null,
@@ -723,7 +969,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "vulkan-v2",
@@ -735,12 +981,16 @@
     "minecraft": "26.1.2",
     "loader": "Fabric",
     "loaderVersion": null,
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["Vulkan Graphics"],
+    "badges": [
+      "Vulkan Graphics"
+    ],
     "theme": "strip-purple",
     "image": null,
     "imageAlt": null,
@@ -759,7 +1009,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "xshadows-pvp-v1-0-1",
@@ -771,12 +1021,16 @@
     "minecraft": "26.1.2",
     "loader": "Fabric",
     "loaderVersion": null,
-    "categories": ["CPVP"],
+    "categories": [
+      "CPVP"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["PvP"],
+    "badges": [
+      "PvP"
+    ],
     "theme": "strip-orange",
     "image": null,
     "imageAlt": null,
@@ -801,7 +1055,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "ukus-pvp-v2-5-0",
@@ -813,12 +1067,16 @@
     "minecraft": "26.1.2",
     "loader": "Fabric",
     "loaderVersion": null,
-    "categories": ["CPVP"],
+    "categories": [
+      "CPVP"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": false,
-    "badges": ["PvP"],
+    "badges": [
+      "PvP"
+    ],
     "theme": "strip-yellow",
     "image": null,
     "imageAlt": null,
@@ -837,7 +1095,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "fpsboost-v7",
@@ -849,7 +1107,9 @@
     "minecraft": "1.21.1",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": true,
@@ -880,7 +1140,7 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "fpsboost-v6",
@@ -892,12 +1152,16 @@
     "minecraft": "26.2",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": true,
-    "badges": ["Resourcepack Included"],
+    "badges": [
+      "Resourcepack Included"
+    ],
     "theme": "strip-orange",
     "image": null,
     "imageAlt": null,
@@ -928,12 +1192,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": true,
-    "badges": ["Resourcepack Included"],
+    "badges": [
+      "Resourcepack Included"
+    ],
     "theme": "strip-orange",
     "image": null,
     "imageAlt": null,
@@ -967,12 +1235,16 @@
     "minecraft": "1.21.11",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": true,
-    "badges": ["Resourcepack Included"],
+    "badges": [
+      "Resourcepack Included"
+    ],
     "theme": "strip-orange",
     "image": null,
     "imageAlt": null,
@@ -1003,7 +1275,9 @@
     "minecraft": "1.21",
     "loader": "Fabric",
     "loaderVersion": "0.19.2",
-    "categories": ["FPS BOOST"],
+    "categories": [
+      "FPS BOOST"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
@@ -1039,12 +1313,18 @@
     "minecraft": "26.2",
     "loader": "Fabric",
     "loaderVersion": "0.19.3",
-    "categories": ["SURVIVAL"],
+    "categories": [
+      "SURVIVAL"
+    ],
     "status": "RELEASED",
     "isNew": false,
     "isRecommended": false,
     "isArchived": true,
-    "badges": ["130 Mods", "Resourcepack Included", "Shaders Included"],
+    "badges": [
+      "130 Mods",
+      "Resourcepack Included",
+      "Shaders Included"
+    ],
     "theme": "strip-yellow",
     "image": null,
     "imageAlt": null,
@@ -1075,14 +1355,21 @@
     "minecraft": "1.21+",
     "loader": "Fabric / Iris",
     "loaderVersion": null,
-    "categories": ["VISUAL"],
+    "categories": [
+      "VISUAL"
+    ],
     "status": "LATEST RELEASE",
-    "isNew": true,
+    "isNew": false,
     "isRecommended": true,
     "isArchived": false,
-    "badges": ["SHADERS", "JAVA EDITION", "1.21+", "LATEST RELEASE"],
+    "badges": [
+      "SHADERS",
+      "JAVA EDITION",
+      "1.21+",
+      "LATEST RELEASE"
+    ],
     "theme": "derivative-card",
-    "image": "/assets/img/preview.png",
+    "image": "/assets/img/preview.webp",
     "imageAlt": "DERIVATIVE Edit by Gyzenn Minecraft Shader Preview",
     "description": "Shader derivative dengan sentuhan personal Gyzenn untuk menghadirkan visual Minecraft yang lebih hidup, cinematic, dan immersive.",
     "note": null,
@@ -1099,35 +1386,42 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   },
   {
     "id": "better-sound-java",
     "type": "resourcepack",
-    "name": "Better Sound Java",
-    "displayTitle": "BETTER SOUND JAVA",
-    "edition": "OFFICIAL AUDIO RESOURCE PACK",
-    "version": "1.20 - 26.3",
-    "minecraft": "1.20 - 26.3",
-    "loader": "ALL LOADERS / VANILLA",
+    "name": "Better Sound Java Edit",
+    "displayTitle": "BETTER SOUND JAVA EDIT",
+    "edition": "EDIT BY GYZENN • RESOURCEPACK ONLY",
+    "version": "1.21 – 26.3",
+    "minecraft": "1.21 – 26.3",
+    "loader": "NO MODS / VANILLA",
     "loaderVersion": null,
-    "categories": ["VISUAL"],
+    "categories": [
+      "VISUAL"
+    ],
     "status": "IMMERSIVE AUDIO",
     "isNew": true,
     "isRecommended": true,
     "isArchived": false,
-    "badges": ["RESOURCE PACK", "MINECRAFT 1.20 - 26.3", "ALL LOADERS / VANILLA", "IMMERSIVE AUDIO"],
+    "badges": [
+      "NEW",
+      "RESOURCE PACK",
+      "MINECRAFT 1.21 – 26.3",
+      "EDIT BY GYZENN"
+    ],
     "theme": "resourcepack-card",
-    "image": null,
-    "imageAlt": null,
-    "description": "Better Sound Java adalah resource pack audio khusus Minecraft Java Edition (versi 1.20 hingga 26.3) yang meningkatkan kejernihan, kedalaman, dan atmosfer efek suara in-game untuk pengalaman bermain yang jauh lebih hidup dan realistis.",
+    "image": "/assets/img/sound.jpg",
+    "imageAlt": "Better Sound Java Edit Resource Pack Cover",
+    "description": "Better Sound Java Edit adalah resource pack audio khusus Minecraft Java Edition versi 1.21 hingga 26.3 yang meningkatkan kejernihan, kedalaman, dan atmosfer efek suara in-game untuk pengalaman bermain yang jauh lebih hidup dan realistis.",
     "note": null,
     "downloads": [
       {
-        "label": "DOWNLOAD RESOURCE PACK BETTER SOUND JAVA (SFILE)",
-        "url": "https://sfile.co/l9Ipv56YyaD",
-        "host": "sfile",
-        "type": "sfile"
+        "label": "Download Resourcepack",
+        "url": "https://www.mediafire.com/file/gqvrjepp0wbufqi/Better+Sound+Edited+By+Gyzenn.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
       }
     ],
     "additionalMods": [],
@@ -1135,6 +1429,6 @@
     "extraMods": [],
     "extraModsNote": null,
     "mods": [],
-    "ticker": true
+    "ticker": false
   }
 ]

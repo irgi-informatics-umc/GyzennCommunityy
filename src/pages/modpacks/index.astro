@@ -72,7 +72,7 @@ const resourcepackCard = modpacksData.find(m => m.type === 'resourcepack');
 
             <div class="derivative-preview-frame">
               <div class="preview-tag-head"><i class="fa-solid fa-camera"></i> PREVIEW / SHADER SCREENSHOT</div>
-              <img src="/assets/img/preview.png" alt="DERIVATIVE Edit by Gyzenn Minecraft Shader Preview" class="derivative-preview-image" loading="lazy" />
+              <img src="/assets/img/preview.webp" alt="DERIVATIVE Edit by Gyzenn Minecraft Shader Preview" class="derivative-preview-image" loading="lazy" />
               <div class="preview-caption">"Lag dikit? ga ngaruh ah wkwk"</div>
             </div>
 
@@ -116,7 +116,7 @@ const resourcepackCard = modpacksData.find(m => m.type === 'resourcepack');
       {/* Better Sound Java Resource Pack */}
       {resourcepackCard && (
         <div class="retro-window-card resourcepack-card" id="better-sound-java">
-          <div class="window-header" style="background-color: var(--color-purple, #7C3AED);">
+          <div class="window-header resourcepack-window-header">
             <div class="window-buttons">
               <span class="btn-win btn-win-close"></span>
               <span class="btn-win btn-win-min"></span>
@@ -130,36 +130,45 @@ const resourcepackCard = modpacksData.find(m => m.type === 'resourcepack');
           <div class="window-body">
             <div class="derivative-poster-head">
               <h2 class="derivative-title">
-                <span class="d-title-top" style="color: var(--color-purple, #7C3AED);">BETTER SOUND</span>
-                <span class="d-title-sub">JAVA <span class="exe-tag">RESOURCE PACK</span></span>
+                <span class="d-title-top resourcepack-title-accent">BETTER SOUND</span>
+                <span class="d-title-sub">JAVA EDIT <span class="exe-tag">RESOURCE PACK</span></span>
               </h2>
-              <p class="derivative-brand">OFFICIAL AUDIO RESOURCE PACK • MINECRAFT JAVA</p>
+              <p class="derivative-brand">OFFICIAL AUDIO RESOURCE PACK • EDIT BY GYZENN • MINECRAFT JAVA</p>
 
               <div class="derivative-badges-banner">
-                <span class="tag-badge" style="background-color: #7C3AED; color: #ffffff;"><i class="fa-solid fa-music"></i> RESOURCE PACK</span>
-                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-cube"></i> MINECRAFT 1.20 - 26.3</span>
+                <span class="tag-badge tag-release tag-new-pulse"><i class="fa-solid fa-fire"></i> NEW</span>
+                <span class="tag-badge tag-badge-purple"><i class="fa-solid fa-music"></i> RESOURCE PACK</span>
+                <span class="tag-badge tag-mc-version"><i class="fa-solid fa-cube"></i> MINECRAFT 1.21 – 26.3</span>
                 <span class="tag-badge tag-fabric"><i class="fa-solid fa-sliders"></i> ALL LOADERS / VANILLA</span>
                 <span class="tag-badge tag-release"><i class="fa-solid fa-headphones"></i> IMMERSIVE AUDIO</span>
               </div>
             </div>
 
+            {resourcepackCard.image && (
+              <div class="derivative-preview-frame">
+                <div class="preview-tag-head resourcepack-tag-head"><i class="fa-solid fa-music"></i> AUDIO RESOURCE PACK COVER</div>
+                <img src={resourcepackCard.image} alt={resourcepackCard.imageAlt || "Better Sound Java Edit Resource Pack Cover"} class="derivative-preview-image" loading="lazy" />
+                <div class="preview-caption">"Edit oleh Gyzenn · Immersive Audio untuk Minecraft 1.21 – 26.3"</div>
+              </div>
+            )}
+
             <div class="derivative-info-poster">
               <p class="derivative-desc">{resourcepackCard.description}</p>
 
               <div class="derivative-spec-sheet">
-                <div class="spec-sheet-head" style="background-color: #7C3AED;"><i class="fa-solid fa-circle-info"></i> RESOURCE PACK SPECIFICATIONS</div>
+                <div class="spec-sheet-head resourcepack-spec-head"><i class="fa-solid fa-circle-info"></i> RESOURCE PACK SPECIFICATIONS</div>
                 <ul class="derivative-feature-list">
                   <li><i class="fa-solid fa-square-check"></i> <div><strong>Audio Enhancement</strong> - Suara langkah, ambient lingkungan, air, dan sound effect lebih dinamis & jernih.</div></li>
-                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Wide Compatibility</strong> - Kompatibel dengan Minecraft Java versi 1.20 sampai dengan 26.3.</div></li>
-                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Zero Performance Loss</strong> - Murni audio resource pack, tidak membebani FPS atau konsumsi RAM.</div></li>
-                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Bukan Modpack</strong> - Pasang langsung di direktori <code>resourcepacks</code> pada game client Anda.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Wide Compatibility</strong> - Kompatibel dengan Minecraft Java versi 1.21 sampai dengan 26.3.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Resourcepack Only</strong> - Murni audio resource pack tanpa loader/mod, tidak membebani FPS.</div></li>
+                  <li><i class="fa-solid fa-square-check"></i> <div><strong>Pemasangan Mudah</strong> - Pasang langsung di direktori <code>resourcepacks</code> pada game client Anda.</div></li>
                 </ul>
               </div>
 
               <div class="derivative-download-wrapper">
-                <a href={resourcepackCard.downloads[0].url} target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-large" style="background-color: #7C3AED; color: #ffffff; text-decoration: none;">
+                <a href={resourcepackCard.downloads[0].url} target="_blank" rel="noopener noreferrer" class="btn btn-gdrive-large btn-resourcepack-download">
                   <i class="fa-solid fa-cloud-arrow-down"></i>
-                  <span>DOWNLOAD RESOURCE PACK BETTER SOUND JAVA (SFILE)</span>
+                  <span>DOWNLOAD RESOURCEPACK</span>
                 </a>
               </div>
             </div>
