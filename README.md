@@ -20,7 +20,7 @@ npm run audit
 - `src/components/`: header, navigasi bawah, footer, kartu, placeholder cover, toast, dan tombol WhatsApp.
 - `src/data/`: data JSON, tipe TypeScript, navigasi, serta helper untuk katalog dan gambar.
 - `src/assets/img/`: cover dan gambar yang diproses Astro menjadi WebP responsif.
-- `src/styles/`: token tema Sky Blue dan gaya dasar.
+- `src/styles/`: token tema Crimson Red dan gaya dasar.
 - `public/`: favicon dan berkas statis publik.
 - `scripts/audit-redesign.mjs`: audit Playwright lintas viewport dan interaksi.
 

@@ -215,7 +215,7 @@ const cover = imageFor(m.image);
       width: 100%;
       aspect-ratio: 16/10;
       object-fit: cover;
-      background: linear-gradient(140deg, #1476bd, #36b9ed);
+      background: linear-gradient(140deg, #8f1420, #d62839);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -239,8 +239,8 @@ const cover = imageFor(m.image);
     }
     .chips span {
       border-radius: 999px;
-      background: #dceeff;
-      color: #075489;
+      background: var(--tag-bg);
+      color: var(--tag-ink);
       padding: 5px 10px;
       font-size: 12px;
       font-weight: 700;
@@ -256,7 +256,7 @@ const cover = imageFor(m.image);
     .note,
     aside {
       padding: 12px;
-      background: #e0f2fe;
+      background: var(--surface-soft);
       border-radius: 10px;
     }
     .warning {
@@ -265,7 +265,7 @@ const cover = imageFor(m.image);
     .content details {
       margin: 12px 0;
       padding: 12px;
-      background: #e9f3fa;
+      background: #f9edef;
       border-radius: 10px;
     }
     .content summary {
@@ -293,7 +293,7 @@ const cover = imageFor(m.image);
         left: 0;
         right: 0;
         padding: 8px 12px;
-        background: #075f9b;
+        background: var(--bg-deep);
       }
       .sticky-cta .btn {
         width: 100%;

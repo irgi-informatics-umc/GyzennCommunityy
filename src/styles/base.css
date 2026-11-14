@@ -104,6 +104,7 @@ h3 {
 :focus-visible {
   outline: 3px solid white;
   outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--brand-edge);
 }
 button[aria-disabled="true"],
 a[aria-disabled="true"] {
@@ -115,7 +116,7 @@ a[aria-disabled="true"] {
   color: var(--ink);
   border: 1px solid var(--card-edge);
   border-radius: var(--r-card);
-  box-shadow: 0 6px 18px rgb(0 40 80/0.18);
+  box-shadow: 0 6px 18px rgb(60 8 16/0.18);
 }
 .section {
   margin-block: 34px;

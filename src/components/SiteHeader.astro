@@ -91,7 +91,7 @@ const active = (href: string) => (href === "/" ? path === "/" : path.startsWith(
   }
   @supports not (backdrop-filter: blur(1px)) {
     .head {
-      background: #075f9b;
+      background: var(--bg-deep);
     }
   }
   @media (min-width: 1024px) {

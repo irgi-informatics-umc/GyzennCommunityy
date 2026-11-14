@@ -247,7 +247,7 @@ const packs = modpacks.filter((m) => m.type === "resourcepack");
     display: flex;
     overflow-x: auto;
     gap: 6px;
-    background: #0877b7;
+    background: var(--bg-deep);
     padding: 7px;
     border-radius: 14px;
     margin-block: 20px;
@@ -267,7 +267,7 @@ const packs = modpacks.filter((m) => m.type === "resourcepack");
   }
   .tabs button[aria-selected="true"],
   .chip.active {
-    background: #064c7b;
+    background: var(--brand-edge);
     color: #fff;
   }
   .filters {
@@ -286,12 +286,12 @@ const packs = modpacks.filter((m) => m.type === "resourcepack");
   .filters select {
     min-height: 48px;
     border-radius: 10px;
-    border: 1px solid #b8c7d4;
+    border: 1px solid var(--line-soft);
     padding: 8px 12px;
     min-width: 0;
   }
   .archive {
-    background: #dceeff;
+    background: var(--tag-bg);
   }
   .chips {
     display: flex;

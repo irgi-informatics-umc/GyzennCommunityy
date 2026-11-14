@@ -1,8 +1,8 @@
-# Catatan redesign Sky Blue
+# Catatan redesign Crimson Red
 
 ## Keputusan
 
-- Tema tunggal Sky Blue Playful dengan latar biru, kartu terang, header kapsul, navigasi bawah empat tab pada ponsel, Poppins lokal, dan Pixelify Sans untuk hero.
+- Tema tunggal Crimson Red dengan latar merah, kartu hangat, header kapsul, navigasi bawah empat tab pada ponsel, Poppins lokal, dan Pixelify Sans untuk hero.
 - Astro merender halaman statis. Data lama dipindahkan ke `src/data/`; gambar yang dipakai berada di `src/assets/img/` agar Astro menghasilkan varian WebP responsif.
 - Katalog punya halaman detail statis per ID, filter gabungan, tab kategori, arsip, pencarian, dan placeholder saat cover belum tersedia. Daftar URL unduhan dan tautan sosial tetap mengikuti data sumber.
 - Tidak memakai GSAP atau CDN. String ikon lama `fa-solid` masih tercatat di field data JSON, tetapi tidak memuat stylesheet/font ikon eksternal dan tidak dirender sebagai dependensi; data `site.json` dan `zalith.json` dipertahankan sesuai batasan.
@@ -47,4 +47,14 @@ Pemeriksaan visual full-page dilakukan di 412×915 dan 1280×800 untuk beranda, 
 - `CoverPlaceholder`: karakter dekoratif yang rusak (mojibake) diganti `▦ ▪ ▦`; angka versi memakai Poppins 800 (angka "2" pada font pixel terbaca seperti "8", mis. "26.3" tampak "86.3").
 - Header saat di-scroll dibuat lebih pekat (alpha 0,96) agar teks di bawahnya tidak tembus; posisi sticky tab katalog dirapatkan (`top: 74px`).
 - Build dan `astro check` diverifikasi di Node 22 (0 error, 0 warning).
-- Tindak lanjut yang belum dikerjakan: ikon kategori masih karakter Unicode (bisa tampil beda/emoji di sebagian HP Android); ganti dengan SVG inline. Warna latar `#076aa8` lebih gelap dari referensi awal (`#0A93E0`), setel bila ingin lebih cerah.
+- Tindak lanjut yang belum dikerjakan: ikon kategori masih karakter Unicode (bisa tampil beda/emoji di sebagian HP Android); ganti dengan SVG inline.
+
+## Tema merah
+
+- Token tema di `src/styles/tokens.css`: `--bg: #A81B2B`, `--bg-deep: #7F1220`, `--card: #FFF5F5`, `--ink: #2B0F14`, `--muted: #6B4B50`, `--brand: #C9202F`, `--brand-edge: #8F1420`, dan `--glass-dark: rgb(60 8 16 / .96)`. Latar lembut serta pill memakai tint rose; latar gradien placeholder memakai `#8F1420` ke `#D62839`.
+- Badge versi cover memakai latar maroon `#2B0F14` dengan teks putih agar menonjol di cover foto maupun placeholder. Hijau WhatsApp, ungu Discord, hijau status, dan emas tetap sesuai fungsi.
+- `theme-color`, favicon SVG, dan favicon ICO diperbarui ke merah. ICO dibuat ulang dari SVG dengan ukuran 64×64; foto hero/cover tidak diedit.
+- Kontras terhitung: teks putih pada `--bg` 7.35:1, pada `--bg-deep` 10.45:1, dan pada tombol `--brand` 5.63:1; `--muted` di atas `--card` 7.15:1; teks pill pada latar pill 7.58:1. Fokus memakai cincin kontras ganda untuk tetap terlihat di permukaan merah maupun kartu.
+- Audit Playwright di preview lulus untuk 360×800, 390×844, 412×915, 768×1024, dan 1280×800 tanpa issue.
+- Lighthouse mobile Beranda: Performance 99, Accessibility 100, Best Practices 100, SEO 100. Katalog: 99, 100, 100, 100.
+- `rg` tidak menemukan lagi istilah atau hex tema lama yang diminta. Teks Discord tetap ungu karena warna layanan tersebut dipertahankan.

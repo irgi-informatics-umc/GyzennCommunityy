@@ -57,7 +57,7 @@ Masalah nyata yang HARUS diperbaiki (jangan diulang di versi baru):
 
 ---
 
-## 3. ARAH DESAIN: "SKY BLUE PLAYFUL" (terinspirasi toko Minecraft bergaya biru cerah)
+## 3. ARAH DESAIN: "CRIMSON RED PLAYFUL" (terinspirasi toko Minecraft bergaya biru cerah)
 
 Referensi gaya (bukan untuk disalin persis; JANGAN pakai logo, nama, teks, gambar, atau angka milik pihak lain):
 - Latar halaman biru langit jenuh. Hero: gambar penuh yang memudar ke warna latar biru di bagian bawah (bukan ke hitam).
@@ -78,10 +78,10 @@ Nilai berikut adalah titik awal; boleh disetel halus selama kontras teks memenuh
   color-scheme: light;
 
   /* warna */
-  --bg:#0A93E0;            --bg-deep:#0A7FCB;
+  --bg:#A81B2B;            --bg-deep:#7F1220;
   --card:#F4F9FD;          --card-edge:rgb(255 255 255 / .7);
   --ink:#0F2A43;           --muted:#5B6B7F;
-  --brand:#0678C0;         --brand-edge:#045A92;   --on-brand:#FFFFFF;
+  --brand:#C9202F;         --brand-edge:#8F1420;   --on-brand:#FFFFFF;
   --glass:rgb(255 255 255 / .14);   --glass-dark:rgb(6 40 70 / .65);
   --ok:#16A34A; --gold:#D99A06; --purple:#7C5CFA; --danger:#E11D48;
   --discord:#5865F2; --wa:#25D366;
@@ -252,7 +252,7 @@ Ilustrasi sederhana (angka 404 font pixel), teks singkat, tombol "Kembali ke ber
 ## 7. SEO, METADATA, AKSESIBILITAS
 
 - `BaseLayout` menerima `title`, `description`, `image?`, `type?`. `og:image` dan `twitter:image` harus **URL absolut** (`new URL(path, Astro.site)`), unik per halaman bila ada gambar relevan (modpack detail memakai cover; selebihnya `preview`). Canonical absolut. Hapus meta `keywords`.
-- Favicon: pakai `public/favicon.svg` + `favicon.ico` melalui `<link>`; perbarui `favicon.svg` menjadi kubus pixel biru agar sesuai merek baru. `theme-color` = `#0A93E0`.
+- Favicon: pakai `public/favicon.svg` + `favicon.ico` melalui `<link>`; perbarui `favicon.svg` menjadi kubus pixel merah agar sesuai merek baru. `theme-color` = `#A81B2B`.
 - Sitemap: sertakan semua halaman termasuk `/modpacks/<id>/`; `lastmod` boleh dihilangkan atau memakai tanggal build; perbarui `robots.txt` jika perlu.
 - Semantik: satu `<h1>` per halaman, urutan heading benar, `<nav aria-label>`, landmark `<main id="main">`, tautan "Lewati ke konten" yang muncul saat fokus. Semua gambar punya `alt` bermakna (dekoratif = `alt=""`). Tombol ikon-saja punya `aria-label`. Chip filter memakai `button` dengan `aria-pressed`. Tab memakai pola ARIA tabs yang benar (atau tautan biasa bila lebih sederhana).
 - Fokus keyboard terlihat jelas di semua elemen interaktif. Tidak ada informasi yang hanya mengandalkan warna.
