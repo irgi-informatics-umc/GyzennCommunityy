@@ -3,9 +3,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import modpackData from '../src/data/modpacks.json' with { type: 'json' };
 
-const base='http://127.0.0.1:4321';
+const base='http://localhost:4321';
 const viewports=[{width:360,height:800},{width:390,height:844},{width:412,height:915},{width:768,height:1024},{width:1280,height:800}];
-const routes=['/','/modpacks/','/modpacks/gyzenn-vanilla-plus-plus/','/modpacks/quick-cpvp-26-3/','/modpacks/derivative-shader/','/modpacks/better-sound-java/','/zalith/','/komunitas/','/casda-network/','/does-not-exist/'];
+const routes=['/','/modpacks/','/modpacks/sodiumpack-v2/','/modpacks/derivative-shader/','/modpacks/better-sound-java/','/zalith/','/komunitas/','/casda-network/','/does-not-exist/'];
 await mkdir('.audit/screenshots',{recursive:true});
 const browser=await chromium.launch({headless:true});const issues=[];const pages=[];
 for(const viewport of viewports){
@@ -25,7 +25,7 @@ for(const viewport of viewports){
     if(result.missingImages.length)issues.push(`missing image ${route}: ${result.missingImages.join(', ')}`);
     if(result.floatOverlap)issues.push(`WhatsApp overlap ${route} ${viewport.width}`);
     if(route==='/modpacks/'){const downloads=await page.locator('.panel[data-panel="modpack"] .pack').evaluateAll(cards=>cards.map(card=>({id:card.id,url:card.querySelector('a.download')?.getAttribute('href')})));for(const card of downloads){const source=modpackData.find(item=>item.id===card.id);if(source?.downloads[0]?.url!==card.url)issues.push(`download URL changed ${card.id}`)}}
-    if([360,412].includes(viewport.width)&&['/','/modpacks/','/modpacks/quick-cpvp-26-3/'].includes(route))await page.screenshot({path:join('.audit/screenshots',`${route.replaceAll('/','_')||'home'}-${viewport.width}.png`),fullPage:true});
+    if([412,1280].includes(viewport.width))await page.screenshot({path:join('.audit/screenshots',`${route.replaceAll('/','_')||'home'}-${viewport.width}.png`),fullPage:true});
   }
   if(viewport.width===360){
     await page.goto(base+'/modpacks/');

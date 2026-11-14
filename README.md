@@ -1,32 +1,41 @@
-﻿# Gyzenn Community
+# Gyzenn Community
 
-Situs komunitas Minecraft Indonesia yang dibuat dengan Astro dan dirender statis.
+Situs komunitas Minecraft Indonesia yang dibangun dengan Astro dan dirender sebagai situs statis. Gunakan Node.js 22.x sesuai `.nvmrc` dan konfigurasi Vercel.
 
 ## Menjalankan lokal
 
-Gunakan Node.js 22.x (`.nvmrc`). Jalankan `npm install`, `npm run dev`, atau `npm run build`. Untuk melihat hasil build, gunakan `npm run preview`.
+```sh
+npm install
+npm run dev
+npm run build
+npm run preview
+npm run audit
+```
 
-## Struktur
+`npm run audit` menjalankan pemeriksaan Playwright pada `http://localhost:4321`; jalankan server Astro terlebih dahulu (`npm run dev` atau `npm run preview`). Audit memeriksa overflow, gambar, target sentuh, error browser, tautan unduhan, filter katalog, tab, tautan detail, dan salin tautan. Di PowerShell dengan execution policy yang memblokir `npm.ps1`, gunakan `npm.cmd` dan `npx.cmd`.
 
-- `src/pages/` berisi Beranda, katalog, detail dinamis, Zalith, Komunitas, Casda, 404, dan sitemap.
-- `src/components/` berisi navigasi, kartu katalog, placeholder cover, dan elemen global.
-- `src/data/` berisi salinan data JSON dan helper katalog bertipe.
-- `src/assets/img/` berisi gambar yang diolah Astro menjadi WebP responsif.
-- `src/styles/` berisi design tokens dan CSS dasar.
-- `public/` berisi favicon serta `robots.txt`.
+## Struktur proyek
 
-## Skema data modpack
+- `src/pages/`: Beranda, katalog, detail modpack dinamis, Zalith, Komunitas, Casda Network, 404, dan sitemap.
+- `src/components/`: header, navigasi bawah, footer, kartu, placeholder cover, toast, dan tombol WhatsApp.
+- `src/data/`: data JSON, tipe TypeScript, navigasi, serta helper untuk katalog dan gambar.
+- `src/assets/img/`: cover dan gambar yang diproses Astro menjadi WebP responsif.
+- `src/styles/`: token tema Sky Blue dan gaya dasar.
+- `public/`: favicon dan berkas statis publik.
+- `scripts/audit-redesign.mjs`: audit Playwright lintas viewport dan interaksi.
 
-Data katalog ada di `src/data/modpacks.json`. Field yang ada: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories[]`, `status`, `isNew`, `isRecommended`, `isArchived`, `badges[]`, `theme`, `image`, `imageAlt`, `description`, `features[]`, `note{type,text}`, `downloads[{label,url,host,type}]`, `additionalMods[]`, `resourcepacks[]`, `extraMods[]`, `extraModsNote`, `mods[]`, `verify[]`, dan `ticker`. Beberapa field opsional atau bernilai null. ID harus unik dan setiap entri harus punya URL unduhan.
+## Skema modpack
 
-### Menambahkan modpack
+Sumber katalog adalah `src/data/modpacks.json`, dengan tipe di `src/data/types.ts`. Field yang dipakai: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories`, `status`, `isNew`, `isRecommended`, `isArchived`, `badges`, `theme`, `image`, `imageAlt`, `description`, `note` (`type`, `text`), `features`, `downloads` (`label`, `url`, `host`, `type`), `additionalMods`, `resourcepacks`, `extraMods`, `extraModsNote`, `mods`, dan `ticker`. Field opsional yang tidak relevan untuk sebagian entri boleh tidak diisi; `image` dapat bernilai `null` dan `downloads` berisi tautan unduhan entri.
 
-Tambahkan entri dengan ID unik dan semua URL unduhan di `src/data/modpacks.json`. Untuk cover asli, tempatkan berkas di `src/assets/img/`, lalu isi `image` dengan `/assets/img/nama-file.webp` dan `imageAlt` dengan deskripsi gambar. Pemetaan gambar memakai nama file pada field `image`; Astro mengolah cover sebagai WebP responsif. Jika `image` null, halaman menampilkan placeholder. Kategori otomatis muncul di filter.
+### Menambah modpack
+
+Tambahkan satu entri dengan `id` unik ke `src/data/modpacks.json`, isi jenis, kategori, deskripsi, dan tautan unduhannya. Untuk cover asli, tambahkan gambar ke `src/assets/img/`, lalu set `image` ke `/assets/img/nama-file.webp` dan isi `imageAlt` dengan deskripsi gambar. Helper gambar menghubungkan nama berkas ke aset Astro; gambar yang tidak tersedia tetap menggunakan placeholder. Kategori akan tersedia pada filter katalog.
 
 ### Memperbarui Zalith
 
-Perbarui versi, changelog, dan daftar APK pada `src/data/zalith.json`; pertahankan URL rilis yang benar. Beranda dan halaman Zalith menggunakan data yang sama.
+Perbarui versi, developer/status, changelog, dan daftar APK pada `src/data/zalith.json`. Pertahankan URL rilis yang benar; beranda dan halaman Zalith membaca data yang sama.
 
 ## Deploy ke Vercel
 
-Hubungkan repository pada Vercel dengan preset Astro, perintah build `npm run build`, dan output `dist`. Proyek ini menghasilkan situs statis.
+Hubungkan repository ke Vercel dengan preset Astro, gunakan Node.js 22.x, perintah build `npm run build`, dan direktori output `dist`. Build menghasilkan situs statis.
