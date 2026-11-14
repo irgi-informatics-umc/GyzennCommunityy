@@ -1,0 +1,5 @@
+﻿---
+const {modpack}=Astro.props;
+---
+<div class="cover" aria-label={`Ilustrasi kategori untuk ${modpack.name}`}><span class="blocks" aria-hidden="true">â–¦ â–ª â–¦</span><b>{modpack.categories?.[0]??'MINECRAFT'}</b><strong>{modpack.minecraft??modpack.version??'GYZENN'}</strong></div>
+<style>.cover{aspect-ratio:16/10;width:100%;height:auto;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:white;background:linear-gradient(140deg,#1476bd,#36b9ed);position:relative}.cover b{font-size:11px;letter-spacing:.1em}.cover strong{font:700 clamp(18px,5vw,32px) var(--font-display);text-shadow:0 2px 4px #073858}.blocks{position:absolute;font-size:60px;opacity:.13;right:4px;bottom:-18px;letter-spacing:5px}</style>

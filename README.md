@@ -1,54 +1,32 @@
-# Gyzenn Community Modpack Hub
+﻿# Gyzenn Community
 
-Situs ini adalah pusat modpack resmi Gyzenn Community, dibangun menggunakan [Astro](https://astro.build/).
+Situs komunitas Minecraft Indonesia yang dibuat dengan Astro dan dirender statis.
 
-## Struktur Folder
+## Menjalankan lokal
 
-- `src/` - Berisi source code Astro (komponen, halaman, layout, dan gaya).
-- `public/` - Berisi aset statis (gambar, JSON data, favicon, script JS).
-- `_legacy/` - Berisi file monolith versi sebelumnya.
-- `scripts/` - Berisi skrip otomatisasi dan audit (di dalam `scripts/audit/`).
+Gunakan Node.js 22.x (`.nvmrc`). Jalankan `npm install`, `npm run dev`, atau `npm run build`. Untuk melihat hasil build, gunakan `npm run preview`.
 
-## Cara Menjalankan Lokal
+## Struktur
 
-Pastikan Anda menggunakan Node.js versi 22.x.
+- `src/pages/` berisi Beranda, katalog, detail dinamis, Zalith, Komunitas, Casda, 404, dan sitemap.
+- `src/components/` berisi navigasi, kartu katalog, placeholder cover, dan elemen global.
+- `src/data/` berisi salinan data JSON dan helper katalog bertipe.
+- `src/assets/img/` berisi gambar yang diolah Astro menjadi WebP responsif.
+- `src/styles/` berisi design tokens dan CSS dasar.
+- `public/` berisi favicon serta `robots.txt`.
 
-```bash
-npm install
-npm run dev      # Menjalankan server lokal
-npm run build    # Membangun file statis ke /dist
-npm run preview  # Melihat hasil build
-```
+## Skema data modpack
 
-## Menambah/Mengubah Modpack
+Data katalog ada di `src/data/modpacks.json`. Field yang ada: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories[]`, `status`, `isNew`, `isRecommended`, `isArchived`, `badges[]`, `theme`, `image`, `imageAlt`, `description`, `features[]`, `note{type,text}`, `downloads[{label,url,host,type}]`, `additionalMods[]`, `resourcepacks[]`, `extraMods[]`, `extraModsNote`, `mods[]`, `verify[]`, dan `ticker`. Beberapa field opsional atau bernilai null. ID harus unik dan setiap entri harus punya URL unduhan.
 
-Modpack data dibaca dari file `public/assets/data/modpacks.json`.
+### Menambahkan modpack
 
-**Penjelasan Field Data Modpack:**
-- `id`: String unik untuk modpack (huruf kecil, dipisah tanda hubung).
-- `name`: Nama modpack yang ditampilkan.
-- `displayTitle`: Judul utama pada kartu modpack.
-- `version`: Versi modpack (misal: "V3", "V7").
-- `category`: Kategori utama modpack (misal: "FPS BOOST", "SURVIVAL").
-- `minecraft`: Versi Minecraft (misal: "1.21.1").
-- `loader`: Nama modloader (misal: "Fabric").
-- `fabricLoader`: Versi Fabric Loader.
-- `status`: Status ketersediaan ("RELEASED", "DEV", dll).
-- `badges`: Array lencana string tambahan.
-- `image`: Nama file gambar cover di `public/assets/img/`.
-- `imageAlt`: Teks alternatif untuk gambar cover.
-- `description`: Deskripsi singkat modpack.
-- `downloads`: Array objek link unduhan. Tiap objek memiliki `type` ("MRPACK", "ZIP") dan `url` (link langsung).
-- `mods`: Array nama mod unggulan yang disertakan.
+Tambahkan entri dengan ID unik dan semua URL unduhan di `src/data/modpacks.json`. Untuk cover asli, tempatkan berkas di `src/assets/img/`, lalu isi `image` dengan `/assets/img/nama-file.webp` dan `imageAlt` dengan deskripsi gambar. Pemetaan gambar memakai nama file pada field `image`; Astro mengolah cover sebagai WebP responsif. Jika `image` null, halaman menampilkan placeholder. Kategori otomatis muncul di filter.
 
-## Update Versi Zalith
+### Memperbarui Zalith
 
-Untuk memperbarui data Zalith Client, edit file `public/assets/data/zalith.json`. Data ini digunakan untuk menampilkan spesifikasi dan link unduhan terbaru di halaman Zalith.
+Perbarui versi, changelog, dan daftar APK pada `src/data/zalith.json`; pertahankan URL rilis yang benar. Beranda dan halaman Zalith menggunakan data yang sama.
 
 ## Deploy ke Vercel
 
-Proyek ini telah dikonfigurasi untuk Vercel.
-- **Framework Preset**: Astro
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Node.js Version**: 22.x
+Hubungkan repository pada Vercel dengan preset Astro, perintah build `npm run build`, dan output `dist`. Proyek ini menghasilkan situs statis.

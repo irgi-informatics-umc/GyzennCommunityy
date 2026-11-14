@@ -1,0 +1,1 @@
+export const nav=[{label:'Beranda',href:'/',icon:'⌂'},{label:'Modpack',href:'/modpacks/',icon:'▦'},{label:'Zalith',href:'/zalith/',icon:'◈'},{label:'Komunitas',href:'/komunitas/',icon:'◎'},{label:'Casda Network',href:'/casda-network/',icon:'◇'}];
