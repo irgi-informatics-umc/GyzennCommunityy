@@ -1,10 +1,332 @@
-﻿---
-import BaseLayout from '../../layouts/BaseLayout.astro';import ModpackCard from '../../components/ModpackCard.astro';import {modpacks,categories,versions} from '../../data/modpacks';const regular=modpacks.filter(m=>m.type==='modpack'&&!m.isArchived);const archived=modpacks.filter(m=>m.type==='modpack'&&m.isArchived);const shaders=modpacks.filter(m=>m.type==='shader');const packs=modpacks.filter(m=>m.type==='resourcepack');
 ---
-<BaseLayout title="Modpack, shader & resource pack &mdash; Gyzenn Community" description="Jelajahi modpack, shader, dan resource pack Gyzenn Community."><div class="container page"><h1>Modpack, shader &amp; resource pack</h1><p>Temukan pilihan untuk berbagai gaya bermain dan versi Minecraft.</p><div class="tabs" role="tablist" aria-label="Jenis katalog"><button role="tab" aria-selected="true" data-tab="modpack" id="tab-modpack" aria-controls="panel-modpack">Modpack</button><button role="tab" aria-selected="false" data-tab="shader" id="tab-shader" aria-controls="panel-shader">Shader</button><button role="tab" aria-selected="false" data-tab="resourcepack" id="tab-resourcepack" aria-controls="panel-resourcepack">Resource Pack</button></div><section class="panel" data-panel="modpack" id="panel-modpack" role="tabpanel" aria-labelledby="tab-modpack"><div class="filters"><label class="search">Cari nama<input id="search" type="search" placeholder="Cari modpack"/></label><label class="version">Versi Minecraft<select id="version"><option value="">Semua versi</option>{versions.map(v=><option value={v}>{v}</option>)}</select></label><button class="archive" id="archive" aria-pressed="false">Tampilkan versi lama</button></div><div class="chips" aria-label="Filter kategori"><button class="chip active" data-category="" aria-pressed="true">Semua</button>{categories.map(c=><button class="chip" data-category={c} aria-pressed="false">{c}</button>)}</div><p id="count" aria-live="polite"></p><div class="packs">{regular.map(m=><ModpackCard modpack={m}/>)}</div><p id="empty" hidden>Tidak ada hasil, coba hapus filter. <button id="reset">Reset filter</button></p>{archived.length>0&&<section class="archived" id="archived" hidden><h2>Versi lama</h2><div class="packs">{archived.map(m=><ModpackCard modpack={m}/>)}</div></section>}</section><section class="panel" data-panel="shader" id="panel-shader" role="tabpanel" aria-labelledby="tab-shader"><div class="packs">{shaders.map(m=><ModpackCard modpack={m}/>)}</div></section><section class="panel" data-panel="resourcepack" id="panel-resourcepack" role="tabpanel" aria-labelledby="tab-resourcepack"><div class="packs">{packs.map(m=><ModpackCard modpack={m}/>)}</div></section></div></BaseLayout>
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ModpackCard from "../../components/ModpackCard.astro";
+import { modpacks, categories, versions } from "../../data/modpacks";
+const regular = modpacks.filter((m) => m.type === "modpack" && !m.isArchived);
+const archived = modpacks.filter((m) => m.type === "modpack" && m.isArchived);
+const shaders = modpacks.filter((m) => m.type === "shader");
+const packs = modpacks.filter((m) => m.type === "resourcepack");
+---
+
+<BaseLayout
+  title="Modpack, shader & resource pack &mdash; Gyzenn Community"
+  description="Jelajahi modpack, shader, dan resource pack Gyzenn Community."
+>
+  <div class="container page">
+    <h1>Modpack, shader &amp; resource pack</h1>
+    <p>Temukan pilihan untuk berbagai gaya bermain dan versi Minecraft.</p>
+    <div class="tabs" role="tablist" aria-label="Jenis katalog">
+      <button
+        role="tab"
+        aria-selected="true"
+        data-tab="modpack"
+        id="tab-modpack"
+        aria-controls="panel-modpack"
+      >
+        Modpack
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        data-tab="shader"
+        id="tab-shader"
+        aria-controls="panel-shader"
+      >
+        Shader
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        data-tab="resourcepack"
+        id="tab-resourcepack"
+        aria-controls="panel-resourcepack"
+      >
+        Resource Pack
+      </button>
+    </div>
+    <section
+      class="panel"
+      data-panel="modpack"
+      id="panel-modpack"
+      role="tabpanel"
+      aria-labelledby="tab-modpack"
+    >
+      <div class="filters">
+        <label class="search">
+          Cari nama
+          <input id="search" type="search" placeholder="Cari modpack" />
+        </label>
+        <label class="version">
+          Versi Minecraft
+          <select id="version">
+            <option value="">Semua versi</option>
+            {versions.map((v) => (
+              <option value={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        <button class="archive" id="archive" aria-pressed="false">
+          Tampilkan versi lama
+        </button>
+      </div>
+      <div class="chips" aria-label="Filter kategori">
+        <button class="chip active" data-category="" aria-pressed="true">
+          Semua
+        </button>
+        {categories.map((c) => (
+          <button class="chip" data-category={c} aria-pressed="false">
+            {c}
+          </button>
+        ))}
+      </div>
+      <p id="count" aria-live="polite"></p>
+      <div class="packs">
+        {regular.map((m) => (
+          <ModpackCard modpack={m} />
+        ))}
+      </div>
+      <p id="empty" hidden>
+        Tidak ada hasil, coba hapus filter. <button id="reset">Reset filter</button>
+      </p>
+      {archived.length > 0 && (
+        <section class="archived" id="archived" hidden>
+          <h2>Versi lama</h2>
+          <div class="packs">
+            {archived.map((m) => (
+              <ModpackCard modpack={m} />
+            ))}
+          </div>
+        </section>
+      )}
+    </section>
+    <section
+      class="panel"
+      data-panel="shader"
+      id="panel-shader"
+      role="tabpanel"
+      aria-labelledby="tab-shader"
+    >
+      <div class="packs">
+        {shaders.map((m) => (
+          <ModpackCard modpack={m} />
+        ))}
+      </div>
+    </section>
+    <section
+      class="panel"
+      data-panel="resourcepack"
+      id="panel-resourcepack"
+      role="tabpanel"
+      aria-labelledby="tab-resourcepack"
+    >
+      <div class="packs">
+        {packs.map((m) => (
+          <ModpackCard modpack={m} />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
 <script>
-import {slug} from '../../data/modpacks';
-const tabs=[...document.querySelectorAll<HTMLButtonElement>('[data-tab]')],panels=[...document.querySelectorAll<HTMLElement>('[data-panel]')];function setTab(name:string){tabs.forEach(t=>t.setAttribute('aria-selected',String(t.dataset.tab===name)));panels.forEach(p=>p.hidden=p.dataset.panel!==name);history.replaceState(null,'',`#${name}`)}tabs.forEach(t=>t.addEventListener('click',()=>setTab(t.dataset.tab!)));if(['shader','resourcepack','modpack'].includes(location.hash.slice(1)))setTab(location.hash.slice(1));else panels.forEach(p=>p.hidden=p.dataset.panel!=='modpack');
-const search=document.querySelector<HTMLInputElement>('#search')!,version=document.querySelector<HTMLSelectElement>('#version')!,chips=[...document.querySelectorAll<HTMLButtonElement>('.chip')],cards=[...document.querySelectorAll<HTMLElement>('.panel[data-panel="modpack"] .pack')],count=document.querySelector('#count')!,empty=document.querySelector<HTMLElement>('#empty')!,archive=document.querySelector<HTMLButtonElement>('#archive')!,archived=document.querySelector<HTMLElement>('#archived')!;let category=new URLSearchParams(location.search).get('kategori')??'';const query=new URLSearchParams(location.search);search.value=query.get('q')??'';version.value=query.get('v')??'';let archivedOn=query.get('lama')==='1';archive.setAttribute('aria-pressed',String(archivedOn));archived.hidden=!archivedOn;function apply(){let shown=0;for(const card of cards){const cats=(card.dataset.categories??'').split('|');const ok=(!category||cats.includes(category))&&(!version.value||card.dataset.mc===version.value)&&(card.dataset.name??'').includes(search.value.trim().toLowerCase());card.hidden=!ok;if(ok)shown++}let oldShown=0;for(const card of archived.querySelectorAll<HTMLElement>('.pack')){const cats=(card.dataset.categories??'').split('|');const ok=(!category||cats.includes(category))&&(!version.value||card.dataset.mc===version.value)&&(card.dataset.name??'').includes(search.value.trim().toLowerCase());card.hidden=!ok;if(ok)oldShown++}const total=shown+(archivedOn?oldShown:0);count.textContent=`${total} modpack`;empty.hidden=total>0;const params=new URLSearchParams();if(category)params.set('kategori',slug(category));if(version.value)params.set('v',version.value);if(search.value)params.set('q',search.value);if(archivedOn)params.set('lama','1');history.replaceState(null,'',`${location.pathname}${params.size?'?'+params:''}${location.hash}`)}for(const chip of chips)chip.addEventListener('click',()=>{category=chip.dataset.category??'';chips.forEach(c=>{const active=c===chip;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active))});apply()});search.addEventListener('input',apply);version.addEventListener('change',apply);archive.addEventListener('click',()=>{const on=archive.getAttribute('aria-pressed')!=='true';archivedOn=on;archive.setAttribute('aria-pressed',String(on));archived.hidden=!on;apply()});document.querySelector('#reset')?.addEventListener('click',()=>{category='';search.value='';version.value='';archive.setAttribute('aria-pressed','false');archived.hidden=true;chips.forEach(c=>{const active=!c.dataset.category;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active))});apply()});const categoryQuery=query.get('kategori');if(categoryQuery){const match=chips.find(c=>slug(c.dataset.category??'')===categoryQuery);if(match){category=match.dataset.category??'';chips.forEach(c=>{const active=c===match;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active))})}}const oldId=location.hash.slice(1);if(oldId&&document.getElementById(oldId)?.classList.contains('pack'))location.replace(`/modpacks/${oldId}/`);apply();
+  import { slug } from "../../data/modpacks";
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>("[data-tab]")],
+    panels = [...document.querySelectorAll<HTMLElement>("[data-panel]")];
+  function setTab(name: string) {
+    tabs.forEach((t) => t.setAttribute("aria-selected", String(t.dataset.tab === name)));
+    panels.forEach((p) => (p.hidden = p.dataset.panel !== name));
+    history.replaceState(null, "", `#${name}`);
+  }
+  tabs.forEach((t) => t.addEventListener("click", () => setTab(t.dataset.tab!)));
+  if (["shader", "resourcepack", "modpack"].includes(location.hash.slice(1)))
+    setTab(location.hash.slice(1));
+  else panels.forEach((p) => (p.hidden = p.dataset.panel !== "modpack"));
+  const search = document.querySelector<HTMLInputElement>("#search")!,
+    version = document.querySelector<HTMLSelectElement>("#version")!,
+    chips = [...document.querySelectorAll<HTMLButtonElement>(".chip")],
+    cards = [...document.querySelectorAll<HTMLElement>('.panel[data-panel="modpack"] .pack')],
+    count = document.querySelector("#count")!,
+    empty = document.querySelector<HTMLElement>("#empty")!,
+    archive = document.querySelector<HTMLButtonElement>("#archive")!,
+    archived = document.querySelector<HTMLElement>("#archived")!;
+  let category = new URLSearchParams(location.search).get("kategori") ?? "";
+  const query = new URLSearchParams(location.search);
+  search.value = query.get("q") ?? "";
+  version.value = query.get("v") ?? "";
+  let archivedOn = query.get("lama") === "1";
+  archive.setAttribute("aria-pressed", String(archivedOn));
+  archived.hidden = !archivedOn;
+  function apply() {
+    let shown = 0;
+    for (const card of cards) {
+      const cats = (card.dataset.categories ?? "").split("|");
+      const ok =
+        (!category || cats.includes(category)) &&
+        (!version.value || card.dataset.mc === version.value) &&
+        (card.dataset.name ?? "").includes(search.value.trim().toLowerCase());
+      card.hidden = !ok;
+      if (ok) shown++;
+    }
+    let oldShown = 0;
+    for (const card of archived.querySelectorAll<HTMLElement>(".pack")) {
+      const cats = (card.dataset.categories ?? "").split("|");
+      const ok =
+        (!category || cats.includes(category)) &&
+        (!version.value || card.dataset.mc === version.value) &&
+        (card.dataset.name ?? "").includes(search.value.trim().toLowerCase());
+      card.hidden = !ok;
+      if (ok) oldShown++;
+    }
+    const total = shown + (archivedOn ? oldShown : 0);
+    count.textContent = `${total} modpack`;
+    empty.hidden = total > 0;
+    const params = new URLSearchParams();
+    if (category) params.set("kategori", slug(category));
+    if (version.value) params.set("v", version.value);
+    if (search.value) params.set("q", search.value);
+    if (archivedOn) params.set("lama", "1");
+    history.replaceState(
+      null,
+      "",
+      `${location.pathname}${params.size ? "?" + params : ""}${location.hash}`,
+    );
+  }
+  for (const chip of chips)
+    chip.addEventListener("click", () => {
+      category = chip.dataset.category ?? "";
+      chips.forEach((c) => {
+        const active = c === chip;
+        c.classList.toggle("active", active);
+        c.setAttribute("aria-pressed", String(active));
+      });
+      apply();
+    });
+  search.addEventListener("input", apply);
+  version.addEventListener("change", apply);
+  archive.addEventListener("click", () => {
+    const on = archive.getAttribute("aria-pressed") !== "true";
+    archivedOn = on;
+    archive.setAttribute("aria-pressed", String(on));
+    archived.hidden = !on;
+    apply();
+  });
+  document.querySelector("#reset")?.addEventListener("click", () => {
+    category = "";
+    search.value = "";
+    version.value = "";
+    archive.setAttribute("aria-pressed", "false");
+    archived.hidden = true;
+    chips.forEach((c) => {
+      const active = !c.dataset.category;
+      c.classList.toggle("active", active);
+      c.setAttribute("aria-pressed", String(active));
+    });
+    apply();
+  });
+  const categoryQuery = query.get("kategori");
+  if (categoryQuery) {
+    const match = chips.find((c) => slug(c.dataset.category ?? "") === categoryQuery);
+    if (match) {
+      category = match.dataset.category ?? "";
+      chips.forEach((c) => {
+        const active = c === match;
+        c.classList.toggle("active", active);
+        c.setAttribute("aria-pressed", String(active));
+      });
+    }
+  }
+  const oldId = location.hash.slice(1);
+  if (oldId && document.getElementById(oldId)?.classList.contains("pack"))
+    location.replace(`/modpacks/${oldId}/`);
+  apply();
 </script>
-<style>.tabs{position:sticky;top:78px;z-index:20;display:flex;overflow-x:auto;gap:6px;background:#0877b7;padding:7px;border-radius:14px;margin-block:20px}.tabs button,.chip,.archive{border:0;border-radius:999px;min-height:48px;padding:8px 14px;font-weight:700;white-space:nowrap;color:var(--ink);background:#fff;cursor:pointer}.tabs button[aria-selected=true],.chip.active{background:#064c7b;color:#fff}.filters{display:grid;grid-template-columns:1fr;gap:10px}.filters label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600}.filters input,.filters select{min-height:48px;border-radius:10px;border:1px solid #b8c7d4;padding:8px 12px;min-width:0}.archive{background:#dceeff}.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0}.chip{font-size:12px;min-height:48px}.packs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.archived{margin-top:28px}.panel[hidden],.archived[hidden]{display:none}@media(min-width:640px){.filters{grid-template-columns:2fr 1fr auto;align-items:end}.packs{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(min-width:1100px){.packs{grid-template-columns:repeat(4,minmax(0,1fr))}}</style>
+<style>
+  .tabs {
+    position: sticky;
+    top: 74px;
+    z-index: 20;
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    background: #0877b7;
+    padding: 7px;
+    border-radius: 14px;
+    margin-block: 20px;
+  }
+  .tabs button,
+  .chip,
+  .archive {
+    border: 0;
+    border-radius: 999px;
+    min-height: 48px;
+    padding: 8px 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--ink);
+    background: #fff;
+    cursor: pointer;
+  }
+  .tabs button[aria-selected="true"],
+  .chip.active {
+    background: #064c7b;
+    color: #fff;
+  }
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .filters label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .filters input,
+  .filters select {
+    min-height: 48px;
+    border-radius: 10px;
+    border: 1px solid #b8c7d4;
+    padding: 8px 12px;
+    min-width: 0;
+  }
+  .archive {
+    background: #dceeff;
+  }
+  .chips {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px 0;
+  }
+  .chip {
+    font-size: 12px;
+    min-height: 48px;
+  }
+  .packs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .archived {
+    margin-top: 28px;
+  }
+  .panel[hidden],
+  .archived[hidden] {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .filters {
+      grid-template-columns: 2fr 1fr auto;
+      align-items: end;
+    }
+    .packs {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1100px) {
+    .packs {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

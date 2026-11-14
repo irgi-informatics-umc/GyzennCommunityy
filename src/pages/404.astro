@@ -1,5 +1,46 @@
-﻿---
-import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Halaman tidak ditemukan &mdash; Gyzenn Community"><section class="container page notfound"><strong>404</strong><h1>Halaman tidak ditemukan</h1><p>Maaf, halaman yang kamu cari tidak tersedia.</p><a class="btn primary" href="/">Kembali ke beranda</a><nav aria-label="Halaman populer"><a href="/modpacks/">Modpack</a><a href="/zalith/">Zalith</a><a href="/komunitas/">Komunitas</a></nav></section></BaseLayout>
-<style>.notfound{text-align:center;min-height:55dvh;display:flex;flex-direction:column;align-items:center;justify-content:center}.notfound>strong{font:700 clamp(68px,20vw,130px) var(--font-display);line-height:1;text-shadow:0 4px 0 #075f9b}.notfound nav{display:flex;gap:18px;margin-top:28px;color:white;font-weight:700}.notfound nav a{min-height:44px;display:inline-flex;align-items:center}</style>
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Halaman tidak ditemukan &mdash; Gyzenn Community">
+  <section class="container page notfound">
+    <strong>404</strong>
+    <h1>Halaman tidak ditemukan</h1>
+    <p>Maaf, halaman yang kamu cari tidak tersedia.</p>
+    <a class="btn primary" href="/">
+      Kembali ke beranda
+    </a>
+    <nav aria-label="Halaman populer">
+      <a href="/modpacks/">Modpack</a>
+      <a href="/zalith/">Zalith</a>
+      <a href="/komunitas/">Komunitas</a>
+    </nav>
+  </section>
+</BaseLayout>
+<style>
+  .notfound {
+    text-align: center;
+    min-height: 55dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .notfound > strong {
+    font: 700 clamp(68px, 20vw, 130px) var(--font-display);
+    line-height: 1;
+    text-shadow: 0 4px 0 #075f9b;
+  }
+  .notfound nav {
+    display: flex;
+    gap: 18px;
+    margin-top: 28px;
+    color: white;
+    font-weight: 700;
+  }
+  .notfound nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

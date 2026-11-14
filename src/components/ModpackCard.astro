@@ -1,5 +1,193 @@
-﻿---
-import {Image} from 'astro:assets';import CoverPlaceholder from './CoverPlaceholder.astro';import {imageFor} from '../data/images';import type {Modpack} from '../data/types';const {modpack:m}=Astro.props as {modpack:Modpack};const detail=`/modpacks/${m.id}/`;const categories=m.categories?.slice(0,2)??[];const cover=imageFor(m.image);const symbol=(c:string)=>String.fromCodePoint(c==='FPS BOOST'?0x26a1:c==='SURVIVAL'?0x2302:c==='CPVP'||c==='PVP'?0x2295:c==='SERVER'?0x2637:c==='VISUAL'?0x2726:0x2022);
 ---
-<article class="card pack" data-categories={m.categories.join('|')} data-mc={m.minecraft??''} data-name={m.name.toLowerCase()} data-archived={m.isArchived?'true':'false'} data-type={m.type} id={m.id}><a class="cover-link" href={detail} aria-label={`Detail ${m.name}`}>{cover?<Image class="cover" src={cover} alt={m.imageAlt??m.name} widths={[320,640,960]} sizes="(min-width: 1100px) 25vw, (min-width: 640px) 33vw, 50vw" format="webp" loading="lazy" decoding="async"/>:<CoverPlaceholder modpack={m}/>}<span class="version">{m.minecraft??m.version??m.type}</span>{m.isNew&&<span class="badge">Baru</span>}{!m.isNew&&m.isRecommended&&<span class="badge">Rekomendasi</span>}</a><div class="body"><div class="tags">{categories.map(c=><span class="tag">{symbol(c)} {c}</span>)}</div><a class="title" href={detail}>{m.name}</a><p class="meta">{m.loader??m.type}{m.loaderVersion?` / ${m.loaderVersion}`:''}{m.minecraft?` / ${m.minecraft}`:''}</p><div class="actions"><a class="btn primary download" href={m.downloads[0]?.url} target="_blank" rel="noopener noreferrer">Unduh</a><a class="detail" href={detail}>Detail</a></div></div></article>
-<style>.pack{min-width:0;overflow:hidden;display:flex;flex-direction:column}.cover-link{position:relative;display:block;aspect-ratio:16/10;overflow:hidden}.cover{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}.version,.badge{position:absolute;top:8px;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:700}.version{right:8px;background:var(--danger);color:white;overflow-wrap:anywhere}.badge{left:8px;background:#ffe1a3;color:#493000}.body{padding:10px;display:flex;flex-direction:column;flex:1;min-width:0}.tags{display:flex;flex-wrap:wrap;gap:4px}.tag{align-self:flex-start;border-radius:99px;background:#dceeff;color:#075489;padding:3px 8px;font-size:10px;font-weight:700}.title{font-size:14px;font-weight:700;line-height:1.25;min-height:44px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;margin-top:6px}.meta{font-size:11px;color:var(--muted);margin:5px 0 10px;overflow-wrap:anywhere}.actions{margin-top:auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:7px}.download{min-height:48px;padding:8px;font-size:12px}.detail{min-height:48px;display:inline-flex;align-items:center;padding:0 5px;font-size:12px;font-weight:600;color:var(--brand)}@media(min-width:640px){.body{padding:13px}.title{font-size:15px;min-height:44px}}</style>
+import { Image } from "astro:assets";
+import CoverPlaceholder from "./CoverPlaceholder.astro";
+import { imageFor } from "../data/images";
+import type { Modpack } from "../data/types";
+const { modpack: m } = Astro.props as { modpack: Modpack };
+const detail = `/modpacks/${m.id}/`;
+const categories = m.categories?.slice(0, 2) ?? [];
+const cover = imageFor(m.image);
+const symbol = (c: string) =>
+  String.fromCodePoint(
+    c === "FPS BOOST"
+      ? 0x26a1
+      : c === "SURVIVAL"
+        ? 0x2302
+        : c === "CPVP" || c === "PVP"
+          ? 0x2295
+          : c === "SERVER"
+            ? 0x2637
+            : c === "VISUAL"
+              ? 0x2726
+              : 0x2022,
+  );
+---
+
+<article
+  class="card pack"
+  data-categories={m.categories.join("|")}
+  data-mc={m.minecraft ?? ""}
+  data-name={m.name.toLowerCase()}
+  data-archived={m.isArchived ? "true" : "false"}
+  data-type={m.type}
+  id={m.id}
+>
+  <a class="cover-link" href={detail} aria-label={`Detail ${m.name}`}>
+    {cover ? (
+      <Image
+        class="cover"
+        src={cover}
+        alt={m.imageAlt ?? m.name}
+        widths={[320, 640, 960]}
+        sizes="(min-width: 1100px) 25vw, (min-width: 640px) 33vw, 50vw"
+        format="webp"
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <CoverPlaceholder modpack={m} />
+    )}
+    <span class="version">{m.minecraft ?? m.version ?? m.type}</span>
+    {m.isNew && <span class="badge">Baru</span>}
+    {!m.isNew && m.isRecommended && <span class="badge">Rekomendasi</span>}
+  </a>
+  <div class="body">
+    <div class="tags">
+      {categories.map((c) => (
+        <span class="tag">
+          {symbol(c)} {c}
+        </span>
+      ))}
+    </div>
+    <a class="title" href={detail}>
+      {m.name}
+    </a>
+    <p class="meta">
+      {m.loader ?? m.type}
+      {m.loaderVersion ? ` / ${m.loaderVersion}` : ""}
+      {m.minecraft ? ` / ${m.minecraft}` : ""}
+    </p>
+    <div class="actions">
+      <a
+        class="btn primary download"
+        href={m.downloads[0]?.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Unduh
+      </a>
+      <a class="detail" href={detail}>
+        Detail
+      </a>
+    </div>
+  </div>
+</article>
+<style>
+  .pack {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover-link {
+    position: relative;
+    display: block;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+  }
+  .cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/10;
+  }
+  .version,
+  .badge {
+    position: absolute;
+    top: 8px;
+    padding: 4px 7px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .version {
+    right: 8px;
+    background: var(--danger);
+    color: white;
+    overflow-wrap: anywhere;
+  }
+  .badge {
+    left: 8px;
+    background: #ffe1a3;
+    color: #493000;
+  }
+  .body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .tag {
+    align-self: flex-start;
+    border-radius: 99px;
+    background: #dceeff;
+    color: #075489;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    min-height: 44px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    margin-top: 6px;
+  }
+  .meta {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 5px 0 10px;
+    overflow-wrap: anywhere;
+  }
+  .actions {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 7px;
+  }
+  .download {
+    min-height: 48px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .detail {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand);
+  }
+  @media (min-width: 640px) {
+    .body {
+      padding: 13px;
+    }
+    .title {
+      font-size: 15px;
+      min-height: 44px;
+    }
+  }
+</style>

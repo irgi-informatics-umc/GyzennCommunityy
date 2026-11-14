@@ -1,5 +1,58 @@
-﻿---
-import {nav} from '../data/nav';const path=Astro.url.pathname;const items=nav.filter(n=>n.href!=='/casda-network/');
 ---
-<nav class="bottom" aria-label="Navigasi bawah">{items.map(n=><a href={n.href} aria-current={(n.href==='/'?path==='/':path.startsWith(n.href))?'page':undefined}><span class="ico">{n.icon}</span><span>{n.label}</span></a>)}</nav>
-<style>.bottom{position:fixed;z-index:var(--z-bar);left:0;right:0;bottom:0;min-height:calc(var(--bar-h) + env(safe-area-inset-bottom));padding:5px 8px calc(5px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;background:#075f9b;border-top:1px solid rgb(255 255 255/.3)}.bottom a{min-width:48px;min-height:48px;padding:4px 9px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:11px;font-weight:600}.bottom a[aria-current=page]{background:#fff;color:var(--brand)}.ico{font-size:20px;line-height:1}@media(min-width:1024px){.bottom{display:none}}</style>
+import { nav } from "../data/nav";
+const path = Astro.url.pathname;
+const items = nav.filter((n) => n.href !== "/casda-network/");
+---
+
+<nav class="bottom" aria-label="Navigasi bawah">
+  {items.map((n) => (
+    <a
+      href={n.href}
+      aria-current={(n.href === "/" ? path === "/" : path.startsWith(n.href)) ? "page" : undefined}
+    >
+      <span class="ico">{n.icon}</span>
+      <span>{n.label}</span>
+    </a>
+  ))}
+</nav>
+<style>
+  .bottom {
+    position: fixed;
+    z-index: var(--z-bar);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: calc(var(--bar-h) + env(safe-area-inset-bottom));
+    padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: space-around;
+    background: #075f9b;
+    border-top: 1px solid rgb(255 255 255/0.3);
+  }
+  .bottom a {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 4px 9px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .bottom a[aria-current="page"] {
+    background: #fff;
+    color: var(--brand);
+  }
+  .ico {
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media (min-width: 1024px) {
+    .bottom {
+      display: none;
+    }
+  }
+</style>

@@ -1,5 +1,161 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';import {site} from '../../data/site';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
 ---
-<BaseLayout title="Komunitas Gyzenn &mdash; TikTok, WhatsApp & Discord" description="Terhubung dengan komunitas Minecraft Gyzenn di TikTok, WhatsApp, dan Discord."><div class="container page"><h1>Komunitas Gyzenn</h1><p>Tetap terhubung untuk info update modpack terbaru, tutorial konfigurasi, dan mabar bersama member.</p><div class="bento"><article class="card"><h2>TikTok</h2><p>@giovmare</p><div class="stats"><span><b>{site.stats.tiktokLikes}K</b>Suka</span><span><b>{site.stats.tiktokFollowers.toLocaleString('id-ID')}</b>Pengikut</span><span><b>{site.stats.tiktokFollowing}</b>Mengikuti</span></div><a class="btn primary full" href={site.links.tiktok} target="_blank" rel="noopener noreferrer">Ikuti TikTok</a></article><article class="card"><h2>Saluran WhatsApp</h2><p>{site.stats.whatsappFollowers.toLocaleString('id-ID')} pengikut</p><a class="btn wa full" href={site.links.whatsappChannel} target="_blank" rel="noopener noreferrer">Ikuti saluran</a></article><article class="card"><h2>Grup WhatsApp</h2><p>Diskusi dan mabar Minecraft.</p><div class="buttons"><a class="btn secondary" href={site.links.whatsappGroup1} target="_blank" rel="noopener noreferrer">Gabung grup 1</a><a class="btn secondary" href={site.links.whatsappGroup2} target="_blank" rel="noopener noreferrer">Gabung grup 2</a></div></article><article class="card discord"><h2>Discord Gyzenn</h2><p>Tempat ngobrol, mabar, berbagi Minecraft setup, mod, shader, resource pack, dan update terbaru dari Gyzenn Community.</p><ul><li>Komunitas Minecraft</li><li>Mabar dan nongkrong</li><li>Update dan pengumuman</li></ul><a class="btn" href={site.links.discord} target="_blank" rel="noopener noreferrer">Gabung Discord</a></article><article class="card"><h2>Casda Network</h2><p>Dalam pengembangan</p><a href="/casda-network/">Selengkapnya &rarr;</a></article></div></div></BaseLayout>
-<style>.bento{display:grid;grid-template-columns:1fr;gap:12px}.bento article{padding:18px;color:var(--ink)}.bento h2{font-size:19px}.bento article>a:not(.btn){min-height:44px;display:inline-flex;align-items:center}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin:18px 0}.stats span{display:flex;flex-direction:column;font-size:12px}.stats b{font-size:18px}.full{width:100%}.buttons{display:grid;gap:8px}.discord{grid-column:1/-1;background:#5865f2;color:white}.discord p,.discord li{color:white}.discord .btn{background:white;color:#3944c8}.discord ul{padding-left:20px}@media(min-width:768px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.buttons{grid-template-columns:1fr 1fr}}</style>
+
+<BaseLayout
+  title="Komunitas Gyzenn &mdash; TikTok, WhatsApp & Discord"
+  description="Terhubung dengan komunitas Minecraft Gyzenn di TikTok, WhatsApp, dan Discord."
+>
+  <div class="container page">
+    <h1>Komunitas Gyzenn</h1>
+    <p>
+      Tetap terhubung untuk info update modpack terbaru, tutorial konfigurasi, dan mabar bersama
+      member.
+    </p>
+    <div class="bento">
+      <article class="card">
+        <h2>TikTok</h2>
+        <p>@giovmare</p>
+        <div class="stats">
+          <span>
+            <b>{site.stats.tiktokLikes}K</b>Suka
+          </span>
+          <span>
+            <b>{site.stats.tiktokFollowers.toLocaleString("id-ID")}</b>Pengikut
+          </span>
+          <span>
+            <b>{site.stats.tiktokFollowing}</b>Mengikuti
+          </span>
+        </div>
+        <a
+          class="btn primary full"
+          href={site.links.tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ikuti TikTok
+        </a>
+      </article>
+      <article class="card">
+        <h2>Saluran WhatsApp</h2>
+        <p>{site.stats.whatsappFollowers.toLocaleString("id-ID")} pengikut</p>
+        <a
+          class="btn wa full"
+          href={site.links.whatsappChannel}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ikuti saluran
+        </a>
+      </article>
+      <article class="card">
+        <h2>Grup WhatsApp</h2>
+        <p>Diskusi dan mabar Minecraft.</p>
+        <div class="buttons">
+          <a
+            class="btn secondary"
+            href={site.links.whatsappGroup1}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Gabung grup 1
+          </a>
+          <a
+            class="btn secondary"
+            href={site.links.whatsappGroup2}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Gabung grup 2
+          </a>
+        </div>
+      </article>
+      <article class="card discord">
+        <h2>Discord Gyzenn</h2>
+        <p>
+          Tempat ngobrol, mabar, berbagi Minecraft setup, mod, shader, resource pack, dan update
+          terbaru dari Gyzenn Community.
+        </p>
+        <ul>
+          <li>Komunitas Minecraft</li>
+          <li>Mabar dan nongkrong</li>
+          <li>Update dan pengumuman</li>
+        </ul>
+        <a class="btn" href={site.links.discord} target="_blank" rel="noopener noreferrer">
+          Gabung Discord
+        </a>
+      </article>
+      <article class="card">
+        <h2>Casda Network</h2>
+        <p>Dalam pengembangan</p>
+        <a href="/casda-network/">Selengkapnya &rarr;</a>
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+<style>
+  .bento {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .bento article {
+    padding: 18px;
+    color: var(--ink);
+  }
+  .bento h2 {
+    font-size: 19px;
+  }
+  .bento article > a:not(.btn) {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    text-align: center;
+    margin: 18px 0;
+  }
+  .stats span {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  .stats b {
+    font-size: 18px;
+  }
+  .full {
+    width: 100%;
+  }
+  .buttons {
+    display: grid;
+    gap: 8px;
+  }
+  .discord {
+    grid-column: 1/-1;
+    background: #5865f2;
+    color: white;
+  }
+  .discord p,
+  .discord li {
+    color: white;
+  }
+  .discord .btn {
+    background: white;
+    color: #3944c8;
+  }
+  .discord ul {
+    padding-left: 20px;
+  }
+  @media (min-width: 768px) {
+    .bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .buttons {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

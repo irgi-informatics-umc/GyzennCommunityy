@@ -40,3 +40,11 @@ Pemeriksaan visual full-page dilakukan di 412×915 dan 1280×800 untuk beranda, 
 - Dokumentasi diperbarui dan audit visual dilakukan pada ukuran ponsel serta desktop.
 - Belum ada push atau deploy.
 - Server preview lokal dihentikan sebelum sesi selesai.
+
+## Perapian setelah review (sesi lanjutan)
+
+- Seluruh source `src/**` dan `scripts/` diformat ulang dengan Prettier (+ `prettier-plugin-astro`, aturan di `.prettierrc.json`): sebelumnya tiap file ditulis dalam satu baris panjang sehingga sulit diedit. Karakter BOM di awal file dibuang.
+- `CoverPlaceholder`: karakter dekoratif yang rusak (mojibake) diganti `▦ ▪ ▦`; angka versi memakai Poppins 800 (angka "2" pada font pixel terbaca seperti "8", mis. "26.3" tampak "86.3").
+- Header saat di-scroll dibuat lebih pekat (alpha 0,96) agar teks di bawahnya tidak tembus; posisi sticky tab katalog dirapatkan (`top: 74px`).
+- Build dan `astro check` diverifikasi di Node 22 (0 error, 0 warning).
+- Tindak lanjut yang belum dikerjakan: ikon kategori masih karakter Unicode (bisa tampil beda/emoji di sebagian HP Android); ganti dengan SVG inline. Warna latar `#076aa8` lebih gelap dari referensi awal (`#0A93E0`), setel bila ingin lebih cerah.

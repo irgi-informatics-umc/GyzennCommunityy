@@ -1,5 +1,334 @@
-﻿---
-import {Image} from 'astro:assets';import heroImage from '../assets/img/preview.webp';import BaseLayout from '../layouts/BaseLayout.astro';import ModpackCard from '../components/ModpackCard.astro';import {modpacks,slug} from '../data/modpacks';import {zalith} from '../data/zalith';import {site} from '../data/site';const active=modpacks.filter(m=>m.type==='modpack'&&!m.isArchived);const latest=[...active].sort((a,b)=>Number(b.isNew)-Number(a.isNew)||Number(b.isRecommended)-Number(a.isRecommended)).slice(0,6);const count=active.length;const categoryNames=['FPS BOOST','SURVIVAL','CPVP','SERVER','VISUAL'];
 ---
-<BaseLayout title="Gyzenn Community &mdash; Modpack Minecraft Indonesia" floating><section class="hero"><Image class="hero-img" src={heroImage} alt="Pratinjau shader Minecraft DERIVATIVE" widths={[640,960,1280,1920]} sizes="100vw" format="webp" priority/><div class="hero-content container"><p class="eyebrow">Minecraft untuk pemain Indonesia</p><h1>GYZENN<br class="mobile"/> COMMUNITY</h1><p>Modpack, shader, dan launcher Minecraft untuk pemain Indonesia.</p><div class="actions"><a class="btn primary" href="/modpacks/">Lihat modpack</a><a class="btn secondary" href="/zalith/">Unduh Zalith</a></div><div class="stats"><div><b>{count}</b><span>Modpack</span></div><div><b>{site.stats.tiktokFollowers.toLocaleString('id-ID')}</b><span>Pengikut TikTok</span></div><div><b>{site.stats.whatsappFollowers.toLocaleString('id-ID')}</b><span>Pengikut WhatsApp</span></div></div></div></section><div class="container page"><section class="section"><div class="section-head"><h2 class="section-title">Terbaru</h2><a href="/modpacks/">Lihat semua &rarr;</a></div><div class="latest">{latest.map(m=><div class="slide"><ModpackCard modpack={m}/></div>)}</div></section><section class="section"><h2 class="section-title">Pilih sesuai kebutuhan</h2><div class="tiles">{categoryNames.map(c=><a class="tile card" href={`/modpacks/?kategori=${slug(c)}`}><span>{String.fromCodePoint(c==='FPS BOOST'?0x26a1:c==='SURVIVAL'?0x2302:c==='CPVP'?0x2295:c==='SERVER'?0x2637:0x2726)}</span><b>{c}</b><small>{active.filter(m=>m.categories.includes(c)).length} modpack</small></a>)}</div></section><section class="section zalith card"><div><h2 class="section-title">Zalith Launcher {zalith.version}</h2><p class="muted">Jelajahi versi Zalith Launcher yang tersedia.</p></div><a class="btn primary" href="/zalith/">Unduh Zalith</a></section><section class="section"><div class="section-head"><h2 class="section-title">Komunitas Gyzenn</h2><a href="/komunitas/">Lihat semua &rarr;</a></div><div class="socials"><a class="card" href={site.links.tiktok}>TikTok <b>@giovmare</b><span>{site.stats.tiktokFollowers.toLocaleString('id-ID')} pengikut</span></a><a class="card" href={site.links.whatsappChannel}>Saluran WhatsApp <b>{site.stats.whatsappFollowers.toLocaleString('id-ID')} pengikut</b></a><a class="card" href={site.links.discord}>Discord <b>Gabung komunitas</b></a><a class="card" href="/casda-network/">Casda Network <b>Dalam pengembangan</b></a></div></section><section class="section support card"><div><h2 class="section-title">Dukung Gyzenn Community</h2><p class="muted">Dukunganmu membantu kelangsungan modpack, optimasi FPS, dan server komunitas.</p></div><a class="btn primary" href={site.links.saweria} target="_blank" rel="noopener noreferrer">Dukung di Saweria</a></section></div></BaseLayout>
-<style>.hero{height:78dvh;min-height:520px;max-height:850px;position:relative;display:flex;align-items:flex-end;overflow:hidden}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 10%,rgb(10 147 224/.18) 38%,var(--bg) 100%)}.hero-content{z-index:1;padding-bottom:20px}.eyebrow{font-size:13px;font-weight:700;margin-bottom:6px}.hero h1{font:700 clamp(1.75rem,7vw,3.5rem)/1.1 var(--font-display);text-shadow:0 3px 8px #062846;margin-bottom:10px}.hero-content>p:not(.eyebrow){max-width:520px;font-weight:600}.actions{display:flex;gap:8px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:24px}.stats div{min-height:72px;padding:10px 4px;border-radius:12px;background:var(--glass-dark);text-align:center;display:flex;flex-direction:column;justify-content:center}.stats b{font-size:16px}.stats span{font-size:10px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-head a{min-height:44px;display:inline-flex;align-items:center;font-weight:700;font-size:13px}.latest{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 12px}.slide{flex:0 0 78%;scroll-snap-align:start}.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{padding:12px;display:flex;flex-direction:column;gap:3px;min-height:102px}.tile>span{font-size:21px;color:var(--brand)}.tile b{font-size:14px}.tile small{font-size:12px;color:var(--muted)}.zalith,.support{padding:18px;display:flex;flex-direction:column;gap:12px}.zalith p,.support p{margin:0}.socials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.socials a{min-height:106px;padding:13px;display:flex;flex-direction:column;gap:4px;color:var(--ink);font-weight:600}.socials span{font-size:12px;color:var(--muted)}.mobile{display:initial}@media(min-width:640px){.hero-content{padding-bottom:28px}.stats{max-width:520px}.latest{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;scroll-snap-type:none}.slide{min-width:0}.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.zalith,.support{flex-direction:row;align-items:center;justify-content:space-between}.socials{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(min-width:1024px){.hero{height:78dvh}.latest{grid-template-columns:repeat(4,minmax(0,1fr))}.tiles{grid-template-columns:repeat(5,minmax(0,1fr))}.mobile{display:none}}</style>
+import { Image } from "astro:assets";
+import heroImage from "../assets/img/preview.png";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ModpackCard from "../components/ModpackCard.astro";
+import { modpacks, slug } from "../data/modpacks";
+import { zalith } from "../data/zalith";
+import { site } from "../data/site";
+const active = modpacks.filter((m) => m.type === "modpack" && !m.isArchived);
+const latest = [...active]
+  .sort(
+    (a, b) =>
+      Number(b.isNew) - Number(a.isNew) || Number(b.isRecommended) - Number(a.isRecommended),
+  )
+  .slice(0, 6);
+const count = active.length;
+const categoryNames = ["FPS BOOST", "SURVIVAL", "CPVP", "SERVER", "VISUAL"];
+---
+
+<BaseLayout title="Gyzenn Community &mdash; Modpack Minecraft Indonesia" floating>
+  <section class="hero">
+    <Image
+      class="hero-img"
+      src={heroImage}
+      alt="Pratinjau shader Minecraft DERIVATIVE"
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      format="webp"
+      priority
+    />
+    <div class="hero-content container">
+      <p class="eyebrow">Minecraft untuk pemain Indonesia</p>
+      <h1>
+        GYZENN
+        <br class="mobile" /> COMMUNITY
+      </h1>
+      <p>Modpack, shader, dan launcher Minecraft untuk pemain Indonesia.</p>
+      <div class="actions">
+        <a class="btn primary" href="/modpacks/">
+          Lihat modpack
+        </a>
+        <a class="btn secondary" href="/zalith/">
+          Unduh Zalith
+        </a>
+      </div>
+      <div class="stats">
+        <div>
+          <b>{count}</b>
+          <span>Modpack</span>
+        </div>
+        <div>
+          <b>{site.stats.tiktokFollowers.toLocaleString("id-ID")}</b>
+          <span>Pengikut TikTok</span>
+        </div>
+        <div>
+          <b>{site.stats.whatsappFollowers.toLocaleString("id-ID")}</b>
+          <span>Pengikut WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container page">
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Terbaru</h2>
+        <a href="/modpacks/">Lihat semua &rarr;</a>
+      </div>
+      <div class="latest">
+        {latest.map((m) => (
+          <div class="slide">
+            <ModpackCard modpack={m} />
+          </div>
+        ))}
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Pilih sesuai kebutuhan</h2>
+      <div class="tiles">
+        {categoryNames.map((c) => (
+          <a class="tile card" href={`/modpacks/?kategori=${slug(c)}`}>
+            <span>
+              {String.fromCodePoint(
+                c === "FPS BOOST"
+                  ? 0x26a1
+                  : c === "SURVIVAL"
+                    ? 0x2302
+                    : c === "CPVP"
+                      ? 0x2295
+                      : c === "SERVER"
+                        ? 0x2637
+                        : 0x2726,
+              )}
+            </span>
+            <b>{c}</b>
+            <small>{active.filter((m) => m.categories.includes(c)).length} modpack</small>
+          </a>
+        ))}
+      </div>
+    </section>
+    <section class="section zalith card">
+      <div>
+        <h2 class="section-title">Zalith Launcher {zalith.version}</h2>
+        <p class="muted">Jelajahi versi Zalith Launcher yang tersedia.</p>
+      </div>
+      <a class="btn primary" href="/zalith/">
+        Unduh Zalith
+      </a>
+    </section>
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Komunitas Gyzenn</h2>
+        <a href="/komunitas/">Lihat semua &rarr;</a>
+      </div>
+      <div class="socials">
+        <a class="card" href={site.links.tiktok}>
+          TikTok <b>@giovmare</b>
+          <span>{site.stats.tiktokFollowers.toLocaleString("id-ID")} pengikut</span>
+        </a>
+        <a class="card" href={site.links.whatsappChannel}>
+          Saluran WhatsApp <b>{site.stats.whatsappFollowers.toLocaleString("id-ID")} pengikut</b>
+        </a>
+        <a class="card" href={site.links.discord}>
+          Discord <b>Gabung komunitas</b>
+        </a>
+        <a class="card" href="/casda-network/">
+          Casda Network <b>Dalam pengembangan</b>
+        </a>
+      </div>
+    </section>
+    <section class="section support card">
+      <div>
+        <h2 class="section-title">Dukung Gyzenn Community</h2>
+        <p class="muted">
+          Dukunganmu membantu kelangsungan modpack, optimasi FPS, dan server komunitas.
+        </p>
+      </div>
+      <a class="btn primary" href={site.links.saweria} target="_blank" rel="noopener noreferrer">
+        Dukung di Saweria
+      </a>
+    </section>
+  </div>
+</BaseLayout>
+<style>
+  .hero {
+    height: 78dvh;
+    min-height: 520px;
+    max-height: 850px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 10%, rgb(10 147 224/0.18) 38%, var(--bg) 100%);
+  }
+  .hero-content {
+    z-index: 1;
+    padding-bottom: 20px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .hero h1 {
+    font: 700 clamp(1.75rem, 7vw, 3.5rem)/1.1 var(--font-display);
+    text-shadow: 0 3px 8px #062846;
+    margin-bottom: 10px;
+  }
+  .hero-content > p:not(.eyebrow) {
+    max-width: 520px;
+    font-weight: 600;
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .stats div {
+    min-height: 72px;
+    padding: 10px 4px;
+    border-radius: 12px;
+    background: var(--glass-dark);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .stats b {
+    font-size: 16px;
+  }
+  .stats span {
+    font-size: 10px;
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .section-head a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .latest {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 12px;
+  }
+  .slide {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .tile {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-height: 102px;
+  }
+  .tile > span {
+    font-size: 21px;
+    color: var(--brand);
+  }
+  .tile b {
+    font-size: 14px;
+  }
+  .tile small {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .zalith,
+  .support {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .zalith p,
+  .support p {
+    margin: 0;
+  }
+  .socials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .socials a {
+    min-height: 106px;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .socials span {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .mobile {
+    display: initial;
+  }
+  @media (min-width: 640px) {
+    .hero-content {
+      padding-bottom: 28px;
+    }
+    .stats {
+      max-width: 520px;
+    }
+    .latest {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+    .slide {
+      min-width: 0;
+    }
+    .tiles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .zalith,
+    .support {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .socials {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      height: 78dvh;
+    }
+    .latest {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .tiles {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .mobile {
+      display: none;
+    }
+  }
+</style>
