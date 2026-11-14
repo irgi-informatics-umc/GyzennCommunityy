@@ -153,11 +153,11 @@ const cover = imageFor(m.image);
         {m.downloads.map((d, i) => (
           <a class="btn primary dl" href={d.url} target="_blank" rel="noopener noreferrer">
             {d.label}
-            {i === 0 ? " (Unduhan utama)" : ""}
+            {i === 0 ? " (Recommended)" : ""}
           </a>
         ))}
         {m.downloads.some((d) => /ekstrak/i.test(d.url + d.label)) && (
-          <p class="muted">Ekstrak dulu sebelum dipakai.</p>
+          <p class="muted">Ekstrak dulu sebelum di pake</p>
         )}
         <button class="btn secondary" id="copy">
           Salin tautan
@@ -166,7 +166,7 @@ const cover = imageFor(m.image);
     </div>
     <div class="sticky-cta">
       <a class="btn primary" href={m.downloads[0].url} target="_blank" rel="noopener noreferrer">
-        Unduh — {m.name}
+        Download {m.name}
       </a>
     </div>
   </article>
