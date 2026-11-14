@@ -1,0 +1,79 @@
+---
+import { nav } from "../data/nav";
+import { site } from "../data/site";
+import { modpacks } from "../data/modpacks";
+const latest = modpacks
+  .filter((m) => m.type === "modpack" && !m.isArchived)
+  .sort(
+    (a, b) =>
+      Number(b.isNew) - Number(a.isNew) || Number(b.isRecommended) - Number(a.isRecommended),
+  )
+  .slice(0, 6);
+---
+
+<footer class="foot">
+  <div class="container cols">
+    <section>
+      <h2>Halaman</h2>
+      {nav.map((n) => (
+        <a href={n.href}>{n.label}</a>
+      ))}
+    </section>
+    <section>
+      <h2>Modpack terbaru</h2>
+      {latest.map((m) => (
+        <a href={`/modpacks/${m.id}/`}>{m.name}</a>
+      ))}
+    </section>
+    <section>
+      <h2>Dukungan</h2>
+      <p>Dukunganmu membantu Gyzenn Community terus berkembang.</p>
+      <a href={site.links.saweria} target="_blank" rel="noopener noreferrer">
+        Dukung di Saweria
+      </a>
+      <a href={site.links.linktree} target="_blank" rel="noopener noreferrer">
+        Linktree
+      </a>
+    </section>
+  </div>
+  <p class="legal">
+    &copy; {new Date().getFullYear()} Gyzenn Community &middot; Device uji: {site.deviceSpec}
+  </p>
+</footer>
+<style>
+  .foot {
+    padding: 30px 0 16px;
+    background: var(--bg-deep);
+  }
+  .cols {
+    display: grid;
+    gap: 22px;
+  }
+  .cols section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .cols h2 {
+    font-size: 17px;
+    margin: 0;
+  }
+  .cols a {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  .legal {
+    text-align: center;
+    font-size: 12px;
+    margin: 26px 12px 0;
+  }
+  @media (min-width: 768px) {
+    .cols {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

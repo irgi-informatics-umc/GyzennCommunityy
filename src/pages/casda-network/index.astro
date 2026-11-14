@@ -1,115 +1,143 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import siteData from '../../../public/assets/data/site.json';
-import '../../styles/pages/casda.css';
-
-const { site } = siteData;
+import { Image } from "astro:assets";
+import casda from "../../assets/img/casda.webp";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
 ---
-<BaseLayout 
-  title="Casda Network - Official Minecraft Server Gyzenn Community"
-  description="Casda Network Minecraft Server — Official Network Gyzenn Community. Java & Bedrock cross-platform (Coming Soon)."
+
+<BaseLayout
+  title="Casda Network &mdash; Gyzenn Community"
+  description="Casda Network, server Minecraft Java dan Bedrock yang sedang dikembangkan."
+  image="/assets/img/casda.webp"
 >
-  <section class="section section-server" id="server">
-    <div class="container">
-
-      <div class="section-header">
-        <span class="section-tag tag-retro-orange">
-          <i class="fa-solid fa-network-wired"></i> MINECRAFT SERVER
-        </span>
-        <h1 class="section-title">CASDA NETWORK</h1>
-        <p class="section-desc">
-          Official Minecraft Network dari Gyzenn Community. Saat ini sedang dalam tahap pengembangan intensif untuk menghadirkan pengalaman bermain terbaik.
+  <div class="container page">
+    <article class="card server">
+      <Image
+        src={casda}
+        alt="Casda Network"
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        format="webp"
+      />
+      <div class="body">
+        <span class="status">Dalam pengembangan</span>
+        <h1>Casda Network</h1>
+        <p>
+          Casda Network sedang dalam tahap pengembangan. Berbagai sistem, mode, dan fitur server
+          sedang dipersiapkan sebelum resmi dibuka untuk publik.
         </p>
-      </div>
-
-      <div class="retro-poster-box server-poster">
-        <div class="server-poster-grid">
-
-          <div class="server-img-col">
-            <div class="server-frame-wrapper" id="serverPosterFrame">
-              <img src="/assets/img/casda.webp" alt="Casda Network" class="server-img" loading="lazy" />
-              <div class="server-badge-overlay"><i class="fa-solid fa-clock"></i> COMING SOON</div>
-            </div>
+        <dl>
+          <div>
+            <dt>Platform</dt>
+            <dd>Java + Bedrock</dd>
           </div>
-
-          <div class="server-info-col">
-            <div class="server-badges-row">
-              <span class="tag-badge tag-warning-pulse"><i class="fa-solid fa-hourglass-half"></i> UNDER DEVELOPMENT</span>
-              <span class="tag-badge tag-mc-version"><i class="fa-solid fa-clock"></i> COMING SOON</span>
-            </div>
-
-            <h2 class="server-main-title">CASDA NETWORK</h2>
-            <p class="server-desc">
-              Casda Network sedang dalam tahap pengembangan. Berbagai sistem, mode, dan fitur server sedang dipersiapkan sebelum resmi dibuka untuk publik.
-            </p>
-
-            <div class="server-chips-grid">
-              <div class="server-chip">
-                <span class="chip-label">VERSION:</span>
-                <span class="chip-val">TO BE ANNOUNCED</span>
-              </div>
-              <div class="server-chip chip-status">
-                <span class="chip-label">STATUS:</span>
-                <span class="chip-val status-val">🔨 IN DEVELOPMENT</span>
-              </div>
-              <div class="server-chip">
-                <span class="chip-label">PLATFORM:</span>
-                <span class="chip-val">Java + Bedrock</span>
-              </div>
-              <div class="server-chip chip-ip">
-                <span class="chip-label">SERVER IP:</span>
-                <span class="chip-val ip-text">SEGERA RILIS</span>
-              </div>
-            </div>
-
-            <div class="server-modes-preview">
-              <div class="mode-preview-card">
-                <div class="mode-card-header">
-                  <span class="mode-name"><i class="fa-solid fa-campground"></i> SURVIVAL</span>
-                  <span class="mode-status-badge">COMING SOON</span>
-                </div>
-                <p class="mode-card-desc">Mode Survival Casda Network sedang dipersiapkan.</p>
-              </div>
-              <div class="mode-preview-card">
-                <div class="mode-card-header">
-                  <span class="mode-name"><i class="fa-solid fa-crosshairs"></i> PVP ARENA</span>
-                  <span class="mode-status-badge">COMING SOON</span>
-                </div>
-                <p class="mode-card-desc">Mode PvP sedang dalam tahap development.</p>
-              </div>
-              <div class="mode-preview-card">
-                <div class="mode-card-header">
-                  <span class="mode-name"><i class="fa-solid fa-coins"></i> ECONOMY</span>
-                  <span class="mode-status-badge">SEGERA RILIS</span>
-                </div>
-                <p class="mode-card-desc">Sistem ekonomi server sedang dirancang.</p>
-              </div>
-              <div class="mode-preview-card">
-                <div class="mode-card-header">
-                  <span class="mode-name"><i class="fa-solid fa-users"></i> COMMUNITY</span>
-                  <span class="mode-status-badge">COMING SOON</span>
-                </div>
-                <p class="mode-card-desc">Fitur komunitas aktif setelah network rilis.</p>
-              </div>
-            </div>
-
-            <div class="server-actions-group">
-              <button type="button" class="btn btn-copy-ip" id="btnCopyIp" aria-label="IP Casda Network Segera Rilis">
-                <i class="fa-solid fa-clock"></i>
-                <span id="copyIpBtnText">IP SEGERA RILIS</span>
-              </button>
-              <a href={site.links.discordCasda} target="_blank" rel="noopener noreferrer" class="btn btn-discord-subtle" title="Gabung Discord Komunitas Gyzenn">
-                <i class="fa-brands fa-discord"></i>
-                <span>DISCORD COMMUNITY</span>
-              </a>
-            </div>
+          <div>
+            <dt>Versi</dt>
+            <dd>Akan diumumkan</dd>
           </div>
-
-        </div>
+          <div>
+            <dt>IP</dt>
+            <dd>Akan diumumkan</dd>
+          </div>
+        </dl>
+        <h2>Rencana mode</h2>
+        <ul class="modes">
+          {["Survival", "PvP Arena", "Economy", "Community"].map((m) => (
+            <li>
+              {m}
+              <span>Segera</span>
+            </li>
+          ))}
+        </ul>
+        <a
+          class="btn discord"
+          href={site.links.discordCasda}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Kabari saya lewat Discord
+        </a>
       </div>
-
-    </div>
-  </section>
-
-  <script is:inline src="/assets/js/pages/casda.js" defer></script>
+    </article>
+  </div>
 </BaseLayout>
+<style>
+  .server {
+    overflow: hidden;
+    color: var(--ink);
+  }
+  .server > img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+  }
+  .body {
+    padding: 18px;
+  }
+  .status {
+    padding: 5px 10px;
+    border-radius: 99px;
+    background: #fff0d3;
+    color: #674500;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .body h1 {
+    margin: 12px 0;
+    font-size: 30px;
+  }
+  .body p {
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  dl div {
+    padding: 10px;
+    background: var(--surface-soft);
+    border-radius: 10px;
+  }
+  dt {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  dd {
+    margin: 2px 0 0;
+    font-weight: 700;
+  }
+  .body h2 {
+    font-size: 20px;
+  }
+  .modes {
+    list-style: none;
+    padding: 0;
+  }
+  .modes li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .modes span {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (min-width: 768px) {
+    .server {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+    .server > img {
+      height: 100%;
+    }
+    .body {
+      padding: 28px;
+    }
+    dl {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

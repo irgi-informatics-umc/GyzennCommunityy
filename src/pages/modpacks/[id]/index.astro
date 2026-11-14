@@ -1,0 +1,316 @@
+---
+import { Image } from "astro:assets";
+import { imageFor } from "../../../data/images";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ModpackCard from "../../../components/ModpackCard.astro";
+import { modpacks } from "../../../data/modpacks";
+import type { Modpack } from "../../../data/types";
+export function getStaticPaths() {
+  return modpacks.map((modpack) => ({ params: { id: modpack.id }, props: { modpack } }));
+}
+const { modpack: m } = Astro.props as { modpack: Modpack };
+const related = modpacks
+  .filter((x) => x.id !== m.id && x.categories.some((c) => m.categories.includes(c)))
+  .slice(0, 3);
+const details = [
+  ["Mod tambahan", m.additionalMods],
+  ["Resource pack", m.resourcepacks],
+  ["Mod ekstra", m.extraMods],
+] as const;
+const shaderFacts = [
+  "Pencahayaan realistis: cahaya matahari, langit & ambient natural.",
+  "Warna & kontras seimbang: kontras hidup & nyaman di mata.",
+  "Bayangan halus: transisi shadow lembut & detail.",
+  "Air jernih & reflektif.",
+  "Daun & vegetasi hidup dengan animasi natural.",
+  "Performa optimal untuk survival/PvP.",
+];
+const resourceFacts = [
+  "Audio enhancement: suara langkah, ambient lingkungan, air, dan sound effect lebih dinamis & jernih.",
+  "Wide compatibility: kompatibel dengan Minecraft Java versi 1.21 sampai dengan 26.3.",
+  "Resource pack audio tanpa loader/mod.",
+  "Pemasangan di direktori resourcepacks pada game client.",
+];
+const cover = imageFor(m.image);
+---
+
+<BaseLayout
+  title={`${m.name}${m.minecraft ? ` ${m.minecraft}` : ""} &mdash; Gyzenn Community`}
+  description={m.description.slice(0, 155)}
+  image={m.image ?? "/assets/img/preview.webp"}
+>
+  <article class="container page detail">
+    <p>
+      <a href="/modpacks/">Modpack</a> &rsaquo; {m.name}
+    </p>
+    <div class="card main">
+      {m.image ? (
+        <Image
+          class="cover"
+          src={cover!}
+          alt={m.imageAlt ?? m.name}
+          widths={[480, 960, 1440]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          format="webp"
+          fetchpriority="high"
+        />
+      ) : (
+        <div class="cover">
+          <span>{m.categories.join(" &middot; ")}</span>
+          <strong>{m.minecraft ?? m.version ?? m.type}</strong>
+        </div>
+      )}
+      <div class="content">
+        <h1>{m.name}</h1>
+        <div class="chips">
+          {m.minecraft && <span>{m.minecraft}</span>}
+          {m.loader && (
+            <span>
+              {m.loader}
+              {m.loaderVersion ? ` ${m.loaderVersion}` : ""}
+            </span>
+          )}
+          {m.categories.map((c) => (
+            <span>{c}</span>
+          ))}
+          {m.isNew && <span>Baru</span>}
+          {m.isRecommended && <span>Rekomendasi</span>}
+          {m.isArchived && <span>Arsip</span>}
+        </div>
+        <p>{m.description}</p>
+        {m.features?.length && (
+          <>
+            <h2>Fitur</h2>
+            <ul>
+              {m.features.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {m.type === "shader" && (
+          <>
+            <h2>Fitur shader</h2>
+            <ul>
+              {shaderFacts.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            <aside>
+              <b>Performance tip</b>
+              <p>Gunakan render distance 12+ chunk & sesuaikan quality dengan perangkatmu.</p>
+            </aside>
+            <p>Edit &amp; optimized by Gyzenn.</p>
+          </>
+        )}
+        {m.type === "resourcepack" && (
+          <>
+            <h2>Spesifikasi resource pack</h2>
+            <ul>
+              {resourceFacts.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {m.note && (
+          <p class:list={["note", m.note.type === "warning" ? "warning" : ""]}>
+            {m.note.text.includes("Settings >") ? (
+              <>
+                {m.note.text.split("Settings >")[0]}
+                <code>Settings &gt; {m.note.text.split("Settings >")[1]}</code>
+              </>
+            ) : (
+              m.note.text
+            )}
+          </p>
+        )}
+        {details.map(
+          ([label, items]) =>
+            items?.length && (
+              <details>
+                <summary>{label}</summary>
+                {m.extraModsNote && label === "Mod ekstra" && <p>{m.extraModsNote}</p>}
+                <ul>
+                  {items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </details>
+            ),
+        )}
+        {m.mods?.length && (
+          <details>
+            <summary>Mod</summary>
+            <ul>
+              {m.mods.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <h2>Unduhan</h2>
+        {m.downloads.map((d, i) => (
+          <a class="btn primary dl" href={d.url} target="_blank" rel="noopener noreferrer">
+            {d.label}
+            {i === 0 ? " (Recommended)" : ""}
+          </a>
+        ))}
+        {m.downloads.some((d) => /ekstrak/i.test(d.url + d.label)) && (
+          <p class="muted">Ekstrak dulu sebelum di pake</p>
+        )}
+        <button class="btn secondary" id="copy">
+          Salin tautan
+        </button>
+      </div>
+    </div>
+    <div class="sticky-cta">
+      <a class="btn primary" href={m.downloads[0].url} target="_blank" rel="noopener noreferrer">
+        Download {m.name}
+      </a>
+    </div>
+  </article>
+  {related.length > 0 && (
+    <section class="container section">
+      <h2>Modpack lain</h2>
+      <div class="related">
+        {related.map((item) => (
+          <ModpackCard modpack={item} />
+        ))}
+      </div>
+    </section>
+  )}
+  <script>
+    const button = document.querySelector("#copy");
+    button?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(location.href);
+      } catch {
+        const input = document.createElement("textarea");
+        input.value = location.href;
+        document.body.append(input);
+        input.select();
+        Reflect.apply(document.execCommand, document, ["copy"]);
+        input.remove();
+      }
+      const toast = document.querySelector("#toast");
+      if (toast) {
+        toast.textContent = "Tautan disalin";
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+    });
+  </script>
+  <style>
+    body:has(.sticky-cta) {
+      padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom) + 72px);
+    }
+    .sticky-cta {
+      display: none;
+    }
+    .main {
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      background: linear-gradient(140deg, #8f1420, #d62839);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+    }
+    .cover strong {
+      font: 700 32px var(--font-display);
+    }
+    .content {
+      padding: 18px;
+    }
+    .content h1 {
+      font-size: clamp(25px, 6vw, 38px);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+    .chips span {
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-ink);
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .content p,
+    .content li {
+      color: var(--ink);
+    }
+    .content h2 {
+      font-size: 19px;
+      margin-top: 22px;
+    }
+    .note,
+    aside {
+      padding: 12px;
+      background: var(--surface-soft);
+      border-radius: 10px;
+    }
+    .warning {
+      background: #fff0d3;
+    }
+    .content details {
+      margin: 12px 0;
+      padding: 12px;
+      background: #f9edef;
+      border-radius: 10px;
+    }
+    .content summary {
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .dl {
+      width: 100%;
+      margin: 4px 0;
+    }
+    .related {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .content > .secondary {
+      margin-top: 12px;
+    }
+    @media (max-width: 1023px) {
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        z-index: var(--z-float);
+        bottom: calc(var(--bar-h) + env(safe-area-inset-bottom));
+        left: 0;
+        right: 0;
+        padding: 8px 12px;
+        background: var(--bg-deep);
+      }
+      .sticky-cta .btn {
+        width: 100%;
+      }
+    }
+    @media (min-width: 1024px) {
+      body:has(.sticky-cta) {
+        padding-bottom: 0;
+      }
+    }
+    @media (min-width: 640px) {
+      .related {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .content {
+        padding: 24px;
+      }
+    }
+  </style>
+</BaseLayout>

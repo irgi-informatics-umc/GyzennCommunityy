@@ -1,213 +1,334 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import siteData from '../../public/assets/data/site.json';
-import '../styles/pages/home.css';
-
-const { site } = siteData;
+import { Image } from "astro:assets";
+import heroImage from "../assets/img/preview.png";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ModpackCard from "../components/ModpackCard.astro";
+import { modpacks, slug } from "../data/modpacks";
+import { zalith } from "../data/zalith";
+import { site } from "../data/site";
+const active = modpacks.filter((m) => m.type === "modpack" && !m.isArchived);
+const latest = [...active]
+  .sort(
+    (a, b) =>
+      Number(b.isNew) - Number(a.isNew) || Number(b.isRecommended) - Number(a.isRecommended),
+  )
+  .slice(0, 6);
+const count = active.length;
+const categoryNames = ["FPS BOOST", "SURVIVAL", "CPVP", "SERVER", "VISUAL"];
 ---
-<BaseLayout 
-  title="Gyzenn Community - Minecraft Creator, Modpack Hub & Casda Network"
-  description="Official website Gyzenn Community — Minecraft creator Indonesia. Modpack Hub, DERIVATIVE Shader, Zalith Launcher, dan Casda Network Minecraft Server."
->
-  <section class="hero-section" id="hero">
-    <div class="container hero-container">
-      <div class="hero-poster-layout">
 
-        <div class="status-badge">
-          <span class="pulse-dot"></span>
-          <span class="retro-pixel-text">ONLINE • MINECRAFT CREATOR & COMMUNITY HUB</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="hero-word word-gyzenn">GYZENN</span>
-          <span class="hero-word word-community">COMMUNITY</span>
-        </h1>
-
-        <div class="hero-tag-strip">
-          <span class="sticker-tag"><i class="fa-solid fa-cube"></i> MINECRAFT CREATOR</span>
-          <span class="sticker-tag tag-pink"><i class="fa-solid fa-wand-magic-sparkles"></i> SHADERS</span>
-          <span class="sticker-tag tag-yellow"><i class="fa-solid fa-box-open"></i> MODPACKS</span>
-        </div>
-
-        <div class="hero-visual-center">
-          <div class="retro-polaroid-frame" id="heroPolaroid">
-            <div class="polaroid-header">
-              <span class="polaroid-dots">● ● ●</span>
-              <span class="polaroid-title">GYZENN CREATOR PROFILE</span>
-            </div>
-
-            <div class="avatars-wrapper">
-              <div class="avatar-card avatar-wa-card" title="WhatsApp Channel Profile">
-                <div class="avatar-ring wa-ring">
-                  <img src="/assets/img/wa.jpg" alt="WhatsApp Profile" class="avatar-img" width="75" height="75" loading="eager" />
-                </div>
-                <span class="avatar-label"><i class="fa-brands fa-whatsapp"></i> WHATSAPP</span>
-              </div>
-
-              <div class="avatar-card avatar-tiktok-card" title="TikTok Creator Profile">
-                <div class="avatar-ring tiktok-ring">
-                  <img src="/assets/img/tiktok.jpeg" alt="TikTok Profile" class="avatar-img" width="75" height="75" loading="eager" />
-                </div>
-                <span class="avatar-label"><i class="fa-brands fa-tiktok"></i> TIKTOK</span>
-              </div>
-            </div>
-
-            <div class="polaroid-caption">
-              <span class="retro-handwriting">@giovmare • Official Gyzenn Hub</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-action-bottom">
-          <div class="device-spec-pill" title="Hardware Specs">
-            <i class="fa-solid fa-laptop-code"></i>
-            <span>TESTED DEVICE: <strong>ACER NITRO V15</strong></span>
-            <span class="gpu-badge">RTX 4050</span>
-          </div>
-
-          <div class="hero-cta-group">
-            <a href={site.links.linktree} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-hero-main" id="btnHeroLinktree">
-              <i class="fa-solid fa-tree"></i>
-              <span>LINKTREE GUA</span>
-            </a>
-            <a href="/modpacks/" class="btn btn-secondary btn-hero-sub" id="btnHeroModpacks">
-              <i class="fa-solid fa-download"></i>
-              <span>EXPLORE MODPACK</span>
-            </a>
-          </div>
-        </div>
-
+<BaseLayout title="Gyzenn Community &mdash; Modpack Minecraft Indonesia" floating>
+  <section class="hero">
+    <Image
+      class="hero-img"
+      src={heroImage}
+      alt="Pratinjau shader Minecraft DERIVATIVE"
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      format="webp"
+      priority
+    />
+    <div class="hero-content container">
+      <p class="eyebrow">Minecraft java only</p>
+      <h1>
+        Gyzenn
+        <br class="mobile" /> Community
+      </h1>
+      <p>Modpack, shader, dan launcher Minecraft</p>
+      <div class="actions">
+        <a class="btn primary" href="/modpacks/">
+          Cek modpack
+        </a>
+        <a class="btn secondary" href="/zalith/">
+          Download Zalith
+        </a>
       </div>
-    </div>
-  </section>
-
-  <div class="retro-ribbon-divider" aria-hidden="true"></div>
-
-  {/* Page Navigation Teasers */}
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag tag-retro-pink">
-          <i class="fa-solid fa-compass"></i> NAVIGASI QUICK ACCESS
-        </span>
-        <h2 class="section-title">JELAJAHI GYZENN COMMUNITY</h2>
-        <p class="section-desc">Pilih halaman yang ingin kamu tuju untuk modpack, komunitas, launcher, atau server.</p>
-      </div>
-
-      <div class="home-teaser-grid">
-        <div class="teaser-card">
-          <div class="teaser-card-icon" style="background-color: var(--color-pink); color: #fff;">
-            <i class="fa-solid fa-users"></i>
-          </div>
-          <h3 class="teaser-card-title">KOMUNITAS & DISCORD</h3>
-          <p class="teaser-card-desc">TikTok score, Saluran WhatsApp, Group Mabar, dan Discord Hub 24/7.</p>
-          <a href="/komunitas/" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.5rem;">BUKA KOMUNITAS</a>
+      <div class="stats">
+        <div>
+          <b>{count}</b>
+          <span>Modpack</span>
         </div>
-
-        <div class="teaser-card">
-          <div class="teaser-card-icon" style="background-color: var(--color-yellow); color: #121212;">
-            <i class="fa-solid fa-box-open"></i>
-          </div>
-          <h3 class="teaser-card-title">MODPACKS & SHADER</h3>
-          <p class="teaser-card-desc">DERIVATIVE Shader, Survival V2, Cobra Remake Series, FpsBoost & CPvP.</p>
-          <a href="/modpacks/" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem;">LIHAT MODPACKS</a>
+        <div>
+          <b>{site.stats.tiktokFollowers.toLocaleString("id-ID")}</b>
+          <span>Pengikut TikTok</span>
         </div>
-
-        <div class="teaser-card">
-          <div class="teaser-card-icon" style="background-color: var(--color-blue); color: #fff;">
-            <i class="fa-solid fa-rocket"></i>
-          </div>
-          <h3 class="teaser-card-title">ZALITH LAUNCHER</h3>
-          <p class="teaser-card-desc">Rilis 1.4.1.4 by MovTery, changelog lengkap & download APK Android.</p>
-          <a href="/zalith/" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.5rem;">DOWNLOAD ZALITH</a>
-        </div>
-
-        <div class="teaser-card">
-          <div class="teaser-card-icon" style="background-color: var(--color-orange); color: #fff;">
-            <i class="fa-solid fa-server"></i>
-          </div>
-          <h3 class="teaser-card-title">CASDA NETWORK</h3>
-          <p class="teaser-card-desc">Official Minecraft Network Gyzenn Community (Under Development).</p>
-          <a href="/casda-network/" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem;">CEK CASDA NETWORK</a>
+        <div>
+          <b>{site.stats.whatsappFollowers.toLocaleString("id-ID")}</b>
+          <span>Pengikut WhatsApp</span>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Support Campaign Section -->
-  <section class="section section-support-campaign" id="support">
-    <div class="container">
-      <div class="support-campaign-wrapper">
-        <div class="campaign-shape shape-starburst" aria-hidden="true">★</div>
-        <div class="campaign-shape shape-squiggle" aria-hidden="true">
-          <svg width="70" height="24" viewBox="0 0 70 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12C8 4 14 20 20 12C26 4 32 20 38 12C44 4 50 20 56 12C62 4 68 20 68 12" stroke="#FF5722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="campaign-shape shape-dots-cluster" aria-hidden="true"></div>
-
-        <div class="support-campaign-grid">
-          <div class="support-typography-col">
-            <div class="support-tag-row">
-              <span class="section-tag tag-retro-pink">
-                <i class="fa-solid fa-heart"></i> SUPPORT THE COMMUNITY
-              </span>
-              <span class="tag-badge tag-shader">
-                <i class="fa-solid fa-mug-hot"></i> SAWERIA // GIIPRTMA
-              </span>
-            </div>
-
-            <h2 class="support-giant-title">
-              SUPPORT<br>
-              <span class="highlight-yellow">GYZENN</span>
-            </h2>
-
-            <p class="support-editorial-lead">
-              Enjoying the community, modpacks and projects? Help us keep Gyzenn growing, servers active, and regular optimization updates coming for everyone.
-            </p>
-
-            <div class="support-meta-tags">
-              <span class="tag-badge tag-mc-version"><i class="fa-solid fa-bolt"></i> CREATOR SUPPORT</span>
-              <span class="tag-badge tag-fabric"><i class="fa-solid fa-qrcode"></i> QRIS & E-WALLET</span>
-              <span class="tag-badge tag-release"><i class="fa-solid fa-star"></i> 100% COMMUNITY DRIVEN</span>
-            </div>
-          </div>
-
-          <div class="support-visual-col">
-            <div class="support-sticker-physical">
-              <span class="sticker-heart-icon">♥</span>
-              <span>KEEP GYZENN GROWING</span>
-            </div>
-
-            <div class="saweria-editorial-poster">
-              <div class="poster-badge-top">
-                <span>SAWERIA OFFICIAL</span>
-                <span class="poster-dot">●</span>
-                <span>GYZENN</span>
-              </div>
-
-              <div class="poster-center-box">
-                <div class="poster-sub-label">MINECRAFT CREATOR SUPPORT</div>
-                <h3 class="poster-headline">DUKUNG<br>GYZENN</h3>
-                <p class="poster-caption">
-                  Dukunganmu membantu kelangsungan modpack, optimasi FPS, dan server komunitas.
-                </p>
-              </div>
-
-              <div class="poster-cta-box">
-                <a href={site.links.saweria} target="_blank" rel="noopener noreferrer" class="btn btn-saweria-editorial btn-saweria-burst" id="btnSaweriaCta" aria-label="Support Gyzenn on Saweria">
-                  <i class="fa-solid fa-heart"></i>
-                  <span>SUPPORT ON SAWERIA</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-                <span class="poster-direct-url">saweria.co/GiiPrtma</span>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="container page">
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Terbaru</h2>
+        <a href="/modpacks/">Lihat semua &rarr;</a>
       </div>
-    </div>
-  </section>
-
-  <script is:inline src="/assets/js/pages/home.js" defer></script>
+      <div class="latest">
+        {latest.map((m) => (
+          <div class="slide">
+            <ModpackCard modpack={m} />
+          </div>
+        ))}
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Pilih sesuai kebutuhan</h2>
+      <div class="tiles">
+        {categoryNames.map((c) => (
+          <a class="tile card" href={`/modpacks/?kategori=${slug(c)}`}>
+            <span>
+              {String.fromCodePoint(
+                c === "FPS BOOST"
+                  ? 0x26a1
+                  : c === "SURVIVAL"
+                    ? 0x2302
+                    : c === "CPVP"
+                      ? 0x2295
+                      : c === "SERVER"
+                        ? 0x2637
+                        : 0x2726,
+              )}
+            </span>
+            <b>{c}</b>
+            <small>{active.filter((m) => m.categories.includes(c)).length} modpack</small>
+          </a>
+        ))}
+      </div>
+    </section>
+    <section class="section zalith card">
+      <div>
+        <h2 class="section-title">Zalith Launcher {zalith.version}</h2>
+        <p class="muted">Jelajahi versi Zalith Launcher yang tersedia.</p>
+      </div>
+      <a class="btn primary" href="/zalith/">
+        Download Zalith
+      </a>
+    </section>
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Komunitas Gyzenn</h2>
+        <a href="/komunitas/">Lihat semua &rarr;</a>
+      </div>
+      <div class="socials">
+        <a class="card" href={site.links.tiktok}>
+          TikTok <b>@giovmare</b>
+          <span>{site.stats.tiktokFollowers.toLocaleString("id-ID")} pengikut</span>
+        </a>
+        <a class="card" href={site.links.whatsappChannel}>
+          Saluran WhatsApp <b>{site.stats.whatsappFollowers.toLocaleString("id-ID")} pengikut</b>
+        </a>
+        <a class="card" href={site.links.discord}>
+          Discord <b>Gabung komunitas</b>
+        </a>
+        <a class="card" href="/casda-network/">
+          Casda Network <b>Dalam pengembangan</b>
+        </a>
+      </div>
+    </section>
+    <section class="section support card">
+      <div>
+        <h2 class="section-title">Dukung Gyzenn Community</h2>
+        <p class="muted">
+          Dukunganmu membantu kelangsungan modpack, optimasi FPS, dan server komunitas.
+        </p>
+      </div>
+      <a class="btn primary" href={site.links.saweria} target="_blank" rel="noopener noreferrer">
+        Dukung di Saweria
+      </a>
+    </section>
+  </div>
 </BaseLayout>
+<style>
+  .hero {
+    height: 78dvh;
+    min-height: 520px;
+    max-height: 850px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 10%, rgb(127 18 32/0.18) 38%, var(--bg) 100%);
+  }
+  .hero-content {
+    z-index: 1;
+    padding-bottom: 20px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .hero h1 {
+    font: 700 clamp(1.75rem, 7vw, 3.5rem)/1.1 var(--font-display);
+    text-shadow: 0 3px 8px #3c0810;
+    margin-bottom: 10px;
+  }
+  .hero-content > p:not(.eyebrow) {
+    max-width: 520px;
+    font-weight: 600;
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .stats div {
+    min-height: 72px;
+    padding: 10px 4px;
+    border-radius: 12px;
+    background: var(--glass-dark);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .stats b {
+    font-size: 16px;
+  }
+  .stats span {
+    font-size: 10px;
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .section-head a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .latest {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 12px;
+  }
+  .slide {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .tile {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-height: 102px;
+  }
+  .tile > span {
+    font-size: 21px;
+    color: var(--brand);
+  }
+  .tile b {
+    font-size: 14px;
+  }
+  .tile small {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .zalith,
+  .support {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .zalith p,
+  .support p {
+    margin: 0;
+  }
+  .socials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .socials a {
+    min-height: 106px;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .socials span {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .mobile {
+    display: initial;
+  }
+  @media (min-width: 640px) {
+    .hero-content {
+      padding-bottom: 28px;
+    }
+    .stats {
+      max-width: 520px;
+    }
+    .latest {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+    .slide {
+      min-width: 0;
+    }
+    .tiles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .zalith,
+    .support {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .socials {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      height: 78dvh;
+    }
+    .latest {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .tiles {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .mobile {
+      display: none;
+    }
+  }
+</style>

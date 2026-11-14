@@ -1,32 +1,46 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout 
-  title="404 - Halaman Tidak Ditemukan | Gyzenn Community"
-  description="Halaman yang Anda cari tidak ditemukan di Gyzenn Community."
->
-  <section class="section" style="min-height: 60vh; display: flex; align-items: center;">
-    <div class="container" style="text-align: center;">
-      <div class="retro-window-card" style="max-width: 550px; margin: 0 auto;">
-        <div class="window-header" style="background-color: var(--color-red);">
-          <div class="window-buttons">
-            <span class="btn-win btn-win-close"></span>
-            <span class="btn-win btn-win-min"></span>
-            <span class="btn-win btn-win-max"></span>
-          </div>
-          <div class="window-title-text"><i class="fa-solid fa-triangle-exclamation"></i> ERROR_404.EXE</div>
-        </div>
-        <div class="window-body" style="padding: 2.5rem 1.5rem;">
-          <h1 class="hero-word word-gyzenn" style="font-size: 4rem; color: var(--color-red);">404</h1>
-          <h2 class="section-title" style="font-size: 1.8rem; margin-top: 0.5rem;">HALAMAN TIDAK DITEMUKAN</h2>
-          <p class="section-desc" style="margin-bottom: 1.5rem;">
-            Maaf, halaman atau rilis yang Anda cari telah dipindahkan atau tidak pernah ada di server.
-          </p>
-          <a href="/" class="btn btn-primary">
-            <i class="fa-solid fa-house"></i> KEMBALI KE BERANDA
-          </a>
-        </div>
-      </div>
-    </div>
+
+<BaseLayout title="Halaman tidak ditemukan &mdash; Gyzenn Community">
+  <section class="container page notfound">
+    <strong>404</strong>
+    <h1>Halaman tidak ditemukan</h1>
+    <p>Maaf, halaman yang kamu cari tidak tersedia.</p>
+    <a class="btn primary" href="/">
+      Kembali ke beranda
+    </a>
+    <nav aria-label="Halaman populer">
+      <a href="/modpacks/">Modpack</a>
+      <a href="/zalith/">Zalith</a>
+      <a href="/komunitas/">Komunitas</a>
+    </nav>
   </section>
 </BaseLayout>
+<style>
+  .notfound {
+    text-align: center;
+    min-height: 55dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .notfound > strong {
+    font: 700 clamp(68px, 20vw, 130px) var(--font-display);
+    line-height: 1;
+    text-shadow: 0 4px 0 var(--bg-deep);
+  }
+  .notfound nav {
+    display: flex;
+    gap: 18px;
+    margin-top: 28px;
+    color: white;
+    font-weight: 700;
+  }
+  .notfound nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

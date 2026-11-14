@@ -1,106 +1,206 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import zalithData from '../../../public/assets/data/zalith.json';
-import '../../styles/pages/zalith.css';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { zalith } from "../../data/zalith";
+const primary = zalith.apks.find((a) => a.arch === "arm64-v8a")!;
 ---
-<BaseLayout 
-  title="Download Zalith Launcher 1.4.1.4 (Android) - Gyzenn Community"
-  description="Download Zalith Launcher versi rilis 1.4.1.4 by MovTery. Jalankan Minecraft Java Edition di Android dengan lancar."
->
-  <section class="section section-zalith" id="zalith">
-    <div class="container">
 
-      <div class="section-header">
-        <span class="section-tag tag-retro-blue">
-          <i class="fa-solid fa-mobile-screen"></i> ANDROID LAUNCHER
-        </span>
-        <h1 class="section-title">DOWNLOAD ZALITH LAUNCHER</h1>
-        <p class="section-desc">
-          Versi rilis stabil terbaru <strong>{zalithData.version} by {zalithData.developer}</strong>. Jalankan Minecraft Java Edition di perangkat Android dengan lancar dan kompatibel dengan berbagai mod.
+<BaseLayout
+  title={`Zalith Launcher ${zalith.version} untuk Android &mdash; Gyzenn Community`}
+  description={`Unduh Zalith Launcher ${zalith.version} oleh ${zalith.developer} untuk Android.`}
+>
+  <div class="container page">
+    <h1>Zalith Launcher {zalith.version}</h1>
+    <p>
+      {zalith.title} oleh {zalith.developer}. {zalith.subtitle}
+    </p>
+    <h2>Tiga langkah memulai</h2>
+    <div class="steps">
+      <div class="card">
+        <b>1</b>
+        <p>Pilih tipe perangkat.</p>
+      </div>
+      <div class="card">
+        <b>2</b>
+        <p>Unduh APK yang sesuai.</p>
+      </div>
+      <div class="card">
+        <b>3</b>
+        <p>Pasang APK. Izinkan sumber tidak dikenal jika diminta.</p>
+      </div>
+    </div>
+    <section class="card recommended">
+      <div>
+        <span class="label">Rekomendasi</span>
+        <h2>arm64-v8a</h2>
+        <p>
+          {primary.description} &middot; {primary.size}
         </p>
       </div>
-
-      <div class="retro-window-card zalith-main-card">
-        <div class="window-header">
-          <div class="window-buttons">
-            <span class="btn-win btn-win-close"></span>
-            <span class="btn-win btn-win-min"></span>
-            <span class="btn-win btn-win-max"></span>
+      <a class="btn primary" href={primary.url} target="_blank" rel="noopener noreferrer">
+        Unduh APK
+      </a>
+      <a class="universal" href="#universal">
+        Tidak yakin? Pakai versi Universal
+      </a>
+    </section>
+    <h2>Semua file APK</h2>
+    <div class="apk-list">
+      {zalith.apks.map((apk) => (
+        <article
+          class:list={["card", "apk", apk.universal ? "highlight" : ""]}
+          id={apk.universal ? "universal" : undefined}
+        >
+          <div class="symbol">&#x25C8;</div>
+          <div class="apk-info">
+            <strong>{apk.filename}</strong>
+            <p>{apk.description}</p>
+            <small>
+              {apk.size} &middot; {apk.arch}
+            </small>
           </div>
-          <div class="window-title-text">
-            <i class="fa-solid fa-rocket"></i> ZALITH_LAUNCHER_V{zalithData.version}_INSTALLER.EXE
-          </div>
-        </div>
-
-        <div class="window-body">
-          <div class="zalith-banner-header">
-            <div>
-              <span class="tag-badge tag-mc-version">v{zalithData.version} (Latest)</span>
-              <span class="tag-badge tag-fabric">Dev: {zalithData.developer}</span>
-              <span class="tag-badge tag-release">Status: {zalithData.status}</span>
-            </div>
-            <h2 class="zalith-big-title">{zalithData.title}</h2>
-            <p class="zalith-subtitle">{zalithData.subtitle}</p>
-          </div>
-
-          <!-- Retro Software Installer Status Bar -->
-          <div class="installer-status-bar" id="zalithInstallerStatus">
-            <div class="status-text-row">
-              <span class="retro-pixel-text"><i class="fa-solid fa-microchip"></i> INSTALLATION STATUS: SYSTEM READY<span class="blinking-cursor">█</span></span>
-              <span class="status-percent-text retro-pixel-text" id="zalithPercentText">100%</span>
-            </div>
-            <div class="installer-progress-track">
-              <div class="installer-progress-fill" id="zalithProgressFill"></div>
-            </div>
-          </div>
-
-          <!-- Changelog Box -->
-          <div class="changelog-box">
-            <div class="changelog-box-title">
-              <i class="fa-solid fa-wrench"></i> CATATAN PEMBARUAN (CHANGELOG):
-            </div>
-            <ul class="changelog-list">
-              {zalithData.changelog.map((item, idx) => (
-                <li class="changelog-item">
-                  <span class="changelog-num-circle">{idx + 1}</span>
-                  <div class="changelog-text-wrap"><strong>{item.title}:</strong> {item.text}</div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- APK Downloads List -->
-          <div style="margin-top: 1.75rem;">
-            <h3 class="apk-list-heading">
-              <i class="fa-solid fa-file-arrow-down"></i> DAFTAR FILE APK RILIS {zalithData.version}:
-            </h3>
-
-            <div class="apk-downloads-container">
-              {zalithData.apks.map(apk => (
-                <div class={`apk-download-item ${apk.universal ? 'item-universal' : ''}`}>
-                  <div class="apk-name-group">
-                    <div class="apk-icon"><i class={apk.icon}></i></div>
-                    <div>
-                      <div class="apk-filename">{apk.filename}</div>
-                      <div class="apk-arch-desc">{apk.description}</div>
-                    </div>
-                  </div>
-                  <div class="apk-action-wrap">
-                    <span class="apk-size-pill">{apk.universal ? `UNIVERSAL • ${apk.size}` : apk.size}</span>
-                    <a href={apk.url} target="_blank" rel="noopener noreferrer" class={`btn btn-apk-download ${apk.universal ? 'btn-apk-universal' : ''}`}>
-                      <i class="fa-solid fa-download"></i> DOWNLOAD
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+          <a class="btn primary" href={apk.url} target="_blank" rel="noopener noreferrer">
+            Unduh
+          </a>
+        </article>
+      ))}
     </div>
-  </section>
-
-  <script is:inline src="/assets/js/pages/zalith.js" defer></script>
+    <details class="changelog">
+      <summary>Catatan perubahan ({zalith.version})</summary>
+      <ul>
+        {zalith.changelog.map((c) => (
+          <li>
+            <b>{c.title}:</b> {c.text}
+          </li>
+        ))}
+      </ul>
+    </details>
+  </div>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: zalith.title,
+      softwareVersion: zalith.version,
+      operatingSystem: "Android",
+      applicationCategory: "GameApplication",
+      downloadUrl: zalith.apks.map((a) => a.url),
+    })}
+  />
 </BaseLayout>
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .steps .card {
+    padding: 16px;
+    color: var(--ink);
+  }
+  .steps b {
+    display: grid;
+    place-items: center;
+    background: var(--tag-bg);
+    color: var(--brand);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 19px;
+  }
+  .steps p {
+    margin: 8px 0 0;
+  }
+  .recommended {
+    padding: 18px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .recommended p {
+    margin: 0;
+  }
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ok);
+  }
+  .universal {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    color: var(--brand);
+    font-weight: 600;
+  }
+  .apk-list {
+    display: grid;
+    gap: 10px;
+  }
+  .apk {
+    padding: 13px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+  .highlight {
+    background: var(--surface-soft);
+  }
+  .symbol {
+    font-size: 25px;
+    color: var(--brand);
+  }
+  .apk-info {
+    min-width: 0;
+  }
+  .apk-info strong {
+    font:
+      12px ui-monospace,
+      monospace;
+    overflow-wrap: anywhere;
+  }
+  .apk-info p {
+    margin: 4px 0;
+    font-size: 13px;
+  }
+  .apk-info small {
+    color: var(--muted);
+  }
+  .apk > .btn {
+    grid-column: 1/-1;
+  }
+  .changelog {
+    margin-top: 22px;
+    padding: 15px;
+    background: white;
+    color: var(--ink);
+    border-radius: 14px;
+  }
+  .changelog summary {
+    font-weight: 700;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  @media (min-width: 640px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .recommended {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+    .recommended .universal {
+      grid-column: 1;
+    }
+    .apk {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+    .apk > .btn {
+      grid-column: auto;
+    }
+  }
+</style>

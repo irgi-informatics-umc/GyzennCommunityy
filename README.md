@@ -1,54 +1,41 @@
-# Gyzenn Community Modpack Hub
+# Gyzenn Community
 
-Situs ini adalah pusat modpack resmi Gyzenn Community, dibangun menggunakan [Astro](https://astro.build/).
+Situs komunitas Minecraft Indonesia yang dibangun dengan Astro dan dirender sebagai situs statis. Gunakan Node.js 22.x sesuai `.nvmrc` dan konfigurasi Vercel.
 
-## Struktur Folder
+## Menjalankan lokal
 
-- `src/` - Berisi source code Astro (komponen, halaman, layout, dan gaya).
-- `public/` - Berisi aset statis (gambar, JSON data, favicon, script JS).
-- `_legacy/` - Berisi file monolith versi sebelumnya.
-- `scripts/` - Berisi skrip otomatisasi dan audit (di dalam `scripts/audit/`).
-
-## Cara Menjalankan Lokal
-
-Pastikan Anda menggunakan Node.js versi 22.x.
-
-```bash
+```sh
 npm install
-npm run dev      # Menjalankan server lokal
-npm run build    # Membangun file statis ke /dist
-npm run preview  # Melihat hasil build
+npm run dev
+npm run build
+npm run preview
+npm run audit
 ```
 
-## Menambah/Mengubah Modpack
+`npm run audit` menjalankan pemeriksaan Playwright pada `http://localhost:4321`; jalankan server Astro terlebih dahulu (`npm run dev` atau `npm run preview`). Audit memeriksa overflow, gambar, target sentuh, error browser, tautan unduhan, filter katalog, tab, tautan detail, dan salin tautan. Di PowerShell dengan execution policy yang memblokir `npm.ps1`, gunakan `npm.cmd` dan `npx.cmd`.
 
-Modpack data dibaca dari file `public/assets/data/modpacks.json`.
+## Struktur proyek
 
-**Penjelasan Field Data Modpack:**
-- `id`: String unik untuk modpack (huruf kecil, dipisah tanda hubung).
-- `name`: Nama modpack yang ditampilkan.
-- `displayTitle`: Judul utama pada kartu modpack.
-- `version`: Versi modpack (misal: "V3", "V7").
-- `category`: Kategori utama modpack (misal: "FPS BOOST", "SURVIVAL").
-- `minecraft`: Versi Minecraft (misal: "1.21.1").
-- `loader`: Nama modloader (misal: "Fabric").
-- `fabricLoader`: Versi Fabric Loader.
-- `status`: Status ketersediaan ("RELEASED", "DEV", dll).
-- `badges`: Array lencana string tambahan.
-- `image`: Nama file gambar cover di `public/assets/img/`.
-- `imageAlt`: Teks alternatif untuk gambar cover.
-- `description`: Deskripsi singkat modpack.
-- `downloads`: Array objek link unduhan. Tiap objek memiliki `type` ("MRPACK", "ZIP") dan `url` (link langsung).
-- `mods`: Array nama mod unggulan yang disertakan.
+- `src/pages/`: Beranda, katalog, detail modpack dinamis, Zalith, Komunitas, Casda Network, 404, dan sitemap.
+- `src/components/`: header, navigasi bawah, footer, kartu, placeholder cover, toast, dan tombol WhatsApp.
+- `src/data/`: data JSON, tipe TypeScript, navigasi, serta helper untuk katalog dan gambar.
+- `src/assets/img/`: cover dan gambar yang diproses Astro menjadi WebP responsif.
+- `src/styles/`: token tema Crimson Red dan gaya dasar.
+- `public/`: favicon dan berkas statis publik.
+- `scripts/audit-redesign.mjs`: audit Playwright lintas viewport dan interaksi.
 
-## Update Versi Zalith
+## Skema modpack
 
-Untuk memperbarui data Zalith Client, edit file `public/assets/data/zalith.json`. Data ini digunakan untuk menampilkan spesifikasi dan link unduhan terbaru di halaman Zalith.
+Sumber katalog adalah `src/data/modpacks.json`, dengan tipe di `src/data/types.ts`. Field yang dipakai: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories`, `status`, `isNew`, `isRecommended`, `isArchived`, `badges`, `theme`, `image`, `imageAlt`, `description`, `note` (`type`, `text`), `features`, `downloads` (`label`, `url`, `host`, `type`), `additionalMods`, `resourcepacks`, `extraMods`, `extraModsNote`, `mods`, dan `ticker`. Field opsional yang tidak relevan untuk sebagian entri boleh tidak diisi; `image` dapat bernilai `null` dan `downloads` berisi tautan unduhan entri.
+
+### Menambah modpack
+
+Tambahkan satu entri dengan `id` unik ke `src/data/modpacks.json`, isi jenis, kategori, deskripsi, dan tautan unduhannya. Untuk cover asli, tambahkan gambar ke `src/assets/img/`, lalu set `image` ke `/assets/img/nama-file.webp` dan isi `imageAlt` dengan deskripsi gambar. Helper gambar menghubungkan nama berkas ke aset Astro; gambar yang tidak tersedia tetap menggunakan placeholder. Kategori akan tersedia pada filter katalog.
+
+### Memperbarui Zalith
+
+Perbarui versi, developer/status, changelog, dan daftar APK pada `src/data/zalith.json`. Pertahankan URL rilis yang benar; beranda dan halaman Zalith membaca data yang sama.
 
 ## Deploy ke Vercel
 
-Proyek ini telah dikonfigurasi untuk Vercel.
-- **Framework Preset**: Astro
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Node.js Version**: 22.x
+Hubungkan repository ke Vercel dengan preset Astro, gunakan Node.js 22.x, perintah build `npm run build`, dan direktori output `dist`. Build menghasilkan situs statis.

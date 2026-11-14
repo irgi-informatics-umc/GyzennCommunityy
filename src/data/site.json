@@ -1,0 +1,36 @@
+{
+  "site": {
+    "title": "Gyzenn Community",
+    "subtitle": "Minecraft Creator, Modpack Hub & Casda Network",
+    "author": "Gyzenn / giovmare",
+    "deviceSpec": "REDMI NOTE 10S RTX 4050",
+    "links": {
+      "linktree": "https://linktr.ee/Gyzenn_",
+      "tiktok": "https://www.tiktok.com/@giovmare",
+      "whatsappChannel": "https://whatsapp.com/channel/0029VbBhyH347Xe8WNtwwL2j",
+      "whatsappGroup1": "https://chat.whatsapp.com/Kyn5WvX7DlPEdUuld7K9iJ",
+      "whatsappGroup2": "https://chat.whatsapp.com/EozIWLmesrjKsudbqSa3NK?mode=gi_t",
+      "discord": "https://discord.gg/AVCE3cv7J",
+      "discordCasda": "https://discord.gg/87wkxX3wu",
+      "saweria": "https://saweria.co/GiiPrtma"
+    },
+    "stats": {
+      "tiktokLikes": 47.4,
+      "tiktokFollowers": 2117,
+      "tiktokFollowing": 78,
+      "whatsappFollowers": 1638
+    },
+    "ticker": [
+      { "icon": "fa-solid fa-wand-magic-sparkles", "text": "GYZENN VANILLA++ (26.3)" },
+      { "icon": "fa-solid fa-film", "text": "GYZENN & STUFF 1.21.11" },
+      { "icon": "fa-solid fa-bolt", "text": "GYZENN OPTIMIZED 26.1 & 1.21.11" },
+      { "icon": "fa-solid fa-headphones", "text": "BETTER SOUND JAVA EDIT" },
+      { "icon": "fa-solid fa-leaf", "text": "COBRA ULTIMIZED X FRESH & SMOOTH" },
+      { "icon": "fa-solid fa-fire", "text": "COBRA X BOOM REMAKE" },
+      { "icon": "fa-solid fa-campground", "text": "GYZENN SURVIVAL V2 RELEASED" },
+      { "icon": "fa-solid fa-crosshairs", "text": "QUICK CPVP 26.3" },
+      { "icon": "fa-solid fa-wand-magic-sparkles", "text": "DERIVATIVE SHADER 1.21+" },
+      { "icon": "fa-solid fa-rocket", "text": "ZALITH LAUNCHER 1.4.1.4" }
+    ]
+  }
+}
