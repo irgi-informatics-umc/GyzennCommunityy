@@ -28,6 +28,8 @@ export interface Modpack {
   additionalMods?: string[];
   resourcepacks?: string[];
   note?: { type: string; text: string } | null;
+  credits?: string[];
+  tips?: string[];
   downloads: Download[];
   theme?: string;
   edition?: string | null;

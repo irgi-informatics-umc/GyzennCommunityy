@@ -19,7 +19,9 @@ const symbol = (c: string) =>
             ? 0x2637
             : c === "VISUAL"
               ? 0x2726
-              : 0x2022,
+              : c === "RPG"
+                ? 0x2694
+                : 0x2022,
   );
 ---
 

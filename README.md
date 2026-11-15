@@ -26,7 +26,7 @@ npm run audit
 
 ## Skema modpack
 
-Sumber katalog adalah `src/data/modpacks.json`, dengan tipe di `src/data/types.ts`. Field yang dipakai: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories`, `status`, `isNew`, `isRecommended`, `isArchived`, `badges`, `theme`, `image`, `imageAlt`, `description`, `note` (`type`, `text`), `features`, `downloads` (`label`, `url`, `host`, `type`), `additionalMods`, `resourcepacks`, `extraMods`, `extraModsNote`, `mods`, dan `ticker`. Field opsional yang tidak relevan untuk sebagian entri boleh tidak diisi; `image` dapat bernilai `null` dan `downloads` berisi tautan unduhan entri.
+Sumber katalog adalah `src/data/modpacks.json`, dengan tipe di `src/data/types.ts`. Field yang dipakai: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories` (termasuk kategori baru `RPG`), `status`, `isNew`, `isRecommended`, `isArchived`, `badges`, `theme`, `image`, `imageAlt`, `description`, `note` (`type`, `text`), `features`, `credits`, `tips`, `downloads` (`label`, `url`, `host`, `type`), `additionalMods`, `resourcepacks`, `extraMods`, `extraModsNote`, `mods`, dan `ticker`. Field opsional yang tidak relevan untuk sebagian entri boleh tidak diisi; `image` dapat bernilai `null` dan `downloads` berisi tautan unduhan entri.
 
 ### Menambah modpack
 

@@ -113,6 +113,16 @@ const cover = imageFor(m.image);
             </ul>
           </>
         )}
+        {m.tips?.length && (
+          <aside class="tips">
+            <b>Rekomendasi</b>
+            <ul>
+              {m.tips.map((t) => (
+                <li>{t}</li>
+              ))}
+            </ul>
+          </aside>
+        )}
         {m.note && (
           <p class:list={["note", m.note.type === "warning" ? "warning" : ""]}>
             {m.note.text.includes("Settings >") ? (
@@ -125,25 +135,35 @@ const cover = imageFor(m.image);
             )}
           </p>
         )}
+        {m.credits?.length && (
+          <aside class="credits">
+            <b>Kredit &amp; disclaimer</b>
+            <ul>
+              {m.credits.map((c) => (
+                <li>{c}</li>
+              ))}
+            </ul>
+          </aside>
+        )}
         {details.map(
           ([label, items]) =>
-            items?.length && (
+            Boolean(items?.length) && (
               <details>
                 <summary>{label}</summary>
                 {m.extraModsNote && label === "Mod ekstra" && <p>{m.extraModsNote}</p>}
                 <ul>
-                  {items.map((item) => (
+                  {items!.map((item) => (
                     <li>{item}</li>
                   ))}
                 </ul>
               </details>
             ),
         )}
-        {m.mods?.length && (
+        {Boolean(m.mods?.length) && (
           <details>
             <summary>Mod</summary>
             <ul>
-              {m.mods.map((item) => (
+              {m.mods!.map((item) => (
                 <li>{item}</li>
               ))}
             </ul>
@@ -258,6 +278,22 @@ const cover = imageFor(m.image);
       padding: 12px;
       background: var(--surface-soft);
       border-radius: 10px;
+      margin: 12px 0;
+    }
+    aside ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+    aside li {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .tips {
+      background: #eef6ff;
+    }
+    .credits {
+      background: #f4f4f6;
+      font-size: 13px;
     }
     .warning {
       background: #fff0d3;

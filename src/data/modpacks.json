@@ -1,5 +1,1071 @@
 [
   {
+    "id": "gijen-modpek-clangor-lyrics",
+    "type": "modpack",
+    "name": "Gijen Modpek With Clangor & Lyrics",
+    "displayTitle": "GIJEN MODPEK WITH CLANGOR & LYRICS",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "VISUAL",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "CLANGOR & LYRICS",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-clangor.jpg",
+    "imageAlt": "Gijen Modpek With Clangor & Lyrics Minecraft Modpack Cover",
+    "description": "Enhance your Minecraft experience with Clangor and Lyrics, featuring fluid player animations, immersive camera movements, realistic item physics, dynamic lighting, interactive particles, and enhanced environmental details. Optimized for smooth gameplay while preserving the vanilla Minecraft feel.",
+    "features": [
+      "Clangor & Lyrics animation integration.",
+      "Performance optimizations with Sodium, Lithium, and FerriteCore.",
+      "Iris Shaders support."
+    ],
+    "credits": [
+      "An unofficial community-made modpack officially by navallia, combining various third party Minecraft mods. All mods belong to their respective developers. Not affiliated with, endorsed by, or officially associated with Mojang Studios or Microsoft."
+    ],
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/2r2gcso1xurfp15/Gijen+Modpek+With+Clangor&Lyrics.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/14wku8lq9jp0zs4/Gijen+Modpek+With+Clangor&Lyrics.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Mod Only - Clangor",
+        "url": "https://www.mediafire.com/file/xsmtxa94iin6bib/clangor-2.1.4-fabric-1.21.11.jar/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Mod Only - Lyrics",
+        "url": "https://www.mediafire.com/file/gsr9w2ht8togfx0/LyricsFlow-beta-2.2+1.21.11.jar/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gijen-as-26-3",
+    "type": "modpack",
+    "name": "Gijen A&S 26.3",
+    "displayTitle": "GIJEN A&S 26.3",
+    "edition": null,
+    "version": "26.3",
+    "minecraft": "26.3",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "VISUAL"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "A&S",
+      "26.3"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-as-26-3.jpg",
+    "imageAlt": "Gijen A&S 26.3 Minecraft Modpack Cover",
+    "description": "Transform your Minecraft experience with enhanced player animations, dynamic camera movements, realistic item physics, interactive particles, and immersive environmental effects.",
+    "features": [
+      "Enhanced player animations and combat movements.",
+      "Camera Overhaul and cinematic third-person perspective.",
+      "Realistic item physics and inventory interactions.",
+      "Iris Shaders support."
+    ],
+    "credits": [
+      "An unofficial fan-made project inspired by Minecraft animation content from TikTok creator @Minecraft_724. Not affiliated with, endorsed by, or officially associated with Mojang Studios or Microsoft."
+    ],
+    "note": {
+      "type": "info",
+      "text": "Mod Only: ekstrak dulu sebelum dipakai"
+    },
+    "downloads": [
+      {
+        "label": "Download Mod Only (ekstrak dulu)",
+        "url": "https://www.mediafire.com/file/jeq63xkldfmqggv/a&s+26.3+(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Modpack Mrpack",
+        "url": "https://www.mediafire.com/file/4fw8ue0kv526sfr/Gijen+a&s+26.3.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Modpack Zip",
+        "url": "https://www.mediafire.com/file/nqlg9epbiohkgs5/Gijen+a&s+26.3.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-better-animation-v2",
+    "type": "modpack",
+    "name": "Gyzenn Better Animation V2",
+    "displayTitle": "GYZENN BETTER ANIMATION V2",
+    "edition": null,
+    "version": "26.3",
+    "minecraft": "26.3",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "VISUAL",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "ANIMATION V2",
+      "26.3"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-animation-v2.jpg",
+    "imageAlt": "Gyzenn Better Animation V2 Minecraft Modpack Cover",
+    "description": "Enhanced Minecraft Animation & Visual Experience. More animations, better visuals, smoother gameplay!",
+    "features": [
+      "Added Not Enough Animations & Player Animation Library.",
+      "Added Camera Overhaul, Smooth Camera & Touch N Motion.",
+      "Added AmbientSounds & Presence Footsteps for immersive audio.",
+      "Added more visual effects, particles & environmental details.",
+      "Added Iris Shaders support.",
+      "Improved performance with C2ME, Lithium & other optimization mods.",
+      "Updated Minecraft to 26.3 with updated mod versions."
+    ],
+    "note": {
+      "type": "info",
+      "text": "Modpack berfokus pada peningkatan animasi dan pengalaman visual Minecraft tanpa menghilangkan identitas vanilla. Beberapa fitur dan animasi dapat berbeda tergantung mod yang digunakan serta kompatibilitas mod, Performa bergantung pada spesifikasi perangkat, konfigurasi mod, dan pengaturan grafis."
+    },
+    "tips": [
+      "Recommended: Alokasikan RAM yang cukup!!!"
+    ],
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/pmv7qr97pynp3di/Gyzenn+Better+Animation+V2.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/eovvz4a5d33ql63/Gyzenn+Better+Animation+V2.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-1-21-5",
+    "type": "modpack",
+    "name": "Gyzenn Optimized 1.21.5",
+    "displayTitle": "GYZENN OPTIMIZED 1.21.5",
+    "edition": null,
+    "version": "1.21.5",
+    "minecraft": "1.21.5",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "FPS BOOST",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "OPTIMIZED",
+      "1.21.5"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gyzen-optimized.webp",
+    "imageAlt": "Gyzenn Optimized 1.21.5 Minecraft Modpack Cover",
+    "description": "Modpack Gyzenn Optimized 1.21.5 untuk Minecraft 1.21.5 dengan Fabric Loader 0.20.1.",
+    "note": {
+      "type": "info",
+      "text": "Efpies bus only compatible with iris shaders"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/h0kr1g58me1gxuj/Gyzenn+Optimized+1.21.5.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/m2jvgb1rvtajo2k/Gyzenn+Optimized+1.21.5.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-dead-zone-test",
+    "type": "modpack",
+    "name": "Gyzenn Dead Zone Test",
+    "displayTitle": "GYZENN DEAD ZONE TEST",
+    "edition": "Zombie Apocalypse Survival Modpack",
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "ZOMBIE APOCALYPSE",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-dead-zone.jpg",
+    "imageAlt": "Gyzenn Dead Zone Test Minecraft Modpack Cover",
+    "description": "Bertahan hidup di dunia yang telah runtuh akibat wabah zombie. Jelajahi kota-kota terbengkalai, hadapi gerombolan zombie, kumpulkan perlengkapan, dan perjuangkan hidup di tengah dunia yang semakin berbahaya. Dengan sistem survival yang lebih menantang, persenjataan, atmosfer mencekam, dan pengalaman apocalypse yang imersif.",
+    "features": [
+      "Zombie Horde & Apocalypse Survival",
+      "Abandoned Cities & Urban Exploration",
+      "Enhanced Combat & Firearms",
+      "Temperature & Survival Management",
+      "Bandages & Wound Treatment",
+      "Immersive Sounds & Atmosphere",
+      "Enhanced Animations & Visuals",
+      "Performance & Quality of Life Improvements"
+    ],
+    "note": {
+      "type": "warning",
+      "text": "Modpack masih dalam tahap pengembangan. Bug dan masalah kompatibilitas mungkin terjadi. Performa bergantung pada spesifikasi perangkat dan pengaturan grafis."
+    },
+    "tips": [
+      "Recommended: Alokasikan RAM yang cukup!!!"
+    ],
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/s78aqw23tca4k0o/Gyzenn+Dead+Zone+Test.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/u7f9l1n3o6xv66u/Gyzenn+Dead+Zone+Test.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-survivality",
+    "type": "modpack",
+    "name": "Gyzenn Survivality",
+    "displayTitle": "GYZENN SURVIVALITY",
+    "edition": "Enhanced Vanilla Survival Modpack",
+    "version": "26.1.2",
+    "minecraft": "26.1.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "SURVIVALITY",
+      "26.1.2"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-survivality.jpg",
+    "imageAlt": "Gyzenn Survivality Minecraft Modpack Cover",
+    "description": "Enhanced Vanilla Survival dengan eksplorasi lebih luas, dunia lebih hidup, berbagai makhluk baru, sistem musim, temperatur, combat, farming, dan pengalaman survival yang lebih imersif.",
+    "features": [
+      "Enhanced Survival & Environment",
+      "Seasonal & Temperature System",
+      "New Mobs & Creatures",
+      "Expanded Exploration & Structures",
+      "Improved Combat & Animations",
+      "Enhanced Farming & Agriculture",
+      "Immersive Sounds & Visuals",
+      "Quality of Life Improvements"
+    ],
+    "note": {
+      "type": "warning",
+      "text": "Modpack masih dalam tahap pengembangan. Bug dan masalah kompatibilitas mungkin terjadi. Performa bergantung pada spesifikasi perangkat dan pengaturan grafis."
+    },
+    "tips": [
+      "Recommended: Alokasikan RAM yg cukup!!!"
+    ],
+    "credits": [
+      "Created by Gyzenn"
+    ],
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/y7wsiubqlgdp1ru/Gyzenn+Survivality.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/z5kmf7ni5fd8kb4/Gyzenn+Survivality.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-realms-of-valor",
+    "type": "modpack",
+    "name": "Gyzenn Realms Of Valor",
+    "displayTitle": "GYZENN REALMS OF VALOR",
+    "edition": "Epic Fantasy RPG Modpack",
+    "version": "26.1.1",
+    "minecraft": "26.1.1",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "RPG"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "REALMS OF VALOR",
+      "26.1.1"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-realms.jpg",
+    "imageAlt": "Gyzenn Realms Of Valor Minecraft Modpack Cover",
+    "description": "Modpack bertema RPG Fantasy dengan berbagai senjata, magic, skill, equipment, dan combat system, rasakan petualangan Minecraft dengan pengalaman RPG yang lebih mendalam!",
+    "features": [
+      "RPG weapons & combat animations",
+      "Magic and spell system",
+      "Character skills & progression",
+      "Fantasy equipment and accessories",
+      "Adventure and exploration"
+    ],
+    "note": {
+      "type": "warning",
+      "text": "Modpack masih dalam tahap pengembangan, performa cukup berat dan lebih berfokus pada pengalaman RPG, bukan FPS boost, Bug atau masalah kompatibilitas mungkin terjadi, terutama pada perangkat midrange ke bawah"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/z4reovmfugx12r7/Gyzenn+Realms+of+Valor.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/zckiaevqj0lfc1h/Gyzenn+Realms+of+Valor.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-better-animation-beta-test",
+    "type": "modpack",
+    "name": "Gyzenn Better Animation Beta Test",
+    "displayTitle": "GYZENN BETTER ANIMATION BETA TEST",
+    "edition": null,
+    "version": "26.2",
+    "minecraft": "26.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "VISUAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "BETA TEST",
+      "26.2"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "Gyzenn Better Animation Beta Test Minecraft Modpack Cover",
+    "description": "Modpack fokus buat animasi player, dari gerakan yg lebih halus, texture yg lebih josjis basenya punchy",
+    "note": {
+      "type": "warning",
+      "text": "Modpack lumayan berat, karna bukan modpack buat ngeboost fps, karna masih beta test maybe masih ada bug di berbagai device midrange ke bawah"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/sim9p0uwjqaguuf/Gyzenn+Better+Animation.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/wnqa504uqwpqvyg/Gyzenn+Better+Animation.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "new-modpack-survival-1-21-11",
+    "type": "modpack",
+    "name": "New Modpack Survival 1.21.11",
+    "displayTitle": "NEW MODPACK SURVIVAL 1.21.11",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "SURVIVAL",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "New Modpack Survival 1.21.11 Minecraft Modpack Cover",
+    "description": "Modpack New Modpack Survival 1.21.11 untuk Minecraft 1.21.11 dengan Fabric Loader 0.20.1.",
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/t3btkyiwt0kaz0k/Modpack+Survival+1.21.11.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/s311o0c0y87nw5i/Modpack+Survival+1.21.11.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gijen-survival-1-21-11",
+    "type": "modpack",
+    "name": "Gijen Survival 1.21.11",
+    "displayTitle": "GIJEN SURVIVAL 1.21.11",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "SURVIVAL",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "Gijen Survival 1.21.11 Minecraft Modpack Cover",
+    "description": "Modpack Gijen Survival 1.21.11 untuk Minecraft 1.21.11 dengan Fabric Loader 0.20.1.",
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/3dvpkjlfog7g6ph/Gijen+Survival+1.21.11.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/p4gwgg1gfeu0xf6/Gijen+Survival+1.21.11.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gijen-modpek-1-21-11",
+    "type": "modpack",
+    "name": "Gijen Modpek 1.21.11",
+    "displayTitle": "GIJEN MODPEK 1.21.11",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "VISUAL",
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "MODPEK",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "Gijen Modpek 1.21.11 Minecraft Modpack Cover",
+    "description": "Modpack Gijen Modpek 1.21.11 untuk Minecraft 1.21.11 dengan Fabric Loader 0.20.1.",
+    "note": {
+      "type": "info",
+      "text": "Ini versi kemarin tapi ada sedikit kendala jdi gw re-edit lagi"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/lqu97s0wx1s1sx4/Gijen+Modpek+1.21.11.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/w3tkiig3dgzjuwv/Gijen+Modpek+1.21.11.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-survival-v5",
+    "type": "modpack",
+    "name": "Gyzenn Survival V5",
+    "displayTitle": "GYZENN SURVIVAL V5",
+    "edition": null,
+    "version": "1.21.5",
+    "minecraft": "1.21.5",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "SURVIVAL V5",
+      "1.21.5"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "Gyzenn Survival V5 Minecraft Modpack Cover",
+    "description": "Modpack Gyzenn Survival V5 untuk Minecraft 1.21.5 dengan Fabric Loader 0.20.1.",
+    "note": {
+      "type": "info",
+      "text": "No 1 Hold My Items, No 2 pake mod Punchy"
+    },
+    "downloads": [
+      {
+        "label": "Varian 1 (Hold My Items) - Download Mrpack",
+        "url": "https://www.mediafire.com/file/ocqpcgq070isfnw/Gyzenn+Survival+V5.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Varian 1 (Hold My Items) - Download Zip",
+        "url": "https://www.mediafire.com/file/vyl7yvekr613rx4/Gyzenn+Survival+V5.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Varian 2 (Punchy) - Download Mrpack",
+        "url": "https://www.mediafire.com/file/l85ikssyynxb582/Gyzenn+Survival+++Punchy+V5.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Varian 2 (Punchy) - Download Zip",
+        "url": "https://www.mediafire.com/file/yjr8umdo1286s2x/Gyzenn+Survival+++Punchy+V5.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-survival-v4",
+    "type": "modpack",
+    "name": "Gyzenn Survival V4",
+    "displayTitle": "GYZENN SURVIVAL V4",
+    "edition": null,
+    "version": "1.21.1",
+    "minecraft": "1.21.1",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "SURVIVAL V4",
+      "1.21.1"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "Gyzenn Survival V4 Minecraft Modpack Cover",
+    "description": "Modpack Gyzenn Survival V4 untuk Minecraft 1.21.1 dengan Fabric Loader 0.20.1.",
+    "note": {
+      "type": "info",
+      "text": "Switch Mod Punchy > Hold My Item"
+    },
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/dk1zqv2uch1o9tm/Gyzenn+Survival+V4.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/cc672mdwzcvy27x/Gyzenn+Survival+V4.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-survival-v3",
+    "type": "modpack",
+    "name": "Gyzenn Survival V3",
+    "displayTitle": "GYZENN SURVIVAL V3",
+    "edition": null,
+    "version": "26.2",
+    "minecraft": "26.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "SURVIVAL V3",
+      "26.2"
+    ],
+    "theme": "strip-yellow",
+    "image": null,
+    "imageAlt": "Gyzenn Survival V3 Minecraft Modpack Cover",
+    "description": "Modpack Gyzenn Survival V3 untuk Minecraft 26.2 dengan Fabric Loader 0.20.1.",
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/lpk6kp4lzpra3ue/Gyzenn+Survival+V3.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/wipsnu2yv30np78/Gyzenn+Survival+V3.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-1-20-1",
+    "type": "modpack",
+    "name": "Gyzenn Optimized 1.20.1",
+    "displayTitle": "GYZENN OPTIMIZED 1.20.1",
+    "edition": null,
+    "version": "1.20.1",
+    "minecraft": "1.20.1",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "FPS BOOST",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "OPTIMIZED",
+      "1.20.1"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gyzen-optimized.webp",
+    "imageAlt": "Gyzenn Optimized 1.20.1 Minecraft Modpack Cover",
+    "description": "Modpack Gyzenn Optimized 1.20.1 untuk Minecraft 1.20.1 dengan Fabric Loader 0.20.1.",
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/7x616dqkqc5qijc/Gyzenn+Optimized+1.20.1.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-26-2",
+    "type": "modpack",
+    "name": "Gyzenn Optimized 26.2",
+    "displayTitle": "GYZENN OPTIMIZED 26.2",
+    "edition": null,
+    "version": "26.2",
+    "minecraft": "26.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.19.5",
+    "categories": [
+      "FPS BOOST",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "OPTIMIZED",
+      "26.2"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gyzen-optimized.webp",
+    "imageAlt": "Gyzenn Optimized 26.2 Minecraft Modpack Cover",
+    "description": "New Modpack for Mc 26.2 Fabric 0.19.5",
+    "downloads": [
+      {
+        "label": "Download Mrpack Only",
+        "url": "https://www.mediafire.com/file/0iy0fe8qodf5jyf/Gyzenn+Optimized+26.2.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-v2-survival-variant",
+    "type": "modpack",
+    "name": "Gyzenn Optimized v2 Survival Variant",
+    "displayTitle": "GYZENN OPTIMIZED V2 SURVIVAL VARIANT",
+    "edition": "Action & Stuff with Villager News Indonesian",
+    "version": "26.1.2",
+    "minecraft": "26.1.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL",
+      "VISUAL"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "A&S SURVIVAL",
+      "26.1.2"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-anjay.jpg",
+    "imageAlt": "Gyzenn Optimized v2 Survival Variant Minecraft Modpack Cover",
+    "description": "Hadir dengan Action & Stuff dan Villager News versi Bahasa Indonesia! Modpack ini merupakan hasil porting tidak resmi dari addon Minecraft Bedrock Edition ke Minecraft Java Edition, yg telah di port oleh akun tiktok @minecraft_7244 lalu diedit dan disesuaikan ke bahasa indonesia oleh Gyzenn, Nikmati pengalaman bermain Minecraft dengan animasi yang lebih menarik, sentuhan visual yang berbeda, serta Villager News dalam Bahasa Indonesia.",
+    "tips": [
+      "Minecraft 26.1.2",
+      "Fabric Loader 0.20.1",
+      "Variant Survival"
+    ],
+    "features": [
+      "Villager News dengan dukungan Bahasa Indonesia",
+      "Action & Stuff, hasil unofficial port dari addon Minecraft Bedrock Edition",
+      "Modifikasi dan penyesuaian oleh Gyzenn",
+      "Modpack Base Gyzenn Optimized v2."
+    ],
+    "note": {
+      "type": "warning",
+      "text": "Peringatan & Catatan Penting:\n- Proyek ini merupakan porting dan modifikasi tidak resmi dari addon Minecraft Bedrock Edition\n- Port By: @minecraft_7244\n- Modifikasi dan terjemahan Indonesia oleh Gyzenn\n- Dilarang membagikan ulang atau mendistribusikan file Action & Stuff dan Villager News tanpa izin dari pemilik hak terkait\n- Jika ingin membagikan modpack, gunakan tautan unduhan resmi, bukan mengunggah ulang filenya\n- Hanya mendukung Minecraft Java Edition 26.1.2\n- Tidak berafiliasi dengan kreator asli maupun Mojang/Microsoft"
+    },
+    "credits": [
+      "Edited, modified & ported by Gyzenn"
+    ],
+    "downloads": [
+      {
+        "label": "Download .mrpack",
+        "url": "https://www.mediafire.com/file/rb99t6fdz8h6vyc/Gyzenn+Optimized+v2+With+A&S+(Survival+Variant).mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download .Zip",
+        "url": "https://www.mediafire.com/file/99abyj3d5lukip1/Gyzenn+Optimized+v2+With+A&S+(Survival+Variant).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-v2-survival-edition",
+    "type": "modpack",
+    "name": "Gyzenn Optimized v2 Survival Edition",
+    "displayTitle": "GYZENN OPTIMIZED V2 SURVIVAL EDITION",
+    "edition": null,
+    "version": "26.2",
+    "minecraft": "26.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "SURVIVAL",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "SURVIVAL EDITION",
+      "26.2"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-aja.jpg",
+    "imageAlt": "Gyzenn Optimized v2 Survival Edition Minecraft Modpack Cover",
+    "description": "Gyzenn Optimized v2 Survival Edition adalah modpack berbasis Gyzenn Optimized v2 yang dirancang untuk meningkatkan performa Minecraft sekaligus membuat pengalaman Survival Singleplayer lebih nyaman, ringan, dan praktis.",
+    "features": [
+      "Berbagai mod tambahan yang mempermudah aktivitas bermain Singleplayer.",
+      "Peningkatan kenyamanan saat mengumpulkan sumber daya, membangun, dan mengelola inventory.",
+      "Fitur tambahan yang mengurangi pekerjaan repetitif tanpa harus mengubah Minecraft menjadi pengalaman yang sepenuhnya berbeda.",
+      "Fitur tambahan mod EssentialHomes Menambahkan fitur seperti di server, yaitu /sethome untuk menyimpan lokasi rumah, /home untuk teleportasi ke rumah yang sudah disimpan, dan /back untuk kembali ke lokasi sebelumnya. Cocok untuk mempermudah eksplorasi dan aktivitas Survival"
+    ],
+    "tips": [
+      "Minecraft: 26.2",
+      "Mod Loader: Fabric Loader 0.20.1",
+      "Renderer: MobileGlues / MobileGL (Recommend)",
+      "Alokasi RAM: 1048-2048MB atau lebih, menyesuaikan perangkat"
+    ],
+    "note": {
+      "type": "info",
+      "text": "Edisi ini dikembangkan dari Gyzenn Optimized v2 untuk Survival Singleplayer dengan tambahan mod yang membuat gameplay lebih ringan dan praktis. Iris Shaders tidak disertakan secara bawaan, dan performa dapat berbeda tergantung perangkat, pengaturan grafis, serta kompatibilitas mod tambahan."
+    },
+    "credits": [
+      "Silakan dicoba dan bagikan pengalaman, hasil pengujian performa, serta saran kalian di grup komunitas untuk membantu pengembangan versi berikutnya."
+    ],
+    "downloads": [
+      {
+        "label": "Download .mrpack",
+        "url": "https://www.mediafire.com/file/mr7h7or7gupcme5/Gyzenn+Optimized+v2+Survival+Edition.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download zip",
+        "url": "https://www.mediafire.com/file/4v09hbr74vs09ub/Gyzenn+Optimized+v2+Survival+Edition.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "gyzenn-optimized-v2",
+    "type": "modpack",
+    "name": "Gyzenn Optimized v2",
+    "displayTitle": "GYZENN OPTIMIZED V2",
+    "edition": null,
+    "version": "26.2",
+    "minecraft": "26.2",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "FPS BOOST",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": true,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "REKOMENDASI",
+      "OPTIMIZED V2",
+      "26.2"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-v2.jpg",
+    "imageAlt": "Gyzenn Optimized v2 Minecraft Modpack Cover",
+    "description": "Gyzenn Optimized v2 adalah modpack yg fokus ke boost fps (ga ada mod buat survival)",
+    "tips": [
+      "Minecraft 26.2",
+      "Fabric 0.20.1",
+      "Renderer MobileGlues / MobileGL (Recomended)",
+      "Alokasi Ram 1048 / 2048 MB+"
+    ],
+    "note": {
+      "type": "info",
+      "text": "v2 yg ini ga ada mod iris shaders, jadi kalo mau pake shaders download manual aja"
+    },
+    "credits": [
+      "Silahkan di tes, dan share pengalaman nya di grup komunitas"
+    ],
+    "downloads": [
+      {
+        "label": "Download .mrpack",
+        "url": "https://www.mediafire.com/file/mfdy3omxhhy1lwl/Gyzenn+Optimized+v2+mc+26.2.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download zip",
+        "url": "https://www.mediafire.com/file/9k07dah6v0q3qnz/Gyzenn+Optimized+v2+mc+26.2.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
     "id": "gyzenn-vanilla-plus-plus",
     "type": "modpack",
     "name": "Gyzenn Vanilla++",
@@ -1379,6 +2445,51 @@
         "url": "https://drive.google.com/file/d/1kx9oJUaYZfJgsRZw8qFyiMF2iOgYqw7L/view?usp=drive_link",
         "host": "gdrive",
         "type": "gdrive"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "derivative-edit-v2",
+    "type": "shader",
+    "name": "Derivative Edit V2",
+    "displayTitle": "DERIVATIVE EDIT V2",
+    "edition": "EDIT BY GYZENN • SHADER ONLY",
+    "version": "1.21+",
+    "minecraft": "1.21+",
+    "loader": null,
+    "loaderVersion": null,
+    "categories": [
+      "VISUAL"
+    ],
+    "status": "RELEASED",
+    "isNew": false,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "SHADER",
+      "1.21+",
+      "EDIT BY GYZENN"
+    ],
+    "theme": "derivative-card",
+    "image": null,
+    "imageAlt": "Derivative Edit V2 Minecraft Shader Cover",
+    "description": "Derivative Edit V2 oleh Gyzenn.",
+    "note": {
+      "type": "info",
+      "text": "Ekstrak dulu sebelum pakai"
+    },
+    "downloads": [
+      {
+        "label": "Download (ekstrak dulu)",
+        "url": "https://www.mediafire.com/file/lxea2enyvy86t78/Derivative+Edit+Gyzenn+(ekstrak+dulu).zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
       }
     ],
     "additionalMods": [],
