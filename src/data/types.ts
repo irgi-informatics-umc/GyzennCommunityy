@@ -1,12 +1,14 @@
+export type EntryType = "modpack" | "shader" | "resourcepack" | "mod";
+export type DownloadHost = "mediafire" | "gdrive" | "curseforge" | "youtube";
 export interface Download {
   label: string;
   url: string;
-  type?: string;
-  host?: string;
+  type?: DownloadHost;
+  host?: DownloadHost;
 }
 export interface Modpack {
   id: string;
-  type: string;
+  type: EntryType;
   name: string;
   displayTitle?: string | null;
   version: string | null;

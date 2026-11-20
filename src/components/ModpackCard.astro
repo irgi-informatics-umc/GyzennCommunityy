@@ -19,9 +19,11 @@ const symbol = (c: string) =>
             ? 0x2637
             : c === "VISUAL"
               ? 0x2726
-              : c === "RPG"
-                ? 0x2694
-                : 0x2022,
+              : c === "AUDIO"
+                ? 0x266a
+                : c === "RPG"
+                  ? 0x2694
+                  : 0x2022,
   );
 ---
 
@@ -56,7 +58,7 @@ const symbol = (c: string) =>
   <div class="body">
     <div class="tags">
       {categories.map((c) => (
-        <span class="tag">
+        <span class:list={["tag", c === "AUDIO" && "audio"]}>
           {symbol(c)} {c}
         </span>
       ))}
@@ -67,7 +69,7 @@ const symbol = (c: string) =>
     <p class="meta">
       {m.loader ?? m.type}
       {m.loaderVersion ? ` / ${m.loaderVersion}` : ""}
-      {m.minecraft ? ` / ${m.minecraft}` : ""}
+      {m.type !== "mod" && m.minecraft ? ` / ${m.minecraft}` : ""}
     </p>
     <div class="actions">
       <a
@@ -76,7 +78,7 @@ const symbol = (c: string) =>
         target="_blank"
         rel="noopener noreferrer"
       >
-        Download
+        {m.type === "mod" ? (m.downloads[0]?.label ?? "Download") : "Download"}
       </a>
       <a class="detail" href={detail}>
         Detail
@@ -143,6 +145,10 @@ const symbol = (c: string) =>
     padding: 3px 8px;
     font-size: 10px;
     font-weight: 700;
+  }
+  .tag.audio {
+    background: #efeaff;
+    color: #3f2b9e;
   }
   .title {
     font-size: 14px;

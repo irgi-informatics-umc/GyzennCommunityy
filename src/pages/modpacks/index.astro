@@ -6,6 +6,7 @@ const regular = modpacks.filter((m) => m.type === "modpack" && !m.isArchived);
 const archived = modpacks.filter((m) => m.type === "modpack" && m.isArchived);
 const shaders = modpacks.filter((m) => m.type === "shader");
 const packs = modpacks.filter((m) => m.type === "resourcepack");
+const mods = modpacks.filter((m) => m.type === "mod");
 ---
 
 <BaseLayout
@@ -42,6 +43,15 @@ const packs = modpacks.filter((m) => m.type === "resourcepack");
         aria-controls="panel-resourcepack"
       >
         Resource Pack
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        data-tab="mod"
+        id="tab-mod"
+        aria-controls="panel-mod"
+      >
+        Mod
       </button>
     </div>
     <section
@@ -125,6 +135,19 @@ const packs = modpacks.filter((m) => m.type === "resourcepack");
         ))}
       </div>
     </section>
+    <section
+      class="panel"
+      data-panel="mod"
+      id="panel-mod"
+      role="tabpanel"
+      aria-labelledby="tab-mod"
+    >
+      <div class="packs">
+        {mods.map((m) => (
+          <ModpackCard modpack={m} />
+        ))}
+      </div>
+    </section>
   </div>
 </BaseLayout>
 <script>
@@ -137,7 +160,7 @@ const packs = modpacks.filter((m) => m.type === "resourcepack");
     history.replaceState(null, "", `#${name}`);
   }
   tabs.forEach((t) => t.addEventListener("click", () => setTab(t.dataset.tab!)));
-  if (["shader", "resourcepack", "modpack"].includes(location.hash.slice(1)))
+  if (["shader", "resourcepack", "mod", "modpack"].includes(location.hash.slice(1)))
     setTab(location.hash.slice(1));
   else panels.forEach((p) => (p.hidden = p.dataset.panel !== "modpack"));
   const search = document.querySelector<HTMLInputElement>("#search")!,

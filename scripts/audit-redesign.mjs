@@ -17,6 +17,9 @@ const routes = [
   "/modpacks/sodiumpack-v2/",
   "/modpacks/derivative-shader/",
   "/modpacks/better-sound-java/",
+  "/modpacks/gyzenn-optimized-v3/",
+  "/modpacks/pvp-combat-edition/",
+  "/modpacks/xyuzosound/",
   "/zalith/",
   "/komunitas/",
   "/casda-network/",
@@ -155,6 +158,35 @@ for (const viewport of viewports) {
     await page.getByRole("tab", { name: "Resource Pack" }).click();
     if (await page.locator("[data-panel=resourcepack]").isHidden())
       issues.push("resource pack tab failed");
+    await page.goto(base + "/modpacks/");
+    await page.getByRole("tab", { name: "Mod", exact: true }).click();
+    if (await page.locator("[data-panel=mod]").isHidden()) issues.push("mod tab failed");
+    const modCard = page.locator("#xyuzosound");
+    if (await modCard.isHidden()) issues.push("xYuzoSound card missing in Mod tab");
+    if (!(await modCard.locator(".meta").textContent())?.includes("Fabric / Latest"))
+      issues.push("xYuzoSound meta is not Fabric / Latest");
+    if ((await modCard.locator("a.download").textContent())?.trim() !== "Download Mod")
+      issues.push("xYuzoSound primary button is not Download Mod");
+    await page.goto(base + "/modpacks/#mod");
+    if (await page.locator("[data-panel=mod]").isHidden()) issues.push("mod hash tab failed");
+    await page.goto(base + "/modpacks/");
+    for (const [category, id] of [
+      ["CPVP", "pvp-combat-edition"],
+      ["FPS BOOST", "gyzenn-optimized-v3"],
+      ["VISUAL", "gyzenn-optimized-v3"],
+      ["OPTIMIZATION", "gyzenn-optimized-v3"],
+    ]) {
+      await page.locator(`.chip[data-category="${category}"]`).click();
+      if (await page.locator(`#${id}`).isHidden())
+        issues.push(`category filter ${category} omitted ${id}`);
+    }
+    await page.goto(base + "/");
+    const expectedCount = modpackData.filter((m) => m.type === "modpack" && !m.isArchived).length;
+    const actualCount = Number(await page.locator(".stats div b").first().textContent());
+    if (actualCount !== expectedCount)
+      issues.push(`home modpack count ${actualCount} != ${expectedCount}`);
+    if (await page.locator(".latest, .foot").getByText("xYuzoSound", { exact: true }).count())
+      issues.push("mod leaked into latest modpacks");
     await page.goto(base + "/modpacks/quick-cpvp-26-3/");
     await page.getByRole("button", { name: "Salin tautan" }).click();
     await page.waitForFunction(() =>

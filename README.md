@@ -26,11 +26,13 @@ npm run audit
 
 ## Skema modpack
 
-Sumber katalog adalah `src/data/modpacks.json`, dengan tipe di `src/data/types.ts`. Field yang dipakai: `id`, `type`, `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion`, `categories` (termasuk kategori baru `RPG`), `status`, `isNew`, `isRecommended`, `isArchived`, `badges`, `theme`, `image`, `imageAlt`, `description`, `note` (`type`, `text`), `features`, `credits`, `tips`, `downloads` (`label`, `url`, `host`, `type`), `additionalMods`, `resourcepacks`, `extraMods`, `extraModsNote`, `mods`, dan `ticker`. Field opsional yang tidak relevan untuk sebagian entri boleh tidak diisi; `image` dapat bernilai `null` dan `downloads` berisi tautan unduhan entri.
+Sumber katalog adalah `src/data/modpacks.json`, dengan tipe di `src/data/types.ts`. Field yang dipakai: `id`, `type` (`modpack`, `shader`, `resourcepack`, atau `mod`), `name`, `displayTitle`, `edition`, `version`, `minecraft`, `loader`, `loaderVersion` (boleh bebas, mis. `Latest`), `categories` (termasuk kategori `RPG` dan `AUDIO`), `status`, `isNew`, `isRecommended`, `isArchived`, `badges`, `theme`, `image`, `imageAlt`, `description`, `note` (`type`, `text`), `features`, `credits`, `tips`, `downloads` (`label`, `url`, `host`, `type`), `additionalMods`, `resourcepacks`, `extraMods`, `extraModsNote`, `mods`, dan `ticker`. Field opsional yang tidak relevan untuk sebagian entri boleh tidak diisi; `image` dapat bernilai `null` dan `downloads` berisi tautan unduhan entri.
 
 ### Menambah modpack
 
 Tambahkan satu entri dengan `id` unik ke `src/data/modpacks.json`, isi jenis, kategori, deskripsi, dan tautan unduhannya. Untuk cover asli, tambahkan gambar ke `src/assets/img/`, lalu set `image` ke `/assets/img/nama-file.webp` dan isi `imageAlt` dengan deskripsi gambar. Helper gambar menghubungkan nama berkas ke aset Astro; gambar yang tidak tersedia tetap menggunakan placeholder. Kategori akan tersedia pada filter katalog.
+
+Entri `type: "mod"` muncul pada tab keempat **Mod** di `/modpacks/#mod` memakai `ModpackCard` yang sama, tetapi tidak dihitung sebagai modpack pada statistik beranda, daftar terbaru, atau filter kategori. `Download.host`/`type` mendukung `curseforge` dan `youtube`: tautan YouTube dirender sebagai tombol sekunder berikon play pada halaman detail, sementara tombol utama tetap mengunduh entri pertama.
 
 ### Memperbarui Zalith
 

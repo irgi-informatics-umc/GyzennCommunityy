@@ -41,7 +41,10 @@ const cover = imageFor(m.image);
 >
   <article class="container page detail">
     <p>
-      <a href="/modpacks/">Modpack</a> &rsaquo; {m.name}
+      <a href={m.type === "mod" ? "/modpacks/#mod" : "/modpacks/"}>
+        {m.type === "mod" ? "Mod" : "Modpack"}
+      </a>{" "}
+      &rsaquo; {m.name}
     </p>
     <div class="card main">
       {m.image ? (
@@ -67,7 +70,7 @@ const cover = imageFor(m.image);
           {m.loader && (
             <span>
               {m.loader}
-              {m.loaderVersion ? ` ${m.loaderVersion}` : ""}
+              {m.loaderVersion ? `${m.type === "mod" ? " / " : " "}${m.loaderVersion}` : ""}
             </span>
           )}
           {m.categories.map((c) => (
@@ -170,12 +173,33 @@ const cover = imageFor(m.image);
           </details>
         )}
         <h2>Unduhan</h2>
-        {m.downloads.map((d, i) => (
-          <a class="btn primary dl" href={d.url} target="_blank" rel="noopener noreferrer">
-            {d.label}
-            {i === 0 ? " (Recommended)" : ""}
-          </a>
-        ))}
+        {m.downloads.map((d, i) =>
+          d.type === "youtube" || d.host === "youtube" ? (
+            <a
+              class="btn secondary dl showcase"
+              href={d.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                class="play"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              {d.label}
+            </a>
+          ) : (
+            <a class="btn primary dl" href={d.url} target="_blank" rel="noopener noreferrer">
+              {d.label}
+              {i === 0 ? " (Recommended)" : ""}
+            </a>
+          ),
+        )}
         {m.downloads.some((d) => /ekstrak/i.test(d.url + d.label)) && (
           <p class="muted">Ekstrak dulu sebelum di pake</p>
         )}
@@ -311,6 +335,12 @@ const cover = imageFor(m.image);
     .dl {
       width: 100%;
       margin: 4px 0;
+    }
+    .showcase {
+      border: 1px solid var(--line-soft);
+    }
+    .play {
+      flex: 0 0 auto;
     }
     .related {
       display: grid;

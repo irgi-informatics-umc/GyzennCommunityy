@@ -1,5 +1,175 @@
 [
   {
+    "id": "gyzenn-optimized-v3",
+    "type": "modpack",
+    "name": "Gyzenn Optimized V3",
+    "displayTitle": "GYZENN OPTIMIZED V3",
+    "edition": "Performance & Visual Enhancement Modpack",
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "FPS BOOST",
+      "VISUAL",
+      "OPTIMIZATION"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/Gyzenn-optimizzz.jpg",
+    "imageAlt": "Gyzenn Optimized V3 Minecraft Modpack Cover",
+    "description": "Cocok buat main yg menginginkan Minecraft dengan performa lebih baik, tampilan lebih menarik, dan pengalaman bermain yang tetap mempertahankan identitas vanilla",
+    "features": [
+      "Performance Optimization",
+      "Punchy Animations",
+      "xYuzoSound"
+    ],
+    "note": null,
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/m2236ke7nhkxrh6/Gyzenn_Optimized_1.21.11_V3.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download ZIP",
+        "url": "https://www.mediafire.com/file/xm8sa2datockbip/Gyzenn_Optimized_1.21.11_V3.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "pvp-combat-edition",
+    "type": "modpack",
+    "name": "PVP Combat Edition",
+    "displayTitle": "PVP COMBAT EDITION",
+    "edition": null,
+    "version": "1.21.11",
+    "minecraft": "1.21.11",
+    "loader": "Fabric",
+    "loaderVersion": "0.20.1",
+    "categories": [
+      "CPVP"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "CPVP",
+      "1.21.11"
+    ],
+    "theme": "strip-yellow",
+    "image": "/assets/img/gijen-pvp.jpg",
+    "imageAlt": "PVP Combat Edition Minecraft Modpack Cover",
+    "description": "Experience smoother and more responsive Minecraft PvP with PVP Combat Edition",
+    "features": [
+      "Enhanced PvP experience with combat-focused utilities.",
+      "Crystal PvP optimization with Marlow's Crystal Optimizer.",
+      "Improved hitbox visualization and combat awareness.",
+      "Advanced HUD and inventory enhancements.",
+      "Iris Shaders"
+    ],
+    "credits": [
+      "An unofficial community made Minecraft modpack created by Gyzenn, combining various third party Minecraft mods. All mods, assets, and their respective trademarks belong to their original developers and owners.",
+      "Not affiliated with, endorsed by, or officially associated with Mojang Studios or Microsoft"
+    ],
+    "note": null,
+    "downloads": [
+      {
+        "label": "Download Mrpack",
+        "url": "https://www.mediafire.com/file/05tw7xg7dkixq76/PVP+Combat+Edition.mrpack/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      },
+      {
+        "label": "Download Zip",
+        "url": "https://www.mediafire.com/file/xu3ialdeajwtph0/PVP+Combat+Edition.zip/file",
+        "host": "mediafire",
+        "type": "mediafire"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
+    "id": "xyuzosound",
+    "type": "mod",
+    "name": "xYuzoSound",
+    "displayTitle": "XYUZOSOUND",
+    "edition": null,
+    "version": "1.21.11 - 26.3",
+    "minecraft": "1.21.11 - 26.3",
+    "loader": "Fabric",
+    "loaderVersion": "Latest",
+    "categories": [
+      "AUDIO"
+    ],
+    "status": "RELEASED",
+    "isNew": true,
+    "isRecommended": false,
+    "isArchived": false,
+    "badges": [
+      "NEW",
+      "AUDIO"
+    ],
+    "theme": "strip-purple",
+    "image": "/assets/img/mod-sound.jpg",
+    "imageAlt": "xYuzoSound Mod Cover",
+    "description": "Mod audio yang meningkatkan pengalaman bermain Minecraft dengan mengganti suara bawaan menjadi lebih tajam, realistis, dan memuaskan.",
+    "features": [
+      "Efek suara UI dan notifikasi yang lebih baik.",
+      "Suara serangan dan pukulan senjata lebih mantap.",
+      "Efek suara langkah kaki, pemasangan, dan penghancuran blok yang diperbarui.",
+      "Ringan dan hanya berjalan di sisi client.",
+      "Bisa digunakan di server vanilla tanpa instalasi di server."
+    ],
+    "credits": [
+      "Mods di buat oleh xYuzoNaka"
+    ],
+    "note": null,
+    "downloads": [
+      {
+        "label": "Download Mod",
+        "url": "https://www.curseforge.com/minecraft/mc-mods/xyuzosound",
+        "host": "curseforge",
+        "type": "curseforge"
+      },
+      {
+        "label": "Mod Showcase",
+        "url": "https://youtu.be/5RMA_ATf5oo",
+        "host": "youtube",
+        "type": "youtube"
+      }
+    ],
+    "additionalMods": [],
+    "resourcepacks": [],
+    "extraMods": [],
+    "extraModsNote": null,
+    "mods": [],
+    "ticker": false
+  },
+  {
     "id": "gijen-modpek-clangor-lyrics",
     "type": "modpack",
     "name": "Gijen Modpek With Clangor & Lyrics",

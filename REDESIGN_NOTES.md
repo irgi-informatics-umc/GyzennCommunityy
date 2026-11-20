@@ -58,3 +58,11 @@ Pemeriksaan visual full-page dilakukan di 412×915 dan 1280×800 untuk beranda, 
 - Audit Playwright di preview lulus untuk 360×800, 390×844, 412×915, 768×1024, dan 1280×800 tanpa issue.
 - Lighthouse mobile Beranda: Performance 99, Accessibility 100, Best Practices 100, SEO 100. Katalog: 99, 100, 100, 100.
 - `rg` tidak menemukan lagi istilah atau hex tema lama yang diminta. Teks Discord tetap ungu karena warna layanan tersebut dipertahankan.
+
+## Katalog tipe `mod`
+
+- Tipe katalog keempat `mod` ditambahkan di `src/data/types.ts` bersama host unduhan `curseforge` dan `youtube`; `loaderVersion` dapat berupa teks bebas (`Latest`).
+- `/modpacks/` kini punya tab **Mod** setelah Resource Pack. Panelnya dirender server, memakai `ModpackCard` dan grid dua kolom di ponsel, tanpa filter/pencarian, serta dapat dibuka lewat hash `#mod`. Tab bar tetap dapat digeser horizontal pada 360 px.
+- Halaman detail `mod` memakai breadcrumb "Mod", merender `Fabric / Latest`, kredit, serta tombol sekunder YouTube berikon play; tombol utama tetap tautan CurseForge.
+- Kategori `AUDIO` memakai ikon ♪ dan tint ungu lembut. Kategori untuk filter Beranda dan tab Modpack tetap dihitung hanya dari entri `type === "modpack"`, sehingga mod tidak masuk statistik, "Terbaru", atau footer.
+- Tiga entri baru ditambahkan di urutan Gyzenn Optimized V3, PVP Combat Edition, xYuzoSound. Cover memakai `Gyzenn-optimizzz.jpg`, `gijen-pvp.jpg`, dan `mod-sound.jpg` sesuai nama berkas di `src/assets/img/` (peka huruf besar/kecil di Vercel).
